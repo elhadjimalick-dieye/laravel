@@ -28,40 +28,39 @@
 @endif
 
 
-<table class="table table-striped table-bordered" style="margin-left:4%; width:90%" >
+<table class="table table-striped table-bordered" style="margin-left:4%; width:100%" >
   <tr>
-     <th>No</th>
-     <th>Prenom</th>
-     <th>Nom</th>
-     <th>Quantité</th>
-     <th>Prix unitaire</th>
+     <th>Id</th>
+     <th>Nom Complet</th>
+     <th>Lieu</th>
+     <th>Quantité en kg</th>
+
+     <th>Prix Unitaire</th>
      <th>Montant</th>
      <th>Date</th>
-
+     <th>Commentaire</th>
 
   </tr>
     @foreach ($data as $key => $collecte)
     <tr>
         <td>{{ ++$i }}</td>
-        <td>{{ $collecte->prenom_collecteur }}</td>
-        <td>{{ $collecte->nom_collecteur }}</td>
+        <td>{{ $collecte->collecteur_id}} </td>
+        <td>{{ $collecte->lieu}} </td>
         <td>{{ $collecte->quantite }}</td>
+     
         <td>{{ $collecte->prix_unitaire }}</td>
         <td>{{ $collecte->montant }}</td>
         <td>{{ $collecte->created_at }}</td>
-     
+        <td>{{ $collecte->commentaire }}</td>
+
+
+        
+  
         <td>
             <a class="btn btn-info" href="{{ route('collectes.show',$collecte->id) }}">Voir</a>
            
         </td>
-    <td><a class="btn btn-primary" href="{{ route('collectes.edit',$collecte->id) }}">Modifier</a></td>
-    <td>
-        {!! Form::open(['method' => 'DELETE','route' => ['collectes.destroy', $collecte->id],'style'=>'display:inline']) !!}
-            {!! Form::submit('Supp', ['class' => 'btn btn-danger']) !!}
-        {!! Form::close() !!}
-    </td>
-  </tr>
-    </td>
+    
     </tr>
     @endforeach
 </table>

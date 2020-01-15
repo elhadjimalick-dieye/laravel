@@ -24,7 +24,6 @@ class CreateUsersTable extends Migration
             ->onUpdate('cascade');   
             //id roles
             $table->unsignedBigInteger('roles');
-          
             $table->string('name');
             $table->string('prenom');
             $table->string('email');

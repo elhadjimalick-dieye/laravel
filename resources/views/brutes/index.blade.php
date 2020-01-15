@@ -7,8 +7,8 @@
 <div class="row" style="margin-left:8%">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
-            <h2>Liste des collecteurs</h2>
-            <a class="btn btn-primary" href="{{ route('collecteurs.create') }}" role="button">Ajouter un collecteur</a>
+            <h2>Liste des collectes</h2>
+            <a class="btn btn-success" href="{{ route('brutes.create') }}" role="button">Ajouter une collecte Brute</a>
         </div>
         
         <div class="pull-right">
@@ -28,28 +28,35 @@
 @endif
 
 
-<table class="table table-striped table-bordered" style="margin-left:4%; width:90%" >
+<table class="table table-striped table-bordered" style="margin-left:4%; width:100%" >
   <tr>
      <th>Id</th>
      <th>Nom Complet</th>
-     <th>Region</th>
-     <th>Departement</th>
-     <th>Ville</th>
-     <th>Quartier</th>
-     <th>Contact</th>
+     <th>Lieu</th>
+     <th>Quantité </th>
+
+     <th>Prix Unitaire</th>
+     <th>Montant</th>
+     <th>Date</th>
+     <th>Commentaire</th>
 
   </tr>
-    @foreach ($data as $key => $collecteur)
+    @foreach ($data as $key => $collecte)
     <tr>
         <td>{{ ++$i }}</td>
-        <td>{{ $collecteur->nomComplet }}</td>
-        <td>{{ $collecteur->region }}</td>
-        <td>{{ $collecteur->departement }}</td>
-        <td>{{ $collecteur->ville }}</td>
-        <td>{{ $collecteur->quartier }}</td>
-        <td>{{ $collecteur->contact }}</td>
+        <td>{{ $collecte->collecteurs->nomComplet}} </td>
+        <td>{{ $collecte->lieu}} </td>
+        <td>{{ $collecte->quantite }} kg</td>
+        <td>{{ $collecte->prix_unitaire }} frcfa</td>
+        <td>{{ $collecte->montant }} frcfa</td>
+        <td>{{ $collecte->created_at }}</td>
+        <td>{{ $collecte->commentaire }}</td>
+
+
+        
+  
         <td>
-            <a class="btn btn-info" href="{{ route('collecteurs.show',$collecteur->id) }}">Voir</a>
+            <a class="btn btn-info" href="{{ route('collectes.show',$collecte->id) }}">Voir</a>
            
         </td>
     

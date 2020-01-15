@@ -30,50 +30,54 @@
 
 
 {!! Form::open(array('route' => 'collecteurs.index','method'=>'POST')) !!}
-<div class="row" style="margin-left:10%">
-<div class="col-xs-12 col-sm-12 col-md-5 " >
+<div class="row" style="margin-left:25%">
+<div class="col-xs-12 col-sm-12 col-md-5" >
+
+     
+    <div class="col-xs-12 col-sm-12 col-md-12 " >
         <div class="form-group">
-            <strong>Prenom</strong>
-            {!! Form::text('prenom', null, array('placeholder' => 'Prenom','class' => 'form-control')) !!}
+            <strong>Nom Complet</strong>
+            {!! Form::text('nomComplet', null, array('placeholder' => 'Nom complet','class' => 'form-control')) !!}
         </div>
-    </div><div class="col-xs-12 col-sm-12 col-md-5 " >
-        <div class="form-group">
-            <strong>Nom</strong>
-            {!! Form::text('nom', null, array('placeholder' => 'Nom','class' => 'form-control')) !!}
-        </div>
-    </div><div class="col-xs-12 col-sm-12 col-md-5 " >
+    </div>
+    
+    <div class="col-xs-12 col-sm-12 col-md-12 " >
         <div class="form-group">
             <strong>Region</strong>
             {!! Form::text('region', null, array('placeholder' => 'Region','class' => 'form-control')) !!}
         </div>
-    </div><div class="col-xs-12 col-sm-12 col-md-5 " >
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12 " >
         <div class="form-group">
             <strong>Departement</strong>
             {!! Form::text('departement', null, array('placeholder' => 'Departement','class' => 'form-control')) !!}
         </div>
     </div>
-    <div class="col-xs-12 col-sm-12 col-md-5 " >
+
+
+    <div class="col-xs-12 col-sm-12 col-md-12 " >
         <div class="form-group">
-            <strong>Ville</strong>
-            {!! Form::text('ville', null, array('placeholder' => 'Ville','class' => 'form-control')) !!}
+            <strong>Commune</strong>
+            {!! Form::text('ville', null, array('placeholder' => 'ville','class' => 'form-control')) !!}
         </div>
     </div>
-    <div class="col-xs-12 col-sm-12 col-md-5">
+    <div class="col-xs-12 col-sm-12 col-md-12 " >
         <div class="form-group">
-            <strong>Quartier:</strong>
-            {!! Form::text('quartier', null, array('placeholder' => 'Quartier','class' => 'form-control')) !!}
+            <strong>Quartier</strong>
+            {!! Form::text('quartier', null, array('placeholder' => 'quartier','class' => 'form-control')) !!}
         </div>
     </div>
-    <div class="col-xs-12 col-sm-12 col-md-5">
+    <div class="col-xs-12 col-sm-12 col-md-12 " >
         <div class="form-group">
-            <strong>Téléphone:</strong>
-            {!! Form::text('telephone', null, array('placeholder' => 'Téléphone','class' => 'form-control')) !!}
+            <strong>Contact</strong>
+            {!! Form::text('contact', null, array('placeholder' => 'Contact','class' => 'form-control')) !!}
         </div>
     </div>
 
     
+    
     <br>
-    <div class="col-xs-12 col-sm-12 col-md-5 text-center">
+    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
     <div class="form-group">
 
         <button type="submit" class="btn btn-success">Soumettre</button>

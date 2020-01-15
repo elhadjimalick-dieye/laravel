@@ -32,30 +32,10 @@
             {{ $collecte->montant }}
         </div>
 
-        <div class="form-group">
-            <strong>PP HOMO:</strong>
-            {{ $collecte->pp_homo }}
-        </div> 
-        <div class="form-group">
-            <strong>PP COPO:</strong>
-            {{ $collecte->pp_copo }}
-        </div>
-         <div class="form-group">
-            <strong>PET:</strong>
-            {{ $collecte->pet }}
-        </div> 
-        <div class="form-group">
-            <strong>PEHD:</strong>
-            {{ $collecte->pehd }}
-        </div>
-
+     
         <div class="form-group">
             <strong>Commentaire:</strong>
-            {{ $collecte->commentaire }}
-        </div>
-        <div class="form-group">
-            <strong>Dechet:</strong>
-            {{ $collecte->dechet }}
+            {{ $collecte->commentaitre }}
         </div>
         <div class="form-group">
             <strong>Date:</strong>

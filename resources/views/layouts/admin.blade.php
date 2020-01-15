@@ -199,6 +199,16 @@
             </ul>
             <ul class="nav nav-treeview">
               <li class="nav-item">
+                <a href="{{ route('brutes.index') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Collecte Brute</p>
+                </a>
+              </li>
+           
+            </ul>
+            
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
                 <a href="{{ route('collectes.index') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Collecte</p>
@@ -451,11 +461,11 @@
    @yield('content')
   </div>
   <!-- /.content-wrapper -->
-  <footer class="main-footer">
-    <strong>Copyright &copy; 2019-2020 <a href="https://recuplast.org/" target="blank">www.recuplast.org</a>.</strong>
-    une vraie economie circulaire.
-    <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 1.0
+  <footer class="main-footer" style="float:left">
+    <strong style="float:left">Copyright &copy; 2019-2020 <a href="https://recuplast.org/" target="blank">www.recuplast.org</a>.</strong>
+      une vraie economie circulaire.
+    <div class="float-right d-none d-sm-inline-block" >
+    
     </div>
   </footer>
 

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCollectesTable extends Migration
+class CreateBrutesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,21 +13,20 @@ class CreateCollectesTable extends Migration
      */
     public function up()
     {
-        Schema::create('collectes', function (Blueprint $table) {
-            $table->bigIncrements('id'); 
-            $table->unsignedBigInteger('collecteur_id')->nullable();
+        Schema::create('brutes', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('collecteur_id');
             $table->foreign('collecteur_id')
             ->references('id')
             ->on('collecteurs')
             ->onDelete('cascade')
             ->onUpdate('cascade'); 
-            $table->string('prenom_collecteur');
-            $table->string('nom_collecteur');
-            $table->integer('quatite');
-            $table->bigInteger('prix_unitaire');
-            $table->bigInteger('montant');
-
-            $table->timestamps();
+            $table->string('lieu');
+           $table->integer('quantite');
+           $table->integer('prix_unitaire');
+           $table->bigInteger('montant');
+           $table->string('commentaire');
+           $table->timestamps();
         });
     }
 
@@ -38,6 +37,6 @@ class CreateCollectesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('collectes');
+        Schema::dropIfExists('brutes');
     }
 }

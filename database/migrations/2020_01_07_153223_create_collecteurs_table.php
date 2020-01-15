@@ -15,13 +15,13 @@ class CreateCollecteursTable extends Migration
     {
         Schema::create('collecteurs', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('prenom');
-            $table->string('nom');
+            $table->string('nomComplet');
+            //$table->string('nom');
             $table->string('region');
             $table->string('departement');
             $table->string('ville');
             $table->string('quartier');
-            $table->string('telephone');
+            $table->string('contact');
 
             $table->timestamps();
         });

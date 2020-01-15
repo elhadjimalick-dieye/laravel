@@ -24,8 +24,12 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('users','UserController');
     Route::resource('services','ServiceController');
     Route::resource('collecteurs','CollecteurControlleur');
-    Route::resource('collectes','collecteController');
+    Route::resource('collectes','CollecteController');
     Route::resource('employes','employeController');
+    Route::resource('brutes','BruteController');
+
+
+    
 
 
 

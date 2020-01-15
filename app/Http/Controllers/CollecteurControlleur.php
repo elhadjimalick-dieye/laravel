@@ -28,7 +28,7 @@ class CollecteurControlleur extends Controller
      */
     public function create()
     {
-        $collecteur = Collecteur::pluck('prenom','nom','region','departement','ville','quartier','telephone')->all();
+        $collecteur = Collecteur::pluck('nomComplet','region','departement','ville','quartier','contact')->all();
         return view('collecteurs.create',compact('collecteur'));
     }
 
@@ -54,13 +54,12 @@ class CollecteurControlleur extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'prenom' => 'required',
-            'nom' => 'required',
+            'nomComplet' => 'required',
             'region' => 'required',
             'departement' => 'required',
             'ville' => 'required',
             'quartier' => 'required',
-            'telephone' => 'required',
+            'contact' => 'required',
    
         ]);
 

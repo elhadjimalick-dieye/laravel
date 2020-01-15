@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class collecte extends Model
+class Collecte extends Model
 {
 /**
      * The attributes that are mass assignable.
@@ -12,13 +12,18 @@ class collecte extends Model
      * @var array
      */
     protected $fillable = [
-        'prenom_collecteur','nom_collecteur','quantite','prix_unitaire','montant','collecteur_id'
+        'collecteur_id','quantite','prix_unitaire','pp_homo','pp_copo','pet','pehd','montant','commentaire','lieu','dechet'
     ];
 
 
-    public function collecteur()
+
+    
+    public function collecteurs()
     {
         return $this->belongsTo('App\Collecteur');
     }
-
+    public function brutes()
+    {
+        return $this->belongsTo('App\Brute');
+    }
 }

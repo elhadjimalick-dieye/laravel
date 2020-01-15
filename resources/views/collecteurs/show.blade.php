@@ -40,8 +40,8 @@
             {{ $collecteur->quartier }}
         </div>
         <div class="form-group">
-            <strong>Téléphone:</strong>
-            {{ $collecteur->telephone }}
+            <strong>Contact:</strong>
+            {{ $collecteur->contact }}
         </div>
     
         

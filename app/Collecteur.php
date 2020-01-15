@@ -12,7 +12,7 @@ class Collecteur extends Model
      * @var array
      */
     protected $fillable = [
-        'prenom','nom','direction','region','departement','ville','quartier','telephone'
+        'nomComplet','contact','region','departement','ville','quartier'
     ];
 
 

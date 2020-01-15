@@ -19,8 +19,6 @@ class CreateEmployesTable extends Migration
             $table->string('nom');
             $table->string('matricule');
             $table->date('date_de_naissance');	
-             //$table->integer('service_id')->unsigned();
-
             $table->unsignedBigInteger('service_id')->references('id')->on('services')->onDelete('cascade');
             //a refaire
             //$table->string('categorie');

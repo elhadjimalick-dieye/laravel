@@ -18,15 +18,14 @@ class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
+    * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
     {
         $data = User::orderBy('id','DESC')->paginate(5);
-        $services =Service::all();
-        $roles =Roles::all();
-
+        $services = Service::pluck('libelle','libelle')->all();
+        $roles = Roles::pluck('name','name')->all();
         return view('users.index',compact('data','services','roles'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
             
@@ -36,13 +35,12 @@ class UserController extends Controller
     public function list(){
         $activeUser = User::active()->get();
         $inactiveUser = User::inactive()->get();
-        //$service = Service::all();
-        $services = Service::pluck('nom','nom')->all();
+      
         $roles = Roles::pluck('name','name')->all();
-
+        $services['services']= Service::all();
         //$services =Service::all();
 
-        return view('internals.users',service('activeUser','inactiveUser','services','roles'));
+        return view('internals.users',service('activeUser','inactiveUser','services','roles')->with($services));
 
     }
 
@@ -54,9 +52,7 @@ class UserController extends Controller
      */
     public function create()
     {
-       //$arr['service_id'] = Service::all();
-        //$roles = Role::pluck('name','name')->all();
-        //$services = Service::pluck('nom','nom')->all();
+      
         $services =Service::all();
         $roles =Role::all();
 
@@ -87,14 +83,8 @@ class UserController extends Controller
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
 
-
-       
         $user = User::create($input);
         $user->assignRole($request->input('roles'));
-       // $user->assignService($request->input('services'));
-
-
-
         return redirect()->route('users.index',compact('user'))
                         ->with('success','User created successfully');
     }
