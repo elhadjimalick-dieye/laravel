@@ -24,9 +24,13 @@ class UserController extends Controller
     public function index(Request $request)
     {
         $data = User::orderBy('id','DESC')->paginate(5);
-        $services = Service::pluck('libelle','libelle')->all();
-        $roles = Roles::pluck('name','name')->all();
-        return view('users.index',compact('data','services','roles'))
+        //$services = Service::pluck('libelle','libelle')->all();
+        //$roles = Roles::pluck('name','name')->all();
+        $roles = DB::table('users')->get();
+        $services = DB::table('users')->get();
+        $user = DB::table('users')->find(2);
+
+        return view('users.index',compact('data','services','roles','user'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
             
 
@@ -111,8 +115,7 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-        //$roles = Role::pluck('name','name')->all();
-        //$userRole = $user->roles->pluck('name','name')->all();
+      
         $roles =Role::all();
         $services =Service::all();
 
@@ -180,7 +183,7 @@ class UserController extends Controller
         return redirect()->route('users.index')
                         ->with('success','User updated successfully');
     }
-
+ 
 
     /**
      * Remove the specified resource from storage.

@@ -18,20 +18,28 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/collecterecuplasts','CollectRecuplast')->name('paye');
 
 Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles','RoleController');
     Route::resource('users','UserController');
     Route::resource('services','ServiceController');
-    Route::resource('collecteurs','CollecteurControlleur');
-    Route::resource('collectes','CollecteController');
+    Route::resource('collecterecuplasts','CollectRecuplast');
+    Route::resource('collectes','EntrepriseController');
     Route::resource('employes','employeController');
-    Route::resource('brutes','BruteController');
+    Route::resource('fournisseurs','Fournisseurss');
+    Route::resource('payementrecuplasts','payementrecuplast');
+    Route::resource('depotCollectes','DepotCollectes');
+
+
+    Route::resource('compteFournisseurs','CompteFournisseurController');
+
 
 
     
+    
 
+    
 
-
-
+    
 });

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Employe;
+use App\Service;
+
 use DB;
 
 class employeController extends Controller
@@ -16,7 +18,9 @@ class employeController extends Controller
     public function index(Request $request)
     {
         $data = Employe::orderBy('id','DESC')->paginate(5);
-        return view('employes.index',compact('data'))
+        $services = Service::pluck('libelle','libelle')->all();
+
+        return view('employes.index',compact('data','services'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
     }
 
@@ -27,8 +31,9 @@ class employeController extends Controller
      */
     public function create()
     {
-        $employe = Employe::pluck('prenom','nom','matricule','date_de_naissance','situation_mat','date_dentre','date_sorti','nombre_de_part')->all();
-        return view('employes.create',compact('employe'));
+        $services = Service::all();
+        $employe = Employe::pluck('prenom','nom','matricule','date_de_naissance','situation_mat','date_dentre','date_sorti','nombre_de_part','service_id')->all();
+        return view('employes.create',compact('employe','services'));
     }
 
 
@@ -49,11 +54,14 @@ class employeController extends Controller
             'date_dentre'=> 'required',
             'date_sorti'=> 'required',
             'nombre_de_part'=> 'required',
+            'service_id'=> 'required',
+
 
         ]);
 
-
-        return redirect()->route('employes.index')
+        $input = $request->all();
+        $employe = Employe::create($input);
+        return redirect()->route('employes.index',compact('employe'))
         ->with('success','employe created successfully');
     }
 
@@ -80,8 +88,8 @@ class employeController extends Controller
     public function edit($id)
     {
         $employe = Employe::find($id);
-
-        return view('employes.edit',compact('employe'));
+        $services =Service::all();
+        return view('employes.edit',compact('employe','services'));
     }
 
 
@@ -105,9 +113,13 @@ class employeController extends Controller
             'date_dentre'=> 'required',
             'date_sorti'=> 'required',
             'nombre_de_part'=> 'required',
-        ]);
+            'service_id'=> 'required',
 
-        return redirect()->route('employes.index')
+        ]);
+        $input = $request->all();
+        $employe = Employe::find($id);
+        $employe->update($input);
+        return redirect()->route('employes.index','employe')
                         ->with('success','employe updated successfully');
     }
 

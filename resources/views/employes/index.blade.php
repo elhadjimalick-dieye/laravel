@@ -30,6 +30,8 @@
             <th>Prenom</th>
             <th>Nom</th>
             <th>Matricule</th>
+            <th>Service</th>
+
             <th>Date de naissance</th>
          
 
@@ -42,6 +44,8 @@
     <td>{{ $employe->prenom }}</td>
     <td>{{ $employe->nom }}</td>
     <td>{{ $employe->matricule }}</td>
+    <td>{{ $employe->service->libelle}} </td>
+
     <td>{{ $employe->date_de_naissance }}</td>
 
 

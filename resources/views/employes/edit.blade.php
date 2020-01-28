@@ -73,7 +73,18 @@
             {!! Form::date('date_sorti', null, array('placeholder' => 'Date Fin','class' => 'form-control')) !!}
         </div>
     </div>
+    <div class="col-xs-12 col-sm-12 col-md-5">
+    <label for="exampleFormControlSelect1">Déparetment</label>
 
+        <div class="form-group">
+            <select name="service_id" id="service_id" class="col-xs-12 col-sm-12 col-md-12">
+            @foreach($services as $serve)
+            <option value="{{ $serve->id}}">{{$serve->libelle}}</option>
+            @endforeach
+            </select>
+        </div>
+    </div>
+    
     <br>
     <div class="col-xs-12 col-sm-12 col-md-5 ">
     <div class="form-group">

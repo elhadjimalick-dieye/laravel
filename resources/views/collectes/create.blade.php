@@ -8,7 +8,7 @@
             <h2>Ajouter un collecteurs</h2>
         </div>
         <div class="pull-right">
-            <a class="btn btn-success" href="{{ route('collecteurs.index') }}"> Retour</a>
+            <a class="btn btn-success" href="{{ route('collectes.index') }}"> Retour</a>
         </div>
         <br>
 
@@ -34,72 +34,72 @@
 <div class="col-xs-12 col-sm-12 col-md-5 " >
 
         <div class="form-group col-xs-12 col-sm-12 col-md-12">
-            <strong>Collecteur</strong>
-              <select name="collecteur_id" id="collecteur_id" class="col-xs-12 col-sm-12 col-md-12">
-            <option value="">Choisir un collecteur</option>
-            @foreach ($collecteurs as $colecteur)
-            <option value="{{$colecteur->id }}">{{$colecteur->nomComplet}}  </option>
+            <strong>numero collecte</strong>
+              <select name="fournisseur_id" id="fournisseur_id" class="col-xs-12 col-sm-12 col-md-12">
+            <option value="">selectionner un collecteur</option>
+            @foreach ($fournisseurs as $four)
+            <option value="{{$four->id }}">{{$four->nomComplet}}  </option>
             @endforeach
             </select>
         </div>
 
         
     </div>
-    
+    <div class="col-xs-12 col-sm-12 col-md-5 " >
+        <div class="form-group">
+            <strong>Date de reception</strong>
+            {!! Form::date('date_reception', null, array('placeholder' => 'date','class' => 'form-control')) !!}
+        </div>
+    </div>
     <div class="col-xs-12 col-sm-12 col-md-5 " >
         <div class="form-group">
             <strong>Quantite</strong>
-            {!! Form::number('quantite', null, array('placeholder' => 'Nom','class' => 'form-control')) !!}
+            {!! Form::number('quantite', null, array('placeholder' => 'quantite','class' => 'form-control')) !!}
         </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-5 " >
         <div class="form-group">
             <strong>Prix Unitaire</strong>
-            {!! Form::number('prix_unitaire', null, array('placeholder' => 'Region','class' => 'form-control')) !!}
+            {!! Form::number('prix', null, array('placeholder' => 'prix','class' => 'form-control')) !!}
         </div>
     </div>
-
+        
     <div class="col-xs-12 col-sm-12 col-md-5 " >
         <div class="form-group">
-            <strong>Lieu</strong>
-            {!! Form::text('lieu', null, array('placeholder' => 'Region','class' => 'form-control')) !!}
+            <strong>Montant</strong>
+            {!! Form::number('montant', null, array('placeholder' => 'montant','class' => 'form-control')) !!}
         </div>
     </div>
-
-
+  
     <div class="col-xs-12 col-sm-12 col-md-5 " >
         <div class="form-group">
-            <strong>PP COPO</strong>
-            {!! Form::number('pp_copo', null, array('placeholder' => 'PP COPO','class' => 'form-control')) !!}
+            <strong>PP copo</strong>
+            {!! Form::number('ppcopo', null, array('placeholder' => 'PP copo','class' => 'form-control')) !!}
         </div>
-    </div> <div class="col-xs-12 col-sm-12 col-md-5 " >
+    </div>    <div class="col-xs-12 col-sm-12 col-md-5 " >
         <div class="form-group">
-            <strong>PP HOMO</strong>
-            {!! Form::number('pp_homo', null, array('placeholder' => 'PP HOMO','class' => 'form-control')) !!}
+            <strong>PP homo</strong>
+            {!! Form::number('pphomo', null, array('placeholder' => 'PP homo','class' => 'form-control')) !!}
         </div>
-    </div> <div class="col-xs-12 col-sm-12 col-md-5 " >
+    </div>    <div class="col-xs-12 col-sm-12 col-md-5 " >
+        <div class="form-group">
+            <strong>PET</strong>
+            {!! Form::number('pet', null, array('placeholder' => 'PET','class' => 'form-control')) !!}
+        </div>
+    </div>    <div class="col-xs-12 col-sm-12 col-md-5 " >
         <div class="form-group">
             <strong>PEHD</strong>
             {!! Form::number('pehd', null, array('placeholder' => 'PEHD','class' => 'form-control')) !!}
         </div>
-    </div> <div class="col-xs-12 col-sm-12 col-md-5 " >
-        <div class="form-group">
-            <strong>PET</strong>
-            {!! Form::number('pet', null, array('placeholder' => 'Region','class' => 'form-control')) !!}
-        </div>
     </div>
-    <div class="col-xs-12 col-sm-12 col-md-5 " >
-        <div class="form-group">
-            <strong>Montant</strong>
-            {!! Form::number('montant', null, array('placeholder' => 'Departement','class' => 'form-control')) !!}
-        </div>
-    </div>
+
     <div class="col-xs-12 col-sm-12 col-md-5 " >
         <div class="form-group">
             <strong>Dechet</strong>
-            {!! Form::number('dechet', null, array('placeholder' => 'Dechet','class' => 'form-control')) !!}
+            {!! Form::number('dechet', null, array('placeholder' => 'dechet','class' => 'form-control')) !!}
         </div>
     </div>
+
     <div class="col-xs-12 col-sm-12 col-md-5 " >
         <div class="form-group">
             <strong>Commentaire</strong>
@@ -111,7 +111,7 @@
     <br>
     <div class="col-xs-12 col-sm-12 col-md-5 text-center">
     <div class="form-group">
-
+<br>
         <button type="submit" class="btn btn-success">Soumettre</button>
         </div>
     </div>

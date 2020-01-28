@@ -17,53 +17,63 @@
     <div class="col-xs-12 col-sm-12 col-md-12">
     <div class="form-group">
             <strong>Collecteur:</strong>
-            {{ $collecte->collecteur_id }}
+            {{ $collectEntreprises->fournisseurs->nomComplet }}
         </div>
         <div class="form-group">
             <strong>quantite:</strong>
-            {{ $collecte->quantite }}
+            {{ $collectEntreprises->quantite }}
         </div>
         <div class="form-group">
             <strong>Prix Unitaire:</strong>
-            {{ $collecte->prix_unitaire }}
+            {{ $collectEntreprises->prix }}
         </div>
         <div class="form-group">
             <strong>Montant:</strong>
-            {{ $collecte->montant }}
+            {{ $collectEntreprises->montant }}
         </div>
 
         <div class="form-group">
             <strong>PP HOMO:</strong>
-            {{ $collecte->pp_homo }}
+            {{ $collectEntreprises->pphomo }}
         </div> 
         <div class="form-group">
             <strong>PP COPO:</strong>
-            {{ $collecte->pp_copo }}
+            {{ $collectEntreprises->ppcopo }}
         </div>
          <div class="form-group">
             <strong>PET:</strong>
-            {{ $collecte->pet }}
+            {{ $collectEntreprises->pet }}
         </div> 
         <div class="form-group">
             <strong>PEHD:</strong>
-            {{ $collecte->pehd }}
-        </div>
-
-        <div class="form-group">
-            <strong>Commentaire:</strong>
-            {{ $collecte->commentaire }}
+            {{ $collectEntreprises->pehd }}
         </div>
         <div class="form-group">
             <strong>Dechet:</strong>
-            {{ $collecte->dechet }}
+            {{ $collectEntreprises->dechet }}
+        </div>
+        
+        <div class="form-group">
+            <strong>prix unitaire:</strong>
+            {{ $collectEntreprises->prix }}
+        </div><div class="form-group">
+            <strong>montant:</strong>
+            {{ $collectEntreprises->montant }}
+        </div><div class="form-group">
+            <strong>avance:</strong>
+            {{ $collectEntreprises->avance }}
+        </div>
+        <div class="form-group">
+            <strong>reglement_definitif:</strong>
+            {{ $collectEntreprises->reglement_definitif }}
         </div>
         <div class="form-group">
             <strong>Date:</strong>
-            {{ $collecte->created_at }}
+            {{ $collectEntreprises->date_reception }}
         </div>
      
      
-    
+
         
     </div>
  

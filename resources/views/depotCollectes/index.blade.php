@@ -7,8 +7,8 @@
 <div class="row" style="margin-left:8%">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
-            <h2>Liste des collectes</h2>
-            <a class="btn btn-success" href="{{ route('brutes.create') }}" role="button">Ajouter une collecte Brute</a>
+            <h2>Liste des Depots</h2>
+            <a class="btn btn-success" href="{{ route('depotCollectes.create') }}" role="button">Ajouter un depot</a>
         </div>
         
         <div class="pull-right">
@@ -28,35 +28,30 @@
 @endif
 
 
-<table class="table table-striped table-bordered" style="margin-left:4%; width:100%" >
+<table class="table table-striped table-bordered" style="margin-left:2%; width:95%" >
   <tr>
      <th>Id</th>
-     <th>Nom Complet</th>
-     <th>Lieu</th>
-     <th>Quantité </th>
+     <th>dechet</th>
+     <th>quantite initiale</th>
 
-     <th>Prix Unitaire</th>
-     <th>Montant</th>
-     <th>Date</th>
-     <th>Commentaire</th>
+     <th>quantite Entrante </th>
+     <th>quantite Sortante</th>
+     <th>quantite depot</th>
+   
 
   </tr>
-    @foreach ($data as $key => $collecte)
+    @foreach ($data as $key => $depot)
     <tr>
         <td>{{ ++$i }}</td>
-        <td>{{ $collecte->collecteurs->nomComplet}} </td>
-        <td>{{ $collecte->lieu}} </td>
-        <td>{{ $collecte->quantite }} kg</td>
-        <td>{{ $collecte->prix_unitaire }} frcfa</td>
-        <td>{{ $collecte->montant }} frcfa</td>
-        <td>{{ $collecte->created_at }}</td>
-        <td>{{ $collecte->commentaire }}</td>
+        <td>{{ $depot->dechet}} </td>
+        <td>{{ $depot->quantiteinitiale }}   kg</td>
 
+        <td>{{ $depot->quantiteEntrante }}  kg</td>
+        <td>{{ $depot->quantiteSortante }}  kg</td>
+        <td>{{ $depot->depot}}  kg </td>
 
-        
-  
         <td>
-            <a class="btn btn-info" href="{{ route('collectes.show',$collecte->id) }}">Voir</a>
+            <a class="btn btn-info" href="{{ route('depotCollectes.show',$depot->id) }}">Voir</a>
            
         </td>
     

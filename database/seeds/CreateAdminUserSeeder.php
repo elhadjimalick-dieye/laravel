@@ -4,6 +4,10 @@ use Illuminate\Database\Seeder;
 use App\User;
 use App\Service;
 use App\Roles;
+use App\Fournisseur;
+use App\DepotCollecte;
+
+
 
 
 //use Spatie\Permission\Models\Roles;
@@ -48,8 +52,7 @@ class CreateAdminUserSeeder extends Seeder
             'direction' => 'dakar',
         	
         ]);
-
-
+       
         $role = Roles::create(['name' => 'ADMIN_SYSTEME','guard_name'=>'web']);
         $role = Roles::create(['name' => 'ADMIN_SIMPLE','guard_name'=>'web']);
         $role = Roles::create(['name' => 'USER_SIMPLE','guard_name'=>'web']);
@@ -63,11 +66,26 @@ class CreateAdminUserSeeder extends Seeder
             'email' => 'ndieyene@gmail.com',
             'service_id' =>'1',
             'roles' =>'1',
-
-
         	'password' => bcrypt('12345678')
         ]);
-     
+
+        $fournisseur = Fournisseur::create([
+            'nomComplet' => 'Elhadji malick',
+        	'avance' => 0,
+            'contact' => '771327599',
+            'region' =>'mbour',
+            'departement' =>'mbour',
+            'commune' =>'mbour',
+            'quartier' =>'mbour',
+            'restant_du' =>'0',
+            'numero' =>'84521369750',
+
+            ]);
+            $depotCollecte = DepotCollecte::create([
+                'quantiteinitiale' => 1,
+                'depot' => 1,
+                ]);
+
         
     }
 }

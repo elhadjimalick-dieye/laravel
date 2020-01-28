@@ -7,8 +7,8 @@
 <div class="row" style="margin-left:8%">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
-            <h2>Liste des collectes</h2>
-            <a class="btn btn-primary" href="{{ route('collectes.create') }}" role="button">Ajouter une collecte</a>
+            <h2>Liste des collectes Entreprise</h2>
+            <a class="btn btn-success" href="{{ route('collectes.create') }}" role="button">Ajouter une collecte</a>
         </div>
         
         <div class="pull-right">
@@ -28,30 +28,34 @@
 @endif
 
 
-<table class="table table-striped table-bordered" style="margin-left:4%; width:100%" >
+<table class="table table-striped table-bordered" style="margin-left:2%; width:98%" >
   <tr>
      <th>Id</th>
-     <th>Nom Complet</th>
-     <th>Lieu</th>
-     <th>Quantité en kg</th>
-
-     <th>Prix Unitaire</th>
-     <th>Montant</th>
+     <th>Nom complet</th>
      <th>Date</th>
-     <th>Commentaire</th>
+
+     <th>Quantité en kg</th>
+     <th>Prix Unitaire</th>
+     <th>Montant</th> <th>avance</th>
+     <th>credit</th>
+     <th>reglement definitif</th>
 
   </tr>
     @foreach ($data as $key => $collecte)
     <tr>
         <td>{{ ++$i }}</td>
-        <td>{{ $collecte->collecteur_id}} </td>
-        <td>{{ $collecte->lieu}} </td>
-        <td>{{ $collecte->quantite }}</td>
-     
-        <td>{{ $collecte->prix_unitaire }}</td>
-        <td>{{ $collecte->montant }}</td>
-        <td>{{ $collecte->created_at }}</td>
-        <td>{{ $collecte->commentaire }}</td>
+        <td>{{ $collecte->fournisseurs->nomComplet}} </td>
+        <td>{{ $collecte->date_reception }} </td>
+
+        <td>{{ $collecte->quantite }} kg</td>
+
+        
+        <td>{{ $collecte->prix }} fcfa</td>
+        <td>{{ $collecte->montant }} fcfa</td>
+        <td>{{ $collecte->avance }}</td>
+        <td>{{ $collecte->credit }}</td>
+
+        <td>{{ $collecte->reglement_definitif }}</td>
 
 
         

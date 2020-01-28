@@ -21,5 +21,10 @@ class Employe extends Model
         return $this->belongsTo('App\Service');
     }
 
-   
+    public function service()
+    {
+        return $this->belongsTo('App\Service','service_id');
+    }
+    
+
 }

@@ -31,31 +31,20 @@
 <div class="wrapper">
 
   <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+  <nav class="main-header navbar navbar-expand navbar-success navbar-light">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
+        <a class="nav-link" data-widget="pushmenu" href="#"><i style="color:white" class="fas fa-bars"></i></a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="{{route('home')}}" class="nav-link">Home</a>
+      <li class="nav-item d-none d-sm-inline-block" style="color:white">
+        <a href="{{route('home')}}" class="nav-link" style="color:white">ACCUEIL</a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
-      </li>
+    
     </ul>
 
     <!-- SEARCH FORM -->
-    <form class="form-inline ml-3">
-      <div class="input-group input-group-sm">
-        <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-        <div class="input-group-append">
-          <button class="btn btn-navbar" type="submit">
-            <i class="fas fa-search"></i>
-          </button>
-        </div>
-      </div>
-    </form>
+
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
@@ -64,16 +53,26 @@
       <!-- Notifications Dropdown Menu -->
       
       <li class="nav-item">
-        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#">
-          <i class="fas fa-th-large"></i>
-        </a>
-      </li>
+          <a style="color:white" class="nav-link" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+<p>
+                                        {{ __('Deconnexion') }}
+                                        </p>
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+        
+          </li>
+       
     </ul>
   </nav>
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-light-success elevation-4">
+  <aside class="main-sidebar sidebar-light-light elevation-4">
     <!-- Brand Logo -->
   
 
@@ -94,8 +93,7 @@
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
+          <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
         
          
          
@@ -188,20 +186,21 @@
             <i class="right fas fa-angle-left"></i>
               </p>
             </a>
+          
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ route('collecteurs.index') }}" class="nav-link">
+                <a href="{{ route('fournisseurs.index') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Collecteurs</p>
+                  <p>liste des fournisseurs</p>
                 </a>
               </li>
            
             </ul>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ route('brutes.index') }}" class="nav-link">
+                <a href="{{ route('collectes.index') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Collecte Brute</p>
+                  <p>Collecte Entreprise</p>
                 </a>
               </li>
            
@@ -209,9 +208,9 @@
             
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ route('collectes.index') }}" class="nav-link">
+                <a href="{{ route('collecterecuplasts.index') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Collecte</p>
+                  <p>Collecte Recuplast</p>
                 </a>
               </li>
            
@@ -387,16 +386,16 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('depotCollectes.index') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Level 2</p>
+                  <p>Depot Collecte</p>
                 </a>
               </li>
               <li class="nav-item has-treeview">
                 <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>
-                    Level 2
+                  Collectes
                     <i class="right fas fa-angle-left"></i>
                   </p>
                 </a>
@@ -404,21 +403,16 @@
                   <li class="nav-item">
                     <a href="#" class="nav-link">
                       <i class="far fa-dot-circle nav-icon"></i>
-                      <p>Level 3</p>
+                      <p>collecte Entreprise</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('payementrecuplasts.index') }}" class="nav-link">
                       <i class="far fa-dot-circle nav-icon"></i>
-                      <p>Level 3</p>
+                      <p>collecte Recuplast</p>
                     </a>
                   </li>
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="far fa-dot-circle nav-icon"></i>
-                      <p>Level 3</p>
-                    </a>
-                  </li>
+                  
                 </ul>
               </li>
               <li class="nav-item">
@@ -429,22 +423,7 @@
               </li>
             </ul>
           </li>
-          <li class="nav-header">-------------------------------------</li>
-          <li class="nav-item">
-          <a class="nav-link" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                                                   <i class="nav-icon far fa fa-lock text-danger"></i>
-<p>
-                                        {{ __('Deconnexion') }}
-                                        </p>
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-        
-          </li>
+         
        
         </ul>
       </nav>
