@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\CollecteRecuplasts;
 use App\Fournisseur;
 use App\DepotCollecte;
+use App\CollectEntreprise;
 use DB;
 
 class CollectRecuplast extends Controller
@@ -34,7 +35,7 @@ class CollectRecuplast extends Controller
     public function create(Request $request)
     {
         $fournisseurs =Fournisseur::all();
-        $collecteRecuplasts = CollecteRecuplasts::pluck('fournisseur', 'date_reception', 'quantite', 'reglement_definitif', 'commentaire', 'prix', 'montant')->all();
+        $collecteRecuplasts = CollecteRecuplasts::pluck('fournisseur','numerobon', 'date_reception', 'quantite', 'reglement_definitif', 'commentaire', 'prix', 'montant')->all();
 
         return view('collecterecuplasts.create', compact('collecteRecuplasts', 'fournisseurs'));
     }
@@ -51,52 +52,63 @@ class CollectRecuplast extends Controller
             'date_reception' => 'required',
             'quantite' => 'required',
             'prix' => 'required',
+            'numerobon' => 'unique:collecte_recuplasts,numerobon',
+
         ]);
 
         $input = $request->all();
         $fournisseurs = Fournisseur::all();
         $collecteRecuplasts = CollecteRecuplasts::all();
-        //$depotCollecte = DepotCollecte::pluck('quantiteCollecter','dechet','quantiteEntrante','quantiteSortante','quantiteTotale')->all();
-
-        $depotCollecte= new DepotCollecte();
-        //$depotCollecte=DepotCollecte::findorFail($collecteRecuplasts->quantite);
-
-      // $depotCollecte=DepotCollecte::all();
-        $quantites=$request->input('quantite');
+        $collecte = CollectEntreprise::all();
+        $totaltri= $collecte->last()->totaltri;
+//dd($totaltri);
       
+        $date = (1542635);
+        $min_epoch = strtotime($date);
+        $rand_epoch = rand($min_epoch,1222222);
+
+        $depotCollecte=DepotCollecte::all();
+        $quantiteinitiale= $depotCollecte->last()->quantiteinitiale;
+        $quantiteEntrante= $depotCollecte->last()->quantiteEntrante;
+        $quantiteSortante= $depotCollecte->last()->quantiteSortante;
+        $dechet= $depotCollecte->last()->dechet;
+        $lastdepot= $depotCollecte->last()->depot;
+
+        $depotCollecte->last()->total;  
+
+        $date=$request->input('date_reception');
+            //dd($date);
+    $quantiteEntrante=$quantites=$request->input('quantite');
+    $depot=($lastdepot+$quantiteEntrante)-$quantiteSortante-$dechet;
+    $total=$quantiteEntrante-$quantiteSortante-$dechet+$depotCollecte->last()->total;
+    //dd($total);
+    $numero45= $collecteRecuplasts->numerobon=$rand_epoch;
+    DB::table('depot_collectes')->insert([
+        'quantiteinitiale' => $lastdepot,
+        'quantiteEntrante' => $quantiteEntrante,
+        'quantiteSortante' => $quantiteSortante,
+        'depot'=> $depot,
+        'ppcopo' =>$depotCollecte->last()->ppcopo,
+        'pphomo' => $depotCollecte->last()->pphomo,
+        'pet'=> $depotCollecte->last()->pet,
+        'pehd'=> $depotCollecte->last()->pehd,
+        'pp'=>$depotCollecte->last()->pp,
+        'quantiteSortante'=>$depotCollecte->last()->quantiteSortante,
+        'dechet'=>$depotCollecte->last()->dechet,
+        'date'=>$date,
+        'total'=>$total,
+
         
-        $quantiteTotale=$depotCollecte->quantiteTotale+$quantites;
-       // dd($quantiteTotale);
-        $quantiteEntrante=$depotCollecte->quantiteEntrante+$quantites;
-      //  dd($quantiteEntrante);
-       // $quantiteTotale=$depotCollecte->quantiteTotale+$quantiteEntrante;
-        //pour la production 
-        //$quantiteSortante=$quantiteTotale-$depotCollecte->quantiteSortante;
-        
-        $quantiteTotale=$depotCollecte->quantiteTotale;
-      //  dd($quantiteTotale);
-
- 
-        $depotCollecte->update([
-        'quantiteEntrante' =>$quantiteEntrante,
-        'quantiteTotale' =>$quantiteTotale,
-
-        //'quantiteCollecter' =>$quantiteEntrante,
-       // 'quantiteSortante' =>$,
-
-
-         //'credit'=>$montant-$avance
- 
-               ]);
-
-               $fournisseurs->update([
-                'avance' =>$avance,
-                 'restant_du'=>$montant-$avance
-         
-                       ]);
-              // dd($quantiteEntrante);
-
-        $collecteRecuplasts = CollecteRecuplasts::create($input);
+    ]);
+        DB::table('collecte_recuplasts')->insert([
+            'numerobon' => $numero45,
+            'fournisseur'=> $request->input('fournisseur'),
+             'date_reception'=>$request->input('date_reception'),
+              'quantite'=>$request->input('quantite'), 
+               'commentaire'=>$request->input('commentaire'),
+                'prix'=>$request->input('prix'),
+        ]);
+    
         return redirect()->route('collecterecuplasts.index', compact('collecteRecuplasts','fournisseurs','depotCollecte'))
                         ->with('success', 'collecte recuplast created successfully');
     }
@@ -131,12 +143,57 @@ class CollectRecuplast extends Controller
             
         ]);
         $input = $request->all();
+        $depotCollecte=DepotCollecte::all();
+        //dd($depotCollecte);
+         $quantiteEntrante=$quantites=$request->input('quantite');
+       //dd($quantiteEntrante);
+        $quantiteinitiale= $depotCollecte->last()->quantiteinitiale;
+       //dd($quantiteEntrante);
 
+        $quantiteSortante= $depotCollecte->last()->quantiteSortante;
+//        $quantiteSortante= $depotCollecte->last()->quantiteSortante;
+
+        $quantiteEntrantes= $depotCollecte->last()->quantiteEntrante;
+        $depot= $depotCollecte->last()->depot;
+    $quantiteEntrante=$quantites=$request->input('quantite');
+    $newvalue= $depotCollecte->last()->quantiteEntrante;
+    $newvaluedepot= $depotCollecte->last()->quantiteinitiale;
+
+        if ($newvalue!=$quantiteEntrante) {
+            
+            $newvalue=$quantiteEntrante;
+ +-
+            $newvaluedepot=$depotCollecte->last()->depot;
+            $newvaluedepot=($quantiteinitiale-$quantiteEntrantes)+$newvalue;
+           // dd($newvaluedepot);
+
+            $depotCollecte->last()->update([
+                'quantiteinitiale' => $newvaluedepot,
+                'quantiteEntrante' => $newvalue,
+                'depot'=>$newvaluedepot,
+         
+                       ]);
+        }
+   
         $collecteRecuplasts = CollecteRecuplasts::find($id);
         $collecteRecuplasts->update($input);
 
 
         return redirect()->route('collecterecuplasts.index')
                         ->with('success', 'collecte recuplast updated successfully');
+    }
+
+     /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+      
+        CollecteRecuplasts::find($id)->delete();
+        return redirect()->route('collecterecuplasts.index')
+                        ->with('success','collecte recuplasts deleted successfully');
     }
 }

@@ -31,7 +31,7 @@
 <table class="table table-striped table-bordered" style="margin-left:8%; width:50%" >
   <tr>
      <th>Id</th>
-     <th>Nom</th>
+     <th>Libelle</th>
      <th >Direction</th>
   </tr>
     @foreach ($data as $key => $service)
@@ -41,7 +41,7 @@
         <td>{{ $service->direction }}</td>
 
         <td>
-            <a class="btn btn-info" href="{{ route('services.show',$service->id) }}">Voir</a>
+            <a class="btn btn-info" href="{{ route('services.show',$service->id) }}"><i class="far fa-eye"></i></a>
            
         </td>
     </tr>

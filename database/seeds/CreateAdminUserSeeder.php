@@ -6,7 +6,8 @@ use App\Service;
 use App\Roles;
 use App\Fournisseur;
 use App\DepotCollecte;
-
+use App\TypeCollecteur;
+use App\CollectEntreprise;
 
 
 
@@ -68,7 +69,36 @@ class CreateAdminUserSeeder extends Seeder
             'roles' =>'1',
         	'password' => bcrypt('12345678')
         ]);
+        $depotCollecte = DepotCollecte::create([
+            'quantiteinitiale' => 0,
+            'quantiteEntrante' => 0,
+            'quantiteSortante' => 0,
+            'depot' => 0,
+            'ppcopo'=>0,
+            'pphomo'=>0,
+            'pet'=>0,
+            'pp'=>0,
+            'pehd'=>0,
+            'dechet'=>0,
+            'date'=>'2015-02-03',
+            'total'=>0,
 
+            ]);
+
+            $typeCollecteur = TypeCollecteur::create([
+                'libelle' => 'collecteur_agree',
+                ]);
+
+             $typeCollecteur = TypeCollecteur::create([
+                    'libelle' => 'collecteur_recuplast',
+                    ]);
+
+            $typeCollecteur = TypeCollecteur::create([
+                    'libelle' => 'divers',
+                 ]);
+            $typeCollecteur = TypeCollecteur::create([
+                    'libelle' => 'collecteur_entreprise',
+                 ]);
         $fournisseur = Fournisseur::create([
             'nomComplet' => 'Elhadji malick',
         	'avance' => 0,
@@ -76,16 +106,43 @@ class CreateAdminUserSeeder extends Seeder
             'region' =>'mbour',
             'departement' =>'mbour',
             'commune' =>'mbour',
-            'quartier' =>'mbour',
+            'quartier' =>'11',
             'restant_du' =>'0',
-            'numero' =>'84521369750',
-
+            'numero' =>'845213',
+            'type' =>'1',
             ]);
-            $depotCollecte = DepotCollecte::create([
-                'quantiteinitiale' => 1,
-                'depot' => 1,
+            $fournisseur = Fournisseur::create([
+                'nomComplet' => 'DIVERS',
+                'avance' => 0,
+                'contact' => '',
+                'region' =>'',
+                'departement' =>'',
+                'commune' =>'',
+                'quartier' =>'',
+                'restant_du' =>'0',
+                'numero' =>'631254',
+                'type' =>'3',
                 ]);
-
+                $collectEntreprise = CollectEntreprise::create([
+                    'fournisseur_id' =>'1',
+                    'ppcopo'=>0,
+                    'prixppcopo'=>0,
+                    'pphomo'=>0,
+                    'prixpphomo'=>0,
+                    'pet'=>0,
+                    'pp'=>0,
+                    'prixpehd'=>0,
+                    'prixpet'=>0,
+                    'prixpehd'=>0,
+                    'prixpp'=>0,
+                    'pehd'=>0,
+                    'dechet'=>0,
+                    'date_collecte'=>'2015-02-03',
+                    'numerobons'=>'123456',
+                    'totaltri'=>0,
         
+                    ]);
     }
+    
+   
 }

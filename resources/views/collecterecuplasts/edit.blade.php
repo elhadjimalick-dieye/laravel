@@ -60,7 +60,14 @@
             {!! Form::number('prix', null, array('placeholder' => 'prix unitaire','class' => 'form-control')) !!}
         </div>
     </div>
-    
+    <div class="col-xs-12 col-sm-12 col-md-5 " >
+        <div class="form-group">
+            <strong>Numero Bon de reception</strong>
+            {!! Form::number('numerobon', null, array('placeholder' => 'Numero Bon de reception','class' => 'form-control')) !!}
+        </div>
+    </div>
+   
+   
    
     <div class="col-xs-12 col-sm-12 col-md-5 " >
         <div class="form-group">

@@ -12,7 +12,7 @@ class CollecteRecuplasts extends Model
      * @var array
      */
     protected $fillable = [
-        'fournisseur','date_reception','quantite', 'avance','regelement_definitif','commentaire','prix','montant'
+        'fournisseur','date_reception','quantite', 'avance','regelement_definitif','commentaire','prix','montant','numerobon'
     ];
 
 

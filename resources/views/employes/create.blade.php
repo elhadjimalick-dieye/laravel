@@ -41,39 +41,11 @@
             <strong>Nom</strong>
             {!! Form::text('nom', null, array('placeholder' => 'Nom','class' => 'form-control')) !!}
         </div>
-    </div><div class="col-xs-12 col-sm-12 col-md-5 " >
-        <div class="form-group">
-            <strong>Matricule</strong>
-            {!! Form::text('matricule', null, array('placeholder' => 'Matricule','class' => 'form-control')) !!}
-        </div>
-    </div><div class="col-xs-12 col-sm-12 col-md-5 " >
-        <div class="form-group">
-            <strong>Date de naissance</strong>
-            {!! Form::date('date_de_naissance', null, array('placeholder' => 'Departement','class' => 'form-control')) !!}
-        </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-5 " >
         <div class="form-group">
-            <strong>Situation matrimoniale</strong>
-            {!! Form::text('situation_mat', null, array('placeholder' => 'Situation matrimoniale','class' => 'form-control')) !!}
-        </div>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-5">
-        <div class="form-group">
-            <strong>Nombre de part:</strong>
-            {!! Form::text('nombre_de_part', null, array('placeholder' => 'Nombre de part','class' => 'form-control')) !!}
-        </div>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-5">
-        <div class="form-group">
-            <strong>Date de debut:</strong>
-            {!! Form::date('date_dentre', null, array('placeholder' => 'Date de debut','class' => 'form-control')) !!}
-        </div>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-5">
-        <div class="form-group">
-            <strong>Date Fin:</strong>
-            {!! Form::date('date_sorti', null, array('placeholder' => 'Date Fin','class' => 'form-control')) !!}
+            <strong>Date de naissance</strong>
+            {!! Form::date('date_de_naissance', null, array('placeholder' => 'Departement','class' => 'form-control')) !!}
         </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-5">
@@ -88,6 +60,31 @@
         </div>
     </div>
     
+    <div class="col-xs-12 col-sm-12 col-md-5 " >
+        <div class="form-group">
+            <strong>Situation matrimoniale</strong>
+            {!! Form::text('situation_mat', null, array('placeholder' => 'Situation matrimoniale','class' => 'form-control')) !!}
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-5">
+        <div class="form-group">
+            <strong>Nombre de part:</strong>
+            {!! Form::text('nombre_de_part', null, array('placeholder' => 'Nombre de part','class' => 'form-control')) !!}
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-5">
+        <div class="form-group">
+            <strong>Debut de contrat:</strong>
+            {!! Form::date('date_dentre', null, array('placeholder' => 'Date de debut','class' => 'form-control')) !!}
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-5">
+        <div class="form-group">
+            <strong>Fin de contrat:</strong>
+            {!! Form::date('date_sorti', null, array('placeholder' => 'Date Fin','class' => 'form-control')) !!}
+        </div>
+    </div>
+   
     <br>
     <br>
     <div class="col-xs-12 col-sm-12 col-md-5 ">

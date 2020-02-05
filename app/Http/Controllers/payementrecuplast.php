@@ -60,10 +60,13 @@ class payementrecuplast extends Controller
         ]);
         $input = $request->all();
         $collecteRecuplasts = CollecteRecuplasts::find($id);
-        $fournisseurs=Fournisseur::findorFail($collecteRecuplasts->fournisseur);
+        //$fournisseurs=Fournisseur::findorFail($collecteRecuplasts->fournisseur);
+        $fournisseurs=Fournisseur::get();
+
         $montant= $collecteRecuplasts->quantite*$collecteRecuplasts->prix;
         $solde = $request->input('avance');
         $avance=$fournisseurs->avance+$solde;
+    //dd($avance);
 
         $fournisseurs->update([
        'avance' =>$avance,

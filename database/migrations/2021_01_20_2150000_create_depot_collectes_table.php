@@ -20,15 +20,28 @@ class CreateDepotCollectesTable extends Migration
             $table->bigInteger('quantiteSortante')->nullable();
             $table->bigInteger('depot')->nullable();
 
+            $table->bigInteger('pphomo')->nullable();
+            $table->bigInteger('pphomoSortante')->nullable();
+
+            $table->bigInteger('ppcopo')->nullable();
+            $table->bigInteger('ppcopoSortante')->nullable();
+
+            $table->bigInteger('pet')->nullable();
+            $table->bigInteger('petSortante')->nullable();
+
+            $table->bigInteger('pp')->nullable();
+            $table->bigInteger('ppSortante')->nullable();
+
+            $table->bigInteger('pehd')->nullable();
+            $table->bigInteger('pehdSortante')->nullable();
+
+            $table->bigInteger('total');
+
+
 
             $table->bigInteger('dechet')->nullable();
-            $table->unsignedBigInteger('collecteRecuplasts')->nullable();
-            $table->foreign('collecteRecuplasts')
-            ->references('id')
-            ->on('collecte_recuplasts')
-            ->onDelete('cascade')
-            ->onUpdate('cascade');   
-            
+            $table->date('date');
+          
             $table->timestamps();
         });
     }

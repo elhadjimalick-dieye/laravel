@@ -25,6 +25,8 @@ class CreateCollecterecuplastsTable extends Migration
           
           $table->date('date_reception');
           $table->BigInteger('quantite');
+          $table->BigInteger('numerobon');
+
           $table->integer('prix');
         // $table->BigInteger('avance')->nullable();
           $table->BigInteger('regelement_definitif')->nullable();

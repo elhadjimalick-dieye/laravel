@@ -31,37 +31,31 @@
 <table class="table table-striped table-bordered" style="margin-left:2%; width:98%" >
   <tr>
      <th>Id</th>
+     <th>Numero </th>
      <th>Nom complet</th>
      <th>Date</th>
-
-     <th>Quantité en kg</th>
-     <th>Prix Unitaire</th>
-     <th>Montant</th> <th>avance</th>
-     <th>credit</th>
-     <th>reglement definitif</th>
+     <th>Quantite </th>
+     <th>Montant</th>
+     
+     <th>Commentaire</th>
 
   </tr>
     @foreach ($data as $key => $collecte)
     <tr>
         <td>{{ ++$i }}</td>
+        <td>{{ $collecte->numerobons}} </td>
         <td>{{ $collecte->fournisseurs->nomComplet}} </td>
-        <td>{{ $collecte->date_reception }} </td>
-
-        <td>{{ $collecte->quantite }} kg</td>
-
-        
-        <td>{{ $collecte->prix }} fcfa</td>
-        <td>{{ $collecte->montant }} fcfa</td>
-        <td>{{ $collecte->avance }}</td>
-        <td>{{ $collecte->credit }}</td>
-
-        <td>{{ $collecte->reglement_definitif }}</td>
+        <td>{{ $collecte->date_collecte }} </td>
+        <td>{{ $collecte->pp+$collecte->pehd+$collecte->pet+$collecte->ppcopo+$collecte->pphomo}} kg</td>
+        <td>{{ $collecte->prixpp*$collecte->pp+$collecte->prixpehd*$collecte->pehd+$collecte->prixpet*$collecte->pet+$collecte->prixppcopo*$collecte->ppcopo+$collecte->prixpphomo*$collecte->pphomo}} fr</td>
+       
+        <th>{{ $collecte->commentaire }}</th>
 
 
         
   
         <td>
-            <a class="btn btn-info" href="{{ route('collectes.show',$collecte->id) }}">Voir</a>
+            <a class="btn btn-info" href="{{ route('collectes.show',$collecte->id) }}"><i class="far fa-eye"></i></a>
            
         </td>
     
@@ -75,7 +69,7 @@
 <script >
 
 $(document).ready(function() {
-    $('#example').DataTable();
+    $('collect_entreprises').DataTable({});
 } );
 </script>
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>

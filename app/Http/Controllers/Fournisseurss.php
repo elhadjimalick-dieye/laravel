@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Fournisseur;
 use App\CollecteRecuplasts;
-
+use App\TypeCollecteur;
 use DB;
 
 class Fournisseurss extends Controller
@@ -18,10 +18,9 @@ class Fournisseurss extends Controller
     public function index(Request $request)
     {
         $data = Fournisseur::orderBy('id','DESC')->paginate(5);
-        //$collecteRecuplasts = CollecteRecuplasts::pluck( 'avance')->all();
-        $collecteRecuplasts = CollecteRecuplasts::all();
-
-        return view('fournisseurs.index',compact('data','collecteRecuplasts'))
+        $types = TypeCollecteur::pluck( 'libelle','libelle')->all();
+        //dd($types);
+        return view('fournisseurs.index',compact('data','types'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
     }
 
@@ -34,7 +33,9 @@ class Fournisseurss extends Controller
      */
     public function create()
     {
-        return view('fournisseurs.create');
+        $types = TypeCollecteur::all();
+        $fournisseur = Fournisseur::pluck('avance','solde','id','nomComplet','contact','region','departement','commune','quartier','restant_du','numero','type')->all();
+        return view('fournisseurs.create',compact('fournisseur','types'));
     }
 
     /**
@@ -47,16 +48,34 @@ class Fournisseurss extends Controller
     {
         $this->validate($request, [
             'nomComplet' => 'required',
-            'contact' => 'required',
-            'region' => 'required',
-            'departement' => 'required',
-            'commune' => 'required',
-            'numero' => 'required|unique:fournisseurs,numero',
+            'type' => 'required',
+            'numero' => 'unique:fournisseurs,numero',
 
         ]);
         $input = $request->all();
+        $fournisseur= Fournisseur::all();
+        $date = (154263);
+        $min_epoch = strtotime($date);
+        $rand_epoch = rand($min_epoch,1222222);
+        $numero= $fournisseur->numero=$rand_epoch;
+        //dd($employe->matricule);
 
-        $fournisseur = fournisseur::create($input);
+        DB::table('fournisseurs')->insert([
+            'numero' => $numero,
+            'type' => $request->input('type'),
+            'nomComplet' => $request->input('nomComplet'),
+            'avance' => $request->input('avance'),
+            'solde' => $request->input('solde'),
+            'contact' => $request->input('contact'),
+            'region' => $request->input('region'),
+            'departement' => $request->input('departement'),
+            'commune' => $request->input('commune'),
+            'quartier' => $request->input('quartier'),
+            'restant_du' => $request->input('restant_du'),
+            'quartier' => $request->input('quartier'),
+
+
+        ]);
         return redirect()->route('fournisseurs.index',compact('fournisseur'))
                         ->with('success','fournisseur created successfully');
     }
@@ -71,8 +90,9 @@ class Fournisseurss extends Controller
     public function show($id)
     {
         $fournisseur = fournisseur::find($id);
+        $types = TypeCollecteur::all();
 
-        return view('fournisseurs.show',compact('fournisseur'));
+        return view('fournisseurs.show',compact('fournisseur','types'));
     }
 
  /**
@@ -85,8 +105,9 @@ class Fournisseurss extends Controller
     {
         $fournisseur = fournisseur::find($id);
         $recuplast = CollecteRecuplasts::pluck('fournisseur','date_reception','quantite', 'avance','reglement_definitif','commentaire','prix','montant')->all();
+        $types = TypeCollecteur::all();
 
-        return view('fournisseurs.edit',compact('fournisseur','recuplast'));
+        return view('fournisseurs.edit',compact('fournisseur','recuplast','types'));
         return view('payementrecuplasts.edit',compact('fournisseur','recuplast'));
     }
 
@@ -101,10 +122,8 @@ class Fournisseurss extends Controller
     {
         $this->validate($request, [
             'nomComplet' => 'required',
-            'contact' => 'required',
-            'region' => 'required',
-            'departement' => 'required',
-            'commune' => 'required',
+            'type' => 'required',
+
 
         ]);
 

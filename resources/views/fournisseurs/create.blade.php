@@ -31,7 +31,19 @@
 
 {!! Form::open(array('route' => 'fournisseurs.index','method'=>'POST')) !!}
 <div class="row" style="margin-left:5%">
-<div class="col-xs-12 col-sm-12 col-md-12" >
+<div class="col-xs-12 col-sm-12 col-md-5" >
+<div class="col-xs-12 col-sm-12 col-md-12">
+    <label for="exampleFormControlSelect1">Type de fournisseur</label>
+
+        <div class="form-group">
+            <select name="type" id="type" class="col-xs-12 col-sm-12 col-md-12">
+            <option value=""></option>
+            @foreach($types as $serve)
+            <option value="{{ $serve->id}}">{{$serve->libelle}}</option>
+            @endforeach
+            </select>
+        </div>
+    </div>
 </div>
 
 
@@ -75,14 +87,6 @@
         </div>
     </div>
 
-    <div class="col-xs-12 col-sm-12 col-md-5 " >
-        <div class="form-group">
-            <strong>Numero de compte</strong>
-            {!! Form::number('numero', null, array('placeholder' => 'Numero de compte','class' => 'form-control')) !!}
-        </div>
-    </div>
-    
-    
  
     <br>
     <div class="col-xs-12 col-sm-12 col-md-12 ">

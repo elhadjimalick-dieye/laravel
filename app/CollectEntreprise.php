@@ -12,7 +12,22 @@ class CollectEntreprise extends Model
      * @var array
      */
     protected $fillable = [
-        'fournisseur_id','pphomo','ppcopo','dechet','pet','pehd','date_reception','quantite','reglement_definitif','commentaire','prix','montant'
+        'fournisseur_id',
+        'pphomo',
+        'prixpphomo',
+        'ppcopo',
+        'prixppcopo',
+        'dechet',
+        'pet',
+        'prixpet',
+        'pehd',
+        'prixpehd',
+        'date_collecte',
+        'reglement_definitif',
+        'commentaire',
+        'numerobons',
+        'totaltri'
+        
     ];
 
 

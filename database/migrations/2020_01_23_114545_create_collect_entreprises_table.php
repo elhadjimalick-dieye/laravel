@@ -22,16 +22,28 @@ class CreateCollectEntreprisesTable extends Migration
             ->on('fournisseurs')
             ->onDelete('cascade')
             ->onUpdate('cascade');  
-            $table->date('date_reception');
-            $table->bigInteger('quantite');
+            $table->date('date_collecte');
             $table->bigInteger('ppcopo')->nullable();
+            $table->bigInteger('prixppcopo')->nullable();
+
             $table->bigInteger('pphomo')->nullable();
+            $table->bigInteger('prixpphomo')->nullable();
+
+            $table->bigInteger('pp')->nullable();
+            $table->bigInteger('prixpp')->nullable();
+
             $table->bigInteger('pet')->nullable();
+            $table->bigInteger('prixpet')->nullable();
+
             $table->bigInteger('pehd')->nullable();
+            $table->bigInteger('prixpehd')->nullable();
+
             $table->bigInteger('dechet')->nullable();
 
-            $table->bigInteger('prix');
-            $table->bigInteger('montant');
+            $table->BigInteger('numerobons');
+            $table->bigInteger('totaltri');
+
+            //$table->bigInteger('montant');
             $table->BigInteger('avance')->nullable();
             $table->BigInteger('credit')->nullable();
             $table->BigInteger('reglement_definitif')->nullable();

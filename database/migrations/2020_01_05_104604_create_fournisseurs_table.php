@@ -15,17 +15,22 @@ class CreateFournisseursTable extends Migration
     {
         Schema::create('fournisseurs', function (Blueprint $table) {
             $table->bigIncrements('id');
-            //$table->unsignedBigInteger('solde');
-           // $table->foreign('solde');
+            $table->unsignedBigInteger('type');
+            $table->foreign('type')
+            ->references('id')
+            ->on('type_collecteurs')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');   
             $table->string('nomComplet');
-            $table->string('contact');
-            $table->string('region');
-            $table->string('departement');
-            $table->string('commune');
-            $table->string('quartier');
-            $table->string('numero')->nullable();
+            $table->string('contact')->nullable();
+            $table->string('region')->nullable();
+            $table->string('departement')->nullable();
+            $table->string('commune')->nullable();
+            $table->string('quartier')->nullable();
+            $table->string('numero');
             $table->bigInteger('restant_du')->nullable();
             $table->bigInteger('avance')->nullable();
+            $table->bigInteger('solde')->nullable();
             $table->timestamps();
         });
     }

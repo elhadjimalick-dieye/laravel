@@ -31,6 +31,8 @@
 <table class="table table-striped table-bordered" style="margin-left:2%; width:97%" >
   <tr>
      <th>Id</th>
+     <th>Type de fournisseur</th>
+
      <th>Nom_Complet</th>
      <th>Departement</th>
      <th>Contact</th>
@@ -45,21 +47,20 @@
     
     <tr>
         <td>{{ ++$i }}</td>
+        <td>{{ $fournisseur->type_collecteurs->libelle }}</td>
+        
         <td>{{ $fournisseur->nomComplet }}</td>
         <td>{{ $fournisseur->departement }}</td>
         <td>{{ $fournisseur->contact }}</td>
         <td>{{ $fournisseur->numero }}</td> 
-
-
         <td >{{ $fournisseur->avance }}</td>
-
         <th >{{ $fournisseur->restant_du }}</th>
 
         <td>
-            <a class="btn btn-info" href="{{ route('fournisseurs.show',$fournisseur->id) }}">Voir</a>
+            <a class="btn btn-info" href="{{ route('fournisseurs.show',$fournisseur->id) }}"><i class="far fa-eye"></i></a>
            
         </td>
-    <td><a class="btn btn-primary" href="{{ route('fournisseurs.edit',$fournisseur->id) }}">Edit</a></td>
+    <td><a class="btn btn-primary" href="{{ route('fournisseurs.edit',$fournisseur->id) }}"><i class="far fa-edit"></i></a></td>
     <td>
         {!! Form::open(['method' => 'DELETE','route' => ['fournisseurs.destroy', $fournisseur->id],'style'=>'display:inline']) !!}
             {!! Form::submit('Supp', ['class' => 'btn btn-danger']) !!}

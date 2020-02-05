@@ -7,10 +7,9 @@
 <div class="row" style="margin-left:8%">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
-            <h2>Liste des Depots</h2>
-            <a class="btn btn-success" href="{{ route('depotCollectes.create') }}" role="button">Ajouter un depot</a>
+            <h2>Liste des Depots de la matiere collecter</h2>
+            <a class="btn btn-success" href="{{ route('depotCollectes.create') }}" role="button"><i class="fas fa-archive"></i> Recuperer de la matiere</a>
         </div>
-        
         <div class="pull-right">
         @can('role-create')
             <a class="btn btn-success" href="{{ route('services.create') }}"> Create New Role</a>
@@ -28,31 +27,42 @@
 @endif
 
 
+ <!-- Main content -->
 <table class="table table-striped table-bordered" style="margin-left:2%; width:95%" >
   <tr>
      <th>Id</th>
-     <th>dechet</th>
-     <th>quantite initiale</th>
+     <th>DATE</th>
 
-     <th>quantite Entrante </th>
-     <th>quantite Sortante</th>
-     <th>quantite depot</th>
+     <th>VRAC</th>
+     <th>PPCOPO</th>
+     <th>PPHOMO</th>
+     <th>PET</th>
+     <th>PEHD </th>
+     <th>PP </th>
+     <th style="background-color:;color:black">Total </th>
+
+
    
 
   </tr>
     @foreach ($data as $key => $depot)
     <tr>
         <td>{{ ++$i }}</td>
-        <td>{{ $depot->dechet}} </td>
-        <td>{{ $depot->quantiteinitiale }}   kg</td>
+        <td>{{ $depot->date}} </td>
 
-        <td>{{ $depot->quantiteEntrante }}  kg</td>
-        <td>{{ $depot->quantiteSortante }}  kg</td>
-        <td>{{ $depot->depot}}  kg </td>
+        <td>{{ $depot->depot}} kg</td>
+
+        <td>{{ $depot->ppcopo}} kg </td>
+        <td>{{ $depot->pphomo }}   kg</td>
+        <td>{{ $depot->pet }}  kg</td>
+        <td>{{ $depot->pehd }}  kg</td>
+        <td>{{ $depot->pp}}  kg </td>
+        <td style="background-color:white;color:black">{{ $depot->total}} kg </td>
 
         <td>
-            <a class="btn btn-info" href="{{ route('depotCollectes.show',$depot->id) }}">Voir</a>
-           
+            <a class="btn btn-info" href="{{ route('depotCollectes.show',$depot->id) }}"><i class="far fa-eye"></i></a>
+            <a class="btn btn-primary" href="{{ route('depotCollectes.edit',$depot->id) }}"><i class="far fa-edit"></i></a>
+
         </td>
     
     </tr>

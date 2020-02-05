@@ -15,7 +15,10 @@
 
 <div class="row" style="margin-left:5%">
     <div class="col-xs-12 col-sm-12 col-md-12">
-  
+    <div class="form-group" style="color:red" id='type'>
+            <strong>Type de fournisseur:</strong>
+            {{ $fournisseur->type }}
+        </div>
         <div class="form-group">
             <strong>Nom Complet:</strong>
             {{ $fournisseur->nomComplet }}

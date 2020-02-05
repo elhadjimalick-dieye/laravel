@@ -10,7 +10,7 @@
             <h2>Liste des utilisateurs</h2>
         </div>
         <div class="pull-right">
-            <a class="btn btn-success" href="{{ route('users.create') }}"> Ajouter un nouveau utilisateur</a>
+            <a class="btn btn-success" href="{{ route('users.create') }}"><i class="fas fa-user"></i> Ajouter un nouveau utilisateur</a>
         </div>
         <br>
     </div>
@@ -31,27 +31,24 @@
             <th>Nom</th>
             <th>Email</th>
             <th>Service</th>
-            <th>voir plus</th>
-
-
-           
-
             </tr>
         </thead>
         <tbody>
         @foreach ($data as $key => $user)
   <tr>
+  
     <td>{{ ++$i }}</td>
     <td>{{ $user->prenom }}</td>
     <td>{{ $user->name }}</td>
     <td>{{ $user->email }}</td>
     <td>{{ $user->services->libelle}} </td>
  
-    <td><a class="btn btn-success" href="{{ route('users.show',$user->id) }}">Voir</a></td>
-    <td><a class="btn btn-primary" href="{{ route('users.edit',$user->id) }}">Modifier</a></td>
+    <td><a class="btn btn-success" href="{{ route('users.show',$user->id) }}"><i class="far fa-eye"></i></a></td>
+    <td><a class="btn btn-primary" href="{{ route('users.edit',$user->id) }}"><i class="fas fa-user-edit"></i></a></td>
+    
     <td>
         {!! Form::open(['method' => 'DELETE','route' => ['users.destroy', $user->id],'style'=>'display:inline']) !!}
-            {!! Form::submit('Supprimer', ['class' => 'btn btn-danger']) !!}
+            {!! Form::submit('Supp', ['class' => 'btn btn-danger']) !!}
         {!! Form::close() !!}
     </td>
   </tr>

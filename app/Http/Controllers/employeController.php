@@ -19,6 +19,7 @@ class employeController extends Controller
     {
         $data = Employe::orderBy('id','DESC')->paginate(5);
         $services = Service::pluck('libelle','libelle')->all();
+       // dd($services);
 
         return view('employes.index',compact('data','services'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
@@ -48,7 +49,6 @@ class employeController extends Controller
         $this->validate($request, [
             'nom' => 'required',
             'prenom' => 'required',
-            'matricule'=> 'required',
             'date_de_naissance'=> 'required',
             'situation_mat'=> 'required',
             'date_dentre'=> 'required',
@@ -60,7 +60,26 @@ class employeController extends Controller
         ]);
 
         $input = $request->all();
-        $employe = Employe::create($input);
+        $employe= Employe::all();
+        $date = (154263);
+        $min_epoch = strtotime($date);
+        $rand_epoch = rand($min_epoch,1222222);
+        $numero= $employe->matricule=$rand_epoch;
+        //dd($employe->matricule);
+
+        DB::table('employes')->insert([
+            'matricule' => $numero,
+            'nom' => $request->input('nom'),
+            'prenom' => $request->input('prenom'),
+            'date_de_naissance'=> $request->input('date_de_naissance'),
+            'situation_mat'=> $request->input('situation_mat'),
+            'date_dentre'=> $request->input('date_dentre'),
+            'date_sorti'=> $request->input('date_sorti'),
+            'nombre_de_part'=> $request->input('nombre_de_part'),
+            'service_id'=> $request->input('service_id'),
+        ]);
+       // $employe = Employe::create($input);
+
         return redirect()->route('employes.index',compact('employe'))
         ->with('success','employe created successfully');
     }
@@ -116,8 +135,11 @@ class employeController extends Controller
             'service_id'=> 'required',
 
         ]);
+
+
         $input = $request->all();
         $employe = Employe::find($id);
+        
         $employe->update($input);
         return redirect()->route('employes.index','employe')
                         ->with('success','employe updated successfully');

@@ -50,8 +50,8 @@
 
 
  
-    <td><a class="btn btn-success" href="{{ route('employes.show',$employe->id) }}">Voir</a></td>
-    <td><a class="btn btn-primary" href="{{ route('employes.edit',$employe->id) }}">Modifier</a></td>
+    <td><a class="btn btn-success" href="{{ route('employes.show',$employe->id) }}"><i class="far fa-eye"></i></a></td>
+    <td><a class="btn btn-primary" href="{{ route('employes.edit',$employe->id) }}"><i class="far fa-edit"></i></a></td>
     <td>
         {!! Form::open(['method' => 'DELETE','route' => ['employes.destroy', $employe->id],'style'=>'display:inline']) !!}
             {!! Form::submit('Supp', ['class' => 'btn btn-danger']) !!}

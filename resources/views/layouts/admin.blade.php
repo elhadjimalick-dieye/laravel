@@ -17,6 +17,7 @@
   <!-- JQVMap -->
   <link rel="stylesheet" href="{{ asset('plugins/jqvmap/jqvmap.min.css') }}">
   <!-- Theme style -->
+
   <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }} ">
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="{{ asset('plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
@@ -110,20 +111,11 @@
 
           </li>
     
-          <li class="nav-item">
-           <a class="nav-link" href="{{ route('services.index') }}">
-           <i class="nav-icon fas fa-th"></i> <p>Services</p> </a>
-
-          </li>
-          <li class="nav-item">
-           <a class="nav-link" href="{{ route('employes.index') }}">
-           <i class="nav-icon fas fa-th"></i> <p>Employés</p> </a>
-
-          </li>
+        
         
           
             
-          <li class="nav-header">SERVICES</li>
+          <li class="nav-header">Liste des departements</li>
       
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
@@ -134,12 +126,16 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Level 2</p>
-                </a>
-              </li>
+            <li class="nav-item">
+           <a class="nav-link" href="{{ route('services.index') }}">
+           <i class="nav-icon fas fa-th"></i> <p>Departements</p> </a>
+
+          </li>
+          <li class="nav-item">
+           <a class="nav-link" href="{{ route('employes.index') }}">
+           <i class="nav-icon fas fa-th"></i> <p>Employés</p> </a>
+
+          </li>
               <li class="nav-item has-treeview">
                 <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>

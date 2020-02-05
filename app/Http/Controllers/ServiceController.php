@@ -14,7 +14,7 @@ class ServiceController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request){
-        $data = Service::orderBy('id','DESC')->paginate(6);
+        $data = Service::orderBy('id','DESC')->paginate(4);
         return view('services.index',compact('data'))
             ->with('i', ($request->input('page', 1) - 1) * 7);
         }

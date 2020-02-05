@@ -28,7 +28,19 @@
 
 {!! Form::model($fournisseur, ['method' => 'PATCH','route' => ['fournisseurs.update', $fournisseur->id]]) !!}
 <div class="row" style="margin-left:5%">
-<div class="col-xs-12 col-sm-12 col-md-12" >
+<div class="col-xs-12 col-sm-12 col-md-5" >
+<div class="col-xs-12 col-sm-12 col-md-12">
+    <label for="exampleFormControlSelect1">Type de fournisseur</label>
+
+        <div class="form-group">
+            <select name="type" id="type" class="col-xs-12 col-sm-12 col-md-12">
+            <option value=""></option>
+            @foreach($types as $serve)
+            <option value="{{ $serve->id}}">{{$serve->libelle}}</option>
+            @endforeach
+            </select>
+        </div>
+    </div>
 </div>
 
 
@@ -75,23 +87,13 @@
             {!! Form::text('contact', null, array('placeholder' => 'Contact','class' => 'form-control')) !!}
         </div>
     </div>
-    <div class="col-xs-12 col-sm-12 col-md-5 " >
-        <div class="form-group">
-            <strong>Numero de compte</strong>
-            {!! Form::number('numero', null, array('placeholder' => 'Nom complet','class' => 'form-control')) !!}
-        </div>
-    </div>
+   
     <div class="col-xs-12 col-sm-12 col-md-5 " >
         <div class="form-group">
             <strong>Avance</strong>
             {!! Form::number('avance', null, array('placeholder' => 'Solde','class' => 'form-control')) !!}
         </div>
     </div> 
-    
-   
- 
-   
-   
     
     <div class="col-xs-12 col-sm-12 col-md-10 ">
         <button type="submit" class="btn btn-success">Soumettre</button>

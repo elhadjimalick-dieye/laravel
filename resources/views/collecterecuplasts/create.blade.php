@@ -65,8 +65,6 @@
             {!! Form::number('quantite', null, array('placeholder' => 'quantite','class' => 'form-control')) !!}
         </div>
     </div>
-
-
     <div class="col-xs-12 col-sm-12 col-md-5 " >
         <div class="form-group">
             <strong>Prix unitaire</strong>
@@ -74,6 +72,9 @@
         </div>
     </div>
     
+
+ 
+   
   
     <div class="col-xs-12 col-sm-12 col-md-5 " >
         <div class="form-group">

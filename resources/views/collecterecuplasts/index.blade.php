@@ -7,8 +7,8 @@
 <div class="row" style="margin-left:8%">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
-            <h2>Liste des collecte recuplast</h2>
-            <a class="btn btn-success   " href="{{ route('collecterecuplasts.create') }}" role="button">Ajouter une une collecte</a>
+            <h2>Liste des collectes recuplast</h2>
+            <a class="btn btn-success   " href="{{ route('collecterecuplasts.create') }}" role="button">Ajouter une collecte</a>
         </div><br>
         <div class="col-lg-12 ">
 
@@ -39,13 +39,14 @@
 <table class="table table-striped table-bordered" style="margin-left:2%; width:97%" >
   <tr>
      <th>Id</th>
+     <th>Numero de Bon</th>
+
      <th>Nom_complet </th>
      <th>Date_reception</th>
      <th>Quantite</th>
      <th>Prix_U</th>
      <th>Montant</th>
-     <th>Avance</th>
-     <th>Credit</th>
+     
 
      <th>Commentaire</th>
 
@@ -54,6 +55,7 @@
     @foreach ($data as $key => $collecter)
     <tr>
         <td>{{ ++$i }}</td>
+        <td>{{ $collecter->numerobon }}</td>
 
         <td>{{ $collecter->fournisseurs->nomComplet }}</td>
         <td>{{ $collecter->date_reception }}</td>
@@ -61,8 +63,7 @@
         <td>{{ $collecter->quantite }} kg</td>
         <td>{{ $collecter->prix }} fr</td>
         <td>{{ $collecter->quantite*$collecter->prix }}fr</td>
-        <td>{{ $collecter->avance }}</td>
-        <td>{{ $collecter->quantite*$collecter->prix - $collecter->avance }}</td>
+        
 
         <td>{{ $collecter->commentaire }}</td>
 
