@@ -86,19 +86,17 @@ class CollectRecuplast extends Controller
     DB::table('depot_collectes')->insert([
         'quantiteinitiale' => $lastdepot,
         'quantiteEntrante' => $quantiteEntrante,
-        'quantiteSortante' => $quantiteSortante,
+        //'quantiteSortante' => $quantiteSortante,
         'depot'=> $depot,
         'ppcopo' =>$depotCollecte->last()->ppcopo,
         'pphomo' => $depotCollecte->last()->pphomo,
-        'pet'=> $depotCollecte->last()->pet,
-        'pehd'=> $depotCollecte->last()->pehd,
-        'pp'=>$depotCollecte->last()->pp,
-        'quantiteSortante'=>$depotCollecte->last()->quantiteSortante,
+        'petbouteille'=> $depotCollecte->last()->petbouteille,
+        'petpreform'=> $depotCollecte->last()->petpreform,
+        'pehdcasier'=>$depotCollecte->last()->pehdcasier,
+        'pehdsoufflage'=>$depotCollecte->last()->pehdsoufflage,
         'dechet'=>$depotCollecte->last()->dechet,
         'date'=>$date,
         'total'=>$total,
-
-        
     ]);
         DB::table('collecte_recuplasts')->insert([
             'numerobon' => $numero45,
@@ -162,7 +160,6 @@ class CollectRecuplast extends Controller
         if ($newvalue!=$quantiteEntrante) {
             
             $newvalue=$quantiteEntrante;
- +-
             $newvaluedepot=$depotCollecte->last()->depot;
             $newvaluedepot=($quantiteinitiale-$quantiteEntrantes)+$newvalue;
            // dd($newvaluedepot);

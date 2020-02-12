@@ -22,26 +22,23 @@ class CreateDepotCollectesTable extends Migration
 
             $table->bigInteger('pphomo')->nullable();
             $table->bigInteger('pphomoSortante')->nullable();
-
             $table->bigInteger('ppcopo')->nullable();
             $table->bigInteger('ppcopoSortante')->nullable();
 
-            $table->bigInteger('pet')->nullable();
-            $table->bigInteger('petSortante')->nullable();
+            $table->bigInteger('petbouteille')->nullable();
+            $table->bigInteger('petbouteilleSortante')->nullable();
+            $table->bigInteger('petpreform')->nullable();
+            $table->bigInteger('petpreformSortante')->nullable();
 
-            $table->bigInteger('pp')->nullable();
-            $table->bigInteger('ppSortante')->nullable();
-
-            $table->bigInteger('pehd')->nullable();
-            $table->bigInteger('pehdSortante')->nullable();
+            $table->bigInteger('pehdcasier')->nullable();
+            $table->bigInteger('pehdcasierSortante')->nullable();
+            $table->bigInteger('pehdsoufflage')->nullable();
+            $table->bigInteger('pehdsoufflageSortante')->nullable();
 
             $table->bigInteger('total');
 
-
-
             $table->bigInteger('dechet')->nullable();
             $table->date('date');
-          
             $table->timestamps();
         });
     }

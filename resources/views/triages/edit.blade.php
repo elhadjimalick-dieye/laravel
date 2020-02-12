@@ -8,7 +8,7 @@
             <h2>Modifier le stock</h2>
         </div>
         <div class="pull-right">
-            <a class="btn btn-success" href="{{ route('depotCollectes.index') }}"> Retour</a>
+            <a class="btn btn-success" href="{{ route('depotProductions.index') }}"> Retour</a>
         </div>
     </div>
 </div>
@@ -26,7 +26,7 @@
 @endif
 
 
-{!! Form::model($depotCollecte, ['method' => 'PATCH','route' => ['depotCollectes.update', $depotCollecte->id]]) !!}
+{!! Form::model($depotProduction, ['method' => 'PATCH','route' => ['depotProductions.update', $depotProduction->id]]) !!}
 <div class="row" style="margin-left:10%">
 <div class="col-xs-12 col-sm-12 col-md-5 " >
 
@@ -46,7 +46,7 @@
     <div class="col-xs-12 col-sm-12 col-md-5 " >
         <div class="form-group">
             <strong style='color:green'>Quantite matiere en VRAC </strong>
-            {!! Form::number('depot', null, array('placeholder' => 'quantite en kg','class' => 'form-control')) !!}
+            {!! Form::number('vrac', null, array('placeholder' => 'quantite en kg','class' => 'form-control')) !!}
         </div>
       
     </div>  

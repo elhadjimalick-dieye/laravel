@@ -14,8 +14,30 @@ class DepotCollecte extends Model
      * @var array
      */
     protected $fillable = [
-        'pehdSortante','ppSortante','petSortante','pehdSortante','ppcopoSortante','pphomoSortante','total','ppcopo','pphomo','pet','pp','pehd', 'depot','dechet','quantiteEntrante','quantiteSortante','quantiteinitiale','date'
+        'quantiteinitiale',
+        'quantiteEntrante',
+        'quantiteSortante',
+        'depot',   
 
+        'pphomo',
+        'pphomoSortante',
+        'ppcopo',
+        'ppcopoSortante',
+
+        'petbouteille',
+        'petbouteilleSortante',
+        'petpreform',
+        'petpreformSortante',
+
+        'pehdcasier',
+        'pehdcasierSortante',
+        'pehdsoufflage',
+        'pehdsoufflageSortante',
+        
+        'total',
+        'dechet',
+        'date'
+      
     ];
    
 

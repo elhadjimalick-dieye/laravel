@@ -30,7 +30,11 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('fournisseurs','Fournisseurss');
     Route::resource('payementrecuplasts','payementrecuplast');
     Route::resource('depotCollectes','DepotCollectes');
+    Route::resource('depotProductions','DepotProductionController');
+    Route::resource('triages','TriageController');
 
+
+    
 
     Route::resource('compteFournisseurs','CompteFournisseurController');
 

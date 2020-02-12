@@ -193,6 +193,14 @@
            
             </ul>
             <ul class="nav nav-treeview">
+            <li class="nav-item">
+                <a href="{{ route('depotCollectes.index') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Depot Collecte</p>
+                </a>
+              </li>
+              </ul>
+            <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="{{ route('collectes.index') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -201,7 +209,9 @@
               </li>
            
             </ul>
-            
+
+           
+
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="{{ route('collecterecuplasts.index') }}" class="nav-link">
@@ -223,24 +233,24 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('depotProductions.index') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Level 2</p>
+                  <p>Stock Production</p>
                 </a>
               </li>
               <li class="nav-item has-treeview">
                 <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>
-                    Level 2
+                  Ateliers
                     <i class="right fas fa-angle-left"></i>
                   </p>
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('triages.index') }}" class="nav-link">
                       <i class="far fa-dot-circle nav-icon"></i>
-                      <p>Level 3</p>
+                      <p>Triage</p>
                     </a>
                   </li>
                   <li class="nav-item">
@@ -380,37 +390,8 @@
             <i class="right fas fa-angle-left"></i>
               </p>
             </a>
+           
             <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{ route('depotCollectes.index') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Depot Collecte</p>
-                </a>
-              </li>
-              <li class="nav-item has-treeview">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>
-                  Collectes
-                    <i class="right fas fa-angle-left"></i>
-                  </p>
-                </a>
-                <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="far fa-dot-circle nav-icon"></i>
-                      <p>collecte Entreprise</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="{{ route('payementrecuplasts.index') }}" class="nav-link">
-                      <i class="far fa-dot-circle nav-icon"></i>
-                      <p>collecte Recuplast</p>
-                    </a>
-                  </li>
-                  
-                </ul>
-              </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>

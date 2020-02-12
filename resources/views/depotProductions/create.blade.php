@@ -2,14 +2,16 @@
 
 
 @section('content')
-<div class="row" style="margin-left:5%">
-    <div class="col-lg-12 margin-tb">
+<div class="row " style="margin-left:8%">
+    <div class="col-lg-12 ">
         <div class="pull-left">
-            <h2>Modifier le stock</h2>
+            <h2>Faire sortir de la matiere pour les ateliers  </h2>
         </div>
         <div class="pull-right">
-            <a class="btn btn-success" href="{{ route('depotCollectes.index') }}"> Retour</a>
+            <a class="btn btn-success" href="{{ route('depotProductions.index') }}"> Retour</a>
         </div>
+        <br>
+
     </div>
 </div>
 
@@ -26,7 +28,9 @@
 @endif
 
 
-{!! Form::model($depotCollecte, ['method' => 'PATCH','route' => ['depotCollectes.update', $depotCollecte->id]]) !!}
+
+
+{!! Form::open(array('route' => 'depotProductions.index','method'=>'POST')) !!}
 <div class="row" style="margin-left:10%">
 <div class="col-xs-12 col-sm-12 col-md-5 " >
 
@@ -46,7 +50,7 @@
     <div class="col-xs-12 col-sm-12 col-md-5 " >
         <div class="form-group">
             <strong style='color:green'>Quantite matiere en VRAC </strong>
-            {!! Form::number('depot', null, array('placeholder' => 'quantite en kg','class' => 'form-control')) !!}
+            {!! Form::number('vracSortant', null, array('placeholder' => 'quantite en kg','class' => 'form-control')) !!}
         </div>
       
     </div>  
@@ -61,33 +65,33 @@
     <div class="col-xs-12 col-sm-12 col-md-5 " >
         <div class="form-group">
             <strong>Quantite matiere PPCOPO </strong>
-            {!! Form::number('ppcopo', null, array('placeholder' => 'quantite en kg','class' => 'form-control')) !!}
+            {!! Form::number('ppcopoSortantepro', null, array('placeholder' => 'quantite en kg','class' => 'form-control')) !!}
         </div>
       
     </div>  <div class="col-xs-12 col-sm-12 col-md-5 " >
         <div class="form-group">
             <strong>Quantite matiere PPHOMO </strong>
-            {!! Form::number('pphomo', null, array('placeholder' => 'quantite en kg','class' => 'form-control')) !!}
+            {!! Form::number('pphomoSortantepro', null, array('placeholder' => 'quantite en kg','class' => 'form-control')) !!}
         </div>
         
         
     </div>  <div class="col-xs-12 col-sm-12 col-md-5 " >
         <div class="form-group">
             <strong>Quantite matiere petbouteille </strong>
-            {!! Form::number('petbouteille', null, array('placeholder' => 'quantite en kg','class' => 'form-control')) !!}
+            {!! Form::number('petbouteilleSortantepro', null, array('placeholder' => 'quantite en kg','class' => 'form-control')) !!}
         </div>
       
     </div>  <div class="col-xs-12 col-sm-12 col-md-5 " >
         <div class="form-group">
             <strong>Quantite matiere Pet preform </strong>
-            {!! Form::number('petpreform', null, array('placeholder' => 'quantite en kg','class' => 'form-control')) !!}
+            {!! Form::number('petpreformSortantepro', null, array('placeholder' => 'quantite en kg','class' => 'form-control')) !!}
         </div>
       
     </div> 
      <div class="col-xs-12 col-sm-12 col-md-5 " >
         <div class="form-group">
             <strong>Quantite matiere Pehd casier </strong>
-            {!! Form::number('pehdcasier', null, array('placeholder' => 'quantite en kg','class' => 'form-control')) !!}
+            {!! Form::number('pehdcasierSortantepro', null, array('placeholder' => 'quantite en kg','class' => 'form-control')) !!}
         </div>
       
     </div> 
@@ -95,7 +99,7 @@
     <div class="col-xs-12 col-sm-12 col-md-5 " >
         <div class="form-group">
             <strong>Quantite matiere Pehd soufflage </strong>
-            {!! Form::number('pehdsoufflage', null, array('placeholder' => 'quantite en kg','class' => 'form-control')) !!}
+            {!! Form::number('pehdsoufflageSortantepro', null, array('placeholder' => 'quantite en kg','class' => 'form-control')) !!}
         </div>
       
     </div> 

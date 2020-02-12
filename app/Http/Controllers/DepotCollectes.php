@@ -8,6 +8,7 @@ use App\Http\Controllers\all;
 use Illuminate\Support\Collection;
 use App\CollecteRecuplasts;
 use App\CollectEntreprise;
+use App\DepotProduction;
 use DB;
 
 
@@ -22,9 +23,6 @@ class DepotCollectes extends Controller
     public function index(Request $request)
     {
         $data = DepotCollecte::orderBy('id', 'DESC')->paginate(5);
-        
-       // $fournisseur = Fournisseur::pluck('nomComplet', 'nomComplet')->all();
-
         return view('depotCollectes.index', compact('data'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
     }
@@ -49,9 +47,7 @@ class DepotCollectes extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            //'date_reception' => 'required',
             'date' => 'required',
-           // 'prix' => 'required',
         ]);
 
         $input = $request->all();
@@ -64,10 +60,13 @@ class DepotCollectes extends Controller
         $date=$depotCollecte->last()->date;
         $pphomoSortante=$request->input('pphomoSortante');
         $ppcopoSortante=$request->input('ppcopoSortante');
-        $ppSortante=$request->input('ppSortante');
-        $petSortante=$request->input('petSortante');
-        $pehdSortante=$request->input('pehdSortante');
+        $petbouteilleSortante=$request->input('petbouteilleSortante');
+        $petpreformSortante=$request->input('petpreformSortante');
+        $pehdcasierSortante=$request->input('pehdcasierSortante');
+        $pehdsoufflageSortante=$request->input('pehdsoufflageSortante');
 
+        
+        
         $collecrecuplaste= CollecteRecuplasts::all();
         $quantiteinitiale= $depotCollecte->last()->quantiteinitiale;
         $lastdepot=$depotCollecte->last()->depot;
@@ -80,29 +79,90 @@ class DepotCollectes extends Controller
 
         $collecte=CollectEntreprise::all();
         $totaltri=$collecte->last()->totaltri;
+
+
+
         DB::table('depot_collectes')->insert([
             'quantiteinitiale' => $lastdepot,
-            'quantiteEntrante' => $quantiteEntrante,
+            'quantiteEntrante' => $request->input('quantiteEntrante'),
             'depot'=> $depot,
             'ppcopo' =>$depotCollecte->last()->ppcopo-$ppcopoSortante,
             'pphomo' => $depotCollecte->last()->pphomo-$pphomoSortante,
-            'pet'=> $depotCollecte->last()->pet-$petSortante,
-            'pehd'=> $depotCollecte->last()->pehd-$pehdSortante,
-            'pp'=>$depotCollecte->last()->pp-$ppSortante,
+            'petbouteille'=> $depotCollecte->last()->petbouteille-$petbouteilleSortante,
+            'petpreform'=>$depotCollecte->last()->petpreform-$petpreformSortante,
+            'pehdsoufflage'=>$depotCollecte->last()->pehdsoufflage-$pehdsoufflageSortante,
+            'pehdcasier'=>$depotCollecte->last()->pehdcasier-$pehdcasierSortante,
             'quantiteSortante'=>$quantiteSortante,
             'dechet'=>$depotCollecte->last()->dechet,
             'date'=>$date,
             'pphomoSortante'=>$request->input('pphomoSortante'),
             'ppcopoSortante'=>$request->input('ppcopoSortante'),
-            'petSortante'=>$request->input('petSortante'),
-            'ppSortante'=>$request->input('ppSortante'),
-            'pehdSortante'=>$request->input('pehdSortante'),
-
-            'total'=>$depotCollecte->last()->total-$quantiteSortante-$pphomoSortante-$ppcopoSortante-$ppSortante-$petSortante-$pehdSortante,
+            'petbouteilleSortante'=>$request->input('petbouteilleSortante'),
+            'petpreformSortante'=>$request->input('petpreformSortante'),
+            'pehdcasierSortante'=>$request->input('pehdcasierSortante'),
+            'pehdsoufflageSortante'=>$request->input('pehdsoufflageSortante'),
+            'total'=>$depotCollecte->last()->total-$quantiteSortante-$dechet-$pphomoSortante-$ppcopoSortante-$petbouteilleSortante-$petpreformSortante-$pehdcasierSortante-$pehdsoufflageSortante,
                    ]);
+                   //dd($ppcopoSortante);
+                   
+         $depotProduction=DepotProduction::all();
+            $ppcopoSortantepro=$request->input('ppcopoSortantepro');
+            $vracSortant=$request->input('vracSortant');
+            $pphomoSortantpro=$request->input('pphomoSortantepro');
+            $petbouteilleSortantpro=$request->input('petbouteilleSortantepro');
+            $petpreformSortantpro=$request->input('petpreformSortantepro');
+            $pehdcasierSortantpro=$request->input('pehdcasierSortantepro');
+            $pehdsoufflageSortantpro=$request->input('pehdsoufflageSortantepro');
+            $dechetproduction=$request->input('dechet');
 
+
+
+                   DB::table('depot_productions')->insert([
+                    'vracinitiale'=>$vracinitiale=$depotProduction->last()->vrac,
+                    'vracEntrant'=>$quantiteSortante,
+                    'vracSortant'=>$vracSortant,
+                    'vrac'=>$vracinitiale+$quantiteSortante,
+
+                    'pphomoinitiale'=>$pphomoinitiale=$depotProduction->last()->pphomo,
+                    'pphomoEntrantpro'=>$pphomoSortante,
+                    'pphomoSortantepro'=>$pphomoSortantpro,
+                    'pphomo'=>$pphomo=$pphomoinitiale+$pphomoSortante,
+
+                    'ppcopoinitiale'=>$pphomoinitiale=$depotProduction->last()->ppcopo,
+                    'ppcopoEntrantpro'=>$ppcopoSortante,
+                    'ppcopoSortantepro'=>$ppcopoSortantepro,
+                    'ppcopo'=>$ppcopo=$pphomoinitiale+$ppcopoSortante,
+                    'pp'=>$ppcopo+$pphomo,
+
+                    'petbouteilleinitiale'=>$petbouteilleinitiale=$depotProduction->last()->petbouteille,
+                    'petbouteilleEntrantpro'=>$petbouteilleSortante,
+                    'petbouteilleSortantepro'=>$petbouteilleSortantpro,
+                    'petbouteille'=>$petbouteille=$petbouteilleinitiale+$petbouteilleSortante,
+
+                    'petpreforminitiale'=>$petpreforminitiale=$depotProduction->last()->petpreform,
+                    'petpreformEntrantpro'=>$petpreformSortante,
+                    'petpreformSortantepro'=>$petpreformSortantpro,
+                    'petpreform'=>$petpreform=$petpreforminitiale+$petpreformSortante,
+                    'pet'=>$petpreform+$petbouteille,
+
+                    'pehdcasierinitiale'=>$pehdcasierinitiale=$depotProduction->last()->pehdcasier,
+                    'pehdcasierEntrantpro'=>$pehdcasierSortante,
+                    'pehdcasierSortantepro'=>$pehdcasierSortantpro,
+                    'pehdcasier'=>$pehdcasier=$pehdcasierinitiale+$pehdcasierSortante,
+
+                    'pehdsoufflageinitiale'=>$pehdsoufflageinitiale=$depotProduction->last()->pehdsoufflage,
+                    'pehdsoufflageEntrantpro'=>$pehdsoufflageSortante,
+                    'pehdsoufflageSortantepro'=>$pehdsoufflageSortantpro,
+                    'pehdsoufflage'=>$pehdsoufflage=$pehdsoufflageinitiale+$pehdsoufflageSortante,
+
+                    'pehd'=>$pehdsoufflage+$pehdcasier,
+                    'dechet'=>$dechetproduction,
+                    'date'=>$date,
+                   
+                    ]);
+        
         return redirect()->route('depotCollectes.index',compact('depotCollecte'))
-                        ->with('success', 'collecte recuplast created successfully');
+                        ->with('success', 'depot created successfully');
     }
 
 
@@ -146,29 +206,25 @@ class DepotCollectes extends Controller
         $depotCollecte = DepotCollecte::find($id);
         $pphomo=$request->input('pphomo');
         $ppcopo=$request->input('ppcopo');
-        $pet=$request->input('pet');
-        $pp=$request->input('pp');
-        $pehd=$request->input('pehd');
+        $petbouteille=$request->input('petbouteille');
+        $petpreform=$request->input('petpreform');
+        $pehdcasier=$request->input('pehdcasier');
+        $pehdsoufflage=$request->input('pehdsoufflage');
         $depot=$request->input('depot');
-
+        //$total=$depotCollecte->last()->total;
         //dd($total);
-       $firstpehd=$depotCollecte->pehd;
-       $firstppcopo=$depotCollecte->ppcopo;
+       $firstpetbouteille=$depotCollecte->petbouteille;
+       $firstpetpreform=$depotCollecte->petpreform;
        $firstpphomo=$depotCollecte->pphomo;
-       $firstpet=$depotCollecte->pet;
-       $firstpp=$depotCollecte->pp;
+       $firstppcopo=$depotCollecte->ppcopo;
+       $firstpehdcasier=$depotCollecte->pehdcasier;
+       $firstpehdsoufflage=$depotCollecte->pehdsoufflage;
+
        $firstdepot=$depotCollecte->depot;
 
+        $firstotal = $firstpetbouteille+$firstpetpreform+$firstpphomo+$firstppcopo+$firstpehdcasier+$firstpehdsoufflage;
 
-       //dd($pehd);
-        if ($firstpehd!=$pehd) {
-            $firstpehd=$pehd;
-
-        }
-   // dd($firstpehd);
-        $totalnew=$ppcopo+$pphomo+$pp+$pet+$pehd+$depot;
-        $firstotal=$firstpehd+$firstppcopo+$firstpphomo+$firstpet+$firstpp+$firstdepot;
-
+        $totalnew=$ppcopo+$pphomo+$petbouteille+$petpreform+$pehdcasier+$pehdsoufflage+$depot;
         $depotCollecte->update([
             'total' =>$depotCollecte->total-$firstotal+$totalnew,
 

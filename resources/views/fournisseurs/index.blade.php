@@ -31,14 +31,12 @@
 <table class="table table-striped table-bordered" style="margin-left:2%; width:97%" >
   <tr>
      <th>Id</th>
-     <th>Type de fournisseur</th>
-
+     <th>Categorie</th> 
+     <th>Compte</th> 
      <th>Nom_Complet</th>
-     <th>Departement</th>
      <th>Contact</th>
-     <th>Numero de compte</th> 
      <th >Avance</th>
-     <th >Restant du</th>
+     <th >Restant_du</th>
 
     
 
@@ -48,11 +46,10 @@
     <tr>
         <td>{{ ++$i }}</td>
         <td>{{ $fournisseur->type_collecteurs->libelle }}</td>
-        
-        <td>{{ $fournisseur->nomComplet }}</td>
-        <td>{{ $fournisseur->departement }}</td>
-        <td>{{ $fournisseur->contact }}</td>
         <td>{{ $fournisseur->numero }}</td> 
+
+        <td>{{ $fournisseur->nomComplet }}</td>
+        <td>{{ $fournisseur->contact }}</td>
         <td >{{ $fournisseur->avance }}</td>
         <th >{{ $fournisseur->restant_du }}</th>
 
@@ -63,7 +60,7 @@
     <td><a class="btn btn-primary" href="{{ route('fournisseurs.edit',$fournisseur->id) }}"><i class="far fa-edit"></i></a></td>
     <td>
         {!! Form::open(['method' => 'DELETE','route' => ['fournisseurs.destroy', $fournisseur->id],'style'=>'display:inline']) !!}
-            {!! Form::submit('Supp', ['class' => 'btn btn-danger']) !!}
+            {!! Form::submit('Sup', ['class' => 'btn btn-danger']) !!}
         {!! Form::close() !!}
     </td>
     

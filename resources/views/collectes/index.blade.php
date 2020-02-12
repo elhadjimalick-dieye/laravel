@@ -8,7 +8,7 @@
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
             <h2>Liste des collectes Entreprise</h2>
-            <a class="btn btn-success" href="{{ route('collectes.create') }}" role="button">Ajouter une collecte</a>
+            <a class="btn btn-success" href="{{ route('collectes.create') }}" role="button"><i class="fas fa-recycle"></i>  Ajouter une collecte</a>
         </div>
         
         <div class="pull-right">
@@ -46,8 +46,8 @@
         <td>{{ $collecte->numerobons}} </td>
         <td>{{ $collecte->fournisseurs->nomComplet}} </td>
         <td>{{ $collecte->date_collecte }} </td>
-        <td>{{ $collecte->pp+$collecte->pehd+$collecte->pet+$collecte->ppcopo+$collecte->pphomo}} kg</td>
-        <td>{{ $collecte->prixpp*$collecte->pp+$collecte->prixpehd*$collecte->pehd+$collecte->prixpet*$collecte->pet+$collecte->prixppcopo*$collecte->ppcopo+$collecte->prixpphomo*$collecte->pphomo}} fr</td>
+        <td>{{ $collecte->ppcopo+$collecte->pphomo+$collecte->petbouteille+$collecte->petpreform+$collecte->pehdcasier+$collecte->pehdsoufflage}} KG</td>
+        <td>{{ $collecte->prixppcopo*$collecte->ppcopo+$collecte->prixpphomo*$collecte->pphomo+$collecte->petbouteilleprix*$collecte->petbouteille+$collecte->petpreformprix*$collecte->petpreform+$collecte->pehdcasierprix*$collecte->pehdcasier+$collecte->pehdsoufflageprix*$collecte->pehdsoufflage}} FR</td>
        
         <th>{{ $collecte->commentaire }}</th>
 
@@ -58,6 +58,11 @@
             <a class="btn btn-info" href="{{ route('collectes.show',$collecte->id) }}"><i class="far fa-eye"></i></a>
            
         </td>
+        <td>
+            <a class="btn btn-success" href="{{ route('collectes.edit',$collecte->id) }}"><i class="far fa-edit"></i></a>
+           
+        </td>
+    
     
     </tr>
     @endforeach

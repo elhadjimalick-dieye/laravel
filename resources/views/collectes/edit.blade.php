@@ -2,16 +2,14 @@
 
 
 @section('content')
-<div class="row " style="margin-left:8%">
-    <div class="col-lg-8 ">
+<div class="row" style="margin-left:5%">
+    <div class="col-lg-12 margin-tb">
         <div class="pull-left">
-            <h2>Ajouter une collecte entreprise</h2>
+            <h2>Modifier le stock</h2>
         </div>
         <div class="pull-right">
-            <a class="btn btn-success" href="{{ route('collectes.index') }}"> Retour</a>
+            <a class="btn btn-success" href="{{ route('depotCollectes.index') }}"> Retour</a>
         </div>
-        <br>
-
     </div>
 </div>
 
@@ -28,23 +26,16 @@
 @endif
 
 
-
-{!! Form::open(array('route' => 'collectes.index','method'=>'POST')) !!}
+{!! Form::model($collectEntreprises, ['method' => 'PATCH','route' => ['collectes.update', $collectEntreprises->id]]) !!}
 <div class="row" style="margin-left:10%">
 <div class="col-xs-12 col-sm-12 col-md-5 " >
 
-        <div class="form-group col-xs-12 col-sm-12 col-md-12">
-            <strong>Nom collecteur</strong>
-              <select name="fournisseur_id" id="fournisseur_id" class="col-xs-12 col-sm-12 col-md-12">
-            <option value="">selectionner un collecteur</option>
-            @foreach ($fournisseurs as $four)
-            <option value="{{$four->id }}">{{$four->nomComplet}}  </option>
-            @endforeach
-            </select>
-        </div>
+    <div class="form-group">
+    <strong>Commentaire</strong>
 
-        
-    </div>
+            {!! Form::text('commentaire', null, array('placeholder' => 'Commentaire','class' => 'form-control')) !!}
+        </div>
+        </div>
 
     <div class="col-xs-12 col-sm-12 col-md-5 " >
         <div class="form-group">
@@ -131,14 +122,7 @@
         </div>
        
     </div>
-    <div class="col-xs-12 col-sm-12 col-md-5 " >
-
-    <div class="form-group">
-    <strong>Commentaire</strong>
-
-            {!! Form::text('commentaire', null, array('placeholder' => 'Commentaire','class' => 'form-control')) !!}
-        </div>
-        </div>
+  
 
     <br>
     <div class="col-xs-12 col-sm-12 col-md-5 text-center">

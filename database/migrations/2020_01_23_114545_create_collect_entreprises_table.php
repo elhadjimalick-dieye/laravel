@@ -25,21 +25,23 @@ class CreateCollectEntreprisesTable extends Migration
             $table->date('date_collecte');
             $table->bigInteger('ppcopo')->nullable();
             $table->bigInteger('prixppcopo')->nullable();
-
             $table->bigInteger('pphomo')->nullable();
             $table->bigInteger('prixpphomo')->nullable();
-
             $table->bigInteger('pp')->nullable();
-            $table->bigInteger('prixpp')->nullable();
 
+            $table->bigInteger('petbouteille')->nullable();
+            $table->bigInteger('petbouteilleprix')->nullable();
+            $table->bigInteger('petpreform')->nullable();
+            $table->bigInteger('petpreformprix')->nullable();
             $table->bigInteger('pet')->nullable();
-            $table->bigInteger('prixpet')->nullable();
 
+            $table->bigInteger('pehdcasier')->nullable();
+            $table->bigInteger('pehdcasierprix')->nullable();
+            $table->bigInteger('pehdsoufflage')->nullable();
+            $table->bigInteger('pehdsoufflageprix')->nullable();
             $table->bigInteger('pehd')->nullable();
-            $table->bigInteger('prixpehd')->nullable();
-
+            
             $table->bigInteger('dechet')->nullable();
-
             $table->BigInteger('numerobons');
             $table->bigInteger('totaltri');
 

@@ -7,8 +7,8 @@
 <div class="row" style="margin-left:8%">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
-            <h2>Etat des Depots </h2>
-            <a class="btn btn-success" href="{{ route('depotCollectes.create') }}" role="button"><i class="fas fa-archive"></i>  Sortie de matiere</a>
+            <h2>Etat des Depots de la production </h2>
+            <a class="btn btn-success" href="{{ route('depotProductions.create') }}" role="button"><i class="fas fa-archive"></i>  Placer de la matière</a>
         </div>
         <div class="pull-right">
         @can('role-create')
@@ -39,26 +39,25 @@
        
      <th style="background-color:;color:black">Total </th>
 
-
-   
+    
 
   </tr>
-    @foreach ($data as $key => $depot)
+    @foreach ($data as $key => $production)
     <tr>
         <td>{{ ++$i }}</td>
-        <td>{{ $depot->date}} </td>
-        <td>{{ $depot->depot}} kg</td>
-        <td>{{ $depot->ppcopo+$depot->pphomo }} kg </td>
-        <td>{{ $depot->petpreform+$depot->petbouteille }}  kg</td>
-        <td>{{ $depot->pehdcasier+$depot->pehdsoufflage}}  kg </td>
+        <td>{{ $production->date}} </td>
+        <td>{{ $production->vrac}} kg</td>
+        <td>{{ $pp=$production->ppcopo+$production->pphomo }} kg </td>
+        <td>{{ $pet=$production->petbouteille+$production->petpreform }}  kg</td>
+        <td>{{ $pehd=$production->pehdcasier+$production->pehdsoufflage}}  kg </td>
 
-        <td style="background-color:white;color:black">{{ $depot->total}} kg </td>
+        <td style="background-color:white;color:black">{{ $production->vrac+$pp+$pet+$pehd}} kg </td>
 
         <td>
-            <a class="btn btn-info" href="{{ route('depotCollectes.show',$depot->id) }}"><i class="far fa-eye"></i></a>
+            <a class="btn btn-info" href="{{ route('depotProductions.show',$production->id) }}"><i class="far fa-eye"></i></a>
         </td>
         <td>
-            <a class="btn btn-primary" href="{{ route('depotCollectes.edit',$depot->id) }}"><i class="far fa-edit"></i></a>
+            <a class="btn btn-success" href="{{ route('depotProductions.edit',$production->id) }}"><i class="far fa-edit"></i></a>
         </td>
     
     </tr>

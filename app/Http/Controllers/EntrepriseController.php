@@ -39,21 +39,27 @@ class EntrepriseController extends Controller
     {
         $fournisseurs = Fournisseur::all();
         $collectEntreprises = CollectEntreprise::pluck(
-        'fournisseur_id',
-        'pphomo',
-        'prixpphomo',
-        'ppcopo',
-        'prixcopo',
-        'dechet',
-        'pet',
-        'prixpet',
-        'pehd',
-        'prixpehd',
-        'date_collecte',
-        'reglement_definitif',
-        'commentaire',
-        'numerobons',
-        'prixpp')->all();
+            'fournisseur_id',
+            'pphomo',
+            'prixpphomo',
+            'ppcopo',
+            'prixppcopo',
+            'dechet',
+            'pet',
+            'pehd',
+            'date_collecte',
+            'reglement_definitif',
+            'commentaire',
+            'numerobons',
+            'totaltri',
+            'petbouteille',
+            'petbouteilleprix',
+            'petpreform',
+            'petpreformprix',
+            'pehdcasier',
+            'pehdcasierprix',
+            'pehdsoufflage',
+            'pehdsoufflageprix',)->all();
         return view('collectes.create',compact('collectEntreprises','fournisseurs'));
     }
 
@@ -68,18 +74,22 @@ class EntrepriseController extends Controller
     {
         $this->validate($request, [
             'fournisseur_id' => 'required',
+            'date_collecte'=> 'required',
+
             'pphomo' => 'required',
             'ppcopo'=> 'required',
-            'dechet'=> 'required',
-            'pet'=> 'required',
-            'pehd'=> 'required',
-            'date_collecte'=> 'required',
-            'pp'=> 'required',
             'prixpphomo'=> 'required',
             'prixppcopo'=> 'required',
-            'prixpet'=> 'required',
-            'prixpehd'=> 'required',
-            'prixpp'=> 'required',
+
+            'petbouteille'=> 'required',
+            'petbouteilleprix'=> 'required',
+            'petpreform'=> 'required',
+            'petpreformprix'=> 'required',
+
+            'pehdcasier'=> 'required',
+            'pehdcasierprix'=> 'required',
+            'pehdsoufflage'=> 'required',
+            'pehdsoufflageprix'=> 'required',
 
 
         ]);
@@ -88,13 +98,24 @@ class EntrepriseController extends Controller
         $fournisseurs= Fournisseur::all();
         $collectEntreprises = CollectEntreprise::all();
         $collectRecuplasts = CollecteRecuplasts::all();
-
-
         $date = (154263);
         $min_epoch = strtotime($date);
         $rand_epoch = rand($min_epoch,1222222);
         $numerobons= $collectEntreprises->numerobons=$rand_epoch;
-        $totaltriss=$request->input('pehd')+$request->input('pphomo')+$request->input('ppcopo')+$request->input('pet')+$request->input('pp')-$request->input('dechet');
+
+        $pehdcasier=$request->input('pehdcasier');
+        $pehdsoufflage=$request->input('pehdsoufflage');
+        $totalpehd=$pehdcasier+$pehdsoufflage;
+
+        $petbouteille=$request->input('petbouteille');
+        $petpreform=$request->input('petpreform');
+        $totalpet=$petpreform+$petbouteille;
+
+        $pphomo=$request->input('pphomo');
+        $ppcopo=$request->input('ppcopo');
+       
+        $totalpp=$pphomo+$ppcopo;
+        $totaltriss=$totalpehd+$totalpp+$totalpet-$request->input('dechet');
 
         $totaltri=$collectEntreprises->last()->totaltri+$totaltriss;
        // dd($collectEntreprises->last()->totaltri);
@@ -105,17 +126,26 @@ class EntrepriseController extends Controller
             'date_collecte'=>$request->input('date_collecte'),
             'pphomo'=>$request->input('pphomo'), 
             'commentaire'=>$request->input('commentaire'),
-            'pet'=>$request->input('pet'),
-            'prixpet'=>$request->input('prixpet'),
-            'pehd'=>$request->input('pehd'),
-            'prixpehd'=>$request->input('prixpehd'),
+            
             'prixpphomo'=>$request->input('prixpphomo'),
             'prixppcopo'=>$request->input('prixppcopo'),
             'ppcopo'=>$request->input('ppcopo'),
-            'prixpp'=>$request->input('prixpp'),
-            'pp'=>$request->input('pp'),
             'dechet'=>$request->input('dechet'),
+
+            'petbouteille'=> $request->input('petbouteille'),
+            'petbouteilleprix'=> $request->input('petbouteilleprix'),
+            'petpreform'=> $request->input('petpreform'),
+            'petpreformprix'=> $request->input('petpreformprix'),
+
+            'pehdcasier'=> $request->input('pehdcasier'),
+            'pehdcasierprix'=> $request->input('pehdcasierprix'),
+            'pehdsoufflage'=> $request->input('pehdsoufflage'),
+            'pehdsoufflageprix'=> $request->input('pehdsoufflageprix'),
+
             'totaltri' =>$totaltri,
+            'pet'=>$totalpet,
+            'pehd'=>$totalpehd,
+            'pp'=>$totalpp,
 
         ]);
      
@@ -123,23 +153,29 @@ class EntrepriseController extends Controller
         $lastdepot= $depotCollecte->last()->depot;  
         $pphomo= $depotCollecte->last()->pphomo+$request->input('pphomo');
         $ppcopo= $depotCollecte->last()->ppcopo+$request->input('ppcopo');
-        $pet= $depotCollecte->last()->pet+$request->input('pet');
-        $pehd= $depotCollecte->last()->pehd+$request->input('pehd');
-        $pp= $depotCollecte->last()->pp+$request->input('pp');
+        $petbouteille= $depotCollecte->last()->petbouteille+$request->input('petbouteille');
+        $petpreform= $depotCollecte->last()->petpreform+$request->input('petpreform');
+        $pehdcasier= $depotCollecte->last()->pehdcasier+$request->input('pehdcasier');
+        $pehdsoufflage= $depotCollecte->last()->pehdsoufflage+$request->input('pehdsoufflage');
+
+        $pet=$request->input('petpreform')+$request->input('petbouteille');
+        $pehd=$request->input('pehdcasier')+$request->input('pehdsoufflage');
+        $pp=$request->input('pphomo')+$request->input('ppcopo');
         $dechet= $request->input('dechet');
 
-       $total= $request->input('ppcopo')+$request->input('pphomo')+$request->input('pet')+$request->input('pehd')+$request->input('pp')-$dechet;
+       $total= $pet+$pehd+$pp-$dechet;
         // dd( $total);
         //dd($depotCollecte->last()->total+$total+$lastdepot);
 
         $date=$request->input('date_collecte');
         
     DB::table('depot_collectes')->insert([
+        'petbouteille'=> $petbouteille,
+        'petpreform'=> $petpreform,
+        'pehdcasier'=> $pehdcasier,
+        'pehdsoufflage'=> $pehdsoufflage,
         'ppcopo' =>$ppcopo,
         'pphomo' => $pphomo,
-        'pet'=> $pet,
-        'pehd'=> $pehd,
-        'pp'=> $pp,
         'dechet'=> $dechet,
         'quantiteinitiale'=> $lastdepot,
         'quantiteEntrante'=> $depotCollecte->last()->quantiteEntrante,
@@ -162,9 +198,42 @@ class EntrepriseController extends Controller
     public function show($id)
     {
         $fournisseurs= Fournisseur::all();
-
         $collectEntreprises = CollectEntreprise::find($id);
         return view('collectes.show',compact('collectEntreprises','fournisseurs'));
     }
+ /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $collectEntreprises = CollectEntreprise::find($id);
+        $fournisseurs = Fournisseur::all();
 
+        return view('collectes.edit', compact('collectEntreprises', 'fournisseurs'));
+    }
+
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $this->validate($request, [
+            
+        ]);
+        $input = $request->all();
+        $collectEntreprises = CollectEntreprise::find($id);
+        $collectEntreprises->update($input);
+
+
+        return redirect()->route('collectes.index')
+                        ->with('success', 'collecte recuplast updated successfully');
+    }
 }

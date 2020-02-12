@@ -56,12 +56,12 @@ class Fournisseurss extends Controller
         $fournisseur= Fournisseur::all();
         $date = (154263);
         $min_epoch = strtotime($date);
-        $rand_epoch = rand($min_epoch,1222222);
-        $numero= $fournisseur->numero=$rand_epoch;
-        //dd($employe->matricule);
-
+        $var = rand($min_epoch,1000);
+        $strval ='FR_401';
+        $items = ($strval.$var); 
+        //dd($items);
         DB::table('fournisseurs')->insert([
-            'numero' => $numero,
+            'numero' => $items,
             'type' => $request->input('type'),
             'nomComplet' => $request->input('nomComplet'),
             'avance' => $request->input('avance'),

@@ -73,23 +73,33 @@
             <strong>Quantite matiere PPHOMO </strong>
             {!! Form::number('pphomoSortante', null, array('placeholder' => 'quantite en kg','class' => 'form-control')) !!}
         </div>
-      
+        
+        
     </div>  <div class="col-xs-12 col-sm-12 col-md-5 " >
         <div class="form-group">
-            <strong>Quantite matiere PP </strong>
-            {!! Form::number('ppSortante', null, array('placeholder' => 'quantite en kg','class' => 'form-control')) !!}
+            <strong>Quantite matiere petbouteille </strong>
+            {!! Form::number('petbouteilleSortante', null, array('placeholder' => 'quantite en kg','class' => 'form-control')) !!}
         </div>
       
     </div>  <div class="col-xs-12 col-sm-12 col-md-5 " >
         <div class="form-group">
-            <strong>Quantite matiere PET </strong>
-            {!! Form::number('petSortante', null, array('placeholder' => 'quantite en kg','class' => 'form-control')) !!}
+            <strong>Quantite matiere Pet preform </strong>
+            {!! Form::number('petpreformSortante', null, array('placeholder' => 'quantite en kg','class' => 'form-control')) !!}
         </div>
       
-    </div>  <div class="col-xs-12 col-sm-12 col-md-5 " >
+    </div> 
+     <div class="col-xs-12 col-sm-12 col-md-5 " >
         <div class="form-group">
-            <strong>Quantite matiere PEHD </strong>
-            {!! Form::number('pehdSortante', null, array('placeholder' => 'quantite en kg','class' => 'form-control')) !!}
+            <strong>Quantite matiere Pehd casier </strong>
+            {!! Form::number('pehdcasierSortante', null, array('placeholder' => 'quantite en kg','class' => 'form-control')) !!}
+        </div>
+      
+    </div> 
+
+    <div class="col-xs-12 col-sm-12 col-md-5 " >
+        <div class="form-group">
+            <strong>Quantite matiere Pehd soufflage </strong>
+            {!! Form::number('pehdsoufflageSortante', null, array('placeholder' => 'quantite en kg','class' => 'form-control')) !!}
         </div>
       
     </div> 

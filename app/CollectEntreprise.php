@@ -19,14 +19,20 @@ class CollectEntreprise extends Model
         'prixppcopo',
         'dechet',
         'pet',
-        'prixpet',
         'pehd',
-        'prixpehd',
         'date_collecte',
         'reglement_definitif',
         'commentaire',
         'numerobons',
-        'totaltri'
+        'totaltri',
+        'petbouteille',
+        'petbouteilleprix',
+        'petpreform',
+        'petpreformprix',
+        'pehdcasier',
+        'pehdcasierprix',
+        'pehdsoufflage',
+        'pehdsoufflageprix',
         
     ];
 
