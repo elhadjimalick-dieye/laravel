@@ -3,7 +3,19 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
   <title>Proplast indistrue</title>
+  <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>{{ config('app.name', 'Laravel') }}</title>
+
+    <!-- Styles -->
+    <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css" rel="stylesheet">
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Font Awesome -->
@@ -26,10 +38,15 @@
   <!-- summernote -->
   <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.css') }}">
   <!-- Google Font: Source Sans Pro -->
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/buttons/1.2.4/css/buttons.dataTables.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/select/1.3.0/css/select.dataTables.min.css" rel="stylesheet" />
+    
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
-<div class="wrapper">
+<div class="wrapper container-fluid">
 
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-success navbar-light">
@@ -78,18 +95,19 @@
   
 
     <!-- Sidebar -->
-    <div class="sidebar">
+    <div class="sidebar container-fuild">
       <!-- Sidebar user panel (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-5 d-flex">
-        <div class="image">
-          <img src="{{ asset('dist/img/avatar0.jpg') }}" class="img-circle elevation-2" alt="User Image">
-        </div>
-        <div class="info">
-        <a id="navbarDropdown" class="nav-link " href="" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-        {{ Auth::user()->prenom }} {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>        </div>
+      <div class="user-panel mt-3 pb-3 mb-5 d-flex   navbar-success" style="padding-top:3%">
 
-      </div>
+        <div class="image">
+          <img src="{{ asset('dist/img/avatar0.jpg') }}" style="width:40px" class="img-circle elevation-2" alt="User Image">
+        </div> 
+        <div class="info" style="padding-left:2%">
+        <a id="navbarDropdown" style="color:white" class="nav-link " href="" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+{{ Auth::user()->prenom }} {{ Auth::user()->name }} <span class="caret"></span>
+         </a>
+         </div>
+        </div>
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
@@ -441,6 +459,7 @@
 <script>
   $.widget.bridge('uibutton', $.ui.button)
 </script>
+
 <!-- Bootstrap 4 -->
 <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <!-- ChartJS -->
@@ -466,6 +485,81 @@
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ asset('dist/js/pages/dashboard.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="{{ asset('dist/js/demo.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://unpkg.com/@coreui/coreui/dist/js/coreui.min.js"></script>
+    <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+    <script src="//cdn.datatables.net/buttons/1.2.4/js/dataTables.buttons.min.js"></script>
+    <script src="//cdn.datatables.net/buttons/1.2.4/js/buttons.flash.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.print.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.colVis.min.js"></script>
+    <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+    <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+    <script src="https://cdn.datatables.net/select/1.3.0/js/dataTables.select.min.js"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/11.0.1/classic/ckeditor.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
+    <script>
+        $(function() {
+  
+  let excelButtonTrans = '{{ trans('Importer sur excel') }}'
+
+  let languages = {
+    'en': 'https://cdn.datatables.net/plug-ins/1.10.19/i18n/English.json'
+  };
+
+  $.extend(true, $.fn.dataTable.defaults, {
+    language: {
+      url: languages['{{ app()->getLocale() }}']
+    },
+    columnDefs: [{
+        orderable: false,
+        className: 'select-checkbox',
+      
+    }, {
+        orderable: false,
+        searchable: false,
+        targets: -1
+    }],
+    select: {
+      style:    'multi+shift',
+      selector: 'td:first-child'
+    },
+    order: [],
+    scrollX: true,
+    pageLength: 100,
+    dom: 'lBfrtip<"actions">',
+    buttons: [
+      
+      
+      {
+        extend: 'excel',
+        className: 'btn-default',
+        text: excelButtonTrans,
+        exportOptions: {
+          columns: ':visible'
+        }
+      },
+     
+      
+      
+    ]
+  });
+
+  $.fn.dataTable.ext.classes.sPageButton = '';
+});
+
+    </script>
+    @yield('scripts')
+</body>
+
+   
 </body>
 </html>

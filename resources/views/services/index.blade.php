@@ -1,63 +1,88 @@
 @extends('layouts.admin')
-
-
 @section('content')
-<div class="container-fluid">
+    <div style="margin-bottom: 20px;margin-left: 50px;margin-top: 20px;" class="row">
+        <div class="col-lg-10">
+            <a class="btn btn-success" href="{{ route("services.create") }}">
+               {{ trans('Ajouter un departement ') }}
+            </a>
+        </div>
+    </div>
+<div class="card col-lg-12">
+    <div class="card-header">
+        {{ trans('liste des departements') }}
+    </div>
 
-<div class="row" style="margin-left:8%">
-    <div class="col-lg-12 margin-tb">
-        <div class="pull-left">
-            <h2>Liste des departements</h2>
-            <a class="btn btn-primary" href="{{ route('services.create') }}" role="button">Ajouter un departement</a>
+    <div class="card-body card col-lg-12">
+        <div class=" margin-left: 50px col-lg-11" >
+            <table   style="width:100%"  class=" table table-bordered table-striped table-hover datatable datatable-User">
+                <thead style='margin-left: 100px'>
+                    <tr>
+                        
+                        <th>
+                            {{ trans('Id') }}
+                        </th>
+                        <th>
+                            {{ trans('Libelle') }}
+                        </th>
+                        <th>
+                        {{ trans('Direction') }}
+
+                        </th>
+                        <th>
+                        </th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($data as $key => $user)
+                        <tr >
+                            
+                            <td>
+                                {{ $user->id ?? '' }}
+                            </td>
+                            <td>
+                                {{ $user->libelle ?? '' }}
+                            </td>
+                            <td>
+                                {{ $user->direction ?? '' }}
+                            </td>
+
+                            <td>
+                              
+                                    <a class="btn btn-xs btn-primary" href="{{ route('services.show', $user->id) }}">
+                                    <i class="far fa-edit"></i>
+
+
+                                    </a>
+                                    </td>
+                         
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
-        
-        <div class="pull-right">
-        @can('role-create')
-            <a class="btn btn-success" href="{{ route('services.create') }}"> Create New Role</a>
-            @endcan
-        </div>
-        <br>
+
+
     </div>
 </div>
+@endsection
+@section('scripts')
+@parent
+<script>
+    $(function () {
+  let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
 
 
-@if ($message = Session::get('success'))
-    <div class="alert alert-success">
-        <p>{{ $message }}</p>
-    </div>
-@endif
+  $.extend(true, $.fn.dataTable.defaults, {
+    order: [[ 1, 'desc' ]],
+    pageLength: 5,
+  });
+  $('.datatable-User:not(.ajaxTable)').DataTable({ buttons: dtButtons })
+    $('a[data-toggle="tab"]').on('shown.bs.tab', function(e){
+        $($.fn.dataTable.tables(true)).DataTable()
+            .columns.adjust();
+    });
+})
 
-
-<table class="table table-striped table-bordered" style="margin-left:8%; width:50%" >
-  <tr>
-     <th>Id</th>
-     <th>Libelle</th>
-     <th >Direction</th>
-  </tr>
-    @foreach ($data as $key => $service)
-    <tr>
-        <td>{{ ++$i }}</td>
-        <td>{{ $service->libelle }}</td>
-        <td>{{ $service->direction }}</td>
-
-        <td>
-            <a class="btn btn-info" href="{{ route('services.show',$service->id) }}"><i class="far fa-eye"></i></a>
-           
-        </td>
-    </tr>
-    @endforeach
-</table>
-
-{!! $data->render() !!}
-
-</div>
-<script >
-
-$(document).ready(function() {
-    $('#example').DataTable();
-} );
 </script>
-<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-<script src=" https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
 @endsection

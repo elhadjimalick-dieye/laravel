@@ -236,4 +236,11 @@ class EntrepriseController extends Controller
         return redirect()->route('collectes.index')
                         ->with('success', 'collecte recuplast updated successfully');
     }
+
+    public function massDestroy(MassDestroyUserRequest $request)
+    {
+        CollectEntreprise::whereIn('id', request('ids'))->delete();
+
+        return response(null, Response::HTTP_NO_CONTENT);
+    }
 }

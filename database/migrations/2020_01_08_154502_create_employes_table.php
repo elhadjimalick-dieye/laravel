@@ -34,6 +34,8 @@ class CreateEmployesTable extends Migration
             $table->date('date_sorti');	
             $table->double('nombre_de_part');
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 

@@ -32,6 +32,8 @@ class CreateFournisseursTable extends Migration
             $table->bigInteger('avance')->nullable();
             $table->bigInteger('solde')->nullable();
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 

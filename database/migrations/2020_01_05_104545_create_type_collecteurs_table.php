@@ -17,6 +17,8 @@ class CreateTypeCollecteursTable extends Migration
             $table->bigIncrements('id');
             $table->string('libelle');
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 

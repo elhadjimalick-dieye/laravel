@@ -5,26 +5,30 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Employe;
 use App\Service;
-
+use Gate;
+use Symfony\Component\HttpFoundation\Response;
 use DB;
 
 class employeController extends Controller
 {
   /**
      * Display a listing of the resource.
-     *
+    * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
     {
         $data = Employe::orderBy('id','DESC')->paginate(5);
-        $services = Service::pluck('libelle','libelle')->all();
-       // dd($services);
+        //$services = Service::pluck('libelle','libelle')->all();
+        //$roles = Roles::pluck('name','name')->all();
+        $services = DB::table('employes')->get();
+        $employe = DB::table('employes')->find(2);
 
-        return view('employes.index',compact('data','services'))
+        return view('employes.index',compact('data','services','employe'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
-    }
+            
 
+    }
      /**
      * Show the form for creating a new resource.
      *
@@ -157,6 +161,13 @@ class employeController extends Controller
         Employe::find($id)->delete();
         return redirect()->route('employes.index')
                         ->with('success','employe deleted successfully');
+    }
+
+    public function massDestroy(MassDestroyUserRequest $request)
+    {
+        Employe::whereIn('id', request('ids'))->delete();
+
+        return response(null, Response::HTTP_NO_CONTENT);
     }
 
 }

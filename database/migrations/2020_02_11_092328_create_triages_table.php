@@ -56,6 +56,8 @@ class CreateTriagesTable extends Migration
             $table->bigInteger('dechettr')->nullable();
             $table->date('date');
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 

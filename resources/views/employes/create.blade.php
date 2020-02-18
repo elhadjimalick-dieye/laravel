@@ -53,6 +53,8 @@
 
         <div class="form-group">
             <select name="service_id" id="service_id" class="col-xs-12 col-sm-12 col-md-12">
+            <option value=""></option>
+
             @foreach($services as $serve)
             <option value="{{ $serve->id}}">{{$serve->libelle}}</option>
             @endforeach

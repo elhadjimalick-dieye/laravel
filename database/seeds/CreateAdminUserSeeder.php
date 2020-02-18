@@ -10,7 +10,7 @@ use App\TypeCollecteur;
 use App\CollectEntreprise;
 use App\DepotProduction;
 use App\Triage;
-
+use App\Permission;
 //use Spatie\Permission\Models\Roles;
 
 class CreateAdminUserSeeder extends Seeder
@@ -53,12 +53,28 @@ class CreateAdminUserSeeder extends Seeder
             'direction' => 'dakar',
         	
         ]);
+        $role = Roles::create(['libelle' => 'ADMIN_SYSTEME']);
+            $role = Roles::create(['libelle' => 'ADMIN_SIMPLE']);
+            $role = Roles::create(['libelle' => 'USER_SIMPLE']);
+    
+        $Permissions = Permission::create([
+         
+                'id'         => '1',
+                'title'      => 'employes_access',
+                'created_at' => '2019-09-19 12:14:15',
+                'updated_at' => '2019-09-19 12:14:15',
+            ]);
+            
+    
+            $Permissions = Permission::create([
+         
+                'id'         => '2',
+                'title'      => 'employes_create',
+                'created_at' => '2019-09-19 12:14:15',
+                'updated_at' => '2019-09-19 12:14:15',
+            ]);
        
-        $role = Roles::create(['name' => 'ADMIN_SYSTEME','guard_name'=>'web']);
-        $role = Roles::create(['name' => 'ADMIN_SIMPLE','guard_name'=>'web']);
-        $role = Roles::create(['name' => 'USER_SIMPLE','guard_name'=>'web']);
-
-
+       
         
         $user = User::create([
             'name' => 'Dieye', 

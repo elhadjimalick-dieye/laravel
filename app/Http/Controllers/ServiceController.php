@@ -14,7 +14,7 @@ class ServiceController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request){
-        $data = Service::orderBy('id','DESC')->paginate(4);
+        $data = Service::orderBy('id','DESC')->paginate(10);
         return view('services.index',compact('data'))
             ->with('i', ($request->input('page', 1) - 1) * 7);
         }
@@ -65,16 +65,22 @@ class ServiceController extends Controller
     }
 
 
-      /**
-     * Display the specified resource.
+     /**
+     * Remove the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function serve()
+    public function destroy($id)
     {
-        $service = Service::all();
-        return view('users.create',compact('service'));
+        Service::find($id)->delete();
+        return redirect()->route('employes.index')
+                        ->with('success','employe deleted successfully');
     }
-   
+    public function massDestroy(MassDestroyUserRequest $request)
+    {
+        Service::whereIn('id', request('ids'))->delete();
+
+        return response(null, Response::HTTP_NO_CONTENT);
+    }
 }

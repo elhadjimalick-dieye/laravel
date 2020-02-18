@@ -52,7 +52,7 @@
             <strong style='color:green'>Quantite matiere en VRAC </strong>
             {!! Form::number('vracSortant', null, array('placeholder' => 'quantite en kg','class' => 'form-control')) !!}
         </div>
-      
+     
     </div>  
 
     <div class="col-xs-12 col-sm-12 col-md-10" >

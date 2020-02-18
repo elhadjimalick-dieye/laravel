@@ -62,6 +62,8 @@ class CreateDepotProductionsTable extends Migration
             $table->bigInteger('dechet')->nullable();
             $table->date('date');
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 

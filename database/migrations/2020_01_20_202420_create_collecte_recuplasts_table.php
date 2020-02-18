@@ -32,6 +32,8 @@ class CreateCollecterecuplastsTable extends Migration
           $table->BigInteger('regelement_definitif')->nullable();
           $table->string('commentaire')->nullable();
          $table->timestamps();
+         $table->softDeletes();
+
         });
     }
 

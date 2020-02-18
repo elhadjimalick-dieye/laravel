@@ -143,5 +143,10 @@ class TriageController extends Controller
         return redirect()->route('depotProductions.index',compact('depotProduction'))
                         ->with('success','depot created successfully');
     }
+    public function massDestroy(MassDestroyUserRequest $request)
+    {
+        Triage::whereIn('id', request('ids'))->delete();
 
+        return response(null, Response::HTTP_NO_CONTENT);
+    }
 }

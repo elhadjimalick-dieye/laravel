@@ -193,4 +193,11 @@ class CollectRecuplast extends Controller
         return redirect()->route('collecterecuplasts.index')
                         ->with('success','collecte recuplasts deleted successfully');
     }
+
+    public function massDestroy(MassDestroyUserRequest $request)
+    {
+        CollecteRecuplasts::whereIn('id', request('ids'))->delete();
+
+        return response(null, Response::HTTP_NO_CONTENT);
+    }
 }

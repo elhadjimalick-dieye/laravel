@@ -18,6 +18,8 @@ class CreateServicesTable extends Migration
             $table->string('libelle');
             $table->string('direction');
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 

@@ -3,9 +3,15 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Notifications\Notifiable;
 
 class Employe extends Model
 {
+
+    use SoftDeletes, Notifiable;
+
     /**
      * The attributes that are mass assignable.
      *

@@ -234,4 +234,7 @@ class DepotCollectes extends Controller
         return redirect()->route('depotCollectes.index')
                         ->with('success','Stock updated successfully');
     }
+
+
+    
 }

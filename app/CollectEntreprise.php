@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Notifications\Notifiable;
 class CollectEntreprise extends Model
 {
+    use SoftDeletes, Notifiable;
+
 /**
      * The attributes that are mass assignable.
      *

@@ -1,80 +1,94 @@
 @extends('layouts.admin')
-
-
 @section('content')
-<div class="container-fluid">
+    <div style="margin-bottom: 20px;margin-left: 50px;margin-top: 20px;" class="row">
+        <div class="col-lg-10">
+            <a class="btn btn-success" href="{{ route("depotCollectes.create") }}">
+               {{ trans('Sortir de matiere ') }}
+            </a>
+        </div>
+    </div>
+<div class="card">
+    <div class="card-header">
+        {{ trans('Liste des depots collectes') }}
+    </div>
 
-<div class="row" style="margin-left:8%">
-    <div class="col-lg-12 margin-tb">
-        <div class="pull-left">
-            <h2>Etat des Depots </h2>
-            <a class="btn btn-success" href="{{ route('depotCollectes.create') }}" role="button"><i class="fas fa-archive"></i>  Sortie de matiere</a>
+    <div class="card-body">
+        <div class="">
+            <table style="width:100%" class=" table table-bordered table-striped table-hover datatable datatable-User">
+                <thead>
+                    <tr>
+                        <th width="10%">
+
+                        {{ 'Id' }}</th>
+                        <th>{{ 'Date' }}</th>
+                        <th>{{ 'Vrac' }}</th>
+                        <th>{{ 'PP' }}</th>
+                        <th>{{ 'PET' }} </th>
+                        <th>{{ 'PEHD' }} </th>
+                        <th>{{ 'TOTAL' }}</th>
+
+                        <th>
+                        </th>
+                       
+                        <th>
+                        </th>
+                       
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($data as $key => $depot)
+                        <tr data-entry-id="{{ $depot->id }}">
+                            
+                        <td>{{ ++$i }}</td>
+                        <td>{{ $depot->date}} </td>
+                        <td>{{ $depot->depot}} kg</td>
+                        <td>{{ $depot->ppcopo+$depot->pphomo }} kg </td>
+                        <td>{{ $depot->petpreform+$depot->petbouteille }}  kg</td>
+                        <td>{{ $depot->pehdcasier+$depot->pehdsoufflage}}  kg </td>
+
+                        <td style="background-color:white;color:black">{{ $depot->total}} kg </td>
+
+                            <td>
+                              
+                                    <a class="btn btn-xs btn-primary" href="{{ route('depotCollectes.show', $depot->id) }}">
+                                    <i class="far fa-eye"></i>
+                                    </a>
+                                    </td>
+                                    <td>
+                                    <a class="btn btn-xs btn-info" href="{{ route('depotCollectes.edit', $depot->id) }}"><i class="far fa-edit"></i>
+                                    </a>
+                                    </td>
+                            
+
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
-        <div class="pull-right">
-        @can('role-create')
-            <a class="btn btn-success" href="{{ route('services.create') }}"> Create New Role</a>
-            @endcan
-        </div>
-        <br>
+
+
     </div>
 </div>
-
-
-@if ($message = Session::get('success'))
-    <div class="alert alert-success">
-        <p>{{ $message }}</p>
-    </div>
-@endif
-
-
- <!-- Main content -->
-<table class="table table-striped table-bordered" style="margin-left:2%; width:95%" >
-  <tr>
-     <th>Id</th>
-     <th>Date </th>
-        <th>Vrac</th>
-        <th>PP</th>
-        <th>PET</th>
-        <th>PEHD </th>
-       
-     <th style="background-color:;color:black">Total </th>
-
-
-   
-
-  </tr>
-    @foreach ($data as $key => $depot)
-    <tr>
-        <td>{{ ++$i }}</td>
-        <td>{{ $depot->date}} </td>
-        <td>{{ $depot->depot}} kg</td>
-        <td>{{ $depot->ppcopo+$depot->pphomo }} kg </td>
-        <td>{{ $depot->petpreform+$depot->petbouteille }}  kg</td>
-        <td>{{ $depot->pehdcasier+$depot->pehdsoufflage}}  kg </td>
-
-        <td style="background-color:white;color:black">{{ $depot->total}} kg </td>
-
-        <td>
-            <a class="btn btn-info" href="{{ route('depotCollectes.show',$depot->id) }}"><i class="far fa-eye"></i></a>
-        </td>
-        <td>
-            <a class="btn btn-primary" href="{{ route('depotCollectes.edit',$depot->id) }}"><i class="far fa-edit"></i></a>
-        </td>
-    
-    </tr>
-    @endforeach
-</table>
-
-{!! $data->render() !!}
-
-</div>
-<script >
-
-$(document).ready(function() {
-    $('#example').DataTable();
-} );
-</script>
-<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-<script src=" https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
 @endsection
+@section('scripts')
+@parent
+<script>
+    $(function () {
+  let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
+
+ 
+
+  $.extend(true, $.fn.dataTable.defaults, {
+    order: [[ 1, 'desc' ]],
+    pageLength: 10,
+  });
+  $('.datatable-User:not(.ajaxTable)').DataTable({ buttons: dtButtons })
+    $('a[data-toggle="tab"]').on('shown.bs.tab', function(e){
+        $($.fn.dataTable.tables(true)).DataTable()
+            .columns.adjust();
+    });
+})
+
+</script>
+@endsection
+

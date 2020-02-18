@@ -197,4 +197,11 @@ class UserController extends Controller
         return redirect()->route('users.index')
                         ->with('success','User deleted successfully');
     }
+
+    public function massDestroy(MassDestroyUserRequest $request)
+    {
+        User::whereIn('id', request('ids'))->delete();
+
+        return response(null, Response::HTTP_NO_CONTENT);
+    }
 }

@@ -52,6 +52,8 @@ class CreateCollectEntreprisesTable extends Migration
             $table->string('commentaire')->nullable();
 
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 

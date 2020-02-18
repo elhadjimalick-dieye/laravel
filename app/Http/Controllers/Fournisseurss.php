@@ -6,10 +6,15 @@ use Illuminate\Http\Request;
 use App\Fournisseur;
 use App\CollecteRecuplasts;
 use App\TypeCollecteur;
+use Yajra\Datatables\Datatables;
+
 use DB;
 
 class Fournisseurss extends Controller
 {
+
+
+    
    /**
      * Display a listing of the resource.
     * @param  int  $id
@@ -139,7 +144,7 @@ class Fournisseurss extends Controller
  
 
 
-    /**
+     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
@@ -151,6 +156,11 @@ class Fournisseurss extends Controller
         return redirect()->route('fournisseurs.index')
                         ->with('success','fournisseur deleted successfully');
     }
+    public function massDestroy(MassDestroyUserRequest $request)
+    {
+        CollectEntreprise::whereIn('id', request('ids'))->delete();
 
-
+        return response(null, Response::HTTP_NO_CONTENT);
+    }
+    
 }

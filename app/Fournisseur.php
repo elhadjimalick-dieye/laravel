@@ -3,9 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Notifications\Notifiable;
 class Fournisseur extends Model
 {
+    use SoftDeletes, Notifiable;
    
 protected $fillable = [
     'avance','solde','id','nomComplet','contact','region','departement','commune','quartier','restant_du','numero','type'
