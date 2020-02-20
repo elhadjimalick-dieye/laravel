@@ -8,7 +8,7 @@
         </div>
     </div>
 <div class="card">
-    <div class="card-header">
+    <div class="card-header" style="background-color:green;color:white">
         {{ trans('Liste des collectes Entreprise') }}
     </div>
 

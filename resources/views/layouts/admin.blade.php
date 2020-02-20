@@ -128,11 +128,7 @@
               <i class="nav-icon fas fa-user"></i> <p>Liste des utilisateurs</p> </a>
 
           </li>
-    
-        
-        
-          
-            
+   
           <li class="nav-header">Liste des departements</li>
       
           <li class="nav-item has-treeview">
@@ -225,11 +221,7 @@
                   <p>Collecte Entreprise</p>
                 </a>
               </li>
-           
             </ul>
-
-           
-
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="{{ route('collecterecuplasts.index') }}" class="nav-link">
@@ -272,9 +264,9 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('lavages.index') }}" class="nav-link">
                       <i class="far fa-dot-circle nav-icon"></i>
-                      <p>Level 3</p>
+                      <p>Lavage</p>
                     </a>
                   </li>
                   <li class="nav-item">

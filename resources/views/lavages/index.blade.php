@@ -3,7 +3,7 @@
 <div class="row " style="margin-left:8%">
     <div class="col-lg-8 ">
         <div class="pull-left">
-            <h2>Atelier du Tri </h2>
+            <h2>Atelier de lavage </h2>
         </div>
       
 
@@ -27,7 +27,7 @@
 @endif
 
 <div class="card col-lg-12">
-    <div class="card-header" >
+    <div class="card-header" style="background-color:green;color:white">
     {{ trans('Table de matiere par quart') }}
     </div>
 
@@ -63,34 +63,34 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($data as $key => $triage)
+                    @foreach($data as $key => $lavage)
                         <tr >
                             
                             <td>
-                                {{ $triage->id ?? '' }}
+                                {{ $lavage->id ?? '' }}
                             </td>
                             <td>
-                                {{ $triage->effectiftri ?? '' }}
+                                {{ $lavage->effectiflav ?? '' }}
                             </td>
                             <td>
-                                {{ $triage->premierequantite ?? '' }}
+                                {{ $lavage->lavage ?? '' }}
                             </td>
                             <td>
-                                {{ $triage->dechetriage ?? '' }}
+                                {{ $lavage->dechelavage ?? '' }}
                             </td>
                             <td>
-                            {{ $triage->totale ?? '' }}
+                            {{ $lavage->totale ?? '' }}
 
 
                             </td>
                             <td>
-                                {{ $triage->date ?? '' }}
+                                {{ $lavage->date ?? '' }}
                             </td>
 
                             <td>
                               
-                                    <a class="btn btn-xs btn-primary" href="{{ route('triages.edit', $triage->id) }}">
-                                    <h6>Trier</h6>
+                                    <a class="btn btn-xs btn-success" href="{{ route('lavages.edit', $lavage->id) }}">
+                                    <h6>laver</h6>
 
 
                                     </a>
@@ -107,7 +107,7 @@
 </div>
 <div class="card col-lg-12">
     <div class="card-header" style="background-color:#008B8B;color:white">
-        {{ trans('Table de triage PPCOPO') }}
+        {{ trans('Table de lavage PPCOPO') }}
 
     </div>
 
@@ -153,39 +153,39 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($data as $key => $triage)
+                    @foreach($data as $key => $lavage)
                         <tr >
 
                         <td>
-                                {{ $triage->id ?? '' }}
+                                {{ $lavage->id ?? '' }}
                             </td>
                             <td>
-                                {{ $triage->ppcopoblanc ?? '' }}
+                                {{ $lavage->ppcopoblanc ?? '' }}
                             </td>
                             <td>
-                                {{ $triage->ppcopobleu ?? '' }}
+                                {{ $lavage->ppcopobleu ?? '' }}
                             </td>
                             <td>
-                                {{ $triage->ppcopojaune ?? '' }}
+                                {{ $lavage->ppcopojaune ?? '' }}
                             </td>
                             <td>
-                                {{ $triage->ppcopovert ?? '' }}
+                                {{ $lavage->ppcopovert ?? '' }}
                             </td>
                             <td>
-                                {{ $triage->ppcopomauve ?? '' }}
+                                {{ $lavage->ppcopomauve ?? '' }}
                             </td><td>
-                                {{ $triage->ppcoporouge ?? '' }}
+                                {{ $lavage->ppcoporouge ?? '' }}
                             </td><td>
-                                {{ $triage->ppcopojadida ?? '' }}
+                                {{ $lavage->ppcopojadida ?? '' }}
                             </td><td>
-                                {{ $triage->ppcopomaron ?? '' }}
+                                {{ $lavage->ppcopomaron ?? '' }}
                             </td><td>
-                                {{ $triage->ppcoponoire ?? '' }}
+                                {{ $lavage->ppcoponoire ?? '' }}
                             </td><td>
-                                {{ $triage->ppcopomulti ?? '' }}
+                                {{ $lavage->ppcopomulti ?? '' }}
                             </td>
                             <td>
-                                {{ $ppcopo=$triage->ppcopoblanc+$triage->ppcopobleu+$triage->ppcopojaune+$triage->ppcopovert+$triage->ppcopomauve+$triage->ppcoporouge+$triage->ppcopojadida+$triage->ppcopomaron+$triage->ppcoponoire+$triage->ppcopomulti ?? '' }}
+                                {{ $ppcopo=$lavage->ppcopoblanc+$lavage->ppcopobleu+$lavage->ppcopojaune+$lavage->ppcopovert+$lavage->ppcopomauve+$lavage->ppcoporouge+$lavage->ppcopojadida+$lavage->ppcopomaron+$lavage->ppcoponoire+$lavage->ppcopomulti ?? '' }}
                             </td>
 
                                     </td>
@@ -202,7 +202,7 @@
 
 <div class="card col-lg-12">
     <div class="card-header" style="background-color:#1E90FF;color:white">
-        {{ trans('Table de triage PPHOMO') }}
+        {{ trans('Table de lavage PPHOMO') }}
 
     </div>
 
@@ -248,39 +248,39 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($data as $key => $triage)
+                    @foreach($data as $key => $lavage)
                         <tr >
 
                         <td>
-                                {{ $triage->id ?? '' }}
+                                {{ $lavage->id ?? '' }}
                             </td>
                             <td>
-                                {{ $triage->pphomoblanc ?? '' }}
+                                {{ $lavage->pphomoblanc ?? '' }}
                             </td>
                             <td>
-                                {{ $triage->pphomobleu ?? '' }}
+                                {{ $lavage->pphomobleu ?? '' }}
                             </td>
                             <td>
-                                {{ $triage->pphomojaune ?? '' }}
+                                {{ $lavage->pphomojaune ?? '' }}
                             </td>
                             <td>
-                                {{ $triage->pphomovert ?? '' }}
+                                {{ $lavage->pphomovert ?? '' }}
                             </td>
                             <td>
-                                {{ $triage->pphomomauve ?? '' }}
+                                {{ $lavage->pphomomauve ?? '' }}
                             </td><td>
-                                {{ $triage->pphomorouge ?? '' }}
+                                {{ $lavage->pphomorouge ?? '' }}
                             </td><td>
-                                {{ $triage->pphomojadida ?? '' }}
+                                {{ $lavage->pphomojadida ?? '' }}
                             </td><td>
-                                {{ $triage->pphomomaron ?? '' }}
+                                {{ $lavage->pphomomaron ?? '' }}
                             </td><td>
-                                {{ $triage->pphomonoire ?? '' }}
+                                {{ $lavage->pphomonoire ?? '' }}
                             </td><td>
-                                {{ $triage->pphomomulti ?? '' }}
+                                {{ $lavage->pphomomulti ?? '' }}
                             </td>
                             <td>
-                                {{ $pphomo=$triage->pphomoblanc+$triage->pphomobleu+$triage->pphomojaune+$triage->pphomovert+$triage->pphomomauve+$triage->pphomorouge+$triage->pphomojadida+$triage->pphomomaron+$triage->pphomonoire+$triage->pphomomulti ?? '' }}
+                                {{ $pphomo=$lavage->pphomoblanc+$lavage->pphomobleu+$lavage->pphomojaune+$lavage->pphomovert+$lavage->pphomomauve+$lavage->pphomorouge+$lavage->pphomojadida+$lavage->pphomomaron+$lavage->pphomonoire+$lavage->pphomomulti ?? '' }}
                             </td>
 
                                     </td>
@@ -297,7 +297,7 @@
 
 <div class="card col-lg-12">
     <div class="card-header" style="background-color:green;color:white">
-        {{ trans('Table de triage PET') }}
+        {{ trans('Table de lavage PET') }}
 
     </div>
 
@@ -325,21 +325,21 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($data as $key => $triage)
+                    @foreach($data as $key => $lavage)
                         <tr >
 
                         <td>
-                                {{ $triage->id ?? '' }}
+                                {{ $lavage->id ?? '' }}
                             </td>
                             <td>
-                                {{ $triage->petblanc ?? '' }}
+                                {{ $lavage->petblanc ?? '' }}
                             </td>
                             <td>
-                                {{ $triage->petbleu ?? '' }}
+                                {{ $lavage->petbleu ?? '' }}
                             </td>
                             
                             <td>
-                                {{ $pettri=$triage->petblanc+$triage->petbleu ?? '' }}
+                                {{ $pettri=$lavage->petblanc+$lavage->petbleu ?? '' }}
                             </td>
 
                                     </td>
@@ -355,7 +355,7 @@
 </div>
 <div class="card col-lg-12">
     <div class="card-header " style="background-color:skyblue;color:white">
-        {{ trans('Table de triage PEHD') }}
+        {{ trans('Table de lavage PEHD') }}
     </div>
 
     <div class="card-body card col-lg-12 ">
@@ -409,39 +409,39 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($data as $key => $triage)
+                    @foreach($data as $key => $lavage)
                         <tr >
                                    
                         <td>
-                                {{ $triage->id ?? '' }}
+                                {{ $lavage->id ?? '' }}
                             </td>
                             
                             <td>
-                                {{ $triage->pehdblanc ?? '' }}
+                                {{ $lavage->pehdblanc ?? '' }}
                             </td>
                             <td>
-                                {{ $triage->pehdbleu ?? '' }}
+                                {{ $lavage->pehdbleu ?? '' }}
                             </td>
                             <td>
-                                {{ $triage->pehdjaune ?? '' }}
+                                {{ $lavage->pehdjaune ?? '' }}
                             </td><td>
-                                {{ $triage->pehdvert ?? '' }}
+                                {{ $lavage->pehdvert ?? '' }}
                             </td><td>
-                                {{ $triage->pehdneutre ?? '' }}
+                                {{ $lavage->pehdneutre ?? '' }}
                             </td><td>
-                                {{ $triage->pehdrouge ?? '' }}
+                                {{ $lavage->pehdrouge ?? '' }}
                             </td><td>
-                                {{ $triage->pehdjadida ?? '' }}
+                                {{ $lavage->pehdjadida ?? '' }}
                             </td><td>
-                                {{ $triage->pehdmaron ?? '' }}
+                                {{ $lavage->pehdmaron ?? '' }}
                             </td><td>
-                                {{ $triage->pehdnoire ?? '' }}
+                                {{ $lavage->pehdnoire ?? '' }}
                             </td>
                             <td>
-                                {{ $triage->pehdmulti ?? '' }}
+                                {{ $lavage->pehdmulti ?? '' }}
                             </td>
                             <td>
-                                {{$triage->pehdblanc+$triage->pehdbleu+$triage->pehdjaune+$triage->pehdvert+$triage->pehdneutre+$triage->pehdrouge+$triage->pehdjadida+$triage->pehdmaron+$triage->pehdnoire+$triage->pehdmulti ?? '' }}
+                                {{$lavage->pehdblanc+$lavage->pehdbleu+$lavage->pehdjaune+$lavage->pehdvert+$lavage->pehdneutre+$lavage->pehdrouge+$lavage->pehdjadida+$lavage->pehdmaron+$lavage->pehdnoire+$lavage->pehdmulti ?? '' }}
                             </td>
 
                            

@@ -3,12 +3,12 @@
     <div style="margin-bottom: 20px;margin-left: 50px;margin-top: 20px;" class="row">
         <div class="col-lg-10">
             <a class="btn btn-success" href="{{ route("depotProductions.create") }}">
-               {{ trans('Sortir de matiere pour les ateliers') }}
+               {{ trans('Sortir de la matiere pour les ateliers') }}
             </a>
         </div>
     </div>
 <div class="card">
-    <div class="card-header">
+    <div class="card-header" style="background-color:green;color:white">
         {{ trans('Liste des depots Production') }}
     </div>
 

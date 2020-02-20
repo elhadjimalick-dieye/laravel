@@ -6,13 +6,14 @@ use Illuminate\Http\Request;
 use App\DepotProduction;
 use App\Triage;
 use DB;
+
 class DepotProductionController extends Controller
 {
-  /**
-     * Display a listing of the resource.
-    * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    /**
+       * Display a listing of the resource.
+      * @param  int  $id
+       * @return \Illuminate\Http\Response
+       */
     public function index(Request $request)
     {
         $data = DepotProduction::orderBy('id', 'DESC')->paginate(5);
@@ -20,11 +21,11 @@ class DepotProductionController extends Controller
             ->with('i', ($request->input('page', 1) - 1) * 5);
     }
 
-     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    /**
+    * Show the form for creating a new resource.
+    *
+    * @return \Illuminate\Http\Response
+    */
     public function create(Request $request)
     {
         $depotProduction =DepotProduction::all();
@@ -46,29 +47,29 @@ class DepotProductionController extends Controller
         $input = $request->all();
         $depotProduction=DepotProduction::all();
         $vracSortant=$request->input('vracSortant');
-            $vracEntrant=$request->input('vracEntrant');
-            $ppcopoSortantepro=$request->input('ppcopoSortantepro');
-            $ppcopoEntrantpro=$request->input('ppcopoEntrantpro');
+        $vracEntrant=$request->input('vracEntrant');
+        $ppcopoSortantepro=$request->input('ppcopoSortantepro');
+        $ppcopoEntrantpro=$request->input('ppcopoEntrantpro');
 
-            $pphomoSortantepro=$request->input('pphomoSortantepro');
-            $pphomoEntrantpro=$request->input('pphomoEntrantpro');
+        $pphomoSortantepro=$request->input('pphomoSortantepro');
+        $pphomoEntrantpro=$request->input('pphomoEntrantpro');
 
-            $petbouteilleSortantpro=$request->input('petbouteilleSortantepro');
-            $petbouteilleEntrantpro=$request->input('petbouteilleEntrantpro');
+        $petbouteilleSortantpro=$request->input('petbouteilleSortantepro');
+        $petbouteilleEntrantpro=$request->input('petbouteilleEntrantpro');
 
-            $petpreformSortantpro=$request->input('petpreformSortantepro');
-            $petpreformEntrantpro=$request->input('petpreformEntrantpro');
+        $petpreformSortantpro=$request->input('petpreformSortantepro');
+        $petpreformEntrantpro=$request->input('petpreformEntrantpro');
 
-            $pehdcasierSortantpro=$request->input('pehdcasierSortantepro');
-            $pehdcasierEntrantpro=$request->input('pehdcasierEntrantpro');
+        $pehdcasierSortantpro=$request->input('pehdcasierSortantepro');
+        $pehdcasierEntrantpro=$request->input('pehdcasierEntrantpro');
 
-            $pehdsoufflageSortantpro=$request->input('pehdsoufflageSortantepro');
-            $pehdsoufflageEntrantpro=$request->input('pehdsoufflageEntrantpro');
+        $pehdsoufflageSortantpro=$request->input('pehdsoufflageSortantepro');
+        $pehdsoufflageEntrantpro=$request->input('pehdsoufflageEntrantpro');
 
-            $dechetproduction=$request->input('dechet');
-            $date=$request->input('date');
+        $dechetproduction=$request->input('dechet');
+        $date=$request->input('date');
 
-            DB::table('depot_productions')->insert([
+        DB::table('depot_productions')->insert([
             'vracinitiale'=>$vracinitiale=$depotProduction->last()->vrac,
             'vracEntrant'=>$vracEntrant,
             'vracSortant'=>$vracSortant,
@@ -111,69 +112,74 @@ class DepotProductionController extends Controller
             'date'=>$date,
             
             ]);
+            
+            
+              
 
+        $triage=Triage::all();
+        $vracSortant;
+        $pp=$ppcopoSortantepro+$pphomoSortantepro;
+        $pet=$petbouteilleSortantpro+$petpreformSortantpro;
+        $pehd=$pehdcasierSortantpro+$pehdsoufflageSortantpro;
+        $premierequantite=$vracSortant+$pp+$pet+$pehd;
+       // dd($premierequantite);
+        // dd($pehdsoufflageSortantpro);
+        DB::table('triages')->insert([
+                    'premierequantite'=>$premierequantite,
+                    'ppcopotri'=>0,
+                    'ppcopobleu'=>0,
+                    'ppcopoblanc'=>0,
+                    'ppcopojaune'=>0,
+                    'ppcopovert'=>0,
+                    'ppcopomauve'=>0,
+                    'ppcoporouge'=>0,
+                    'ppcopojadida'=>0,
+                    'ppcopomaron'=>0,
+                    'ppcoponoire'=>0,
+                    'ppcopomulti'=>0,
 
-            $triage=Triage::all();
-            $ppcopoSortantetr=$request->input('ppcopoSortantetr');
-            $vracSortanttr=$request->input('vracSortanttr');
-            $pphomoSortanttr=$request->input('pphomoSortantetr');
-            $petbouteilleSortanttr=$request->input('petbouteilleSortantetr');
-            $petpreformSortanttr=$request->input('petpreformSortantetr');
-            $pehdcasierSortanttr=$request->input('pehdcasierSortantetr');
-            $pehdsoufflageSortanttr=$request->input('pehdsoufflageSortantetr');
-            $dechetproductiontr=$request->input('dechettr');
-           // dd($pehdsoufflageSortantpro);
-                   DB::table('triages')->insert([
-                    'vracinitialetr'=>$vracinitialetr=$triage->last()->vractr,
-                    'vracEntranttr'=>$vracSortant,
-                    'vracSortanttr'=>$vracSortanttr,
-                    'vractr'=>$vracinitialetr+$vracSortant,
+                    'pphomotri'=>0,
+                    'pphomobleu'=>0,
+                    'pphomoblanc'=>0,
+                    'pphomojaune'=>0,
+                    'pphomovert'=>0,
+                    'pphomomauve'=>0,
+                    'pphomorouge'=>0,
+                    'pphomojadida'=>0,
+                    'pphomomaron'=>0,
+                    'pphomonoire'=>0,
+                    'pphomomulti'=>0,
 
-                    'pphomoinitialetr'=>$pphomoinitialetr=$triage->last()->pphomotr,
-                    'pphomoEntranttr'=>$pphomoSortantepro,
-                    'pphomoSortantetr'=>$pphomoSortanttr,
-                    'pphomotr'=>$pphomotr=$pphomoinitialetr+$pphomoSortantepro,
-
-                    'ppcopoinitialetr'=>$pphomoinitialetr=$triage->last()->ppcopotr,
-                    'ppcopoEntranttr'=>$ppcopoSortantepro,
-                    'ppcopoSortantetr'=>$ppcopoSortantetr,
-                    'ppcopotr'=>$ppcopotr=$pphomoinitialetr+$ppcopoSortantepro,
-                    'pptr'=>$ppcopotr+$pphomotr,
-
-                    'petbouteilleinitialetr'=>$petbouteilleinitialetr=$triage->last()->petbouteilletr,
-                    'petbouteilleEntranttr'=>$petbouteilleSortantpro,
-                    'petbouteilleSortantetr'=>$petbouteilleSortanttr,
-                    'petbouteilletr'=>$petbouteilletr=$petbouteilleinitialetr+$petbouteilleSortantpro,
-
-                    'petpreforminitialetr'=>$petpreforminitialetr=$triage->last()->petpreformtr,
-                    'petpreformEntranttr'=>$petpreformSortantpro,
-                    'petpreformSortantetr'=>$petpreformSortanttr,
-                    'petpreformtr'=>$petpreformtr=$petpreforminitialetr+$petpreformSortantpro,
-                    'pettr'=>$petpreformtr+$petbouteilletr,
-
-                    'pehdcasierinitialetr'=>$pehdcasierinitialetr=$triage->last()->pehdcasiertr,
-                    'pehdcasierEntranttr'=>$pehdcasierSortantpro,
-                    'pehdcasierSortantetr'=>$pehdcasierSortanttr,
-                    'pehdcasiertr'=>$pehdcasiertr=$pehdcasierinitialetr+$pehdcasierSortantpro,
-
-                    'pehdsoufflageinitialetr'=>$pehdsoufflageinitialetr=$triage->last()->pehdsoufflagetr,
-                    'pehdsoufflageEntranttr'=>$pehdsoufflageSortantpro,
-                    'pehdsoufflageSortantetr'=>$pehdsoufflageSortanttr,
-                    'pehdsoufflagetr'=>$pehdsoufflagetr=$pehdsoufflageinitialetr+$pehdsoufflageSortantpro,
-
-                    'pehdtr'=>$pehdsoufflagetr+$pehdcasiertr,
-                    'dechettr'=>$dechetproductiontr,
+                    'pettri'=>0,
+                    'petbleu'=>0,
+                    'petblanc'=>0,
+            
+            
+                    'pehdtri'=>0,
+                    'pehdbleu'=>0,
+                    'pehdblanc'=>0,
+                    'pehdjaune'=>0,
+                    'pehdvert'=>0,
+                    'pehdneutre'=>0,
+                    'pehdrouge'=>0,
+                    'pehdjadida'=>0,
+                    'pehdmaron'=>0,
+                    'pehdnoire'=>0,
+                    'pehdmulti'=>0,
+                    
+                    'totale'=>0,
+                    'dechetriage'=>0,
                     'date'=>$date,
                    
                     ]);
 
-         // dd($vracinitialetr+$vracSortant);
+        // dd($vracinitialetr+$vracSortant);
 
-        return redirect()->route('depotProductions.index',compact('depotProduction'))
-                        ->with('success','depot created successfully');
+        return redirect()->route('depotProductions.index', compact('depotProduction'))
+                        ->with('success', 'depot created successfully');
     }
 
-             /**
+    /**
      * Display the specified resource.
      *
      * @param  int  $id
@@ -182,7 +188,7 @@ class DepotProductionController extends Controller
     public function show($id)
     {
         $depotProduction = DepotProduction::find($id);
-        return view('depotProductions.show',compact('depotProduction'));
+        return view('depotProductions.show', compact('depotProduction'));
     }
 
     /**
@@ -194,7 +200,7 @@ class DepotProductionController extends Controller
     public function edit($id)
     {
         $depotProduction = DepotProduction::find($id);
-        return view('depotProductions.edit',compact('depotProduction'));
+        return view('depotProductions.edit', compact('depotProduction'));
     }
 
     /**
@@ -204,7 +210,7 @@ class DepotProductionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id )
+    public function update(Request $request, $id)
     {
         $this->validate($request, [
     
@@ -219,20 +225,20 @@ class DepotProductionController extends Controller
         $pehdsoufflage=$request->input('pehdsoufflage');
         $vrac=$request->input('vrac');
 
-       $firstpetbouteille=$depotProduction->petbouteille;
-       $firstpetpreform=$depotProduction->petpreform;
-       $firstpphomo=$depotProduction->pphomo;
-       $firstppcopo=$depotProduction->ppcopo;
-       $firstpehdcasier=$depotProduction->pehdcasier;
-       $firstpehdsoufflage=$depotProduction->pehdsoufflage;
-       $firstdepot=$depotProduction->vrac;
+        $firstpetbouteille=$depotProduction->petbouteille;
+        $firstpetpreform=$depotProduction->petpreform;
+        $firstpphomo=$depotProduction->pphomo;
+        $firstppcopo=$depotProduction->ppcopo;
+        $firstpehdcasier=$depotProduction->pehdcasier;
+        $firstpehdsoufflage=$depotProduction->pehdsoufflage;
+        $firstdepot=$depotProduction->vrac;
 
         $firstotal = $firstpetbouteille+$firstpetpreform+$firstpphomo+$firstppcopo+$firstpehdcasier+$firstpehdsoufflage;
 
         $totalnew=$ppcopo+$pphomo+$petbouteille+$petpreform+$pehdcasier+$pehdsoufflage+$vrac;
-         $depotProduction->update($input);
+        $depotProduction->update($input);
 
         return redirect()->route('depotProductions.index')
-                        ->with('success','Stock updated successfully');
+                        ->with('success', 'Stock updated successfully');
     }
 }

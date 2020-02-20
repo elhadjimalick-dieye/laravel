@@ -2,7 +2,7 @@
 
 
 @section('content')
-<div class="row " style="margin-left:8%">
+<div class="row " style="margin-left:8%" style="background-color:#008B8B;color:white">
     <div class="col-lg-8 ">
         <div class="pull-left">
             <h2>Ajouter un departement</h2>

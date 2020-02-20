@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTriagesTable extends Migration
+class CreateLavagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateTriagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('triages', function (Blueprint $table) {
+        Schema::create('lavages', function (Blueprint $table) {
             $table->bigIncrements('id');
-            
-            $table->bigInteger('premierequantite')->nullable();
-            $table->bigInteger('ppcopotri')->nullable();
+            $table->bigInteger('lavage');
+
+            $table->bigInteger('ppcopolav')->nullable();
             $table->bigInteger('ppcopobleu')->nullable();
             $table->bigInteger('ppcopoblanc')->nullable();
             $table->bigInteger('ppcopojaune')->nullable();
@@ -29,7 +29,7 @@ class CreateTriagesTable extends Migration
             $table->bigInteger('ppcoponoire')->nullable();
             $table->bigInteger('ppcopomulti')->nullable();
 
-            $table->bigInteger('pphomotri')->nullable();
+            $table->bigInteger('pphomolav')->nullable();
             $table->bigInteger('pphomobleu')->nullable();
             $table->bigInteger('pphomoblanc')->nullable();
             $table->bigInteger('pphomojaune')->nullable();
@@ -41,12 +41,11 @@ class CreateTriagesTable extends Migration
             $table->bigInteger('pphomonoire')->nullable();
             $table->bigInteger('pphomomulti')->nullable();
 
-            $table->bigInteger('pettri')->nullable();
+            $table->bigInteger('petlav')->nullable();
             $table->bigInteger('petbleu')->nullable();
             $table->bigInteger('petblanc')->nullable();
-            
 
-            $table->bigInteger('pehdtri')->nullable();
+            $table->bigInteger('pehdlav')->nullable();
             $table->bigInteger('pehdbleu')->nullable();
             $table->bigInteger('pehdblanc')->nullable();
             $table->bigInteger('pehdjaune')->nullable();
@@ -59,13 +58,12 @@ class CreateTriagesTable extends Migration
             $table->bigInteger('pehdmulti')->nullable();
 
             $table->bigInteger('totale')->nullable();
-            $table->bigInteger('effectiftri')->nullable();
+            $table->bigInteger('effectiflav')->nullable();
 
-            $table->bigInteger('dechetriage')->nullable();
+            $table->bigInteger('dechelavage')->nullable();
             $table->date('date');
             $table->timestamps();
             $table->softDeletes();
-
         });
     }
 
@@ -76,6 +74,6 @@ class CreateTriagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('triages');
+        Schema::dropIfExists('lavages');
     }
 }

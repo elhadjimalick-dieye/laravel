@@ -22,9 +22,9 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel" >
+        <nav class="navbar navbar-expand-md navbar-light navbar-laravel"style="background-color:green;color:white" >
             <div class="container-fluid">
-                <a class="navbar-brand" href="{{ url('/') }}" >
+                <a class="navbar-brand" href="{{ url('/') }}" style="color:white">
                     Recuplast
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,7 +41,7 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
-                            <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
+                            <li><a style="color:white" class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
                         @else
                             <li><a class="nav-link" href="{{ route('users.index') }}">Liste des utilisateurs</a></li>
                             <li><a class="nav-link" href="{{ route('roles.index') }}">Liste des roles</a></li>

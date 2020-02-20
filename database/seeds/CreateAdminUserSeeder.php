@@ -11,6 +11,7 @@ use App\CollectEntreprise;
 use App\DepotProduction;
 use App\Triage;
 use App\Permission;
+use App\Lavage;
 //use Spatie\Permission\Models\Roles;
 
 class CreateAdminUserSeeder extends Seeder
@@ -207,42 +208,63 @@ class CreateAdminUserSeeder extends Seeder
                     ]);
 
                     $triage = Triage::create([
-                        'vracinitialetr'=>0,
-                        'vracEntranttr'=>0,
-                        'vracSortanttr'=>0,
-                        'vractr'=>0,
-                        'pphomoinitialetr'=>0,
-                        'pphomoEntranttr'=>0,
-                        'pphomoSortantetr'=>0,
-                        'pphomotr'=>0,
-                        'ppcopoinitialetr'=>0,
-                        'ppcopoEntranttr'=>0,
-                        'ppcopoSortantetr'=>0,
-                        'ppcopotr'=>0,
-                        'pptr'=>0,
-                        'petbouteilleinitialetr'=>0,
-                        'petbouteilleEntranttr'=>0,
-                        'petbouteilleSortantetr'=>0,
-                        'petbouteilletr'=>0,
-                        'petpreforminitialetr'=>0,
-                        'petpreformEntranttr'=>0,
-                        'petpreformSortantetr'=>0,
-                        'petpreformtr'=>0,
-                        'pettr'=>0,
-                        'pehdcasierinitialetr'=>0,
-                        'pehdcasierEntranttr'=>0,
-                        'pehdcasierSortantetr'=>0,
-                        'pehdcasiertr'=>0,
-                        'pehdsoufflageinitialetr'=>0,
-                        'pehdsoufflageEntranttr'=>0,
-                        'pehdsoufflageSortantetr'=>0,
-                        'pehdsoufflagetr'=>0,
-                        'pehdtr'=>0,
-                        'dechettr'=>0,
+                        'premierequantite'=>0,
+                        
                         'date'=>'2015-02-03',
        
                         ]);
-                   
+
+                        $lavage = Lavage::create([
+                            
+                        'lavage'=>0,
+                        'ppcopolav'=>0,
+
+                        'ppcopobleu'=>0,
+                        'ppcopoblanc'=>0,
+                        'ppcopojaune'=>0,
+                        'ppcopovert'=>0,
+                        'ppcopomauve'=>0,
+                        'ppcoporouge'=>0,
+                        'ppcopojadida'=>0,
+                        'ppcopomaron'=>0,
+                        'ppcoponoire'=>0,
+                        'ppcopomulti'=>0,
+
+                        'pphomolav'=>0,
+                        'pphomobleu'=>0,
+                        'pphomoblanc'=>0,
+                        'pphomojaune'=>0,
+                        'pphomovert'=>0,
+                        'pphomomauve'=>0,
+                        'pphomorouge'=>0,
+                        'pphomojadida'=>0,
+                        'pphomomaron'=>0,
+                        'pphomonoire'=>0,
+                        'pphomomulti'=>0,
+
+                        'petlav'=>0,
+                        'petbleu'=>0,
+                        'petblanc'=>0,
+                    
+                        'pehdlav'=>0,
+                        'pehdbleu'=>0,
+                        'pehdblanc'=>0,
+                        'pehdjaune'=>0,
+                        'pehdvert'=>0,
+                        'pehdneutre'=>0,
+                        'pehdrouge'=>0,
+                        'pehdjadida'=>0,
+                        'pehdmaron'=>0,
+                        'pehdnoire'=>0,
+                        'pehdmulti'=>0,
+                    
+                        'totale'=>0,
+                        'effectiflav'=>0,
+                    
+                        'dechelavage'=>0,
+                        'date'=>'2015-02-03',
+                        ]);
+
     }
     
    

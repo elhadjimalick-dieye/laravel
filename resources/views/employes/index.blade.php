@@ -12,7 +12,7 @@
         {{ trans('liste des employés') }}
     </div>
 
-    <div class="card-body">
+    <div class="card-body" style="background-color:green;color:white">
         <div class="">
             <table style="width:100%" class=" table table-bordered table-striped table-hover datatable datatable-employe">
                 <thead>

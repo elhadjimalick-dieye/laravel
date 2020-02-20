@@ -5,10 +5,10 @@
 <div class="row " style="margin-left:8%">
     <div class="col-lg-8 ">
         <div class="pull-left">
-            <h2>Formulaire de Tri </h2>
+            <h2>Formulaire de lavage </h2>
         </div>
         <div class="pull-right">
-            <a class="btn btn-success" href="{{ route('triages.index') }}"> Retour</a>
+            <a class="btn btn-success" href="{{ route('lavages.index') }}"> Retour</a>
         </div>
         <br>
 
@@ -33,7 +33,7 @@
 @endif
 
 
-{!! Form::model($triage, ['method' => 'PATCH','route' => ['triages.update', $triage->id]]) !!}
+{!! Form::model($lavage, ['method' => 'PATCH','route' => ['lavages.update', $lavage->id]]) !!}
 <div class="row" style="margin-left:10%">
 <div class="col-xs-12 col-sm-12 col-md-3 " >
         <div class="form-group">
@@ -45,14 +45,14 @@
     <div class="col-xs-12 col-sm-12 col-md-3 " >
         <div class="form-group">
             <strong style='color:black'>La Quantite de ce quart</strong>
-            {!! Form::number('premierequantite', null, array('placeholder' => 'quantite en kg','disabled','class' => 'form-control')) !!}
+            {!! Form::number('lavage', null, array('placeholder' => 'quantite en kg','disabled','class' => 'form-control')) !!}
         </div>
       
     </div> 
     <div class="col-xs-12 col-sm-12 col-md-2 " >
         <div class="form-group">
             <strong style='color:black'>Effectifs</strong>
-            {!! Form::number('effectiftri', null, array('placeholder' => 'nombre de personne','class' => 'form-control')) !!}
+            {!! Form::number('effectiflav', null, array('placeholder' => 'nombre de personne','class' => 'form-control')) !!}
         </div>
       
     </div> 
@@ -60,7 +60,7 @@
     <div class="col-xs-12 col-sm-12 col-md-2 " >
         <div class="form-group">
             <strong style='color:black'>Dechets</strong>
-            {!! Form::number('dechetriage', null, array('placeholder' => 'quantite en kg','class' => 'form-control')) !!}
+            {!! Form::number('dechelavage', null, array('placeholder' => 'quantite en kg','class' => 'form-control')) !!}
         </div>
       
     </div> 
