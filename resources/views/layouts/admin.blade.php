@@ -259,20 +259,41 @@
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
                     <a href="{{ route('triages.index') }}" class="nav-link">
-                      <i class="far fa-dot-circle nav-icon"></i>
+                      <i class="far fa-dot-circle nav-icon" style="color:#1E90FF"></i>
                       <p>Triage</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="{{ route('lavages.index') }}" class="nav-link">
-                      <i class="far fa-dot-circle nav-icon"></i>
-                      <p>Lavage</p>
+                    <a href="{{ route('lavageshors.index') }}" class="nav-link">
+                      <i class="far fa-dot-circle nav-icon" style="color:#008000"></i>
+                      <p>Lavage hors circuits</p>
+                    </a>
+
+                  </li>
+                  <li class="nav-item">
+                    <a href="{{ route('broyages.index') }}" class="nav-link">
+                      <i class="far fa-dot-circle nav-icon" style="color:#DC143C"></i>
+                      <p>Broyage</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="far fa-dot-circle nav-icon"></i>
-                      <p>Level 3</p>
+                    <a href="{{ route('tamisages.index') }}" class="nav-link">
+                      <i class="far fa-dot-circle nav-icon" style="color:#D2691E"></i>
+                      <p>Tamisage</p>
+                    </a>
+                  </li>
+
+                  <li class="nav-item">
+                    <a href="{{ route('lavages.index') }}" class="nav-link">
+                      <i class="far fa-dot-circle nav-icon" style="color:#A9A9A9"></i>
+                      <p>Lavage</p>
+                    </a>
+                  </li>
+
+                  <li class="nav-item">
+                    <a href="{{ route('sechages.index') }}" class="nav-link">
+                      <i class="far fa-dot-circle nav-icon" style="color:#9932CC"></i>
+                      <p>Sechage</p>
                     </a>
                   </li>
                 </ul>

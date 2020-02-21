@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Id;
-use App\Lavagehor;
+use App\Lavage;
 use DB;
-use App\Broyage;
+use App\Sechage;
 
-class LavageController extends Controller
+class LavageControllers2 extends Controller
 {
     /**
      * Show the form for creating a new resource.
@@ -17,8 +17,8 @@ class LavageController extends Controller
      */
     public function index(Request $request)
     {
-        $data = Lavagehor::orderBy('id', 'DESC')->paginate(10);
-        return view('lavageshors.index', compact('data'))
+        $data = Lavage::orderBy('id', 'DESC')->paginate(10);
+        return view('lavages.index', compact('data'))
             ->with('i', ($request->input('page', 1) - 1) * 7);
     }
          /**
@@ -29,8 +29,8 @@ class LavageController extends Controller
      */
     public function edit($id)
     {
-        $lavagehor = Lavagehor::find($id);
-        return view('lavageshors.edit', compact('lavagehor'));
+        $lavage = Lavage::find($id);
+        return view('lavages.edit', compact('lavage'));
     }
    
     /**
@@ -47,7 +47,7 @@ class LavageController extends Controller
         ]);
 
         $input = $request->all();
-        $lavagehor=Lavagehor::find($id);
+        $lavage=Lavage::find($id);
         $ppcopobleu=$request->input('ppcopobleu');
         $ppcopoblanc=$request->input('ppcopoblanc');
         $ppcopojaune=$request->input('ppcopojaune');
@@ -93,7 +93,7 @@ class LavageController extends Controller
         //total
         $pehdlav=$pehdbleu+$pehdblanc+$pehdjaune+$pehdvert+$pehdneutre+$pehdrouge+$pehdjadida+$pehdmaron+$pehdnoire+$pehdmulti;
         $dechelavage=$request->input('dechelavage');
-        $lavagess=$lavagehor->lavagehor;
+        $lavagess=$lavage->lavage;
         $totale=$pehdlav+$ppcopolav+$pphomolav+$petlav;
         $totaleetdechet=$totale+$dechelavage;
         // dd($lavagess);
@@ -101,77 +101,72 @@ class LavageController extends Controller
        // dd($ppcopoblanc);
 
         if ($lavagess<=0) {
-            return redirect()->route('lavageshors.index',compact('lavagehor'))->withFail('La matiere a ete laver ou bien la quantite est inferieur ou egale à ZERO ');
+            return redirect()->route('lavages.index',compact('lavage'))->withFail('La matiere a ete laver ou bien la quantite est inferieur ou egale à ZERO ');
         }
        // dd($totaleetdechet);
 
        if ($lavagess==$totaleetdechet) {
-        $lavagehor->totale=$totale;
+        $lavage->totale=$totale;
         //dd($totaleetdechet);
-        $lavagehor->lavagehor=$lavagess-$totaleetdechet;
-        $lavagehor->update($input);
+        $lavage->lavage=$lavagess-$totaleetdechet;
+        $lavage->update($input);
   
-        $broyage = Broyage::all();
-       
-         DB::table('broyages')->insert([
-       // dd($broyage),
-      // dd('cool 1'),
+        $sechage=Sechage::all();
+        
+        DB::table('sechages')->insert([
+            'sechage'=>$totale,
+            'ppcopobleu'=>$ppcopobleu,
+            'ppcopoblanc'=>$ppcopoblanc,
+            'ppcopojaune'=>$ppcopojaune,
+            'ppcopovert'=>$ppcopovert,
+            'ppcopomauve'=>$ppcopomauve,
+            'ppcoporouge'=>$ppcoporouge,
+            'ppcopojadida'=>$ppcopojadida,
+            'ppcopomaron'=>$ppcopomaron,
+            'ppcoponoire'=>$ppcoponoire,
+            'ppcopomulti'=>$ppcopomulti,
+            'ppcoposec'=>$ppcopolav,
 
-             'broyage'=>$totale,
-             'ppcopobleu'=>$ppcopobleu,
-             'ppcopoblanc'=>$ppcopoblanc,
-             'ppcopojaune'=>$ppcopojaune,
-             'ppcopovert'=>$ppcopovert,
-             'ppcopomauve'=>$ppcopomauve,
-             'ppcoporouge'=>$ppcoporouge,
-             'ppcopojadida'=>$ppcopojadida,
-             'ppcopomaron'=>$ppcopomaron,
-             'ppcoponoire'=>$ppcoponoire,
-             'ppcopomulti'=>$ppcopomulti,
-             'ppcopobro'=>$ppcopolav,
- 
-             'pphomobleu'=>$pphomobleu,
-             'pphomoblanc'=>$pphomoblanc,
-             'pphomojaune'=>$pphomojaune,
-             'pphomovert'=>$pphomovert,
-             'pphomomauve'=>$pphomomauve,
-             'pphomorouge'=>$pphomorouge,
-             'pphomojadida'=>$pphomojadida,
-             'pphomomaron'=>$pphomomaron,
-             'pphomonoire'=>$pphomonoire,
-             'pphomomulti'=>$pphomomulti,
-             'pphomobro'=>$pphomolav,
-         
-             'petbleu'=>$petbleu,
-             'petblanc'=>$petblanc,
-             'petbro'=>$petlav,
- 
-             'pehdbleu'=>$pehdbleu,
-             'pehdblanc'=>$pehdblanc,
-             'pehdjaune'=>$pehdjaune,
-             'pehdvert'=>$pehdvert,
-             'pehdneutre'=>$pehdneutre,
-             'pehdrouge'=>$pehdrouge,
-             'pehdjadida'=>$pehdjadida,
-             'pehdmaron'=>$pehdmaron,
-             'pehdnoire'=>$pehdnoire,
-             'pehdmulti'=>$pehdmulti,
-             'pehdbro'=>$pehdlav,
-         
-             'totale'=>0,
-             'effectifbro'=>0,
-             'heuremachine'=>0,
+            'pphomobleu'=>$pphomobleu,
+            'pphomoblanc'=>$pphomoblanc,
+            'pphomojaune'=>$pphomojaune,
+            'pphomovert'=>$pphomovert,
+            'pphomomauve'=>$pphomomauve,
+            'pphomorouge'=>$pphomorouge,
+            'pphomojadida'=>$pphomojadida,
+            'pphomomaron'=>$pphomomaron,
+            'pphomonoire'=>$pphomonoire,
+            'pphomomulti'=>$pphomomulti,
+            'pphomosec'=>$pphomolav,
+        
+            'petbleu'=>$petbleu,
+            'petblanc'=>$petblanc,
+            'petsec'=>$petlav,
 
-             'dechebroyage'=>0,
-             'date'=>$date,
-                    
-                     ]);
+            'pehdbleu'=>$pehdbleu,
+            'pehdblanc'=>$pehdblanc,
+            'pehdjaune'=>$pehdjaune,
+            'pehdvert'=>$pehdvert,
+            'pehdneutre'=>$pehdneutre,
+            'pehdrouge'=>$pehdrouge,
+            'pehdjadida'=>$pehdjadida,
+            'pehdmaron'=>$pehdmaron,
+            'pehdnoire'=>$pehdnoire,
+            'pehdmulti'=>$pehdmulti,
+            'pehdsec'=>$pehdlav,
+        
+            'totale'=>0,
+            'effectifsec'=>0,
+            'dechesechage'=>0,
+            'date'=>$date,
+                   
+                    ]);
 
                      //dd('cool');
-        return redirect()->route('lavageshors.index',compact('broyage'))->withFail('BRAVO, Le lavage hors circuits de la matiere Id (numero '.$lavagehor->id.') a ete effectué avec succes, La matiere se retrouve maitenant dans l-atelier de broyage .');
+        return redirect()->route('lavages.index',compact('lavage'))->withFail('BRAVO, Le lavage de la matiere Id (numero '.$lavage->id.') a ete effectué avec succes, La matiere se retrouve maitenant dans l-atelier de sechage .');
        }
        
-        return redirect()->route('lavageshors.edit',compact('lavagehor'))->withFail('Veillez bien verifier Les quantites que vous avez saisies, surement il y-a une difference avec la quantite qui est sur cet QUART. ');
+        return redirect()->route('lavages.edit',compact('lavage'))->withFail('Veillez bien verifier Les quantites que vous avez saisies, surement il y-a une difference avec la quantite qui est sur cet QUART. ');
     }
   
 

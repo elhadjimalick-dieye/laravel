@@ -7,6 +7,13 @@
             </a>
         </div>
     </div>
+
+    @if(Session::has('fail'))
+    <div class="alert alert-success">
+       {{Session::get('fail')}}
+    </div>
+@endif
+
 <div class="card">
     <div class="card-header" style="background-color:green;color:white">
         {{ trans('Liste des depots Production') }}

@@ -41,7 +41,15 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('depotCollectes','DepotCollectes');
     Route::resource('depotProductions','DepotProductionController');
     Route::resource('triages','TriageController');
-    Route::resource('lavages','LavageController');
+    Route::resource('lavageshors','LavageController');
+    Route::resource('lavages','LavageControllers2');
+    Route::resource('sechages','SechageController');
+
+
+    Route::resource('broyages','BroyageController');
+    Route::resource('tamisages','TamisageController');
+
+
 
 
     

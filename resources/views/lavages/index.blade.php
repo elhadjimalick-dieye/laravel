@@ -27,7 +27,7 @@
 @endif
 
 <div class="card col-lg-12">
-    <div class="card-header" style="background-color:green;color:white">
+    <div class="card-header" style="background-color:grey;color:white">
     {{ trans('Table de matiere par quart') }}
     </div>
 
@@ -70,16 +70,16 @@
                                 {{ $lavage->id ?? '' }}
                             </td>
                             <td>
-                                {{ $lavage->effectiflav ?? '' }}
+                                {{ $lavage->effectiflav ?? '' }} personne(s)
                             </td>
                             <td>
-                                {{ $lavage->lavage ?? '' }}
+                                {{ $lavage->lavage ?? '' }} kg
                             </td>
                             <td>
-                                {{ $lavage->dechelavage ?? '' }}
+                                {{ $lavage->dechelavage ?? '' }} kg
                             </td>
                             <td>
-                            {{ $lavage->totale ?? '' }}
+                            {{ $lavage->totale ?? '' }} kg
 
 
                             </td>
@@ -89,7 +89,7 @@
 
                             <td>
                               
-                                    <a class="btn btn-xs btn-success" href="{{ route('lavages.edit', $lavage->id) }}">
+                                    <a class="btn btn-xs btn-secondary" href="{{ route('lavages.edit', $lavage->id) }}">
                                     <h6>laver</h6>
 
 
@@ -145,7 +145,7 @@
                         {{ trans('MultiColore') }}
                         </th>
                         <th>
-                        {{ trans('Total') }}
+                        {{ trans('Total___') }}
                         </th>
                        
                         
@@ -160,32 +160,32 @@
                                 {{ $lavage->id ?? '' }}
                             </td>
                             <td>
-                                {{ $lavage->ppcopoblanc ?? '' }}
+                                {{ $lavage->ppcopoblanc ?? '' }} kg
                             </td>
                             <td>
-                                {{ $lavage->ppcopobleu ?? '' }}
+                                {{ $lavage->ppcopobleu ?? '' }} kg
                             </td>
                             <td>
-                                {{ $lavage->ppcopojaune ?? '' }}
+                                {{ $lavage->ppcopojaune ?? '' }} kg
                             </td>
                             <td>
-                                {{ $lavage->ppcopovert ?? '' }}
+                                {{ $lavage->ppcopovert ?? '' }} kg
                             </td>
                             <td>
-                                {{ $lavage->ppcopomauve ?? '' }}
+                                {{ $lavage->ppcopomauve ?? '' }} kg
                             </td><td>
-                                {{ $lavage->ppcoporouge ?? '' }}
+                                {{ $lavage->ppcoporouge ?? '' }} kg
                             </td><td>
-                                {{ $lavage->ppcopojadida ?? '' }}
+                                {{ $lavage->ppcopojadida ?? '' }} kg
                             </td><td>
-                                {{ $lavage->ppcopomaron ?? '' }}
+                                {{ $lavage->ppcopomaron ?? '' }} kg
                             </td><td>
-                                {{ $lavage->ppcoponoire ?? '' }}
+                                {{ $lavage->ppcoponoire ?? '' }} kg
                             </td><td>
-                                {{ $lavage->ppcopomulti ?? '' }}
+                                {{ $lavage->ppcopomulti ?? '' }} kg
                             </td>
                             <td>
-                                {{ $ppcopo=$lavage->ppcopoblanc+$lavage->ppcopobleu+$lavage->ppcopojaune+$lavage->ppcopovert+$lavage->ppcopomauve+$lavage->ppcoporouge+$lavage->ppcopojadida+$lavage->ppcopomaron+$lavage->ppcoponoire+$lavage->ppcopomulti ?? '' }}
+                                {{ $ppcopo=$lavage->ppcopoblanc+$lavage->ppcopobleu+$lavage->ppcopojaune+$lavage->ppcopovert+$lavage->ppcopomauve+$lavage->ppcoporouge+$lavage->ppcopojadida+$lavage->ppcopomaron+$lavage->ppcoponoire+$lavage->ppcopomulti ?? '' }} kg
                             </td>
 
                                     </td>
@@ -240,7 +240,7 @@
                         {{ trans('MultiColore') }}
                         </th>
                         <th>
-                        {{ trans('Total') }}
+                        {{ trans('Total___') }}
                         </th>
                        
                         
@@ -252,35 +252,35 @@
                         <tr >
 
                         <td>
-                                {{ $lavage->id ?? '' }}
+                                {{ $lavage->id ?? '' }} kg
                             </td>
                             <td>
-                                {{ $lavage->pphomoblanc ?? '' }}
+                                {{ $lavage->pphomoblanc ?? '' }} kg
                             </td>
                             <td>
-                                {{ $lavage->pphomobleu ?? '' }}
+                                {{ $lavage->pphomobleu ?? '' }} kg
                             </td>
                             <td>
-                                {{ $lavage->pphomojaune ?? '' }}
+                                {{ $lavage->pphomojaune ?? '' }} kg
                             </td>
                             <td>
-                                {{ $lavage->pphomovert ?? '' }}
+                                {{ $lavage->pphomovert ?? '' }} kg
                             </td>
                             <td>
-                                {{ $lavage->pphomomauve ?? '' }}
+                                {{ $lavage->pphomomauve ?? '' }} kg
                             </td><td>
-                                {{ $lavage->pphomorouge ?? '' }}
+                                {{ $lavage->pphomorouge ?? '' }} kg
                             </td><td>
-                                {{ $lavage->pphomojadida ?? '' }}
+                                {{ $lavage->pphomojadida ?? '' }} kg
                             </td><td>
-                                {{ $lavage->pphomomaron ?? '' }}
+                                {{ $lavage->pphomomaron ?? '' }} kg
                             </td><td>
-                                {{ $lavage->pphomonoire ?? '' }}
+                                {{ $lavage->pphomonoire ?? '' }} kg
                             </td><td>
-                                {{ $lavage->pphomomulti ?? '' }}
+                                {{ $lavage->pphomomulti ?? '' }} kg
                             </td>
                             <td>
-                                {{ $pphomo=$lavage->pphomoblanc+$lavage->pphomobleu+$lavage->pphomojaune+$lavage->pphomovert+$lavage->pphomomauve+$lavage->pphomorouge+$lavage->pphomojadida+$lavage->pphomomaron+$lavage->pphomonoire+$lavage->pphomomulti ?? '' }}
+                                {{ $pphomo=$lavage->pphomoblanc+$lavage->pphomobleu+$lavage->pphomojaune+$lavage->pphomovert+$lavage->pphomomauve+$lavage->pphomorouge+$lavage->pphomojadida+$lavage->pphomomaron+$lavage->pphomonoire+$lavage->pphomomulti ?? '' }} kg
                             </td>
 
                                     </td>
@@ -332,14 +332,14 @@
                                 {{ $lavage->id ?? '' }}
                             </td>
                             <td>
-                                {{ $lavage->petblanc ?? '' }}
+                                {{ $lavage->petblanc ?? '' }} kg
                             </td>
                             <td>
-                                {{ $lavage->petbleu ?? '' }}
+                                {{ $lavage->petbleu ?? '' }} kg
                             </td>
                             
                             <td>
-                                {{ $pettri=$lavage->petblanc+$lavage->petbleu ?? '' }}
+                                {{ $pettri=$lavage->petblanc+$lavage->petbleu ?? '' }} kg
                             </td>
 
                                     </td>
@@ -401,7 +401,7 @@
 
                         </th>
                         <th>
-                        {{ trans('Total') }}
+                        {{ trans('Total____') }}
 
                         </th>
                         
@@ -417,31 +417,31 @@
                             </td>
                             
                             <td>
-                                {{ $lavage->pehdblanc ?? '' }}
+                                {{ $lavage->pehdblanc ?? '' }} kg
                             </td>
                             <td>
-                                {{ $lavage->pehdbleu ?? '' }}
+                                {{ $lavage->pehdbleu ?? '' }} kg
                             </td>
                             <td>
-                                {{ $lavage->pehdjaune ?? '' }}
+                                {{ $lavage->pehdjaune ?? '' }} kg
                             </td><td>
-                                {{ $lavage->pehdvert ?? '' }}
+                                {{ $lavage->pehdvert ?? '' }} kg
                             </td><td>
-                                {{ $lavage->pehdneutre ?? '' }}
+                                {{ $lavage->pehdneutre ?? '' }} kg
                             </td><td>
-                                {{ $lavage->pehdrouge ?? '' }}
+                                {{ $lavage->pehdrouge ?? '' }} kg
                             </td><td>
-                                {{ $lavage->pehdjadida ?? '' }}
+                                {{ $lavage->pehdjadida ?? '' }} kg
                             </td><td>
-                                {{ $lavage->pehdmaron ?? '' }}
+                                {{ $lavage->pehdmaron ?? '' }} kg
                             </td><td>
-                                {{ $lavage->pehdnoire ?? '' }}
+                                {{ $lavage->pehdnoire ?? '' }} kg
                             </td>
                             <td>
-                                {{ $lavage->pehdmulti ?? '' }}
+                                {{ $lavage->pehdmulti ?? '' }} kg
                             </td>
                             <td>
-                                {{$lavage->pehdblanc+$lavage->pehdbleu+$lavage->pehdjaune+$lavage->pehdvert+$lavage->pehdneutre+$lavage->pehdrouge+$lavage->pehdjadida+$lavage->pehdmaron+$lavage->pehdnoire+$lavage->pehdmulti ?? '' }}
+                                {{$lavage->pehdblanc+$lavage->pehdbleu+$lavage->pehdjaune+$lavage->pehdvert+$lavage->pehdneutre+$lavage->pehdrouge+$lavage->pehdjadida+$lavage->pehdmaron+$lavage->pehdnoire+$lavage->pehdmulti ?? '' }} kg
                             </td>
 
                            

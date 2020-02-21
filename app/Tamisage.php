@@ -4,14 +4,14 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
-class Lavage extends Model
+class Tamisage extends Model
 {
 
     use SoftDeletes, Notifiable;
 
     protected $fillable = [
-    'lavage',
-    'ppcopolav',
+    'tamisage',
+    'ppcopotami',
     'ppcopobleu',
     'ppcopoblanc',
     'ppcopojaune',
@@ -23,7 +23,7 @@ class Lavage extends Model
     'ppcoponoire',
     'ppcopomulti',
 
-    'pphomolav',
+    'pphomotami',
     'pphomobleu',
     'pphomoblanc',
     'pphomojaune',
@@ -35,11 +35,11 @@ class Lavage extends Model
     'pphomonoire',
     'pphomomulti',
 
-    'petlav',
+    'pettami',
     'petbleu',
     'petblanc',
 
-    'pehdlav',
+    'pehdtami',
     'pehdbleu',
     'pehdblanc',
     'pehdjaune',
@@ -52,8 +52,9 @@ class Lavage extends Model
     'pehdmulti',
 
     'totale',
-    'effectiflav',
-    'dechelavage',
+    'effectiftami',
+
+    'dechetamisage',
     'date'
 
 ];

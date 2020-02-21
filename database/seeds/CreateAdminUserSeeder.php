@@ -11,7 +11,8 @@ use App\CollectEntreprise;
 use App\DepotProduction;
 use App\Triage;
 use App\Permission;
-use App\Lavage;
+use App\Lavagehor;
+use App\Broyage;
 //use Spatie\Permission\Models\Roles;
 
 class CreateAdminUserSeeder extends Seeder
@@ -214,9 +215,9 @@ class CreateAdminUserSeeder extends Seeder
        
                         ]);
 
-                        $lavage = Lavage::create([
+                        $lavagehor = Lavagehor::create([
                             
-                        'lavage'=>0,
+                        'lavagehor'=>0,
                         'ppcopolav'=>0,
 
                         'ppcopobleu'=>0,
@@ -264,6 +265,57 @@ class CreateAdminUserSeeder extends Seeder
                         'dechelavage'=>0,
                         'date'=>'2015-02-03',
                         ]);
+                        $broyage = Broyage::create([
+
+                    'broyage'=>0,
+                    'ppcopobro'=>0,
+                    'ppcopobleu'=>0,
+                    'ppcopoblanc'=>0,
+                    'ppcopojaune'=>0,
+                    'ppcopovert'=>0,
+                    'ppcopomauve'=>0,
+                    'ppcoporouge'=>0,
+                    'ppcopojadida'=>0,
+                    'ppcopomaron'=>0,
+                    'ppcoponoire'=>0,
+                    'ppcopomulti'=>0,
+
+                    'pphomobro'=>0,
+                    'pphomobleu'=>0,
+                    'pphomoblanc'=>0,
+                    'pphomojaune'=>0,
+                    'pphomovert'=>0,
+                    'pphomomauve'=>0,
+                    'pphomorouge'=>0,
+                    'pphomojadida'=>0,
+                    'pphomomaron'=>0,
+                    'pphomonoire'=>0,
+                    'pphomomulti'=>0,
+
+                    'petbro'=>0,
+                    'petbleu'=>0,
+                    'petblanc'=>0,
+
+                    'pehdbro'=>0,
+                    'pehdbleu'=>0,
+                    'pehdblanc'=>0,
+                    'pehdjaune'=>0,
+                    'pehdvert'=>0,
+                    'pehdneutre'=>0,
+                    'pehdrouge'=>0,
+                    'pehdjadida'=>0,
+                    'pehdmaron'=>0,
+                    'pehdnoire'=>0,
+                    'pehdmulti'=>0,
+
+                    'totale'=>0,
+                    'effectifbro'=>0,
+
+                    'dechebroyage'=>0,
+                    'heuremachine'=>0,
+                    'date'=>'2015-02-03',
+                    ]);
+
 
     }
     

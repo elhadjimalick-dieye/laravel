@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Id;
-use App\Lavagehor;
+use App\Lavage;
 use DB;
-use App\Broyage;
+use App\Tamisage;
 
-class LavageController extends Controller
+class TamisageController extends Controller
 {
     /**
      * Show the form for creating a new resource.
@@ -17,8 +17,8 @@ class LavageController extends Controller
      */
     public function index(Request $request)
     {
-        $data = Lavagehor::orderBy('id', 'DESC')->paginate(10);
-        return view('lavageshors.index', compact('data'))
+        $data = Tamisage::orderBy('id', 'DESC')->paginate(10);
+        return view('tamisages.index', compact('data'))
             ->with('i', ($request->input('page', 1) - 1) * 7);
     }
          /**
@@ -29,8 +29,8 @@ class LavageController extends Controller
      */
     public function edit($id)
     {
-        $lavagehor = Lavagehor::find($id);
-        return view('lavageshors.edit', compact('lavagehor'));
+        $tamisage = tamisage::find($id);
+        return view('tamisages.edit', compact('tamisage'));
     }
    
     /**
@@ -43,11 +43,11 @@ class LavageController extends Controller
     {
         $this->validate($request, [
             'date' => 'required',
-            'effectiflav' => 'required', 
+            'effectiftami' => 'required', 
         ]);
 
         $input = $request->all();
-        $lavagehor=Lavagehor::find($id);
+        $tamisage=Tamisage::find($id);
         $ppcopobleu=$request->input('ppcopobleu');
         $ppcopoblanc=$request->input('ppcopoblanc');
         $ppcopojaune=$request->input('ppcopojaune');
@@ -92,86 +92,83 @@ class LavageController extends Controller
         $pehdmulti=$request->input('pehdmulti');
         //total
         $pehdlav=$pehdbleu+$pehdblanc+$pehdjaune+$pehdvert+$pehdneutre+$pehdrouge+$pehdjadida+$pehdmaron+$pehdnoire+$pehdmulti;
-        $dechelavage=$request->input('dechelavage');
-        $lavagess=$lavagehor->lavagehor;
+        $dechetamisage=$request->input('dechetamisage');
+        $tamisagess=$tamisage->tamisage;
         $totale=$pehdlav+$ppcopolav+$pphomolav+$petlav;
-        $totaleetdechet=$totale+$dechelavage;
-        // dd($lavagess);
+        $totaleetdechet=$totale+$dechetamisage;
+        // dd($tamisagess);
         $date=$request->input('date');
        // dd($ppcopoblanc);
 
-        if ($lavagess<=0) {
-            return redirect()->route('lavageshors.index',compact('lavagehor'))->withFail('La matiere a ete laver ou bien la quantite est inferieur ou egale à ZERO ');
+        if ($tamisagess<=0) {
+            return redirect()->route('tamisages.index',compact('tamisage'))->withFail('La matiere a ete tamiser ou bien la quantite est inferieur ou egale à ZERO ');
         }
        // dd($totaleetdechet);
 
-       if ($lavagess==$totaleetdechet) {
-        $lavagehor->totale=$totale;
+       if ($tamisagess==$totaleetdechet) {
+        $tamisage->totale=$totale;
         //dd($totaleetdechet);
-        $lavagehor->lavagehor=$lavagess-$totaleetdechet;
-        $lavagehor->update($input);
-  
-        $broyage = Broyage::all();
+        $tamisage->tamisage=$tamisagess-$totaleetdechet;
+        $tamisage->update($input);
+
+        $lavage=Lavage::all();
+        
+        DB::table('lavages')->insert([
+            'lavage'=>$totale,
+            'ppcopobleu'=>$ppcopobleu,
+            'ppcopoblanc'=>$ppcopoblanc,
+            'ppcopojaune'=>$ppcopojaune,
+            'ppcopovert'=>$ppcopovert,
+            'ppcopomauve'=>$ppcopomauve,
+            'ppcoporouge'=>$ppcoporouge,
+            'ppcopojadida'=>$ppcopojadida,
+            'ppcopomaron'=>$ppcopomaron,
+            'ppcoponoire'=>$ppcoponoire,
+            'ppcopomulti'=>$ppcopomulti,
+            'ppcopolav'=>$ppcopolav,
+
+            'pphomobleu'=>$pphomobleu,
+            'pphomoblanc'=>$pphomoblanc,
+            'pphomojaune'=>$pphomojaune,
+            'pphomovert'=>$pphomovert,
+            'pphomomauve'=>$pphomomauve,
+            'pphomorouge'=>$pphomorouge,
+            'pphomojadida'=>$pphomojadida,
+            'pphomomaron'=>$pphomomaron,
+            'pphomonoire'=>$pphomonoire,
+            'pphomomulti'=>$pphomomulti,
+            'pphomolav'=>$pphomolav,
+        
+            'petbleu'=>$petbleu,
+            'petblanc'=>$petblanc,
+            'petlav'=>$petlav,
+
+            'pehdbleu'=>$pehdbleu,
+            'pehdblanc'=>$pehdblanc,
+            'pehdjaune'=>$pehdjaune,
+            'pehdvert'=>$pehdvert,
+            'pehdneutre'=>$pehdneutre,
+            'pehdrouge'=>$pehdrouge,
+            'pehdjadida'=>$pehdjadida,
+            'pehdmaron'=>$pehdmaron,
+            'pehdnoire'=>$pehdnoire,
+            'pehdmulti'=>$pehdmulti,
+            'pehdlav'=>$pehdlav,
+        
+            'totale'=>0,
+            'effectiflav'=>0,
+            'dechelavage'=>0,
+            'date'=>$date,
+                   
+                    ]);
+
        
-         DB::table('broyages')->insert([
-       // dd($broyage),
-      // dd('cool 1'),
-
-             'broyage'=>$totale,
-             'ppcopobleu'=>$ppcopobleu,
-             'ppcopoblanc'=>$ppcopoblanc,
-             'ppcopojaune'=>$ppcopojaune,
-             'ppcopovert'=>$ppcopovert,
-             'ppcopomauve'=>$ppcopomauve,
-             'ppcoporouge'=>$ppcoporouge,
-             'ppcopojadida'=>$ppcopojadida,
-             'ppcopomaron'=>$ppcopomaron,
-             'ppcoponoire'=>$ppcoponoire,
-             'ppcopomulti'=>$ppcopomulti,
-             'ppcopobro'=>$ppcopolav,
- 
-             'pphomobleu'=>$pphomobleu,
-             'pphomoblanc'=>$pphomoblanc,
-             'pphomojaune'=>$pphomojaune,
-             'pphomovert'=>$pphomovert,
-             'pphomomauve'=>$pphomomauve,
-             'pphomorouge'=>$pphomorouge,
-             'pphomojadida'=>$pphomojadida,
-             'pphomomaron'=>$pphomomaron,
-             'pphomonoire'=>$pphomonoire,
-             'pphomomulti'=>$pphomomulti,
-             'pphomobro'=>$pphomolav,
-         
-             'petbleu'=>$petbleu,
-             'petblanc'=>$petblanc,
-             'petbro'=>$petlav,
- 
-             'pehdbleu'=>$pehdbleu,
-             'pehdblanc'=>$pehdblanc,
-             'pehdjaune'=>$pehdjaune,
-             'pehdvert'=>$pehdvert,
-             'pehdneutre'=>$pehdneutre,
-             'pehdrouge'=>$pehdrouge,
-             'pehdjadida'=>$pehdjadida,
-             'pehdmaron'=>$pehdmaron,
-             'pehdnoire'=>$pehdnoire,
-             'pehdmulti'=>$pehdmulti,
-             'pehdbro'=>$pehdlav,
-         
-             'totale'=>0,
-             'effectifbro'=>0,
-             'heuremachine'=>0,
-
-             'dechebroyage'=>0,
-             'date'=>$date,
-                    
-                     ]);
 
                      //dd('cool');
-        return redirect()->route('lavageshors.index',compact('broyage'))->withFail('BRAVO, Le lavage hors circuits de la matiere Id (numero '.$lavagehor->id.') a ete effectué avec succes, La matiere se retrouve maitenant dans l-atelier de broyage .');
+        return redirect()->route('tamisages.index',compact('tamisage'))->withFail('BRAVO, Le tamisage de la matiere Id (numero '.$tamisage->id.') a ete effectué avec succes, La matiere se retrouve maitenant dans l-atelier de lavage .');
        }
        
-        return redirect()->route('lavageshors.edit',compact('lavagehor'))->withFail('Veillez bien verifier Les quantites que vous avez saisies, surement il y-a une difference avec la quantite qui est sur cet QUART. ');
+        return redirect()->route('tamisages.edit',compact('tamisage'))->withFail('Veillez bien verifier Les quantites que vous avez saisies, surement il y-a une difference avec la quantite qui est sur cet QUART. ');
     }
   
 

@@ -4,13 +4,13 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
-class Lavage extends Model
+class Lavagehor extends Model
 {
 
     use SoftDeletes, Notifiable;
 
     protected $fillable = [
-    'lavage',
+    'lavagehor',
     'ppcopolav',
     'ppcopobleu',
     'ppcopoblanc',
@@ -53,6 +53,7 @@ class Lavage extends Model
 
     'totale',
     'effectiflav',
+
     'dechelavage',
     'date'
 

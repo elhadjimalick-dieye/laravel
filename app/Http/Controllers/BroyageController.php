@@ -4,62 +4,25 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Id;
-use App\Triage;
+use App\broage;
 use DB;
-use App\Lavagehor;
+use App\Broyage;
+use App\Tamisage;
 
-class TriageController extends Controller
+class BroyageController extends Controller
 {
-       
-      /**
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
     {
-        $data = Triage::orderBy('id', 'DESC')->paginate(10);
-        return view('triages.index', compact('data'))
+        $data = Broyage::orderBy('id', 'DESC')->paginate(10);
+        return view('broyages.index', compact('data'))
             ->with('i', ($request->input('page', 1) - 1) * 7);
     }
-          
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $triage = Triage::find($id);
-        return view('triages.show', compact('triage'));
-    }
-
-     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        $triage = Triage::all();
-        return view('triage.create', compact('triage'));
-    }
-   
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-
-
-    }
-    /**
+         /**
      * Display the specified resource.
      *
      * @param  int  $id
@@ -67,8 +30,8 @@ class TriageController extends Controller
      */
     public function edit($id)
     {
-        $triage = Triage::find($id);
-        return view('triages.edit', compact('triage'));
+        $broyage = Broyage::find($id);
+        return view('broyages.edit', compact('broyage'));
     }
    
     /**
@@ -81,10 +44,11 @@ class TriageController extends Controller
     {
         $this->validate($request, [
             'date' => 'required',
+            'effectifbro' => 'required', 
         ]);
 
         $input = $request->all();
-        $triage=Triage::find($id);
+        $broyage=Broyage::find($id);
         $ppcopobleu=$request->input('ppcopobleu');
         $ppcopoblanc=$request->input('ppcopoblanc');
         $ppcopojaune=$request->input('ppcopojaune');
@@ -96,8 +60,8 @@ class TriageController extends Controller
         $ppcoponoire=$request->input('ppcoponoire');
         $ppcopomulti=$request->input('ppcopomulti');
         //total
-        $ppcopotri=$ppcopobleu+$ppcopoblanc+$ppcopojaune+$ppcopovert+$ppcopomauve+$ppcoporouge+$ppcopojadida+$ppcopomaron+$ppcoponoire+$ppcopomulti;
-        //dd($ppcopotri);
+        $ppcopobro=$ppcopobleu+$ppcopoblanc+$ppcopojaune+$ppcopovert+$ppcopomauve+$ppcoporouge+$ppcopojadida+$ppcopomaron+$ppcoponoire+$ppcopomulti;
+        //dd($ppcopobro);
         $pphomobleu=$request->input('pphomobleu');
         $pphomoblanc=$request->input('pphomoblanc');
         $pphomojaune=$request->input('pphomojaune');
@@ -108,14 +72,14 @@ class TriageController extends Controller
         $pphomomaron=$request->input('pphomomaron');
         $pphomonoire=$request->input('pphomonoire');
         $pphomomulti=$request->input('pphomomulti');
-        $effectiftri=$request->input('effectiftri');
+        $effectifbro=$request->input('effectifbro');
         //total
-        $pphomotri=$pphomobleu+$pphomoblanc+$pphomojaune+$pphomovert+$pphomomauve+$pphomorouge+$pphomojadida+$pphomomaron+$pphomonoire+$pphomomulti;
+        $pphomobro=$pphomobleu+$pphomoblanc+$pphomojaune+$pphomovert+$pphomomauve+$pphomorouge+$pphomojadida+$pphomomaron+$pphomonoire+$pphomomulti;
 
         $petbleu=$request->input('petbleu');
         $petblanc=$request->input('petblanc');
         //total
-        $pettri=$petblanc+$petbleu;
+        $petbro=$petblanc+$petbleu;
         //pehd
         $pehdbleu=$request->input('pehdbleu');
         $pehdblanc=$request->input('pehdblanc');
@@ -128,29 +92,29 @@ class TriageController extends Controller
         $pehdnoire=$request->input('pehdnoire');
         $pehdmulti=$request->input('pehdmulti');
         //total
-        $pehdtri=$pehdbleu+$pehdblanc+$pehdjaune+$pehdvert+$pehdneutre+$pehdrouge+$pehdjadida+$pehdmaron+$pehdnoire+$pehdmulti;
-        $dechetriage=$request->input('dechetriage');
-        $premierequantite=$triage->premierequantite;
-        $totale=$pehdtri+$ppcopotri+$pphomotri+$pettri;
-        $totaleetdechet=$totale+$dechetriage;
-       // dd($totaleetdechet);
+        $pehdbro=$pehdbleu+$pehdblanc+$pehdjaune+$pehdvert+$pehdneutre+$pehdrouge+$pehdjadida+$pehdmaron+$pehdnoire+$pehdmulti;
+        $dechebroyage=$request->input('dechebroyage');
+        $broyagess=$broyage->broyage;
+        $totale=$pehdbro+$ppcopobro+$pphomobro+$petbro;
+        $totaleetdechet=$totale+$dechebroyage;
+        // dd($broyagess);
         $date=$request->input('date');
+      // dd($ppcopobleu);
 
-        if ($premierequantite<=0) {
-            return redirect()->route('triages.index',compact('triage'))->withFail('La matiere a ete trier ou la quantite est inferieur ou egale à ZERO ');
+        if ($broyagess<=0) {
+            return redirect()->route('broyages.index',compact('broyage'))->withFail('La matiere a ete broyer ou bien la quantite est inferieur ou egale à ZERO ');
         }
+       // dd($totaleetdechet);
 
-       if ($premierequantite==$totaleetdechet) {
-        $triage->totale=$totale;
-        $triage->premierequantite=$premierequantite-$totaleetdechet;
+       if ($broyagess==$totaleetdechet) {
+        $broyage->totale=$totale;
+        //dd($totaleetdechet);
+        $broyage->broyage=$broyagess-$totaleetdechet;
+        $broyage->update($input);
+        $tamisage=Tamisage::all();
 
-      
-        $triage->update($input);
-
-        $lavagehor=Lavagehor::all();
-
-        DB::table('lavagehors')->insert([
-            'lavagehor'=>$totale,
+        DB::table('tamisages')->insert([
+            'tamisage'=>$totale,
             'ppcopobleu'=>$ppcopobleu,
             'ppcopoblanc'=>$ppcopoblanc,
             'ppcopojaune'=>$ppcopojaune,
@@ -161,7 +125,7 @@ class TriageController extends Controller
             'ppcopomaron'=>$ppcopomaron,
             'ppcoponoire'=>$ppcoponoire,
             'ppcopomulti'=>$ppcopomulti,
-            'ppcopolav'=>$ppcopotri,
+            'ppcopotami'=>$ppcopobro,
 
             'pphomobleu'=>$pphomobleu,
             'pphomoblanc'=>$pphomoblanc,
@@ -173,11 +137,11 @@ class TriageController extends Controller
             'pphomomaron'=>$pphomomaron,
             'pphomonoire'=>$pphomonoire,
             'pphomomulti'=>$pphomomulti,
-            'pphomolav'=>$pphomotri,
+            'pphomotami'=>$pphomobro,
         
             'petbleu'=>$petbleu,
             'petblanc'=>$petblanc,
-            'petlav'=>$pettri,
+            'pettami'=>$petbro,
 
             'pehdbleu'=>$pehdbleu,
             'pehdblanc'=>$pehdblanc,
@@ -189,26 +153,19 @@ class TriageController extends Controller
             'pehdmaron'=>$pehdmaron,
             'pehdnoire'=>$pehdnoire,
             'pehdmulti'=>$pehdmulti,
-            'pehdlav'=>$pehdtri,
+            'pehdtami'=>$pehdbro,
         
             'totale'=>0,
-            'effectiflav'=>0,
-            'dechelavage'=>0,
+            'effectiftami'=>0,
+            'dechetamisage'=>0,
             'date'=>$date,
                    
                     ]);
-
-
-        return redirect()->route('triages.index',compact('triage'))->withFail('Le tri de la matiere numero (Id '.$triage->id.') a ete effectué avec succes, La matiere se trouve maitenant dans l-atelier de lavage BRAVO .');
+        return redirect()->route('broyages.index',compact('tamisage'))->withFail('BRAVO, Le broie de la matiere Id (numero '.$broyage->id.') a ete effectué avec succes, La matiere se retrouve maitenant dans l-atelier de Tamisage .');
        }
        
-        return redirect()->route('triages.edit',compact('triage'))->withFail('Veillez bien verifier Les quantites que vous avez saisies, surement il y-a une difference avec la quantite qui est sur ce QUART. ');
+        return redirect()->route('broyages.edit',compact('broyage'))->withFail('Veillez bien verifier Les quantites que vous avez saisies, surement il y-a une difference avec la quantite qui est sur cet QUART. ');
     }
+  
 
-    public function massDestroy(MassDestroyUserRequest $request)
-    {
-        Triage::whereIn('id', request('ids'))->delete();
-
-        return response(null, Response::HTTP_NO_CONTENT);
-    }
 }

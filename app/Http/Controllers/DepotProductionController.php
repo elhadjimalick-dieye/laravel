@@ -69,11 +69,26 @@ class DepotProductionController extends Controller
         $dechetproduction=$request->input('dechet');
         $date=$request->input('date');
 
+        //teste de confirmation pour la quantite a sortir
+       $testevrac=$depotProduction->last()->vrac;
+       $testepp=$depotProduction->last()->ppcopo+$depotProduction->last()->pphomo;
+       $testepet=$depotProduction->last()->petpreform+$depotProduction->last()->petbouteille;
+       $testepehd=$depotProduction->last()->pehdsoufflage+$depotProduction->last()->pehdcasier;
+       
+       $testetotal=$testevrac+$testepp+$testepet+$testepehd;
+        //sortant pour le teste
+       $pehdsortant=$pehdsoufflageSortantpro+$pehdcasierSortantpro;
+       $petsortant=$petpreformSortantpro+$petbouteilleSortantpro;
+       $ppsortant=$pphomoSortantepro+$ppcopoSortantepro;
+       $totalsortatnt=$vracSortant+$ppsortant+$petsortant+$pehdsortant;
+        //dd($totalsortatnt);
+
+        if ($testetotal>0 && $testetotal>=$totalsortatnt && $testevrac>=$vracSortant && $depotProduction->last()->ppcopo>=$ppcopoSortantepro && $depotProduction->last()->pphomo>=$pphomoSortantepro && $depotProduction->last()->petpreform>=$petpreformSortantpro && $depotProduction->last()->petbouteille>=$petbouteilleSortantpro && $depotProduction->last()->pehdsoufflage>=$pehdsoufflageSortantpro && $depotProduction->last()->pehdcasier>=$pehdcasierSortantpro ) {
         DB::table('depot_productions')->insert([
             'vracinitiale'=>$vracinitiale=$depotProduction->last()->vrac,
             'vracEntrant'=>$vracEntrant,
             'vracSortant'=>$vracSortant,
-            'vrac'=>$vracinitiale-$vracSortant,
+            'vrac'=>$vrac=$vracinitiale-$vracSortant,
      
             'pphomoinitiale'=>$pphomoinitiale=$depotProduction->last()->pphomo,
             'pphomoEntrantpro'=>$pphomoEntrantpro,
@@ -112,9 +127,6 @@ class DepotProductionController extends Controller
             'date'=>$date,
             
             ]);
-            
-            
-              
 
         $triage=Triage::all();
         $vracSortant;
@@ -122,8 +134,8 @@ class DepotProductionController extends Controller
         $pet=$petbouteilleSortantpro+$petpreformSortantpro;
         $pehd=$pehdcasierSortantpro+$pehdsoufflageSortantpro;
         $premierequantite=$vracSortant+$pp+$pet+$pehd;
-       // dd($premierequantite);
-        // dd($pehdsoufflageSortantpro);
+
+
         DB::table('triages')->insert([
                     'premierequantite'=>$premierequantite,
                     'ppcopotri'=>0,
@@ -173,10 +185,12 @@ class DepotProductionController extends Controller
                    
                     ]);
 
-        // dd($vracinitialetr+$vracSortant);
+                    return redirect()->route('depotProductions.index',compact('depotProduction','triage'))->withFail('BRAVO, La sortie de la matiere a ete effectuée avec succes');
 
-        return redirect()->route('depotProductions.index', compact('depotProduction'))
-                        ->with('success', 'depot created successfully');
+                }   
+
+        return redirect()->route('depotProductions.create',compact('depotProduction'))->withFail('Impossible la quantite demander est indisponible, Veillez verifier votre stock ');
+
     }
 
     /**
