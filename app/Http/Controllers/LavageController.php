@@ -75,26 +75,49 @@ class LavageController extends Controller
         //total
         $pphomolav=$pphomobleu+$pphomoblanc+$pphomojaune+$pphomovert+$pphomomauve+$pphomorouge+$pphomojadida+$pphomomaron+$pphomonoire+$pphomomulti;
 
-        $petbleu=$request->input('petbleu');
-        $petblanc=$request->input('petblanc');
+        $petpreformbleu=$request->input('petpreformbleu');
+        $petpreformblanc=$request->input('petpreformblanc');
         //total
-        $petlav=$petblanc+$petbleu;
+        $petpreformlav=$petpreformblanc+$petpreformbleu;
+        
+        $petbouteillebleu=$request->input('petbouteillebleu');
+        $petbouteilleblanc=$request->input('petbouteilleblanc');
+        //total
+        $petbouteillelav=$petbouteilleblanc+$petbouteillebleu;
+        
+        
         //pehd
-        $pehdbleu=$request->input('pehdbleu');
-        $pehdblanc=$request->input('pehdblanc');
-        $pehdjaune=$request->input('pehdjaune');
-        $pehdvert=$request->input('pehdvert');
-        $pehdneutre=$request->input('pehdneutre');
-        $pehdrouge=$request->input('pehdrouge');
-        $pehdjadida=$request->input('pehdjadida');
-        $pehdmaron=$request->input('pehdmaron');
-        $pehdnoire=$request->input('pehdnoire');
-        $pehdmulti=$request->input('pehdmulti');
+        $pehdcasierbleu=$request->input('pehdcasierbleu');
+        $pehdcasierblanc=$request->input('pehdcasierblanc');
+        $pehdcasierjaune=$request->input('pehdcasierjaune');
+        $pehdcasiervert=$request->input('pehdcasiervert');
+        $pehdcasierneutre=$request->input('pehdcasierneutre');
+        $pehdcasierrouge=$request->input('pehdcasierrouge');
+        $pehdcasierjadida=$request->input('pehdcasierjadida');
+        $pehdcasiermaron=$request->input('pehdcasiermaron');
+        $pehdcasiernoire=$request->input('pehdcasiernoire');
+        $pehdcasiermulti=$request->input('pehdcasiermulti');
         //total
-        $pehdlav=$pehdbleu+$pehdblanc+$pehdjaune+$pehdvert+$pehdneutre+$pehdrouge+$pehdjadida+$pehdmaron+$pehdnoire+$pehdmulti;
+        $pehdcasierlav=$pehdcasierbleu+$pehdcasierblanc+$pehdcasierjaune+$pehdcasiervert+$pehdcasierneutre+$pehdcasierrouge+$pehdcasierjadida+$pehdcasiermaron+$pehdcasiernoire+$pehdcasiermulti;
+       
+        $pehdsouflagebleu=$request->input('pehdsouflagebleu');
+        $pehdsouflageblanc=$request->input('pehdsouflageblanc');
+        $pehdsouflagejaune=$request->input('pehdsouflagejaune');
+        $pehdsouflagevert=$request->input('pehdsouflagevert');
+        $pehdsouflageneutre=$request->input('pehdsouflageneutre');
+        $pehdsouflagerouge=$request->input('pehdsouflagerouge');
+        $pehdsouflagejadida=$request->input('pehdsouflagejadida');
+        $pehdsouflagemaron=$request->input('pehdsouflagemaron');
+        $pehdsouflagenoire=$request->input('pehdsouflagenoire');
+        $pehdsouflagemulti=$request->input('pehdsouflagemulti');
+        //total
+       
+        $pehdsouflagelav=$pehdsouflagebleu+$pehdsouflageblanc+$pehdsouflagejaune+$pehdsouflagevert+$pehdsouflageneutre+$pehdsouflagerouge+$pehdsouflagejadida+$pehdsouflagemaron+$pehdsouflagenoire+$pehdsouflagemulti;
+       
+
         $dechelavage=$request->input('dechelavage');
         $lavagess=$lavagehor->lavagehor;
-        $totale=$pehdlav+$ppcopolav+$pphomolav+$petlav;
+        $totale=$pehdsouflagelav+$pehdcasierlav+$ppcopolav+$pphomolav+$petpreformlav+$petbouteillelav;
         $totaleetdechet=$totale+$dechelavage;
         // dd($lavagess);
         $date=$request->input('date');
@@ -114,9 +137,7 @@ class LavageController extends Controller
         $broyage = Broyage::all();
        
          DB::table('broyages')->insert([
-       // dd($broyage),
-      // dd('cool 1'),
-
+  
              'broyage'=>$totale,
              'ppcopobleu'=>$ppcopobleu,
              'ppcopoblanc'=>$ppcopoblanc,
@@ -142,25 +163,39 @@ class LavageController extends Controller
              'pphomomulti'=>$pphomomulti,
              'pphomobro'=>$pphomolav,
          
-             'petbleu'=>$petbleu,
-             'petblanc'=>$petblanc,
-             'petbro'=>$petlav,
+             'petpreformbleu'=>$petpreformbleu,
+             'petpreformblanc'=>$petpreformblanc,
+             'petpreformbro'=>$petpreformlav,
+
+             'petbouteillebleu'=>$petbouteillebleu,
+             'petbouteilleblanc'=>$petbouteilleblanc,
+             'petbouteillebro'=>$petbouteillelav,
  
-             'pehdbleu'=>$pehdbleu,
-             'pehdblanc'=>$pehdblanc,
-             'pehdjaune'=>$pehdjaune,
-             'pehdvert'=>$pehdvert,
-             'pehdneutre'=>$pehdneutre,
-             'pehdrouge'=>$pehdrouge,
-             'pehdjadida'=>$pehdjadida,
-             'pehdmaron'=>$pehdmaron,
-             'pehdnoire'=>$pehdnoire,
-             'pehdmulti'=>$pehdmulti,
-             'pehdbro'=>$pehdlav,
+             'pehdcasierbleu'=>$pehdcasierbleu,
+             'pehdcasierblanc'=>$pehdcasierblanc,
+             'pehdcasierjaune'=>$pehdcasierjaune,
+             'pehdcasiervert'=>$pehdcasiervert,
+             'pehdcasierneutre'=>$pehdcasierneutre,
+             'pehdcasierrouge'=>$pehdcasierrouge,
+             'pehdcasierjadida'=>$pehdcasierjadida,
+             'pehdcasiermaron'=>$pehdcasiermaron,
+             'pehdcasiernoire'=>$pehdcasiernoire,
+             'pehdcasiermulti'=>$pehdcasiermulti,
+             'pehdcasierbro'=>$pehdcasierlav,
+
+             'pehdsouflagebleu'=>$pehdsouflagebleu,
+             'pehdsouflageblanc'=>$pehdsouflageblanc,
+             'pehdsouflagejaune'=>$pehdsouflagejaune,
+             'pehdsouflagevert'=>$pehdsouflagevert,
+             'pehdsouflageneutre'=>$pehdsouflageneutre,
+             'pehdsouflagerouge'=>$pehdsouflagerouge,
+             'pehdsouflagejadida'=>$pehdsouflagejadida,
+             'pehdsouflagemaron'=>$pehdsouflagemaron,
+             'pehdsouflagenoire'=>$pehdsouflagenoire,
+             'pehdsouflagemulti'=>$pehdsouflagemulti,
+             'pehdsouflagebro'=>$pehdsouflagelav,
          
              'totale'=>0,
-             'effectifbro'=>0,
-             'heuremachine'=>0,
 
              'dechebroyage'=>0,
              'date'=>$date,

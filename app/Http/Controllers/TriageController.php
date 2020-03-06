@@ -111,45 +111,72 @@ class TriageController extends Controller
         $effectiftri=$request->input('effectiftri');
         //total
         $pphomotri=$pphomobleu+$pphomoblanc+$pphomojaune+$pphomovert+$pphomomauve+$pphomorouge+$pphomojadida+$pphomomaron+$pphomonoire+$pphomomulti;
+       
+        $petpreformbleu=$request->input('petpreformbleu');
+        $petpreformblanc=$request->input('petpreformblanc');
+        $petpreformtri=$petpreformbleu+$petpreformblanc;
 
-        $petbleu=$request->input('petbleu');
-        $petblanc=$request->input('petblanc');
+        $petbouteillebleu=$request->input('petbouteillebleu');
+        $petbouteilleblanc=$request->input('petbouteilleblanc');
         //total
-        $pettri=$petblanc+$petbleu;
+        $petbouteilletri=$petbouteilleblanc+$petbouteillebleu;
         //pehd
-        $pehdbleu=$request->input('pehdbleu');
-        $pehdblanc=$request->input('pehdblanc');
-        $pehdjaune=$request->input('pehdjaune');
-        $pehdvert=$request->input('pehdvert');
-        $pehdneutre=$request->input('pehdneutre');
-        $pehdrouge=$request->input('pehdrouge');
-        $pehdjadida=$request->input('pehdjadida');
-        $pehdmaron=$request->input('pehdmaron');
-        $pehdnoire=$request->input('pehdnoire');
-        $pehdmulti=$request->input('pehdmulti');
+        $pehdcasierbleu=$request->input('pehdcasierbleu');
+        $pehdcasierblanc=$request->input('pehdcasierblanc');
+        $pehdcasierjaune=$request->input('pehdcasierjaune');
+        $pehdcasiervert=$request->input('pehdcasiervert');
+        $pehdcasierneutre=$request->input('pehdcasierneutre');
+        $pehdcasierrouge=$request->input('pehdcasierrouge');
+        $pehdcasierjadida=$request->input('pehdcasierjadida');
+        $pehdcasiermaron=$request->input('pehdcasiermaron');
+        $pehdcasiernoire=$request->input('pehdcasiernoire');
+        $pehdcasiermulti=$request->input('pehdcasiermulti');
+
+        $pehdsouflagebleu=$request->input('pehdsouflagebleu');
+        $pehdsouflageblanc=$request->input('pehdsouflageblanc');
+        $pehdsouflagejaune=$request->input('pehdsouflagejaune');
+        $pehdsouflagevert=$request->input('pehdsouflagevert');
+        $pehdsouflageneutre=$request->input('pehdsouflageneutre');
+        $pehdsouflagerouge=$request->input('pehdsouflagerouge');
+        $pehdsouflagejadida=$request->input('pehdsouflagejadida');
+        $pehdsouflagemaron=$request->input('pehdsouflagemaron');
+        $pehdsouflagenoire=$request->input('pehdsouflagenoire');
+        $pehdsouflagemulti=$request->input('pehdsouflagemulti');
         //total
-        $pehdtri=$pehdbleu+$pehdblanc+$pehdjaune+$pehdvert+$pehdneutre+$pehdrouge+$pehdjadida+$pehdmaron+$pehdnoire+$pehdmulti;
+        $pehdcasiertri=$pehdcasierbleu+$pehdcasierblanc+$pehdcasierjaune+$pehdcasiervert+$pehdcasierneutre+$pehdcasierrouge+$pehdcasierjadida+$pehdcasiermaron+$pehdcasiernoire+$pehdcasiermulti;
+        $pehdsouflagetri=$pehdsouflagebleu+$pehdsouflageblanc+$pehdsouflagejaune+$pehdsouflagevert+$pehdsouflageneutre+$pehdsouflagerouge+$pehdsouflagejadida+$pehdsouflagemaron+$pehdsouflagenoire+$pehdsouflagemulti;
+
         $dechetriage=$request->input('dechetriage');
         $premierequantite=$triage->premierequantite;
-        $totale=$pehdtri+$ppcopotri+$pphomotri+$pettri;
+        $totale=$pehdcasiertri+$pehdsouflagetri+$ppcopotri+$pphomotri+$petpreformtri+$petbouteilletri;
         $totaleetdechet=$totale+$dechetriage;
        // dd($totaleetdechet);
         $date=$request->input('date');
 
         if ($premierequantite<=0) {
+
             return redirect()->route('triages.index',compact('triage'))->withFail('La matiere a ete trier ou la quantite est inferieur ou egale à ZERO ');
         }
 
        if ($premierequantite==$totaleetdechet) {
         $triage->totale=$totale;
+        $triage->pphomotri=$pphomotri;
+        $triage->ppcopotri=$ppcopotri;
+        $triage->petpreformtri=$petpreformtri;
+        $triage->petbouteilletri=$petbouteilletri;
+        $triage->pehdsouflagetri=$pehdsouflagetri;
+        $triage->pehdcasiertri=$pehdcasiertri;
+
+
         $triage->premierequantite=$premierequantite-$totaleetdechet;
 
       
         $triage->update($input);
-
+        //dd($totaleetdechet);
         $lavagehor=Lavagehor::all();
-
+        //dd($lavagehor);
         DB::table('lavagehors')->insert([
+            //dd($totale),
             'lavagehor'=>$totale,
             'ppcopobleu'=>$ppcopobleu,
             'ppcopoblanc'=>$ppcopoblanc,
@@ -175,31 +202,47 @@ class TriageController extends Controller
             'pphomomulti'=>$pphomomulti,
             'pphomolav'=>$pphomotri,
         
-            'petbleu'=>$petbleu,
-            'petblanc'=>$petblanc,
-            'petlav'=>$pettri,
+            'petpreformbleu'=>$petpreformbleu,
+            'petpreformblanc'=>$petpreformblanc,
+            'petpreformlav'=>$petpreformtri,
 
-            'pehdbleu'=>$pehdbleu,
-            'pehdblanc'=>$pehdblanc,
-            'pehdjaune'=>$pehdjaune,
-            'pehdvert'=>$pehdvert,
-            'pehdneutre'=>$pehdneutre,
-            'pehdrouge'=>$pehdrouge,
-            'pehdjadida'=>$pehdjadida,
-            'pehdmaron'=>$pehdmaron,
-            'pehdnoire'=>$pehdnoire,
-            'pehdmulti'=>$pehdmulti,
-            'pehdlav'=>$pehdtri,
+            'petbouteillebleu'=>$petbouteillebleu,
+            'petbouteilleblanc'=>$petbouteilleblanc,
+            'petbouteillelav'=>$petbouteilletri,
+
+
+            'pehdcasierbleu'=>$pehdcasierbleu,
+            'pehdcasierblanc'=>$pehdcasierblanc,
+            'pehdcasierjaune'=>$pehdcasierjaune,
+            'pehdcasiervert'=>$pehdcasiervert,
+            'pehdcasierneutre'=>$pehdcasierneutre,
+            'pehdcasierrouge'=>$pehdcasierrouge,
+            'pehdcasierjadida'=>$pehdcasierjadida,
+            'pehdcasiermaron'=>$pehdcasiermaron,
+            'pehdcasiernoire'=>$pehdcasiernoire,
+            'pehdcasiermulti'=>$pehdcasiermulti,
+            'pehdcasierlav'=>$pehdcasiertri,
+
+            'pehdsouflagebleu'=>$pehdsouflagebleu,
+            'pehdsouflageblanc'=>$pehdsouflageblanc,
+            'pehdsouflagejaune'=>$pehdsouflagejaune,
+            'pehdsouflagevert'=>$pehdsouflagevert,
+            'pehdsouflageneutre'=>$pehdsouflageneutre,
+            'pehdsouflagerouge'=>$pehdsouflagerouge,
+            'pehdsouflagejadida'=>$pehdsouflagejadida,
+            'pehdsouflagemaron'=>$pehdsouflagemaron,
+            'pehdsouflagenoire'=>$pehdsouflagenoire,
+            'pehdsouflagemulti'=>$pehdsouflagemulti,
+            'pehdsouflagelav'=>$pehdsouflagetri,
         
             'totale'=>0,
-            'effectiflav'=>0,
             'dechelavage'=>0,
             'date'=>$date,
                    
                     ]);
+                    //dd('tester');
 
-
-        return redirect()->route('triages.index',compact('triage'))->withFail('Le tri de la matiere numero (Id '.$triage->id.') a ete effectué avec succes, La matiere se trouve maitenant dans l-atelier de lavage BRAVO .');
+        return redirect()->route('triages.index',compact('lavagehor'))->withFail('Le tri de la matiere numero (Id '.$triage->id.') a ete effectué avec succes, La matiere se trouve maitenant dans l-atelier de lavage BRAVO .');
        }
        
         return redirect()->route('triages.edit',compact('triage'))->withFail('Veillez bien verifier Les quantites que vous avez saisies, surement il y-a une difference avec la quantite qui est sur ce QUART. ');

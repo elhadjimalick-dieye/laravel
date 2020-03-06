@@ -10,15 +10,25 @@
     </div>
 </div>
 <div class="row " style="margin-left:8%">
-    <div class="col-lg-12 " style="padding-top:2%">
+    <div class="col-lg-6 " style="padding-top:2%">
         <div class="pull-left">
         </div>
         <div class="pull-right">
-            <a class="btn btn-success" href="{{ route('depotProductions.index') }}"> Retour</a>
+            <a class="btn btn-success" href="{{ route('lavages.index') }}"> Retour</a>
         </div>
         <br>
 
     </div>
+    <div class="col-lg-6 " style="padding-top:2%">
+        <div class="pull-left " >
+        </div>
+        <div class="pull-right" style="margin-left:58%">
+            <a class="btn btn-xs btn" style="background-color:green;color:white" href="{{ route('sacs.index') }}"> Mise en sac</a>
+        </div>
+        <br>
+
+    </div>
+
 </div>
 @if(Session::has('fail'))
     <div class="alert alert-success">
@@ -70,16 +80,16 @@
                                 {{ $sechage->id ?? '' }}
                             </td>
                             <td>
-                                {{ $sechage->effectiflav ?? '' }} personne(s)
+                                {{ $sechage->effectiflav ?? '' }} 
                             </td>
                             <td>
-                                {{ $sechage->sechage ?? '' }} kg
+                                {{ $sechage->sechage ?? '' }} 
                             </td>
                             <td>
-                                {{ $sechage->dechesechage ?? '' }} kg
+                                {{ $sechage->dechesechage ?? '' }} 
                             </td>
                             <td>
-                            {{ $sechage->totale ?? '' }} kg
+                            {{ $sechage->totale ?? '' }} 
 
 
                             </td>
@@ -106,7 +116,7 @@
 </div>
 <div class="card col-lg-12">
     <div class="card-header" style="background-color:#008B8B;color:white">
-        {{ trans('Table de sechage PPCOPO') }}
+        {{ trans('PPCOPO') }}
 
     </div>
 
@@ -159,32 +169,32 @@
                                 {{ $sechage->id ?? '' }}
                             </td>
                             <td>
-                                {{ $sechage->ppcopoblanc ?? '' }} kg
+                                {{ $sechage->ppcopoblanc ?? '' }} 
                             </td>
                             <td>
-                                {{ $sechage->ppcopobleu ?? '' }} kg
+                                {{ $sechage->ppcopobleu ?? '' }} 
                             </td>
                             <td>
-                                {{ $sechage->ppcopojaune ?? '' }} kg
+                                {{ $sechage->ppcopojaune ?? '' }} 
                             </td>
                             <td>
-                                {{ $sechage->ppcopovert ?? '' }} kg
+                                {{ $sechage->ppcopovert ?? '' }} 
                             </td>
                             <td>
-                                {{ $sechage->ppcopomauve ?? '' }} kg
+                                {{ $sechage->ppcopomauve ?? '' }} 
                             </td><td>
-                                {{ $sechage->ppcoporouge ?? '' }} kg
+                                {{ $sechage->ppcoporouge ?? '' }} 
                             </td><td>
-                                {{ $sechage->ppcopojadida ?? '' }} kg
+                                {{ $sechage->ppcopojadida ?? '' }} 
                             </td><td>
-                                {{ $sechage->ppcopomaron ?? '' }} kg
+                                {{ $sechage->ppcopomaron ?? '' }} 
                             </td><td>
-                                {{ $sechage->ppcoponoire ?? '' }} kg
+                                {{ $sechage->ppcoponoire ?? '' }} 
                             </td><td>
-                                {{ $sechage->ppcopomulti ?? '' }} kg
+                                {{ $sechage->ppcopomulti ?? '' }} 
                             </td>
                             <td>
-                                {{ $ppcopo=$sechage->ppcopoblanc+$sechage->ppcopobleu+$sechage->ppcopojaune+$sechage->ppcopovert+$sechage->ppcopomauve+$sechage->ppcoporouge+$sechage->ppcopojadida+$sechage->ppcopomaron+$sechage->ppcoponoire+$sechage->ppcopomulti ?? '' }} kg
+                                {{ $ppcopo=$sechage->ppcopoblanc+$sechage->ppcopobleu+$sechage->ppcopojaune+$sechage->ppcopovert+$sechage->ppcopomauve+$sechage->ppcoporouge+$sechage->ppcopojadida+$sechage->ppcopomaron+$sechage->ppcoponoire+$sechage->ppcopomulti ?? '' }} 
                             </td>
 
                                     </td>
@@ -200,8 +210,8 @@
 </div>
 
 <div class="card col-lg-12">
-    <div class="card-header" style="background-color:#1E90FF;color:white">
-        {{ trans('Table de sechage PPHOMO') }}
+    <div class="card-header" style="background-color:#008B8B;color:white">
+        {{ trans('PPHOMO') }}
 
     </div>
 
@@ -251,35 +261,35 @@
                         <tr >
 
                         <td>
-                                {{ $sechage->id ?? '' }} kg
+                                {{ $sechage->id ?? '' }} 
                             </td>
                             <td>
-                                {{ $sechage->pphomoblanc ?? '' }} kg
+                                {{ $sechage->pphomoblanc ?? '' }} 
                             </td>
                             <td>
-                                {{ $sechage->pphomobleu ?? '' }} kg
+                                {{ $sechage->pphomobleu ?? '' }} 
                             </td>
                             <td>
-                                {{ $sechage->pphomojaune ?? '' }} kg
+                                {{ $sechage->pphomojaune ?? '' }} 
                             </td>
                             <td>
-                                {{ $sechage->pphomovert ?? '' }} kg
+                                {{ $sechage->pphomovert ?? '' }} 
                             </td>
                             <td>
-                                {{ $sechage->pphomomauve ?? '' }} kg
+                                {{ $sechage->pphomomauve ?? '' }} 
                             </td><td>
-                                {{ $sechage->pphomorouge ?? '' }} kg
+                                {{ $sechage->pphomorouge ?? '' }} 
                             </td><td>
-                                {{ $sechage->pphomojadida ?? '' }} kg
+                                {{ $sechage->pphomojadida ?? '' }} 
                             </td><td>
-                                {{ $sechage->pphomomaron ?? '' }} kg
+                                {{ $sechage->pphomomaron ?? '' }} 
                             </td><td>
-                                {{ $sechage->pphomonoire ?? '' }} kg
+                                {{ $sechage->pphomonoire ?? '' }} 
                             </td><td>
-                                {{ $sechage->pphomomulti ?? '' }} kg
+                                {{ $sechage->pphomomulti ?? '' }} 
                             </td>
                             <td>
-                                {{ $pphomo=$sechage->pphomoblanc+$sechage->pphomobleu+$sechage->pphomojaune+$sechage->pphomovert+$sechage->pphomomauve+$sechage->pphomorouge+$sechage->pphomojadida+$sechage->pphomomaron+$sechage->pphomonoire+$sechage->pphomomulti ?? '' }} kg
+                                {{ $pphomo=$sechage->pphomoblanc+$sechage->pphomobleu+$sechage->pphomojaune+$sechage->pphomovert+$sechage->pphomomauve+$sechage->pphomorouge+$sechage->pphomojadida+$sechage->pphomomaron+$sechage->pphomonoire+$sechage->pphomomulti ?? '' }} 
                             </td>
 
                                     </td>
@@ -296,7 +306,7 @@
 
 <div class="card col-lg-12">
     <div class="card-header" style="background-color:green;color:white">
-        {{ trans('Table de sechage PET') }}
+        {{ trans('PET PREFORME') }}
 
     </div>
 
@@ -331,14 +341,73 @@
                                 {{ $sechage->id ?? '' }}
                             </td>
                             <td>
-                                {{ $sechage->petblanc ?? '' }} kg
+                                {{ $sechage->petpreformblanc ?? '' }} 
                             </td>
                             <td>
-                                {{ $sechage->petbleu ?? '' }} kg
+                                {{ $sechage->petpreformbleu ?? '' }} 
                             </td>
                             
                             <td>
-                                {{ $pettri=$sechage->petblanc+$sechage->petbleu ?? '' }} kg
+                                {{ $petpreformtri=$sechage->petpreformblanc+$sechage->petpreformbleu ?? '' }} 
+                            </td>
+
+                                    </td>
+                         
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+</div>
+
+<div class="card col-lg-12">
+    <div class="card-header" style="background-color:green;color:white">
+        {{ trans('PET BOUTEILLE') }}
+
+    </div>
+
+    <div class="card-body card col-lg-12">
+        <div class=" margin-left: 50px col-lg-12" >
+            <table   style="width:100%"  class=" table table-bordered table-striped table-hover datatable datatable-User">
+                <thead style='margin-left: 100px'>
+                    <tr>
+                    <th>
+                            {{ trans('Id') }}
+                        </th>
+                    
+                        <th>
+                            {{ trans('Blanc') }}
+                        </th>
+                        <th>
+                            {{ trans('Bleu') }}
+                        </th>
+                        <th>
+                        {{ trans('Total') }}
+                        </th>
+                       
+                        
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($data as $key => $sechage)
+                        <tr >
+
+                        <td>
+                                {{ $sechage->id ?? '' }}
+                            </td>
+                            <td>
+                                {{ $sechage->petbouteilleblanc ?? '' }} 
+                            </td>
+                            <td>
+                                {{ $sechage->petbouteillebleu ?? '' }} 
+                            </td>
+                            
+                            <td>
+                                {{ $petbouteilletri=$sechage->petbouteilleblanc+$sechage->petbouteillebleu ?? '' }} 
                             </td>
 
                                     </td>
@@ -354,7 +423,7 @@
 </div>
 <div class="card col-lg-12">
     <div class="card-header " style="background-color:skyblue;color:white">
-        {{ trans('Table de sechage PEHD') }}
+        {{ trans('PEHD CASIER') }}
     </div>
 
     <div class="card-body card col-lg-12 ">
@@ -416,31 +485,133 @@
                             </td>
                             
                             <td>
-                                {{ $sechage->pehdblanc ?? '' }} kg
+                                {{ $sechage->pehdcasierblanc ?? '' }} 
                             </td>
                             <td>
-                                {{ $sechage->pehdbleu ?? '' }} kg
+                                {{ $sechage->pehdcasierbleu ?? '' }} 
                             </td>
                             <td>
-                                {{ $sechage->pehdjaune ?? '' }} kg
+                                {{ $sechage->pehdcasierjaune ?? '' }} 
                             </td><td>
-                                {{ $sechage->pehdvert ?? '' }} kg
+                                {{ $sechage->pehdcasiervert ?? '' }} 
                             </td><td>
-                                {{ $sechage->pehdneutre ?? '' }} kg
+                                {{ $sechage->pehdcasierneutre ?? '' }} 
                             </td><td>
-                                {{ $sechage->pehdrouge ?? '' }} kg
+                                {{ $sechage->pehdcasierrouge ?? '' }} 
                             </td><td>
-                                {{ $sechage->pehdjadida ?? '' }} kg
+                                {{ $sechage->pehdcasierjadida ?? '' }} 
                             </td><td>
-                                {{ $sechage->pehdmaron ?? '' }} kg
+                                {{ $sechage->pehdcasiermaron ?? '' }} 
                             </td><td>
-                                {{ $sechage->pehdnoire ?? '' }} kg
+                                {{ $sechage->pehdcasiernoire ?? '' }} 
                             </td>
                             <td>
-                                {{ $sechage->pehdmulti ?? '' }} kg
+                                {{ $sechage->pehdcasiermulti ?? '' }} 
                             </td>
                             <td>
-                                {{$sechage->pehdblanc+$sechage->pehdbleu+$sechage->pehdjaune+$sechage->pehdvert+$sechage->pehdneutre+$sechage->pehdrouge+$sechage->pehdjadida+$sechage->pehdmaron+$sechage->pehdnoire+$sechage->pehdmulti ?? '' }} kg
+                                {{$sechage->pehdcasierblanc+$sechage->pehdcasierbleu+$sechage->pehdcasierjaune+$sechage->pehdcasiervert+$sechage->pehdcasierneutre+$sechage->pehdcasierrouge+$sechage->pehdcasierjadida+$sechage->pehdcasiermaron+$sechage->pehdcasiernoire+$sechage->pehdcasiermulti ?? '' }} 
+                            </td>
+
+                           
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+</div>
+
+<div class="card col-lg-12">
+    <div class="card-header " style="background-color:skyblue;color:white">
+        {{ trans('PEHD SOUFFLAGE') }}
+    </div>
+
+    <div class="card-body card col-lg-12 ">
+        <div class=" margin-left: 50px col-lg-12 " >
+            <table   style="width:100%"  class=" table table-bordered table-striped table-hover datatable datatable-User">
+                <thead style='margin-left: 100px '>
+                    <tr>
+              
+                    <th>
+                            {{ trans('Id') }}
+                        </th>
+                        
+                        <th>
+                            {{ trans('Blanc') }}
+                        </th>
+                        <th>
+                            {{ trans('Bleu') }}
+                        </th>
+                        <th>
+                        {{ trans('Jaune') }}
+
+                        </th>
+                        <th>
+                        {{ trans('Vert') }}
+
+                        </th><th>
+                        {{ trans('Neutre') }}
+
+                        </th><th>
+                        {{ trans('Rouge') }}
+
+                        </th><th>
+                        {{ trans('Jadida') }}
+
+                        </th><th>
+                        {{ trans('Maron') }}
+
+                        </th><th>
+                        {{ trans('Noire') }}
+
+                        </th><th>
+                        {{ trans('Multicolor') }}
+
+                        </th>
+                        <th>
+                        {{ trans('Total____') }}
+
+                        </th>
+                        
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($data as $key => $sechage)
+                        <tr >
+                                   
+                        <td>
+                                {{ $sechage->id ?? '' }}
+                            </td>
+                            
+                            <td>
+                                {{ $sechage->pehdsouflageblanc ?? '' }} 
+                            </td>
+                            <td>
+                                {{ $sechage->pehdsouflagebleu ?? '' }} 
+                            </td>
+                            <td>
+                                {{ $sechage->pehdsouflagejaune ?? '' }} 
+                            </td><td>
+                                {{ $sechage->pehdsouflagevert ?? '' }} 
+                            </td><td>
+                                {{ $sechage->pehdsouflageneutre ?? '' }} 
+                            </td><td>
+                                {{ $sechage->pehdsouflagerouge ?? '' }} 
+                            </td><td>
+                                {{ $sechage->pehdsouflagejadida ?? '' }} 
+                            </td><td>
+                                {{ $sechage->pehdsouflagemaron ?? '' }} 
+                            </td><td>
+                                {{ $sechage->pehdsouflagenoire ?? '' }} 
+                            </td>
+                            <td>
+                                {{ $sechage->pehdsouflagemulti ?? '' }} 
+                            </td>
+                            <td>
+                                {{$sechage->pehdsouflageblanc+$sechage->pehdsouflagebleu+$sechage->pehdsouflagejaune+$sechage->pehdsouflagevert+$sechage->pehdsouflageneutre+$sechage->pehdsouflagerouge+$sechage->pehdsouflagejadida+$sechage->pehdsouflagemaron+$sechage->pehdsouflagenoire+$sechage->pehdsouflagemulti ?? '' }} 
                             </td>
 
                            

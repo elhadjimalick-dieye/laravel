@@ -69,7 +69,7 @@
 
 <div class="col-xs-12 col-sm-12 col-md-10 card-header" style="background-color:#008B8B;color:white" >
         <div class="form-group">
-            <strong><h3> PP</h3> </strong>
+            <strong><h3> PP COPO</h3> </strong>
         </div>
     </div>
 
@@ -211,7 +211,7 @@
   
     <div class="col-xs-12 col-sm-12 col-md-10 card-header" style="background-color:green;color:white">
         <div class="form-group">
-            <strong><h3> PET</h3> </strong>
+            <strong><h3> PET PREFORME</h3> </strong>
         </div>
     </div> 
 
@@ -219,20 +219,43 @@
         <div class="col-xs-12 col-sm-12 col-md-5 " >
         <div class="form-group">
             <strong style='color:blue'> Couleur Bleu</strong>
-            {!! Form::number('petbleu', null, array('placeholder' => 'quantite en kg','class' => 'form-control')) !!}
+            {!! Form::number('petpreformbleu', null, array('placeholder' => 'quantite en kg','class' => 'form-control')) !!}
         </div>
       
     </div> <div class="col-xs-12 col-sm-12 col-md-5 " >
         <div class="form-group">
             <strong style='color:black'> Couleur Blanc</strong>
-            {!! Form::number('petblanc', null, array('placeholder' => 'quantite en kg','class' => 'form-control')) !!}
+            {!! Form::number('petpreformblanc', null, array('placeholder' => 'quantite en kg','class' => 'form-control')) !!}
+        </div>
+      
+    </div>
+
+
+     
+    <div class="col-xs-12 col-sm-12 col-md-10 card-header" style="background-color:green;color:white">
+        <div class="form-group">
+            <strong><h3> PET BOUTEILLE</h3> </strong>
+        </div>
+    </div> 
+
+        
+        <div class="col-xs-12 col-sm-12 col-md-5 " >
+        <div class="form-group">
+            <strong style='color:blue'> Couleur Bleu</strong>
+            {!! Form::number('petbouteillebleu', null, array('placeholder' => 'quantite en kg','class' => 'form-control')) !!}
+        </div>
+      
+    </div> <div class="col-xs-12 col-sm-12 col-md-5 " >
+        <div class="form-group">
+            <strong style='color:black'> Couleur Blanc</strong>
+            {!! Form::number('petbouteilleblanc', null, array('placeholder' => 'quantite en kg','class' => 'form-control')) !!}
         </div>
       
     </div>
     
     <div class="col-xs-12 col-sm-12 col-md-10 card-header" style="background-color:skyblue;color:white">
         <div class="form-group">
-            <strong><h3> PEHD</h3> </strong>
+            <strong><h3> PEHD CASIER</h3> </strong>
         </div>
     </div> 
 
@@ -240,61 +263,130 @@
         <div class="col-xs-12 col-sm-12 col-md-5 " >
         <div class="form-group">
             <strong style='color:blue'> Couleur Bleu</strong>
-            {!! Form::number('pehdbleu', null, array('placeholder' => 'quantite en kg','class' => 'form-control')) !!}
+            {!! Form::number('pehdcasierbleu', null, array('placeholder' => 'quantite en kg','class' => 'form-control')) !!}
         </div>
       
     </div> <div class="col-xs-12 col-sm-12 col-md-5 " >
         <div class="form-group">
             <strong style='color:black'> Couleur Blanc</strong>
-            {!! Form::number('pehdblanc', null, array('placeholder' => 'quantite en kg','class' => 'form-control')) !!}
+            {!! Form::number('pehdcasierblanc', null, array('placeholder' => 'quantite en kg','class' => 'form-control')) !!}
         </div>
       
     </div> <div class="col-xs-12 col-sm-12 col-md-5 " >
         <div class="form-group">
             <strong style='color:yellow'> Couleur Jaune </strong>
-            {!! Form::number('pehdjaune', null, array('placeholder' => 'quantite en kg','class' => 'form-control')) !!}
+            {!! Form::number('pehdcasierjaune', null, array('placeholder' => 'quantite en kg','class' => 'form-control')) !!}
         </div>
       
     </div> <div class="col-xs-12 col-sm-12 col-md-5 " >
         <div class="form-group">
             <strong style='color:green'> Couleur Vert </strong>
-            {!! Form::number('pehdvert', null, array('placeholder' => 'quantite en kg','class' => 'form-control')) !!}
+            {!! Form::number('pehdcasiervert', null, array('placeholder' => 'quantite en kg','class' => 'form-control')) !!}
         </div>
       
     </div> <div class="col-xs-12 col-sm-12 col-md-5 " >
         <div class="form-group">
             <strong style='color:black'> Couleur Neutre</strong>
-            {!! Form::number('pehdneutre', null, array('placeholder' => 'quantite en kg','class' => 'form-control')) !!}
+            {!! Form::number('pehdcasierneutre', null, array('placeholder' => 'quantite en kg','class' => 'form-control')) !!}
         </div>
       
     </div> <div class="col-xs-12 col-sm-12 col-md-5 " >
         <div class="form-group">
             <strong style='color:red'> Couleur Rouge</strong>
-            {!! Form::number('pehdrouge', null, array('placeholder' => 'quantite en kg','class' => 'form-control')) !!}
+            {!! Form::number('pehdcasierrouge', null, array('placeholder' => 'quantite en kg','class' => 'form-control')) !!}
         </div>
       
     </div> <div class="col-xs-12 col-sm-12 col-md-5 " >
         <div class="form-group">
             <strong style='color:black'> Couleur Jadida </strong>
-            {!! Form::number('pehdjadida', null, array('placeholder' => 'quantite en kg','class' => 'form-control')) !!}
+            {!! Form::number('pehdcasierjadida', null, array('placeholder' => 'quantite en kg','class' => 'form-control')) !!}
         </div>
       
     </div> <div class="col-xs-12 col-sm-12 col-md-5 " >
         <div class="form-group">
             <strong style='color:GoldenRod'> Couleur Maron </strong>
-            {!! Form::number('pehdmaron', null, array('placeholder' => 'quantite en kg','class' => 'form-control')) !!}
+            {!! Form::number('pehdcasiermaron', null, array('placeholder' => 'quantite en kg','class' => 'form-control')) !!}
         </div>
       
     </div> <div class="col-xs-12 col-sm-12 col-md-5 " >
         <div class="form-group">
             <strong style='color:black'> Couleur Noire</strong>
-            {!! Form::number('pehdnoire', null, array('placeholder' => 'quantite en kg','class' => 'form-control')) !!}
+            {!! Form::number('pehdcasiernoire', null, array('placeholder' => 'quantite en kg','class' => 'form-control')) !!}
         </div>
       
     </div> <div class="col-xs-12 col-sm-12 col-md-5 " >
         <div class="form-group">
             <strong style='color:black'> Multicouleur </strong>
-            {!! Form::number('pehdmulti', null, array('placeholder' => 'quantite en kg','class' => 'form-control')) !!}
+            {!! Form::number('pehdcasiermulti', null, array('placeholder' => 'quantite en kg','class' => 'form-control')) !!}
+        </div>
+      
+    </div> 
+
+    <div class="col-xs-12 col-sm-12 col-md-10 card-header" style="background-color:skyblue;color:white">
+        <div class="form-group">
+            <strong><h3> PEHD SOUFFLAGE</h3> </strong>
+        </div>
+    </div> 
+
+        
+        <div class="col-xs-12 col-sm-12 col-md-5 " >
+        <div class="form-group">
+            <strong style='color:blue'> Couleur Bleu</strong>
+            {!! Form::number('pehdsouflagebleu', null, array('placeholder' => 'quantite en kg','class' => 'form-control')) !!}
+        </div>
+      
+    </div> <div class="col-xs-12 col-sm-12 col-md-5 " >
+        <div class="form-group">
+            <strong style='color:black'> Couleur Blanc</strong>
+            {!! Form::number('pehdsouflageblanc', null, array('placeholder' => 'quantite en kg','class' => 'form-control')) !!}
+        </div>
+      
+    </div> <div class="col-xs-12 col-sm-12 col-md-5 " >
+        <div class="form-group">
+            <strong style='color:yellow'> Couleur Jaune </strong>
+            {!! Form::number('pehdsouflagejaune', null, array('placeholder' => 'quantite en kg','class' => 'form-control')) !!}
+        </div>
+      
+    </div> <div class="col-xs-12 col-sm-12 col-md-5 " >
+        <div class="form-group">
+            <strong style='color:green'> Couleur Vert </strong>
+            {!! Form::number('pehdsouflagevert', null, array('placeholder' => 'quantite en kg','class' => 'form-control')) !!}
+        </div>
+      
+    </div> <div class="col-xs-12 col-sm-12 col-md-5 " >
+        <div class="form-group">
+            <strong style='color:black'> Couleur Neutre</strong>
+            {!! Form::number('pehdsouflageneutre', null, array('placeholder' => 'quantite en kg','class' => 'form-control')) !!}
+        </div>
+      
+    </div> <div class="col-xs-12 col-sm-12 col-md-5 " >
+        <div class="form-group">
+            <strong style='color:red'> Couleur Rouge</strong>
+            {!! Form::number('pehdsouflagerouge', null, array('placeholder' => 'quantite en kg','class' => 'form-control')) !!}
+        </div>
+      
+    </div> <div class="col-xs-12 col-sm-12 col-md-5 " >
+        <div class="form-group">
+            <strong style='color:black'> Couleur Jadida </strong>
+            {!! Form::number('pehdsouflagejadida', null, array('placeholder' => 'quantite en kg','class' => 'form-control')) !!}
+        </div>
+      
+    </div> <div class="col-xs-12 col-sm-12 col-md-5 " >
+        <div class="form-group">
+            <strong style='color:GoldenRod'> Couleur Maron </strong>
+            {!! Form::number('pehdsouflagemaron', null, array('placeholder' => 'quantite en kg','class' => 'form-control')) !!}
+        </div>
+      
+    </div> <div class="col-xs-12 col-sm-12 col-md-5 " >
+        <div class="form-group">
+            <strong style='color:black'> Couleur Noire</strong>
+            {!! Form::number('pehdsouflagenoire', null, array('placeholder' => 'quantite en kg','class' => 'form-control')) !!}
+        </div>
+      
+    </div> <div class="col-xs-12 col-sm-12 col-md-5 " >
+        <div class="form-group">
+            <strong style='color:black'> Multicouleur </strong>
+            {!! Form::number('pehdsouflagemulti', null, array('placeholder' => 'quantite en kg','class' => 'form-control')) !!}
         </div>
       
     </div> 

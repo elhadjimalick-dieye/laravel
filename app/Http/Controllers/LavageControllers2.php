@@ -75,26 +75,44 @@ class LavageControllers2 extends Controller
         //total
         $pphomolav=$pphomobleu+$pphomoblanc+$pphomojaune+$pphomovert+$pphomomauve+$pphomorouge+$pphomojadida+$pphomomaron+$pphomonoire+$pphomomulti;
 
-        $petbleu=$request->input('petbleu');
-        $petblanc=$request->input('petblanc');
+        $petpreformbleu=$request->input('petpreformbleu');
+        $petpreformblanc=$request->input('petpreformblanc');
         //total
-        $petlav=$petblanc+$petbleu;
+        $petpreformlav=$petpreformblanc+$petpreformbleu;
+
+        $petbouteillebleu=$request->input('petbouteillebleu');
+        $petbouteilleblanc=$request->input('petbouteilleblanc');
+        //total
+        $petbouteillelav=$petbouteilleblanc+$petbouteillebleu;
         //pehd
-        $pehdbleu=$request->input('pehdbleu');
-        $pehdblanc=$request->input('pehdblanc');
-        $pehdjaune=$request->input('pehdjaune');
-        $pehdvert=$request->input('pehdvert');
-        $pehdneutre=$request->input('pehdneutre');
-        $pehdrouge=$request->input('pehdrouge');
-        $pehdjadida=$request->input('pehdjadida');
-        $pehdmaron=$request->input('pehdmaron');
-        $pehdnoire=$request->input('pehdnoire');
-        $pehdmulti=$request->input('pehdmulti');
+        $pehdcasierbleu=$request->input('pehdcasierbleu');
+        $pehdcasierblanc=$request->input('pehdcasierblanc');
+        $pehdcasierjaune=$request->input('pehdcasierjaune');
+        $pehdcasiervert=$request->input('pehdcasiervert');
+        $pehdcasierneutre=$request->input('pehdcasierneutre');
+        $pehdcasierrouge=$request->input('pehdcasierrouge');
+        $pehdcasierjadida=$request->input('pehdcasierjadida');
+        $pehdcasiermaron=$request->input('pehdcasiermaron');
+        $pehdcasiernoire=$request->input('pehdcasiernoire');
+        $pehdcasiermulti=$request->input('pehdcasiermulti');
+        $pehdcasierlav=$pehdcasierbleu+$pehdcasierblanc+$pehdcasierjaune+$pehdcasiervert+$pehdcasierneutre+$pehdcasierrouge+$pehdcasierjadida+$pehdcasiermaron+$pehdcasiernoire+$pehdcasiermulti;
+
+
+        $pehdsouflagebleu=$request->input('pehdsouflagebleu');
+        $pehdsouflageblanc=$request->input('pehdsouflageblanc');
+        $pehdsouflagejaune=$request->input('pehdsouflagejaune');
+        $pehdsouflagevert=$request->input('pehdsouflagevert');
+        $pehdsouflageneutre=$request->input('pehdsouflageneutre');
+        $pehdsouflagerouge=$request->input('pehdsouflagerouge');
+        $pehdsouflagejadida=$request->input('pehdsouflagejadida');
+        $pehdsouflagemaron=$request->input('pehdsouflagemaron');
+        $pehdsouflagenoire=$request->input('pehdsouflagenoire');
+        $pehdsouflagemulti=$request->input('pehdsouflagemulti');
         //total
-        $pehdlav=$pehdbleu+$pehdblanc+$pehdjaune+$pehdvert+$pehdneutre+$pehdrouge+$pehdjadida+$pehdmaron+$pehdnoire+$pehdmulti;
+        $pehdsouflagelav=$pehdsouflagebleu+$pehdsouflageblanc+$pehdsouflagejaune+$pehdsouflagevert+$pehdsouflageneutre+$pehdsouflagerouge+$pehdsouflagejadida+$pehdsouflagemaron+$pehdsouflagenoire+$pehdsouflagemulti;
         $dechelavage=$request->input('dechelavage');
         $lavagess=$lavage->lavage;
-        $totale=$pehdlav+$ppcopolav+$pphomolav+$petlav;
+        $totale=$pehdcasierlav+$pehdsouflagelav+$ppcopolav+$pphomolav+$petpreformlav+$petbouteillelav;
         $totaleetdechet=$totale+$dechelavage;
         // dd($lavagess);
         $date=$request->input('date');
@@ -111,7 +129,7 @@ class LavageControllers2 extends Controller
         $lavage->lavage=$lavagess-$totaleetdechet;
         $lavage->update($input);
   
-        $sechage=Sechage::all();
+        $sechage= Sechage::all();
         
         DB::table('sechages')->insert([
             'sechage'=>$totale,
@@ -139,31 +157,46 @@ class LavageControllers2 extends Controller
             'pphomomulti'=>$pphomomulti,
             'pphomosec'=>$pphomolav,
         
-            'petbleu'=>$petbleu,
-            'petblanc'=>$petblanc,
-            'petsec'=>$petlav,
+            'petprefombleu'=>$petpreformbleu,
+            'petprefomblanc'=>$petpreformblanc,
+            'petprefomsec'=>$petpreformlav,
 
-            'pehdbleu'=>$pehdbleu,
-            'pehdblanc'=>$pehdblanc,
-            'pehdjaune'=>$pehdjaune,
-            'pehdvert'=>$pehdvert,
-            'pehdneutre'=>$pehdneutre,
-            'pehdrouge'=>$pehdrouge,
-            'pehdjadida'=>$pehdjadida,
-            'pehdmaron'=>$pehdmaron,
-            'pehdnoire'=>$pehdnoire,
-            'pehdmulti'=>$pehdmulti,
-            'pehdsec'=>$pehdlav,
+            'petbouteillebleu'=>$petbouteillebleu,
+            'petbouteilleblanc'=>$petbouteilleblanc,
+            'petbouteillesec'=>$petbouteillelav,
+
+            'pehdcasierbleu'=>$pehdcasierbleu,
+            'pehdcasierblanc'=>$pehdcasierblanc,
+            'pehdcasierjaune'=>$pehdcasierjaune,
+            'pehdcasiervert'=>$pehdcasiervert,
+            'pehdcasierneutre'=>$pehdcasierneutre,
+            'pehdcasierrouge'=>$pehdcasierrouge,
+            'pehdcasierjadida'=>$pehdcasierjadida,
+            'pehdcasiermaron'=>$pehdcasiermaron,
+            'pehdcasiernoire'=>$pehdcasiernoire,
+            'pehdcasiermulti'=>$pehdcasiermulti,
+            'pehdcasiersec'=>$pehdcasierlav,
+
+            'pehdsouflagebleu'=>$pehdsouflagebleu,
+            'pehdsouflageblanc'=>$pehdsouflageblanc,
+            'pehdsouflagejaune'=>$pehdsouflagejaune,
+            'pehdsouflagevert'=>$pehdsouflagevert,
+            'pehdsouflageneutre'=>$pehdsouflageneutre,
+            'pehdsouflagerouge'=>$pehdsouflagerouge,
+            'pehdsouflagejadida'=>$pehdsouflagejadida,
+            'pehdsouflagemaron'=>$pehdsouflagemaron,
+            'pehdsouflagenoire'=>$pehdsouflagenoire,
+            'pehdsouflagemulti'=>$pehdsouflagemulti,
+            'pehdsouflagesec'=>$pehdsouflagelav,
         
             'totale'=>0,
-            'effectifsec'=>0,
             'dechesechage'=>0,
             'date'=>$date,
                    
                     ]);
 
                      //dd('cool');
-        return redirect()->route('lavages.index',compact('lavage'))->withFail('BRAVO, Le lavage de la matiere Id (numero '.$lavage->id.') a ete effectué avec succes, La matiere se retrouve maitenant dans l-atelier de sechage .');
+        return redirect()->route('lavages.index',compact('sechage'))->withFail('BRAVO, Le lavage de la matiere Id (numero '.$lavage->id.') a ete effectué avec succes, La matiere se retrouve maitenant dans l-atelier de sechage .');
        }
        
         return redirect()->route('lavages.edit',compact('lavage'))->withFail('Veillez bien verifier Les quantites que vous avez saisies, surement il y-a une difference avec la quantite qui est sur cet QUART. ');

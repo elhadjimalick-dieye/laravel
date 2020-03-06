@@ -74,36 +74,61 @@ class TamisageController extends Controller
         $effectiflav=$request->input('effectiflav');
         //total
         $pphomolav=$pphomobleu+$pphomoblanc+$pphomojaune+$pphomovert+$pphomomauve+$pphomorouge+$pphomojadida+$pphomomaron+$pphomonoire+$pphomomulti;
+       // dd($pphomolav);
 
-        $petbleu=$request->input('petbleu');
-        $petblanc=$request->input('petblanc');
+        $petpreformbleu=$request->input('petpreformbleu');
+        $petpreformblanc=$request->input('petpreformblanc');
         //total
-        $petlav=$petblanc+$petbleu;
-        //pehd
-        $pehdbleu=$request->input('pehdbleu');
-        $pehdblanc=$request->input('pehdblanc');
-        $pehdjaune=$request->input('pehdjaune');
-        $pehdvert=$request->input('pehdvert');
-        $pehdneutre=$request->input('pehdneutre');
-        $pehdrouge=$request->input('pehdrouge');
-        $pehdjadida=$request->input('pehdjadida');
-        $pehdmaron=$request->input('pehdmaron');
-        $pehdnoire=$request->input('pehdnoire');
-        $pehdmulti=$request->input('pehdmulti');
+        $petpreformlav=$petpreformblanc+$petpreformbleu;
+        //dd($petpreformlav);
+
+        $petbouteillebleu=$request->input('petbouteillebleu');
+        $petbouteilleblanc=$request->input('petbouteilleblanc');
         //total
-        $pehdlav=$pehdbleu+$pehdblanc+$pehdjaune+$pehdvert+$pehdneutre+$pehdrouge+$pehdjadida+$pehdmaron+$pehdnoire+$pehdmulti;
+        $petbouteillelav=$petbouteilleblanc+$petbouteillebleu;
+       // dd($petbouteillelav);
+
+        $pehdcasierbleu=$request->input('pehdcasierbleu');
+        $pehdcasierblanc=$request->input('pehdcasierblanc');
+        $pehdcasierjaune=$request->input('pehdcasierjaune');
+        $pehdcasiervert=$request->input('pehdcasiervert');
+        $pehdcasierneutre=$request->input('pehdcasierneutre');
+        $pehdcasierrouge=$request->input('pehdcasierrouge');
+        $pehdcasierjadida=$request->input('pehdcasierjadida');
+        $pehdcasiermaron=$request->input('pehdcasiermaron');
+        $pehdcasiernoire=$request->input('pehdcasiernoire');
+        $pehdcasiermulti=$request->input('pehdcasiermulti');
+        $pehdcasierlav=$pehdcasierbleu+$pehdcasierblanc+$pehdcasierjaune+$pehdcasiervert+$pehdcasierneutre+$pehdcasierrouge+$pehdcasierjadida+$pehdcasiermaron+$pehdcasiernoire+$pehdcasiermulti;
+        //dd($pehdcasierlav);
+        $pehdsouflagebleu=$request->input('pehdsouflagebleu');
+        $pehdsouflageblanc=$request->input('pehdsouflageblanc');
+        $pehdsouflagejaune=$request->input('pehdsouflagejaune');
+        $pehdsouflagevert=$request->input('pehdsouflagevert');
+        $pehdsouflageneutre=$request->input('pehdsouflageneutre');
+        $pehdsouflagerouge=$request->input('pehdsouflagerouge');
+        $pehdsouflagejadida=$request->input('pehdsouflagejadida');
+        $pehdsouflagemaron=$request->input('pehdsouflagemaron');
+        $pehdsouflagenoire=$request->input('pehdsouflagenoire');
+        $pehdsouflagemulti=$request->input('pehdsouflagemulti');
+        //total
+        $pehdsouflagelav=$pehdsouflagebleu+$pehdsouflageblanc+$pehdsouflagejaune+$pehdsouflagevert+$pehdsouflageneutre+$pehdsouflagerouge+$pehdsouflagejadida+$pehdsouflagemaron+$pehdsouflagenoire+$pehdsouflagemulti;
+       //dd($pehdsouflagelav);
         $dechetamisage=$request->input('dechetamisage');
         $tamisagess=$tamisage->tamisage;
-        $totale=$pehdlav+$ppcopolav+$pphomolav+$petlav;
+        $totale=$pehdsouflagelav+$pehdcasierlav+$ppcopolav+$pphomolav+$petpreformlav+$petbouteillelav;
+    // dd($pehdsouflagelav,$pehdcasierlav,$ppcopolav,$pphomolav,$petpreformlav,$petbouteillelav);
+       
         $totaleetdechet=$totale+$dechetamisage;
-        // dd($tamisagess);
+       // dd($totaleetdechet);
+     //dd($totale);
         $date=$request->input('date');
        // dd($ppcopoblanc);
 
         if ($tamisagess<=0) {
             return redirect()->route('tamisages.index',compact('tamisage'))->withFail('La matiere a ete tamiser ou bien la quantite est inferieur ou egale à ZERO ');
         }
-       // dd($totaleetdechet);
+  //dd($totaleetdechet);
+       //dd($tamisagess);
 
        if ($tamisagess==$totaleetdechet) {
         $tamisage->totale=$totale;
@@ -112,7 +137,7 @@ class TamisageController extends Controller
         $tamisage->update($input);
 
         $lavage=Lavage::all();
-        
+
         DB::table('lavages')->insert([
             'lavage'=>$totale,
             'ppcopobleu'=>$ppcopobleu,
@@ -139,33 +164,47 @@ class TamisageController extends Controller
             'pphomomulti'=>$pphomomulti,
             'pphomolav'=>$pphomolav,
         
-            'petbleu'=>$petbleu,
-            'petblanc'=>$petblanc,
-            'petlav'=>$petlav,
+            'petpreformbleu'=>$petpreformbleu,
+            'petpreformblanc'=>$petpreformblanc,
+            'petpreformlav'=>$petpreformlav,
 
-            'pehdbleu'=>$pehdbleu,
-            'pehdblanc'=>$pehdblanc,
-            'pehdjaune'=>$pehdjaune,
-            'pehdvert'=>$pehdvert,
-            'pehdneutre'=>$pehdneutre,
-            'pehdrouge'=>$pehdrouge,
-            'pehdjadida'=>$pehdjadida,
-            'pehdmaron'=>$pehdmaron,
-            'pehdnoire'=>$pehdnoire,
-            'pehdmulti'=>$pehdmulti,
-            'pehdlav'=>$pehdlav,
+            'petbouteillebleu'=>$petbouteillebleu,
+            'petbouteilleblanc'=>$petbouteilleblanc,
+            'petbouteillelav'=>$petbouteillelav,
+
+            'pehdcasierbleu'=>$pehdcasierbleu,
+            'pehdcasierblanc'=>$pehdcasierblanc,
+            'pehdcasierjaune'=>$pehdcasierjaune,
+            'pehdcasiervert'=>$pehdcasiervert,
+            'pehdcasierneutre'=>$pehdcasierneutre,
+            'pehdcasierrouge'=>$pehdcasierrouge,
+            'pehdcasierjadida'=>$pehdcasierjadida,
+            'pehdcasiermaron'=>$pehdcasiermaron,
+            'pehdcasiernoire'=>$pehdcasiernoire,
+            'pehdcasiermulti'=>$pehdcasiermulti,
+            'pehdcasierlav'=>$pehdcasierlav,
         
+
+
+            'pehdsouflagebleu'=>$pehdsouflagebleu,
+            'pehdsouflageblanc'=>$pehdsouflageblanc,
+            'pehdsouflagejaune'=>$pehdsouflagejaune,
+            'pehdsouflagevert'=>$pehdsouflagevert,
+            'pehdsouflageneutre'=>$pehdsouflageneutre,
+            'pehdsouflagerouge'=>$pehdsouflagerouge,
+            'pehdsouflagejadida'=>$pehdsouflagejadida,
+            'pehdsouflagemaron'=>$pehdsouflagemaron,
+            'pehdsouflagenoire'=>$pehdsouflagenoire,
+            'pehdsouflagemulti'=>$pehdsouflagemulti,
+            'pehdsouflagelav'=>$pehdsouflagelav,
             'totale'=>0,
-            'effectiflav'=>0,
             'dechelavage'=>0,
             'date'=>$date,
                    
                     ]);
 
        
-
-                     //dd('cool');
-        return redirect()->route('tamisages.index',compact('tamisage'))->withFail('BRAVO, Le tamisage de la matiere Id (numero '.$tamisage->id.') a ete effectué avec succes, La matiere se retrouve maitenant dans l-atelier de lavage .');
+        return redirect()->route('tamisages.index',compact('lavage'))->withFail('BRAVO, Le tamisage de la matiere Id (numero '.$tamisage->id.') a ete effectué avec succes, La matiere se retrouve maitenant dans l-atelier de lavage .');
        }
        
         return redirect()->route('tamisages.edit',compact('tamisage'))->withFail('Veillez bien verifier Les quantites que vous avez saisies, surement il y-a une difference avec la quantite qui est sur cet QUART. ');

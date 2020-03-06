@@ -44,8 +44,17 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('lavageshors','LavageController');
     Route::resource('lavages','LavageControllers2');
     Route::resource('sechages','SechageController');
+    Route::resource('extrusions','ExtrusionController');
+
+    Route::resource('sacs','SacController');
+    Route::resource('stockproduitfinis','StockController');
 
 
+
+
+    
+
+    
     Route::resource('broyages','BroyageController');
     Route::resource('tamisages','TamisageController');
 

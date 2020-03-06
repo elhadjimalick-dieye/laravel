@@ -41,21 +41,37 @@ class CreateBroyagesTable extends Migration
             $table->bigInteger('pphomonoire')->nullable();
             $table->bigInteger('pphomomulti')->nullable();
 
-            $table->bigInteger('petbro')->nullable();
-            $table->bigInteger('petbleu')->nullable();
-            $table->bigInteger('petblanc')->nullable();
+            $table->bigInteger('petpreformbro')->nullable();
+            $table->bigInteger('petpreformbleu')->nullable();
+            $table->bigInteger('petpreformblanc')->nullable();
 
-            $table->bigInteger('pehdbro')->nullable();
-            $table->bigInteger('pehdbleu')->nullable();
-            $table->bigInteger('pehdblanc')->nullable();
-            $table->bigInteger('pehdjaune')->nullable();
-            $table->bigInteger('pehdvert')->nullable();
-            $table->bigInteger('pehdneutre')->nullable();
-            $table->bigInteger('pehdrouge')->nullable();
-            $table->bigInteger('pehdjadida')->nullable();
-            $table->bigInteger('pehdmaron')->nullable();
-            $table->bigInteger('pehdnoire')->nullable();
-            $table->bigInteger('pehdmulti')->nullable();
+            $table->bigInteger('petbouteillebro')->nullable();
+            $table->bigInteger('petbouteillebleu')->nullable();
+            $table->bigInteger('petbouteilleblanc')->nullable();
+
+            $table->bigInteger('pehdcasierbro')->nullable();
+            $table->bigInteger('pehdcasierbleu')->nullable();
+            $table->bigInteger('pehdcasierblanc')->nullable();
+            $table->bigInteger('pehdcasierjaune')->nullable();
+            $table->bigInteger('pehdcasiervert')->nullable();
+            $table->bigInteger('pehdcasierneutre')->nullable();
+            $table->bigInteger('pehdcasierrouge')->nullable();
+            $table->bigInteger('pehdcasierjadida')->nullable();
+            $table->bigInteger('pehdcasiermaron')->nullable();
+            $table->bigInteger('pehdcasiernoire')->nullable();
+            $table->bigInteger('pehdcasiermulti')->nullable();
+
+            $table->bigInteger('pehdsouflagebro')->nullable();
+            $table->bigInteger('pehdsouflagebleu')->nullable();
+            $table->bigInteger('pehdsouflageblanc')->nullable();
+            $table->bigInteger('pehdsouflagejaune')->nullable();
+            $table->bigInteger('pehdsouflagevert')->nullable();
+            $table->bigInteger('pehdsouflageneutre')->nullable();
+            $table->bigInteger('pehdsouflagerouge')->nullable();
+            $table->bigInteger('pehdsouflagejadida')->nullable();
+            $table->bigInteger('pehdsouflagemaron')->nullable();
+            $table->bigInteger('pehdsouflagenoire')->nullable();
+            $table->bigInteger('pehdsouflagemulti')->nullable();
 
             $table->bigInteger('totale')->nullable();
             $table->bigInteger('effectifbro')->nullable();

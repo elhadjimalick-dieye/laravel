@@ -296,6 +296,12 @@
                       <p>Sechage</p>
                     </a>
                   </li>
+                  <li class="nav-item">
+                    <a href="{{ route('sacs.index') }}" class="nav-link">
+                      <i class="far fa-dot-circle nav-icon" style="color:#9932CC"></i>
+                      <p>Mise en sac</p>
+                    </a>
+                  </li>
                 </ul>
               </li>
               <li class="nav-item">

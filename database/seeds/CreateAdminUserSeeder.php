@@ -13,6 +13,9 @@ use App\Triage;
 use App\Permission;
 use App\Lavagehor;
 use App\Broyage;
+use App\Sac;
+use App\Extrusion;
+use App\Stockproduitfini;
 //use Spatie\Permission\Models\Roles;
 
 class CreateAdminUserSeeder extends Seeder
@@ -243,21 +246,37 @@ class CreateAdminUserSeeder extends Seeder
                         'pphomonoire'=>0,
                         'pphomomulti'=>0,
 
-                        'petlav'=>0,
-                        'petbleu'=>0,
-                        'petblanc'=>0,
+                        'petpreformlav'=>0,
+                        'petpreformbleu'=>0,
+                        'petpreformblanc'=>0,
+
+                        'petbouteillelav'=>0,
+                        'petbouteillebleu'=>0,
+                        'petbouteilleblanc'=>0,
                     
-                        'pehdlav'=>0,
-                        'pehdbleu'=>0,
-                        'pehdblanc'=>0,
-                        'pehdjaune'=>0,
-                        'pehdvert'=>0,
-                        'pehdneutre'=>0,
-                        'pehdrouge'=>0,
-                        'pehdjadida'=>0,
-                        'pehdmaron'=>0,
-                        'pehdnoire'=>0,
-                        'pehdmulti'=>0,
+                        'pehdcasierlav'=>0,
+                        'pehdcasierbleu'=>0,
+                        'pehdcasierblanc'=>0,
+                        'pehdcasierjaune'=>0,
+                        'pehdcasiervert'=>0,
+                        'pehdcasierneutre'=>0,
+                        'pehdcasierrouge'=>0,
+                        'pehdcasierjadida'=>0,
+                        'pehdcasiermaron'=>0,
+                        'pehdcasiernoire'=>0,
+                        'pehdcasiermulti'=>0,
+
+                        'pehdsouflagelav'=>0,
+                        'pehdsouflagebleu'=>0,
+                        'pehdsouflageblanc'=>0,
+                        'pehdsouflagejaune'=>0,
+                        'pehdsouflagevert'=>0,
+                        'pehdsouflageneutre'=>0,
+                        'pehdsouflagerouge'=>0,
+                        'pehdsouflagejadida'=>0,
+                        'pehdsouflagemaron'=>0,
+                        'pehdsouflagenoire'=>0,
+                        'pehdsouflagemulti'=>0,
                     
                         'totale'=>0,
                         'effectiflav'=>0,
@@ -292,21 +311,37 @@ class CreateAdminUserSeeder extends Seeder
                     'pphomonoire'=>0,
                     'pphomomulti'=>0,
 
-                    'petbro'=>0,
-                    'petbleu'=>0,
-                    'petblanc'=>0,
+                    'petpreformbro'=>0,
+                    'petpreformbleu'=>0,
+                    'petpreformblanc'=>0,
 
-                    'pehdbro'=>0,
-                    'pehdbleu'=>0,
-                    'pehdblanc'=>0,
-                    'pehdjaune'=>0,
-                    'pehdvert'=>0,
-                    'pehdneutre'=>0,
-                    'pehdrouge'=>0,
-                    'pehdjadida'=>0,
-                    'pehdmaron'=>0,
-                    'pehdnoire'=>0,
-                    'pehdmulti'=>0,
+                    'petbouteillebro'=>0,
+                    'petbouteillebleu'=>0,
+                    'petbouteilleblanc'=>0,
+
+                    'pehdcasierbro'=>0,
+                    'pehdcasierbleu'=>0,
+                    'pehdcasierblanc'=>0,
+                    'pehdcasierjaune'=>0,
+                    'pehdcasiervert'=>0,
+                    'pehdcasierneutre'=>0,
+                    'pehdcasierrouge'=>0,
+                    'pehdcasierjadida'=>0,
+                    'pehdcasiermaron'=>0,
+                    'pehdcasiernoire'=>0,
+                    'pehdcasiermulti'=>0,
+
+                    'pehdsouflagebro'=>0,
+                    'pehdsouflagebleu'=>0,
+                    'pehdsouflageblanc'=>0,
+                    'pehdsouflagejaune'=>0,
+                    'pehdsouflagevert'=>0,
+                    'pehdsouflageneutre'=>0,
+                    'pehdsouflagerouge'=>0,
+                    'pehdsouflagejadida'=>0,
+                    'pehdsouflagemaron'=>0,
+                    'pehdsouflagenoire'=>0,
+                    'pehdsouflagemulti'=>0,
 
                     'totale'=>0,
                     'effectifbro'=>0,
@@ -316,7 +351,251 @@ class CreateAdminUserSeeder extends Seeder
                     'date'=>'2015-02-03',
                     ]);
 
+                    $sac= Sac::create ([
+                    'sac'=>0,
+                    'ppcopo'=>0,
+                    'ppcopobleu'=>0,
+                    'ppcopoblanc'=>0,
+                    'ppcopojaune'=>0,
+                    'ppcopovert'=>0,
+                    'ppcopomauve'=>0,
+                    'ppcoporouge'=>0,
+                    'ppcopojadida'=>0,
+                    'ppcopomaron'=>0,
+                    'ppcoponoire'=>0,
+                    'ppcopomulti'=>0,
+            
+                    'pphomo'=>0,
+                    'pphomobleu'=>0,
+                    'pphomoblanc'=>0,
+                    'pphomojaune'=>0,
+                    'pphomovert'=>0,
+                    'pphomomauve'=>0,
+                    'pphomorouge'=>0,
+                    'pphomojadida'=>0,
+                    'pphomomaron'=>0,
+                    'pphomonoire'=>0,
+                    'pphomomulti'=>0,
+            
+                    'pet'=>0,
+                    'petpreform'=>0,
+                    'petpreformbleu'=>0,
+                    'petpreformblanc'=>0,
+            
+                    'petbouteille'=>0,
+                    'petbouteillebleu'=>0,
+                    'petbouteilleblanc'=>0,
+            
+                    'pehdcasier'=>0,
+                    'pehdcasierbleu'=>0,
+                    'pehdcasierblanc'=>0,
+                    'pehdcasierjaune'=>0,
+                    'pehdcasiervert'=>0,
+                    'pehdcasierneutre'=>0,
+                    'pehdcasierrouge'=>0,
+                    'pehdcasierjadida'=>0,
+                    'pehdcasiermaron'=>0,
+                    'pehdcasiernoire'=>0,
+                    'pehdcasiermulti'=>0,
+                    'pehdsouflage'=>0,
+            
+                    'pehdsouflagebleu'=>0,
+                    'pehdsouflageblanc'=>0,
+                    'pehdsouflagejaune'=>0,
+                    'pehdsouflagevert'=>0,
+                    'pehdsouflageneutre'=>0,
+                    'pehdsouflagerouge'=>0,
+                    'pehdsouflagejadida'=>0,
+                    'pehdsouflagemaron'=>0,
+                    'pehdsouflagenoire'=>0,
+                    'pehdsouflagemulti'=>0,
 
+                    'ppcoporestant'=>0,
+                    'ppcopobleurestant'=>0,
+                    'ppcopoblancrestant'=>0,
+                    'ppcopojaunerestant'=>0,
+                    'ppcopovertrestant'=>0,
+                    'ppcopomauverestant'=>0,
+                    'ppcoporougerestant'=>0,
+                    'ppcopojadidarestant'=>0,
+                    'ppcopomaronrestant'=>0,
+                    'ppcoponoirerestant'=>0,
+                    'ppcopomultirestant'=>0,
+            
+                    'pphomorestant'=>0,
+                    'pphomobleurestant'=>0,
+                    'pphomoblancrestant'=>0,
+                    'pphomojaunerestant'=>0,
+                    'pphomovertrestant'=>0,
+                    'pphomomauverestant'=>0,
+                    'pphomorougerestant'=>0,
+                    'pphomojadidarestant'=>0,
+                    'pphomomaronrestant'=>0,
+                    'pphomonoirerestant'=>0,
+                    'pphomomultirestant'=>0,
+            
+                    'petrestant'=>0,
+                    'petpreformrestant'=>0,
+                    'petpreformbleurestant'=>0,
+                    'petpreformblancrestant'=>0,
+            
+                    'petbouteillerestant'=>0,
+                    'petbouteillebleurestant'=>0,
+                    'petbouteilleblancrestant'=>0,
+            
+                    'pehdcasierrestant'=>0,
+                    'pehdcasierbleurestant'=>0,
+                    'pehdcasierblancrestant'=>0,
+                    'pehdcasierjaunerestant'=>0,
+                    'pehdcasiervertrestant'=>0,
+                    'pehdcasierneutrerestant'=>0,
+                    'pehdcasierrougerestant'=>0,
+                    'pehdcasierjadidarestant'=>0,
+                    'pehdcasiermaronrestant'=>0,
+                    'pehdcasiernoirerestant'=>0,
+                    'pehdcasiermultirestant'=>0,
+            
+            
+                    'pehdsouflagerestant'=>0,
+            
+                    'pehdsouflagebleurestant'=>0,
+                    'pehdsouflageblancrestant'=>0,
+                    'pehdsouflagejaunerestant'=>0,
+                    'pehdsouflagevertrestant'=>0,
+                    'pehdsouflageneutrerestant'=>0,
+                    'pehdsouflagerougerestant'=>0,
+                    'pehdsouflagejadidarestant'=>0,
+                    'pehdsouflagemaronrestant'=>0,
+                    'pehdsouflagenoirerestant'=>0,
+                    'pehdsouflagemultirestant'=>0,
+            
+            
+                    'totale'=>0,
+                    'effectifsac'=>0,
+                    'dechesac'=>0,
+                    'date'=>'2015-02-03',
+                   ]);
+
+
+
+                   $extrusion= Extrusion:: create([
+                    'extrusion'=>0,
+                   'pehdsouflagebleu'=>0,
+                   'pehdsouflageblanc'=>0,
+                   'pehdsouflagejaune'=>0,
+                   'pehdsouflagevert'=>0,
+                   'pehdsouflageneutre'=>0,
+                   'pehdsouflagerouge'=>0,
+                   'pehdsouflagejadida'=>0,
+                   'pehdsouflagemaron'=>0,
+                   'pehdsouflagenoire'=>0,
+                   'pehdsouflagemulti'=>0,
+               
+                   'pehdsouflagebleurestant'=>0,
+                   'pehdsouflageblancrestant'=>0,
+                   'pehdsouflagejaunerestant'=>0,
+                   'pehdsouflagevertrestant'=>0,
+                   'pehdsouflageneutrerestant'=>0,
+                   'pehdsouflagerougerestant'=>0,
+                   'pehdsouflagejadidarestant'=>0,
+                   'pehdsouflagemaronrestant'=>0,
+                   'pehdsouflagenoirerestant'=>0,
+                   'pehdsouflagemultirestant'=>0,
+               
+                   'pehdsouflagesacbleu'=>0,
+                   'pehdsouflagesacblanc'=>0,
+                   'pehdsouflagesacjaune'=>0,
+                   'pehdsouflagesacvert'=>0,
+                   'pehdsouflagesacneutre'=>0,
+                   'pehdsouflagesacrouge'=>0,
+                   'pehdsouflagesacjadida'=>0,
+                   'pehdsouflagesacmaron'=>0,
+                   'pehdsouflagesacnoire'=>0,
+                   'pehdsouflagesacmulti'=>0,
+                   'pehdsouflagesac'=>0,
+                   
+                   'effectifextru'=>0,
+                  
+               
+               
+                   'decheextrusion'=>0,
+                   'date'=>'2015-02-03',
+                   ]);
+
+
+
+              $stockproduitfini= Stockproduitfini::create([
+                   'stockproduitfini'=>0,
+                   'ppcoposac'=>0,
+                   'ppcoposacbleu'=>0,
+                   'ppcoposacblanc'=>0,
+                   'ppcoposacjaune'=>0,
+                   'ppcoposacvert'=>0,
+                   'ppcoposacmauve'=>0,
+                   'ppcoposacrouge'=>0,
+                   'ppcoposacjadida'=>0,
+                   'ppcoposacmaron'=>0,
+                   'ppcoposacnoire'=>0,
+                   'ppcoposacmulti'=>0,
+           
+           
+                   'pphomosacbleu'=>0,
+                   'pphomosacblanc'=>0,
+                   'pphomosacjaune'=>0,
+                   'pphomosacvert'=>0,
+                   'pphomosacmauve'=>0,
+                   'pphomosacrouge'=>0,
+                   'pphomosacjadida'=>0,
+                   'pphomosacmaron'=>0,
+                   'pphomosacnoire'=>0,
+                   'pphomosacmulti'=>0,
+                   'pphomosac'=>0,
+           
+           
+                   'petpreformsac'=>0,
+                   'petpreformsacbleu'=>0,
+                   'petpreformsacblanc'=>0,
+           
+                   'petbouteillesac'=>0,
+                   'petbouteillesacbleu'=>0,
+                   'petbouteillesacblanc'=>0,
+           
+                  
+           
+                   'pehdcasiersacbleu'=>0,
+                   'pehdcasiersacblanc'=>0,
+                   'pehdcasiersacjaune'=>0,
+                   'pehdcasiersacvert'=>0,
+                   'pehdcasiersacneutre'=>0,
+                   'pehdcasiersacrouge'=>0,
+                   'pehdcasiersacjadida'=>0,
+                   'pehdcasiersacmaron'=>0,
+                   'pehdcasiersacnoire'=>0,
+                   'pehdcasiersacmulti'=>0,
+                   'pehdcasiersac'=>0,
+           
+           
+           
+                   'pehdsouflagesacbleu'=>0,
+                   'pehdsouflagesacblanc'=>0,
+                   'pehdsouflagesacjaune'=>0,
+                   'pehdsouflagesacvert'=>0,
+                   'pehdsouflagesacneutre'=>0,
+                   'pehdsouflagesacrouge'=>0,
+                   'pehdsouflagesacjadida'=>0,
+                   'pehdsouflagesacmaron'=>0,
+                   'pehdsouflagesacnoire'=>0,
+                   'pehdsouflagesacmulti'=>0,
+                   'pehdsouflagesac'=>0,
+           
+                   'granule'=>0,
+                   'extrude'=>0,
+           
+                   'effectifstock'=>0,
+                   'nombre'=>0,
+           
+                   'date'=>'2015-02-03',
+                  ]);
     }
     
    

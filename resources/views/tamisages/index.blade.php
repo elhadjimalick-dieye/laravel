@@ -10,15 +10,25 @@
     </div>
 </div>
 <div class="row " style="margin-left:8%">
-    <div class="col-lg-12 " style="padding-top:2%">
+    <div class="col-lg-6 " style="padding-top:2%">
         <div class="pull-left">
         </div>
         <div class="pull-right">
-            <a class="btn btn-success" href="{{ route('depotProductions.index') }}"> Retour</a>
+            <a class="btn btn-success" href="{{ route('tamisages.index') }}"> Retour</a>
         </div>
         <br>
 
     </div>
+    <div class="col-lg-6 " style="padding-top:2%">
+        <div class="pull-left " >
+        </div>
+        <div class="pull-right" style="margin-left:58%">
+            <a class="btn btn-xs btn" style="background-color:green;color:white" href="{{ route('lavages.index') }}"> Lavage</a>
+        </div>
+        <br>
+
+    </div>
+
 </div>
 @if(Session::has('fail'))
     <div class="alert alert-success">
@@ -70,16 +80,16 @@
                                 {{ $tamisage->id ?? '' }}
                             </td>
                             <td>
-                                {{ $tamisage->effectiftami ?? '' }} personne(s)
+                                {{ $tamisage->effectiftami ?? '' }} 
                             </td>
                             <td>
-                                {{ $tamisage->tamisage ?? '' }} kg
+                                {{ $tamisage->tamisage ?? '' }}
                             </td>
                             <td>
-                                {{ $tamisage->dechetamisage ?? '' }} kg
+                                {{ $tamisage->dechetamisage ?? '' }}
                             </td>
                             <td>
-                            {{ $tamisage->totale ?? '' }} kg
+                            {{ $tamisage->totale ?? '' }}
 
 
                             </td>
@@ -160,32 +170,32 @@
                                 {{ $tamisage->id ?? '' }}
                             </td>
                             <td>
-                                {{ $tamisage->ppcopoblanc ?? '' }} kg
+                                {{ $tamisage->ppcopoblanc ?? '' }}
                             </td>
                             <td>
-                                {{ $tamisage->ppcopobleu ?? '' }} kg
+                                {{ $tamisage->ppcopobleu ?? '' }}
                             </td>
                             <td>
-                                {{ $tamisage->ppcopojaune ?? '' }} kg
+                                {{ $tamisage->ppcopojaune ?? '' }}
                             </td>
                             <td>
-                                {{ $tamisage->ppcopovert ?? '' }} kg
+                                {{ $tamisage->ppcopovert ?? '' }}
                             </td>
                             <td>
-                                {{ $tamisage->ppcopomauve ?? '' }} kg
+                                {{ $tamisage->ppcopomauve ?? '' }}
                             </td><td>
-                                {{ $tamisage->ppcoporouge ?? '' }} kg
+                                {{ $tamisage->ppcoporouge ?? '' }}
                             </td><td>
-                                {{ $tamisage->ppcopojadida ?? '' }} kg
+                                {{ $tamisage->ppcopojadida ?? '' }}
                             </td><td>
-                                {{ $tamisage->ppcopomaron ?? '' }} kg
+                                {{ $tamisage->ppcopomaron ?? '' }}
                             </td><td>
-                                {{ $tamisage->ppcoponoire ?? '' }} kg
+                                {{ $tamisage->ppcoponoire ?? '' }}
                             </td><td>
-                                {{ $tamisage->ppcopomulti ?? '' }} kg
+                                {{ $tamisage->ppcopomulti ?? '' }}
                             </td>
                             <td>
-                                {{ $ppcopo=$tamisage->ppcopoblanc+$tamisage->ppcopobleu+$tamisage->ppcopojaune+$tamisage->ppcopovert+$tamisage->ppcopomauve+$tamisage->ppcoporouge+$tamisage->ppcopojadida+$tamisage->ppcopomaron+$tamisage->ppcoponoire+$tamisage->ppcopomulti ?? '' }} kg
+                                {{ $ppcopo=$tamisage->ppcopoblanc+$tamisage->ppcopobleu+$tamisage->ppcopojaune+$tamisage->ppcopovert+$tamisage->ppcopomauve+$tamisage->ppcoporouge+$tamisage->ppcopojadida+$tamisage->ppcopomaron+$tamisage->ppcoponoire+$tamisage->ppcopomulti ?? '' }}
                             </td>
 
                                     </td>
@@ -201,7 +211,7 @@
 </div>
 
 <div class="card col-lg-12">
-    <div class="card-header" style="background-color:#1E90FF;color:white">
+    <div class="card-header" style="background-color:#008B8B;color:white">
         {{ trans('Table de tamisage PPHOMO') }}
 
     </div>
@@ -252,35 +262,35 @@
                         <tr >
 
                         <td>
-                                {{ $tamisage->id ?? '' }} kg
+                                {{ $tamisage->id ?? '' }}
                             </td>
                             <td>
-                                {{ $tamisage->pphomoblanc ?? '' }} kg
+                                {{ $tamisage->pphomoblanc ?? '' }}
                             </td>
                             <td>
-                                {{ $tamisage->pphomobleu ?? '' }} kg
+                                {{ $tamisage->pphomobleu ?? '' }}
                             </td>
                             <td>
-                                {{ $tamisage->pphomojaune ?? '' }} kg
+                                {{ $tamisage->pphomojaune ?? '' }}
                             </td>
                             <td>
-                                {{ $tamisage->pphomovert ?? '' }} kg
+                                {{ $tamisage->pphomovert ?? '' }}
                             </td>
                             <td>
-                                {{ $tamisage->pphomomauve ?? '' }} kg
+                                {{ $tamisage->pphomomauve ?? '' }}
                             </td><td>
-                                {{ $tamisage->pphomorouge ?? '' }} kg
+                                {{ $tamisage->pphomorouge ?? '' }}
                             </td><td>
-                                {{ $tamisage->pphomojadida ?? '' }} kg
+                                {{ $tamisage->pphomojadida ?? '' }}
                             </td><td>
-                                {{ $tamisage->pphomomaron ?? '' }} kg
+                                {{ $tamisage->pphomomaron ?? '' }}
                             </td><td>
-                                {{ $tamisage->pphomonoire ?? '' }} kg
+                                {{ $tamisage->pphomonoire ?? '' }}
                             </td><td>
-                                {{ $tamisage->pphomomulti ?? '' }} kg
+                                {{ $tamisage->pphomomulti ?? '' }}
                             </td>
                             <td>
-                                {{ $pphomo=$tamisage->pphomoblanc+$tamisage->pphomobleu+$tamisage->pphomojaune+$tamisage->pphomovert+$tamisage->pphomomauve+$tamisage->pphomorouge+$tamisage->pphomojadida+$tamisage->pphomomaron+$tamisage->pphomonoire+$tamisage->pphomomulti ?? '' }} kg
+                                {{ $pphomo=$tamisage->pphomoblanc+$tamisage->pphomobleu+$tamisage->pphomojaune+$tamisage->pphomovert+$tamisage->pphomomauve+$tamisage->pphomorouge+$tamisage->pphomojadida+$tamisage->pphomomaron+$tamisage->pphomonoire+$tamisage->pphomomulti ?? '' }}
                             </td>
 
                                     </td>
@@ -297,7 +307,7 @@
 
 <div class="card col-lg-12">
     <div class="card-header" style="background-color:green;color:white">
-        {{ trans('Table de tamisage PET') }}
+        {{ trans('Table de tamisage PET PREFORME') }}
 
     </div>
 
@@ -332,14 +342,73 @@
                                 {{ $tamisage->id ?? '' }}
                             </td>
                             <td>
-                                {{ $tamisage->petblanc ?? '' }} kg
+                                {{ $tamisage->petpreformblanc ?? '' }}
                             </td>
                             <td>
-                                {{ $tamisage->petbleu ?? '' }} kg
+                                {{ $tamisage->petpreformbleu ?? '' }}
                             </td>
                             
                             <td>
-                                {{ $pettri=$tamisage->petblanc+$tamisage->petbleu ?? '' }} kg
+                                {{ $petpreformtri=$tamisage->petpreformblanc+$tamisage->petpreformbleu ?? '' }}
+                            </td>
+
+                                    </td>
+                         
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+</div>
+
+<div class="card col-lg-12">
+    <div class="card-header" style="background-color:green;color:white">
+        {{ trans('Table de tamisage PET BOUTEILLE') }}
+
+    </div>
+
+    <div class="card-body card col-lg-12">
+        <div class=" margin-left: 50px col-lg-12" >
+            <table   style="width:100%"  class=" table table-bordered table-striped table-hover datatable datatable-User">
+                <thead style='margin-left: 100px'>
+                    <tr>
+                    <th>
+                            {{ trans('Id') }}
+                        </th>
+                    
+                        <th>
+                            {{ trans('Blanc') }}
+                        </th>
+                        <th>
+                            {{ trans('Bleu') }}
+                        </th>
+                        <th>
+                        {{ trans('Total') }}
+                        </th>
+                       
+                        
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($data as $key => $tamisage)
+                        <tr >
+
+                        <td>
+                                {{ $tamisage->id ?? '' }}
+                            </td>
+                            <td>
+                                {{ $tamisage->petbouteilleblanc ?? '' }}
+                            </td>
+                            <td>
+                                {{ $tamisage->petbouteillebleu ?? '' }}
+                            </td>
+                            
+                            <td>
+                                {{ $petbouteilletri=$tamisage->petbouteilleblanc+$tamisage->petbouteillebleu ?? '' }}
                             </td>
 
                                     </td>
@@ -355,7 +424,7 @@
 </div>
 <div class="card col-lg-12">
     <div class="card-header " style="background-color:skyblue;color:white">
-        {{ trans('Table de tamisage PEHD') }}
+        {{ trans('Table de tamisage PEHD CASIER') }}
     </div>
 
     <div class="card-body card col-lg-12 ">
@@ -417,31 +486,133 @@
                             </td>
                             
                             <td>
-                                {{ $tamisage->pehdblanc ?? '' }} kg
+                                {{ $tamisage->pehdcasierblanc ?? '' }}
                             </td>
                             <td>
-                                {{ $tamisage->pehdbleu ?? '' }} kg
+                                {{ $tamisage->pehdcasierbleu ?? '' }}
                             </td>
                             <td>
-                                {{ $tamisage->pehdjaune ?? '' }} kg
+                                {{ $tamisage->pehdcasierjaune ?? '' }}
                             </td><td>
-                                {{ $tamisage->pehdvert ?? '' }} kg
+                                {{ $tamisage->pehdcasiervert ?? '' }}
                             </td><td>
-                                {{ $tamisage->pehdneutre ?? '' }} kg
+                                {{ $tamisage->pehdcasierneutre ?? '' }}
                             </td><td>
-                                {{ $tamisage->pehdrouge ?? '' }} kg
+                                {{ $tamisage->pehdcasierrouge ?? '' }}
                             </td><td>
-                                {{ $tamisage->pehdjadida ?? '' }} kg
+                                {{ $tamisage->pehdcasierjadida ?? '' }}
                             </td><td>
-                                {{ $tamisage->pehdmaron ?? '' }} kg
+                                {{ $tamisage->pehdcasiermaron ?? '' }}
                             </td><td>
-                                {{ $tamisage->pehdnoire ?? '' }} kg
+                                {{ $tamisage->pehdcasiernoire ?? '' }}
                             </td>
                             <td>
-                                {{ $tamisage->pehdmulti ?? '' }} kg
+                                {{ $tamisage->pehdcasiermulti ?? '' }}
                             </td>
                             <td>
-                                {{$tamisage->pehdblanc+$tamisage->pehdbleu+$tamisage->pehdjaune+$tamisage->pehdvert+$tamisage->pehdneutre+$tamisage->pehdrouge+$tamisage->pehdjadida+$tamisage->pehdmaron+$tamisage->pehdnoire+$tamisage->pehdmulti ?? '' }} kg
+                                {{$tamisage->pehdcasierblanc+$tamisage->pehdcasierbleu+$tamisage->pehdcasierjaune+$tamisage->pehdcasiervert+$tamisage->pehdcasierneutre+$tamisage->pehdcasierrouge+$tamisage->pehdcasierjadida+$tamisage->pehdcasiermaron+$tamisage->pehdcasiernoire+$tamisage->pehdcasiermulti ?? '' }}
+                            </td>
+
+                           
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+</div>
+
+<div class="card col-lg-12">
+    <div class="card-header " style="background-color:skyblue;color:white">
+        {{ trans('Table de tamisage PEHD SOUFFLAGE') }}
+    </div>
+
+    <div class="card-body card col-lg-12 ">
+        <div class=" margin-left: 50px col-lg-12 " >
+            <table   style="width:100%"  class=" table table-bordered table-striped table-hover datatable datatable-User">
+                <thead style='margin-left: 100px '>
+                    <tr>
+              
+                    <th>
+                            {{ trans('Id') }}
+                        </th>
+                        
+                        <th>
+                            {{ trans('Blanc') }}
+                        </th>
+                        <th>
+                            {{ trans('Bleu') }}
+                        </th>
+                        <th>
+                        {{ trans('Jaune') }}
+
+                        </th>
+                        <th>
+                        {{ trans('Vert') }}
+
+                        </th><th>
+                        {{ trans('Neutre') }}
+
+                        </th><th>
+                        {{ trans('Rouge') }}
+
+                        </th><th>
+                        {{ trans('Jadida') }}
+
+                        </th><th>
+                        {{ trans('Maron') }}
+
+                        </th><th>
+                        {{ trans('Noire') }}
+
+                        </th><th>
+                        {{ trans('Multicolor') }}
+
+                        </th>
+                        <th>
+                        {{ trans('Total____') }}
+
+                        </th>
+                        
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($data as $key => $tamisage)
+                        <tr >
+                                   
+                        <td>
+                                {{ $tamisage->id ?? '' }}
+                            </td>
+                            
+                            <td>
+                                {{ $tamisage->pehdsouflageblanc ?? '' }}
+                            </td>
+                            <td>
+                                {{ $tamisage->pehdsouflagebleu ?? '' }}
+                            </td>
+                            <td>
+                                {{ $tamisage->pehdsouflagejaune ?? '' }}
+                            </td><td>
+                                {{ $tamisage->pehdsouflagevert ?? '' }}
+                            </td><td>
+                                {{ $tamisage->pehdsouflageneutre ?? '' }}
+                            </td><td>
+                                {{ $tamisage->pehdsouflagerouge ?? '' }}
+                            </td><td>
+                                {{ $tamisage->pehdsouflagejadida ?? '' }}
+                            </td><td>
+                                {{ $tamisage->pehdsouflagemaron ?? '' }}
+                            </td><td>
+                                {{ $tamisage->pehdsouflagenoire ?? '' }}
+                            </td>
+                            <td>
+                                {{ $tamisage->pehdsouflagemulti ?? '' }}
+                            </td>
+                            <td>
+                                {{$tamisage->pehdsouflageblanc+$tamisage->pehdsouflagebleu+$tamisage->pehdsouflagejaune+$tamisage->pehdsouflagevert+$tamisage->pehdsouflageneutre+$tamisage->pehdsouflagerouge+$tamisage->pehdsouflagejadida+$tamisage->pehdsouflagemaron+$tamisage->pehdsouflagenoire+$tamisage->pehdsouflagemulti ?? '' }}
                             </td>
 
                            

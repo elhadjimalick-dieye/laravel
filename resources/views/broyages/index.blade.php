@@ -10,15 +10,25 @@
     </div>
 </div>
 <div class="row " style="margin-left:8%">
-    <div class="col-lg-12 " style="padding-top:2%">
+    <div class="col-lg-6 " style="padding-top:2%">
         <div class="pull-left">
         </div>
         <div class="pull-right">
-            <a class="btn btn-success" href="{{ route('depotProductions.index') }}"> Retour</a>
+            <a class="btn btn-success" href="{{ route('lavageshors.index') }}"> Retour</a>
         </div>
         <br>
 
     </div>
+    <div class="col-lg-6 " style="padding-top:2%">
+        <div class="pull-left " >
+        </div>
+        <div class="pull-right" style="margin-left:58%">
+            <a class="btn btn-xs btn" style="background-color:green;color:white" href="{{ route('tamisages.index') }}"> Tamisage</a>
+        </div>
+        <br>
+
+    </div>
+
 </div>
 @if(Session::has('fail'))
     <div class="alert alert-success">
@@ -73,19 +83,19 @@
                                 {{ $broyage->id ?? '' }}
                             </td>
                             <td>
-                                {{ $broyage->effectifbro ?? '' }} personne(s)
+                                {{ $broyage->effectifbro ?? '' }} 
                             </td>
                             <td>
-                                {{ $broyage->heuremachine ?? '' }} heure(s)
+                                {{ $broyage->heuremachine ?? '' }} 
                             </td>
                             <td>
-                                {{ $broyage->broyage ?? '' }} kg
+                                {{ $broyage->broyage ?? '' }} 
                             </td>
                             <td>
-                                {{ $broyage->dechebroyage ?? '' }} kg
+                                {{ $broyage->dechebroyage ?? '' }} 
                             </td>
                             <td>
-                            {{ $broyage->totale ?? '' }} kg
+                            {{ $broyage->totale ?? '' }} 
 
 
                             </td>
@@ -166,32 +176,32 @@
                                 {{ $broyage->id ?? '' }}
                             </td>
                             <td>
-                                {{ $broyage->ppcopoblanc ?? '' }} kg
+                                {{ $broyage->ppcopoblanc ?? '' }} 
                             </td>
                             <td>
-                                {{ $broyage->ppcopobleu ?? '' }} kg
+                                {{ $broyage->ppcopobleu ?? '' }} 
                             </td>
                             <td>
-                                {{ $broyage->ppcopojaune ?? '' }} kg
+                                {{ $broyage->ppcopojaune ?? '' }} 
                             </td>
                             <td>
-                                {{ $broyage->ppcopovert ?? '' }} kg
+                                {{ $broyage->ppcopovert ?? '' }} 
                             </td>
                             <td>
-                                {{ $broyage->ppcopomauve ?? '' }} kg
+                                {{ $broyage->ppcopomauve ?? '' }} 
                             </td><td>
-                                {{ $broyage->ppcoporouge ?? '' }} kg
+                                {{ $broyage->ppcoporouge ?? '' }} 
                             </td><td>
-                                {{ $broyage->ppcopojadida ?? '' }} kg
+                                {{ $broyage->ppcopojadida ?? '' }} 
                             </td><td>
-                                {{ $broyage->ppcopomaron ?? '' }} kg
+                                {{ $broyage->ppcopomaron ?? '' }} 
                             </td><td>
-                                {{ $broyage->ppcoponoire ?? '' }} kg
+                                {{ $broyage->ppcoponoire ?? '' }} 
                             </td><td>
-                                {{ $broyage->ppcopomulti ?? '' }} kg
+                                {{ $broyage->ppcopomulti ?? '' }} 
                             </td>
                             <td>
-                                {{ $ppcopo=$broyage->ppcopoblanc+$broyage->ppcopobleu+$broyage->ppcopojaune+$broyage->ppcopovert+$broyage->ppcopomauve+$broyage->ppcoporouge+$broyage->ppcopojadida+$broyage->ppcopomaron+$broyage->ppcoponoire+$broyage->ppcopomulti ?? '' }} kg
+                                {{ $ppcopo=$broyage->ppcopoblanc+$broyage->ppcopobleu+$broyage->ppcopojaune+$broyage->ppcopovert+$broyage->ppcopomauve+$broyage->ppcoporouge+$broyage->ppcopojadida+$broyage->ppcopomaron+$broyage->ppcoponoire+$broyage->ppcopomulti ?? '' }} 
                             </td>
 
                                     </td>
@@ -207,7 +217,7 @@
 </div>
 
 <div class="card col-lg-12">
-    <div class="card-header" style="background-color:#1E90FF;color:white">
+    <div class="card-header" style="background-color:#008B8B;color:white">
         {{ trans('Table de broyage PPHOMO') }}
 
     </div>
@@ -261,32 +271,32 @@
                                 {{ $broyage->id ?? '' }}
                             </td>
                             <td>
-                                {{ $broyage->pphomoblanc ?? '' }} kg
+                                {{ $broyage->pphomoblanc ?? '' }} 
                             </td>
                             <td>
-                                {{ $broyage->pphomobleu ?? '' }} kg
+                                {{ $broyage->pphomobleu ?? '' }} 
                             </td>
                             <td>
-                                {{ $broyage->pphomojaune ?? '' }} kg
+                                {{ $broyage->pphomojaune ?? '' }} 
                             </td>
                             <td>
-                                {{ $broyage->pphomovert ?? '' }} kg
+                                {{ $broyage->pphomovert ?? '' }} 
                             </td>
                             <td>
-                                {{ $broyage->pphomomauve ?? '' }} kg
+                                {{ $broyage->pphomomauve ?? '' }} 
                             </td><td>
-                                {{ $broyage->pphomorouge ?? '' }} kg
+                                {{ $broyage->pphomorouge ?? '' }} 
                             </td><td>
-                                {{ $broyage->pphomojadida ?? '' }} kg
+                                {{ $broyage->pphomojadida ?? '' }} 
                             </td><td>
-                                {{ $broyage->pphomomaron ?? '' }} kg
+                                {{ $broyage->pphomomaron ?? '' }} 
                             </td><td>
-                                {{ $broyage->pphomonoire ?? '' }} kg
+                                {{ $broyage->pphomonoire ?? '' }} 
                             </td><td>
-                                {{ $broyage->pphomomulti ?? '' }} kg
+                                {{ $broyage->pphomomulti ?? '' }} 
                             </td>
                             <td>
-                                {{ $pphomo=$broyage->pphomoblanc+$broyage->pphomobleu+$broyage->pphomojaune+$broyage->pphomovert+$broyage->pphomomauve+$broyage->pphomorouge+$broyage->pphomojadida+$broyage->pphomomaron+$broyage->pphomonoire+$broyage->pphomomulti ?? '' }} kg
+                                {{ $pphomo=$broyage->pphomoblanc+$broyage->pphomobleu+$broyage->pphomojaune+$broyage->pphomovert+$broyage->pphomomauve+$broyage->pphomorouge+$broyage->pphomojadida+$broyage->pphomomaron+$broyage->pphomonoire+$broyage->pphomomulti ?? '' }} 
                             </td>
 
                                     </td>
@@ -303,7 +313,7 @@
 
 <div class="card col-lg-12">
     <div class="card-header" style="background-color:green;color:white">
-        {{ trans('Table de broyage PET') }}
+        {{ trans('Table de broyage PET PREFORME') }}
 
     </div>
 
@@ -338,14 +348,73 @@
                                 {{ $broyage->id ?? '' }}
                             </td>
                             <td>
-                                {{ $broyage->petblanc ?? '' }} kg
+                                {{ $broyage->petpreformblanc ?? '' }} 
                             </td>
                             <td>
-                                {{ $broyage->petbleu ?? '' }} kg 
+                                {{ $broyage->petpreformbleu ?? '' }}  
                             </td>
                             
                             <td>
-                                {{ $pettri=$broyage->petblanc+$broyage->petbleu ?? '' }} kg
+                                {{ $petpreformtri=$broyage->petpreformblanc+$broyage->petpreformbleu ?? '' }} 
+                            </td>
+
+                                    </td>
+                         
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+</div>
+
+<div class="card col-lg-12">
+    <div class="card-header" style="background-color:green;color:white">
+        {{ trans('Table de broyage PET BOUTEILLE') }}
+
+    </div>
+
+    <div class="card-body card col-lg-12">
+        <div class=" margin-left: 50px col-lg-12" >
+            <table   style="width:100%"  class=" table table-bordered table-striped table-hover datatable datatable-User">
+                <thead style='margin-left: 100px'>
+                    <tr>
+                    <th>
+                            {{ trans('Id') }}
+                        </th>
+                    
+                        <th>
+                            {{ trans('Blanc') }}
+                        </th>
+                        <th>
+                            {{ trans('Bleu') }}
+                        </th>
+                        <th>
+                        {{ trans('Total') }}
+                        </th>
+                       
+                        
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($data as $key => $broyage)
+                        <tr >
+
+                        <td>
+                                {{ $broyage->id ?? '' }}
+                            </td>
+                            <td>
+                                {{ $broyage->petbouteilleblanc ?? '' }} 
+                            </td>
+                            <td>
+                                {{ $broyage->petbouteillebleu ?? '' }}  
+                            </td>
+                            
+                            <td>
+                                {{ $petbouteilletri=$broyage->petbouteilleblanc+$broyage->petbouteillebleu ?? '' }} 
                             </td>
 
                                     </td>
@@ -361,7 +430,7 @@
 </div>
 <div class="card col-lg-12">
     <div class="card-header " style="background-color:skyblue;color:white">
-        {{ trans('Table de broyage PEHD') }}
+        {{ trans('Table de broyage PEHD CASIER') }}
     </div>
 
     <div class="card-body card col-lg-12 ">
@@ -423,31 +492,133 @@
                             </td>
                             
                             <td>
-                                {{ $broyage->pehdblanc ?? '' }} kg
+                                {{ $broyage->pehdcasierblanc ?? '' }} 
                             </td>
                             <td>
-                                {{ $broyage->pehdbleu ?? '' }} kg
+                                {{ $broyage->pehdcasierbleu ?? '' }} 
                             </td>
                             <td>
-                                {{ $broyage->pehdjaune ?? '' }} kg
+                                {{ $broyage->pehdcasierjaune ?? '' }} 
                             </td><td>
-                                {{ $broyage->pehdvert ?? '' }} kg
+                                {{ $broyage->pehdcasiervert ?? '' }} 
                             </td><td>
-                                {{ $broyage->pehdneutre ?? '' }} kg
+                                {{ $broyage->pehdcasierneutre ?? '' }} 
                             </td><td>
-                                {{ $broyage->pehdrouge ?? '' }} kg
+                                {{ $broyage->pehdcasierrouge ?? '' }} 
                             </td><td>
-                                {{ $broyage->pehdjadida ?? '' }} kg
+                                {{ $broyage->pehdcasierjadida ?? '' }} 
                             </td><td>
-                                {{ $broyage->pehdmaron ?? '' }} kg
+                                {{ $broyage->pehdcasiermaron ?? '' }} 
                             </td><td>
-                                {{ $broyage->pehdnoire ?? '' }} kg
+                                {{ $broyage->pehdcasiernoire ?? '' }} 
                             </td>
                             <td>
-                                {{ $broyage->pehdmulti ?? '' }} kg
+                                {{ $broyage->pehdcasiermulti ?? '' }} 
                             </td>
                             <td>
-                                {{$broyage->pehdblanc+$broyage->pehdbleu+$broyage->pehdjaune+$broyage->pehdvert+$broyage->pehdneutre+$broyage->pehdrouge+$broyage->pehdjadida+$broyage->pehdmaron+$broyage->pehdnoire+$broyage->pehdmulti ?? '' }} kg
+                                {{$broyage->pehdcasierblanc+$broyage->pehdcasierbleu+$broyage->pehdcasierjaune+$broyage->pehdcasiervert+$broyage->pehdcasierneutre+$broyage->pehdcasierrouge+$broyage->pehdcasierjadida+$broyage->pehdcasiermaron+$broyage->pehdcasiernoire+$broyage->pehdcasiermulti ?? '' }} 
+                            </td>
+
+                           
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+</div>
+
+<div class="card col-lg-12">
+    <div class="card-header " style="background-color:skyblue;color:white">
+        {{ trans('Table de broyage PEHD SOUFFLAGE') }}
+    </div>
+
+    <div class="card-body card col-lg-12 ">
+        <div class=" margin-left: 50px col-lg-12 " >
+            <table   style="width:100%"  class=" table table-bordered table-striped table-hover datatable datatable-User">
+                <thead style='margin-left: 100px '>
+                    <tr>
+              
+                    <th>
+                            {{ trans('Id') }}
+                        </th>
+                        
+                        <th>
+                            {{ trans('Blanc') }}
+                        </th>
+                        <th>
+                            {{ trans('Bleu') }}
+                        </th>
+                        <th>
+                        {{ trans('Jaune') }}
+
+                        </th>
+                        <th>
+                        {{ trans('Vert') }}
+
+                        </th><th>
+                        {{ trans('Neutre') }}
+
+                        </th><th>
+                        {{ trans('Rouge') }}
+
+                        </th><th>
+                        {{ trans('Jadida') }}
+
+                        </th><th>
+                        {{ trans('Maron') }}
+
+                        </th><th>
+                        {{ trans('Noire') }}
+
+                        </th><th>
+                        {{ trans('Multicolor') }}
+
+                        </th>
+                        <th>
+                        {{ trans('Total___') }}
+
+                        </th>
+                        
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($data as $key => $broyage)
+                        <tr >
+                                   
+                        <td>
+                                {{ $broyage->id ?? '' }}
+                            </td>
+                            
+                            <td>
+                                {{ $broyage->pehdsouflageblanc ?? '' }} 
+                            </td>
+                            <td>
+                                {{ $broyage->pehdsouflagebleu ?? '' }} 
+                            </td>
+                            <td>
+                                {{ $broyage->pehdsouflagejaune ?? '' }} 
+                            </td><td>
+                                {{ $broyage->pehdsouflagevert ?? '' }} 
+                            </td><td>
+                                {{ $broyage->pehdsouflageneutre ?? '' }} 
+                            </td><td>
+                                {{ $broyage->pehdsouflagerouge ?? '' }} 
+                            </td><td>
+                                {{ $broyage->pehdsouflagejadida ?? '' }} 
+                            </td><td>
+                                {{ $broyage->pehdsouflagemaron ?? '' }} 
+                            </td><td>
+                                {{ $broyage->pehdsouflagenoire ?? '' }} 
+                            </td>
+                            <td>
+                                {{ $broyage->pehdsouflagemulti ?? '' }} 
+                            </td>
+                            <td>
+                                {{$broyage->pehdsouflageblanc+$broyage->pehdsouflagebleu+$broyage->pehdsouflagejaune+$broyage->pehdsouflagevert+$broyage->pehdsouflageneutre+$broyage->pehdsouflagerouge+$broyage->pehdsouflagejadida+$broyage->pehdsouflagemaron+$broyage->pehdsouflagenoire+$broyage->pehdsouflagemulti ?? '' }} 
                             </td>
 
                            
