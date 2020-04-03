@@ -10,29 +10,12 @@
     </div>
 </div>
 <div class="row " style="margin-left:8%">
-    <div class="col-lg-3 " style="padding-top:2%">
-        <div class="pull-left">
-        </div>
-        <div class="pull-right">
-            <a class="btn btn-success" href="{{ route('sacs.index') }}"> Mise en sac</a>
-        </div>
-        <br>
-
-    </div>
-    <div class="col-lg-4 " style="padding-top:2%">
-        <div class="pull-left " >
-        </div>
-        <div class="pull-right" style="margin-left:5%">
-            <a class="btn btn-xs btn" style="background-color:grey;color:white" href="{{ route('sortiepourventes.create') }}">Sortie de matiere (Commercial)</a>
-        </div>
-        <br>
-
-    </div>
+ 
     <div class="col-lg-4 " style="padding-top:2%">
         <div class="pull-left " >
         </div>
         <div class="pull-right" style="margin-left:35%">
-            <a class="btn btn-xs btn" style="background-color:green;color:white" href="{{ route('extrusions.index') }}"> Extrusion PEHD</a>
+            <a class="btn btn-xs btn" style="background-color:green;color:white" href="{{ route('stockproduitfinis.index') }}"> Stock produit fini</a>
         </div>
         <br>
 
@@ -44,86 +27,7 @@
        {{Session::get('fail')}}
     </div>
 @endif
-<div class="card col-lg-12">
-    <div class="card-header" style="background-color:green;color:white">
-    {{ trans( '(QUANTITE TOTALE) Etat du stock de produit fini') }}
-    </div>
 
-    <div class="card-body card col-lg-12">
-        <div class=" margin-left: 50px col-lg-12" >
-            <table   style="width:100%"  class=" table table-bordered table-striped table-hover datatable datatable-User">
-                <thead style='margin-left: 100px'>
-                    <tr>
-                        
-                        <th>
-                            {{ trans('Id') }}
-                        </th>
-                        <th>
-                            {{ trans('QUANTITÉ ') }}
-                        </th>
-                        <th>
-                            {{ trans('PP (25kg) ') }}
-                        </th> <th>
-                            {{ trans('PET (25kg) ') }}
-                        </th> <th>
-                            {{ trans('PEHD (25kg) ') }}
-                        </th> 
-                        <th>
-                        {{ trans('TOTALE DES SACS ') }}
-                        </th>
-                       
-                    
-                 
-                       
-                        <th>
-                        {{ trans('Date') }}
-
-                        </th>
-                       
-                     
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($data as $key => $stock)
-                        <tr >
-                            
-                            <td>
-                                {{ $stock->id ?? '' }}
-                            </td>
-                            <td>
-                                {{ $stock->nombre ?? '' }} 
-                            </td>
-                           
-                         
-                            <td>
-                                {{ $stock->totalepphomosac+$stock->totaleppcoposac ?? '' }} 
-                            </td>
-                            <td>
-                                {{ $stock->totalepetpreformsac+$stock->totalepetbouteillesac ?? '' }} 
-                            </td>
-                             <td>
-                                {{ $stock->totalepehdcasiersac+$stock->totalepehdsouflagesac ?? '' }} 
-                            </td>
-                            <td>
-                            {{ $stock->nombredesac ?? '' }} 
-
-                            </td>
-                        
-                           
-                            <td>
-                                {{ $stock->date ?? '' }}
-                            </td>
-                         
-                         
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
-
-
-    </div>
-</div>
 <div class="card col-lg-12">
     <div class="card-header" style="background-color:#2F4F4F;color:white">
     {{ trans('Table de matiere par quart') }}
@@ -140,15 +44,9 @@
                         </th>
                       
                         <th>
-                            {{ trans('Qtt quart') }}
+                            {{ trans('Quantite') }}
                         </th>
-                        <th>
-                            {{ trans('Granule') }}
-                        </th>
-                        <th>
-                        {{ trans(' Extruder') }}
-
-                        </th>
+                     
                  
                         <th>
                         {{ trans('Sac de (25 kg)') }}
@@ -158,8 +56,7 @@
                         {{ trans('Date') }}
 
                         </th>
-                        <th>
-                        </th>
+                     
                       
                      
                     </tr>
@@ -174,12 +71,7 @@
                             <td>
                                 {{ $stock->totale ?? '' }} 
                             </td>
-                            <td>
-                            {{ $stock->granule ?? '' }} 
-                            </td>
-                            <td>
-                            {{ $stock->extrude ?? '' }} 
-                            </td>
+                          
                          
                             <td>
                             {{ $stock->stockproduitfini ?? '' }} 
@@ -189,13 +81,7 @@
                                 {{ $stock->date ?? '' }}
                             </td>
                           
-                            <td>
-                              
-                            <a class="btn btn-xs btn" style="background-color:#2F4F4F;" href="{{ route('stockproduitfinis.edit', $stock->id) }}">
-                                    <h6 style="color:white;">Ne pas extruder</h6>
-
-                                    </a>
-                                    </td>
+                           
                          
                         </tr>
                     @endforeach

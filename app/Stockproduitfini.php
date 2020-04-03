@@ -79,8 +79,15 @@ class Stockproduitfini extends Model
 
         'effectifstock',
         'nombre',
-
-       'date'
+        'nombredesac',
+        'totalegranule',
+        'totaleppcoposac',
+        'totalepphomosac',
+        'totalepetpreformsac',
+        'totalepetbouteillesac',
+        'totalepehdcasiersac',
+        'totalepehdsouflagesac',
+        'date'
 ];
 
 }

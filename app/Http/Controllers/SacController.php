@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Id;
 use App\Stockproduitfini;
-use App\Sac;
 use App\Extrusion;
+use App\Ventes;
+use App\Sac;
+
 use DB;
 
 class SacController extends Controller
@@ -64,7 +66,7 @@ class SacController extends Controller
         ]);
 
         $input = $request->all();
-        $sac=sac::find($id);
+        $sac = Sac::find($id);
       
         $ppcopobleu=$request->input('ppcopobleu');
         $ppcoposacbleu=$ppcopobleu/25;
@@ -182,7 +184,6 @@ class SacController extends Controller
         $petbouteillesac=$petbouteillesacblanc+$petbouteillesacbleu;
         $petbouteiller=$petbouteilleblancr+$petbouteillebleur;
 
-
         //pehd
         $pehdcasierbleu=$request->input('pehdcasierbleu');
         $pehdcasiersacbleu=$pehdcasierbleu/25;
@@ -276,31 +277,35 @@ class SacController extends Controller
         $sacss=$sac->sac;
         //total des champs avant mise en sac
         $totale=$pehdsouflage+$pehdcasier+$ppcopo+$pphomo+$petpreform+$petbouteille;
+       
         //total de la matiere restante apres la mise en sac
-        $totaler=$pehdsouflager+$pehdcasierr+$ppcopor+$pphomor+$petpreformr+$petbouteiller;
+        //dd($pehdsouflage,$pehdcasier,$ppcopo,$pphomo,$petpreform,$petbouteille);
+        $totaler=$pehdcasierr+$ppcopor+$pphomor+$petpreformr+$petbouteiller;
 
         $resultat=($totale-$totaler)/25;
         //total de la matiere mise en sac
 
-        $nombre=$pehdsouflagesac+$pehdcasiersac+$ppcoposac+$pphomosac+$petbouteillesac+$petpreformsac;
-        //dd($nombre);
+        $nombre=$pehdcasiersac+$ppcoposac+$pphomosac+$petbouteillesac+$petpreformsac;
+       // dd($nombre);
 
         $granule=$pehdcasier+$ppcopo+$pphomo+$petpreform+$petbouteille;
        // dd($granule);
         $extrude=$pehdsouflage;
-        //dd($extrude);
+        //dd($pehdsouflage);
 
         $totaleetdechet=$totale+$dechesac;
+      //  dd($totaleetdechet);
         $restant=$sacss-$totale;
-        //dd($totale);
+      
 
         $date=$request->input('date');
 
         if ($sacss<25) {
             return redirect()->route('sacs.index', compact('sac'))->withFail('La matiere a ete mise en sac ou la quantite est inferieur ou egale à 25 kg ');
         }
-
-        if ($sacss>=$totaleetdechet) {
+       // dd($sacss);
+        if ($sacss==$totaleetdechet) {
+            
             $sac->ppcopo=$ppcopo;
             $sac->ppcopobleu=$ppcopobleu;
             $sac->ppcopoblanc=$ppcopoblanc;
@@ -356,9 +361,6 @@ class SacController extends Controller
             $sac->pehdsouflagemaron=$pehdsouflagemaron;
             $sac->pehdsouflagenoire=$pehdsouflagenoire;
             $sac->pehdsouflagemulti=$pehdsouflagemulti;
-
-
-
 
             //restant
             $sac->ppcoporestant=$ppcopor;
@@ -420,15 +422,16 @@ class SacController extends Controller
             $sac->effectifsac=$effectifsac;
             //dd($totale-$totaler);
             $sac->totale=$totale-$totaler;
+            //dd($totale);
             $sac->sac=$totaler;
             $sac->dechesac=$dechesac;
             $sac->date=$date;
-           // dd($nombre);
+         //dd($totale);
 
 
 
-            $stockproduitfini= Stockproduitfini::all();
-            DB::table('stockproduitfinis')->insert([
+        $stockproduitfini= Stockproduitfini::all();
+        DB::table('stockproduitfinis')->insert([
        'stockproduitfini'=>$resultat,
        'ppcoposacbleu'=>$ppcoposacbleu,
        'ppcoposacbleu'=>$ppcoposacbleu,
@@ -475,7 +478,6 @@ class SacController extends Controller
        'pehdcasiersacmulti'=>$pehdcasiersacmulti,
        'pehdcasiersac'=>$pehdcasiersac,
 
-
        'pehdsouflagesacbleu'=>$pehdsouflagesacbleu,
        'pehdsouflagesacblanc'=>$pehdsouflagesacblanc,
        'pehdsouflagesacjaune'=>$pehdsouflagesacjaune,
@@ -487,15 +489,23 @@ class SacController extends Controller
        'pehdsouflagesacnoire'=>$pehdsouflagesacnoire,
        'pehdsouflagesacmulti'=>$pehdsouflagesacmulti,
        'pehdsouflagesac'=>$pehdsouflagesac,
+  
+       'nombre'=>0,
+       'nombredesac'=>0,
+       'totaleppcoposac'=>0,
+       'totalepphomosac'=>0,
+       'totalepetpreformsac'=>0,
+       'totalepetbouteillesac'=>0,
+       'totalepehdcasiersac'=>0,
+       'totalepehdsouflagesac'=>0,
 
        'extrude'=>$extrude-$pehdsouflager,
-       //dd($extrude-$pehdsouflager),
        'granule'=>$granule-$ppcopor+$pphomor+$petpreformr+$petbouteiller,
-       'totale'=>$extrude+$granule-$totaler,
+       'totale'=>$totale-$totaler,
        'date'=>$date,
- 
-                    ]);
-            //dd($extrude);
+                ]);
+
+
             $extrusion= Extrusion::all();
             $lastextrusionrestant=$extrusion->last()->extrusion;
             $lastpehdsouflagebleurestant=$extrusion->last()->pehdsouflagebleurestant;
@@ -511,32 +521,34 @@ class SacController extends Controller
             $lastpehdsouflagemultirestant=$extrusion->last()->pehdsouflagemultirestant;
             $lastpehdsouflagesecrestant=$extrusion->last()->pehdsouflagesecrestant;
             $lastpehdsoufalgerestant=$extrusion->last()->pehdsouflagerestant;
-    //dd($lastpehdsouflagebleurestant);
-            DB::table('extrusions')->insert([
 
-        'extrusion'=>$extrude+$lastextrusionrestant,
-        'pehdsouflagebleu'=>$pehdsouflagebleu+$lastpehdsouflagebleurestant,
-        'pehdsouflageblanc'=>$pehdsouflageblanc+$lastpehdsouflageblancrestant,
-        'pehdsouflagejaune'=>$pehdsouflagejaune+$lastpehdsouflagejaunerestant,
-        'pehdsouflagevert'=>$pehdsouflagevert+$lastpehdsouflagevertrestant,
-        'pehdsouflageneutre'=>$pehdsouflageneutre+$lastpehdsouflageneutrerestant,
-        'pehdsouflagerouge'=>$pehdsouflagerouge+$lastpehdsouflagerougerestant,
-        'pehdsouflagejadida'=>$pehdsouflagejadida+$lastpehdsouflagejadidarestant,
-        'pehdsouflagemaron'=>$pehdsouflagemaron+$lastpehdsouflagemaronrestant,
-        'pehdsouflagenoire'=>$pehdsouflagenoire+$lastpehdsouflagenoirerestant,
-        'pehdsouflagemulti'=>$pehdsouflagemulti+$lastpehdsouflagemultirestant,
-        'pehdsouflage'=>0,
-        'decheextrusion'=>0,
-        'date'=>$date,
+            if ($lastpehdsouflagemultirestant>25 && $lastpehdsouflagebleurestant>25 && $lastpehdsouflageblancrestant>25 && $lastpehdsouflagejaunerestant>25 && $lastpehdsouflagevertrestant>25 && $lastpehdsouflageneutrerestant>25 && $lastpehdsouflagerougerestant>25 && $lastpehdsouflagejadidarestant>25 && $lastpehdsouflagemaronrestant>25 && $lastpehdsouflagenoirerestant>25) {
+                return redirect()->route('sacs.index', compact('stockproduitfini','sac'))->withFail('Veillez extruder la quantite qui si trouve dans l\'atelier d\'extrusion avant ce quart');
+          }
+   
+            DB::table('extrusions')->insert([
+            'extrusion'=>$extrude+$lastextrusionrestant,
+            'pehdsouflagebleu'=>$pehdsouflagebleu+$lastpehdsouflagebleurestant,
+            'pehdsouflageblanc'=>$pehdsouflageblanc+$lastpehdsouflageblancrestant,
+            'pehdsouflagejaune'=>$pehdsouflagejaune+$lastpehdsouflagejaunerestant,
+            'pehdsouflagevert'=>$pehdsouflagevert+$lastpehdsouflagevertrestant,
+            'pehdsouflageneutre'=>$pehdsouflageneutre+$lastpehdsouflageneutrerestant,
+            'pehdsouflagerouge'=>$pehdsouflagerouge+$lastpehdsouflagerougerestant,
+            'pehdsouflagejadida'=>$pehdsouflagejadida+$lastpehdsouflagejadidarestant,
+            'pehdsouflagemaron'=>$pehdsouflagemaron+$lastpehdsouflagemaronrestant,
+            'pehdsouflagenoire'=>$pehdsouflagenoire+$lastpehdsouflagenoirerestant,
+            'pehdsouflagemulti'=>$pehdsouflagemulti+$lastpehdsouflagemultirestant,
+            'pehdsouflage'=>0,
+            'decheextrusion'=>0,
+            'date'=>$date,
                 
                 ]);
+          
             $sac->update($input);
                    
-        
-        
-            return redirect()->route('sacs.index', compact('stockproduitfini'))->withFail('BRAVO, Le sac de la matiere Id (numero '.$sac->id.') a ete effectué avec succes, La quantite en PP et PET sont mises en sac le PEHD en atelier d-extrusion .');
+            return redirect()->route('sacs.index', compact('stockproduitfini','sac'))->withFail('BRAVO, Le sac de la matiere Id (numero '.$sac->id.') a ete effectué avec succes, La quantite en PP et PET sont mises en sac le PEHD en atelier d\'extrusion .');
         }
-        return redirect()->route('sacs.edit', compact('sac'))->withFail('Veillez bien verifier Les quantites que vous avez saisies, surement il y-a une difference avec la quantite qui est sur cet QUART. ');
+        return redirect()->route('sacs.edit', compact('sac'))->withFail('Veillez bien verifier Les quantites que vous avez saisies, surement il y\'a une difference avec la quantite qui est sur cet QUART. ');
     }
   
     /**

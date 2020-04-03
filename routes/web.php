@@ -48,10 +48,10 @@ Route::group(['middleware' => ['auth']], function() {
 
     Route::resource('sacs','SacController');
     Route::resource('stockproduitfinis','StockController');
+    Route::resource('sortiepourventes','StockdeuxController');
 
-
-
-
+    Route::resource('ventes','VenteController');
+    Route::resource('clients','ClientsController');
     
 
     

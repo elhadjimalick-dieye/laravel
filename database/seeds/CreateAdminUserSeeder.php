@@ -16,6 +16,7 @@ use App\Broyage;
 use App\Sac;
 use App\Extrusion;
 use App\Stockproduitfini;
+use App\ventes;
 //use Spatie\Permission\Models\Roles;
 
 class CreateAdminUserSeeder extends Seeder
@@ -595,6 +596,130 @@ class CreateAdminUserSeeder extends Seeder
                    'nombre'=>0,
            
                    'date'=>'2015-02-03',
+                  ]);
+
+
+                  $vente=ventes::create([
+                    'nombredesac'=>0,
+                    'ppcopo'=>0,
+                    'ppcopobleu'=>0,
+                    'ppcopoblanc'=>0,
+                    'ppcopojaune'=>0,
+                    'ppcopovert'=>0,
+                    'ppcopomauve'=>0,
+                    'ppcoporouge'=>0,
+                    'ppcopojadida'=>0,
+                    'ppcopomaron'=>0,
+                    'ppcoponoire'=>0,
+                    'ppcopomulti'=>0,
+            
+                    'ppcoposac'=>0,
+                    'ppcoposacbleu'=>0,
+                    'ppcoposacblanc'=>0,
+                    'ppcoposacjaune'=>0,
+                    'ppcoposacvert'=>0,
+                    'ppcoposacmauve'=>0,
+                    'ppcoposacrouge'=>0,
+                    'ppcoposacjadida'=>0,
+                    'ppcoposacmaron'=>0,
+                    'ppcoposacnoire'=>0,
+                    'ppcoposacmulti'=>0,
+            
+                    'pphomo'=>0,
+                    'pphomobleu'=>0,
+                    'pphomoblanc'=>0,
+                    'pphomojaune'=>0,
+                    'pphomovert'=>0,
+                    'pphomomauve'=>0,
+                    'pphomorouge'=>0,
+                    'pphomojadida'=>0,
+                    'pphomomaron'=>0,
+                    'pphomonoire'=>0,
+                    'pphomomulti'=>0,
+            
+                    'pphomosac'=>0,
+                    'pphomosacbleu'=>0,
+                    'pphomosacblanc'=>0,
+                    'pphomosacjaune'=>0,
+                    'pphomosacvert'=>0,
+                    'pphomosacmauve'=>0,
+                    'pphomosacrouge'=>0,
+                    'pphomosacjadida'=>0,
+                    'pphomosacmaron'=>0,
+                    'pphomosacnoire'=>0,
+                    'pphomosacmulti'=>0,
+            
+
+                    'petpreform'=>0,
+                    'petpreformbleu'=>0,
+                    'petpreformblanc'=>0,
+            
+                    'petpreformsac'=>0,
+                    'petpreformsacbleu'=>0,
+                    'petpreformsacblanc'=>0,
+  
+                    'petbouteille'=>0,
+                    'petbouteillebleu'=>0,
+                    'petbouteilleblanc'=>0,
+
+                    'petbouteillesac'=>0,
+                    'petbouteillebleusac'=>0,
+                    'petbouteilleblancsac'=>0,
+            
+                    'pehdcasier'=>0,
+                    'pehdcasierbleu'=>0,
+                    'pehdcasierblanc'=>0,
+                    'pehdcasierjaune'=>0,
+                    'pehdcasiervert'=>0,
+                    'pehdcasierneutre'=>0,
+                    'pehdcasierrouge'=>0,
+                    'pehdcasierjadida'=>0,
+                    'pehdcasiermaron'=>0,
+                    'pehdcasiernoire'=>0,
+                    'pehdcasiermulti'=>0,
+            
+            
+                    'pehdcasiersac'=>0,
+                    'pehdcasiersacbleu'=>0,
+                    'pehdcasiersacblanc'=>0,
+                    'pehdcasiersacjaune'=>0,
+                    'pehdcasiersacvert'=>0,
+                    'pehdcasiersacneutre'=>0,
+                    'pehdcasiersacrouge'=>0,
+                    'pehdcasiersacjadida'=>0,
+                    'pehdcasiersacmaron'=>0,
+                    'pehdcasiersacnoire'=>0,
+                    'pehdcasiersacmulti'=>0,
+            
+                    'pehdsouflage'=>0,
+                    'pehdsouflagebleu'=>0,
+                    'pehdsouflageblanc'=>0,
+                    'pehdsouflagejaune'=>0,
+                    'pehdsouflagevert'=>0,
+                    'pehdsouflageneutre'=>0,
+                    'pehdsouflagerouge'=>0,
+                    'pehdsouflagejadida'=>0,
+                    'pehdsouflagemaron'=>0,
+                    'pehdsouflagenoire'=>0,
+                    'pehdsouflagemulti'=>0,
+            
+            
+                    'pehdsouflagesac'=>0,
+                    'pehdsouflagesacbleu'=>0,
+                    'pehdsouflagesacblanc'=>0,
+                    'pehdsouflagesacjaune'=>0,
+                    'pehdsouflagesacvert'=>0,
+                    'pehdsouflagesacneutre'=>0,
+                    'pehdsouflagesacrouge'=>0,
+                    'pehdsouflagesacjadida'=>0,
+                    'pehdsouflagesacmaron'=>0,
+                    'pehdsouflagesacnoire'=>0,
+                    'pehdsouflagesacmulti'=>0,
+            
+            
+                    'totale'=>0,
+                    'date'=>'2015-02-03',
+                               
                   ]);
     }
     

@@ -3,210 +3,28 @@
 <div class="row " style="margin-left:8%">
     <div class="col-lg-8 ">
         <div class="pull-left">
-            <h2>Stock produit fini (production) </h2>
+            <h2>Commercial </h2>
         </div>
-      
-
     </div>
 </div>
-<div class="row " style="margin-left:8%">
-    <div class="col-lg-3 " style="padding-top:2%">
+<div class="row " style="margin-left:4%;margin-right:4%">
+    <div class="col-lg-12 " style="padding-top:2%">
         <div class="pull-left">
         </div>
         <div class="pull-right">
-            <a class="btn btn-success" href="{{ route('sacs.index') }}"> Mise en sac</a>
-        </div>
-        <br>
-
-    </div>
-    <div class="col-lg-4 " style="padding-top:2%">
-        <div class="pull-left " >
-        </div>
-        <div class="pull-right" style="margin-left:5%">
-            <a class="btn btn-xs btn" style="background-color:grey;color:white" href="{{ route('sortiepourventes.create') }}">Sortie de matiere (Commercial)</a>
-        </div>
-        <br>
-
-    </div>
-    <div class="col-lg-4 " style="padding-top:2%">
-        <div class="pull-left " >
-        </div>
-        <div class="pull-right" style="margin-left:35%">
-            <a class="btn btn-xs btn" style="background-color:green;color:white" href="{{ route('extrusions.index') }}"> Extrusion PEHD</a>
+        <a class="btn btn-xs btn" style="background-color:green;color:white" href="{{ route('stockproduitfinis.index') }}">Vente de matiere</a>
         </div>
         <br>
 
     </div>
 
-</div>
-@if(Session::has('fail'))
-    <div class="alert alert-success">
-       {{Session::get('fail')}}
-    </div>
-@endif
-<div class="card col-lg-12">
-    <div class="card-header" style="background-color:green;color:white">
-    {{ trans( '(QUANTITE TOTALE) Etat du stock de produit fini') }}
-    </div>
-
-    <div class="card-body card col-lg-12">
-        <div class=" margin-left: 50px col-lg-12" >
-            <table   style="width:100%"  class=" table table-bordered table-striped table-hover datatable datatable-User">
-                <thead style='margin-left: 100px'>
-                    <tr>
-                        
-                        <th>
-                            {{ trans('Id') }}
-                        </th>
-                        <th>
-                            {{ trans('QUANTITÉ ') }}
-                        </th>
-                        <th>
-                            {{ trans('PP (25kg) ') }}
-                        </th> <th>
-                            {{ trans('PET (25kg) ') }}
-                        </th> <th>
-                            {{ trans('PEHD (25kg) ') }}
-                        </th> 
-                        <th>
-                        {{ trans('TOTALE DES SACS ') }}
-                        </th>
-                       
-                    
-                 
-                       
-                        <th>
-                        {{ trans('Date') }}
-
-                        </th>
-                       
-                     
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($data as $key => $stock)
-                        <tr >
-                            
-                            <td>
-                                {{ $stock->id ?? '' }}
-                            </td>
-                            <td>
-                                {{ $stock->nombre ?? '' }} 
-                            </td>
-                           
-                         
-                            <td>
-                                {{ $stock->totalepphomosac+$stock->totaleppcoposac ?? '' }} 
-                            </td>
-                            <td>
-                                {{ $stock->totalepetpreformsac+$stock->totalepetbouteillesac ?? '' }} 
-                            </td>
-                             <td>
-                                {{ $stock->totalepehdcasiersac+$stock->totalepehdsouflagesac ?? '' }} 
-                            </td>
-                            <td>
-                            {{ $stock->nombredesac ?? '' }} 
-
-                            </td>
-                        
-                           
-                            <td>
-                                {{ $stock->date ?? '' }}
-                            </td>
-                         
-                         
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
+    <div class="col-lg-12 " style="padding-top:2%">
+        <div class="pull-left">
         </div>
-
-
-    </div>
-</div>
-<div class="card col-lg-12">
-    <div class="card-header" style="background-color:#2F4F4F;color:white">
-    {{ trans('Table de matiere par quart') }}
-    </div>
-
-    <div class="card-body card col-lg-12">
-        <div class=" margin-left: 50px col-lg-12" >
-            <table   style="width:100%"  class=" table table-bordered table-striped table-hover datatable datatable-User">
-                <thead style='margin-left: 100px'>
-                    <tr>
-                        
-                        <th>
-                            {{ trans('Id') }}
-                        </th>
-                      
-                        <th>
-                            {{ trans('Qtt quart') }}
-                        </th>
-                        <th>
-                            {{ trans('Granule') }}
-                        </th>
-                        <th>
-                        {{ trans(' Extruder') }}
-
-                        </th>
-                 
-                        <th>
-                        {{ trans('Sac de (25 kg)') }}
-
-                        </th>
-                        <th>
-                        {{ trans('Date') }}
-
-                        </th>
-                        <th>
-                        </th>
-                      
-                     
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($data as $key => $stock)
-                        <tr >
-                            
-                            <td>
-                                {{ $stock->id ?? '' }}
-                            </td>
-                            <td>
-                                {{ $stock->totale ?? '' }} 
-                            </td>
-                            <td>
-                            {{ $stock->granule ?? '' }} 
-                            </td>
-                            <td>
-                            {{ $stock->extrude ?? '' }} 
-                            </td>
-                         
-                            <td>
-                            {{ $stock->stockproduitfini ?? '' }} 
-
-                            </td>
-                            <td>
-                                {{ $stock->date ?? '' }}
-                            </td>
-                          
-                            <td>
-                              
-                            <a class="btn btn-xs btn" style="background-color:#2F4F4F;" href="{{ route('stockproduitfinis.edit', $stock->id) }}">
-                                    <h6 style="color:white;">Ne pas extruder</h6>
-
-                                    </a>
-                                    </td>
-                         
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
-
-
-    </div>
-</div>
-<div class="card col-lg-12">
+        <div class="pull-right">
+        <button class="accordion" style="background-color:#008B8B;color:white">DETAILS PP</button>
+            <div class="panel">
+            <div class="card col-lg-12">
     <div class="card-header" style="background-color:#008B8B;color:white">
         {{ trans('PPCOPO') }}
 
@@ -395,8 +213,18 @@
 
     </div>
 </div>
+            </div>
+        </div>
+        <br>
 
-<div class="card col-lg-12">
+    </div>
+    <div class="col-lg-12 " style="padding-top:2%">
+        <div class="pull-left">
+        </div>
+        <div class="pull-right">
+        <button class="accordion" style="background-color:green;color:white">DETAILS PET</button>
+            <div class="panel">
+            <div class="card col-lg-12">
     <div class="card-header" style="background-color:green;color:white">
         {{ trans('PET PREFORME') }}
 
@@ -456,7 +284,7 @@
 </div>
 
 <div class="card col-lg-12">
-    <div class="card-header" style="background-color:green;color:white">
+    <div class="card-header" style="background-color:green;color:white;width:100%" >
         {{ trans('PET BOUTEILLE') }}
 
     </div>
@@ -466,19 +294,20 @@
             <table   style="width:100%"  class=" table table-bordered table-striped table-hover datatable datatable-User">
                 <thead style='margin-left: 100px'>
                     <tr>
-                    <th>
+                    <th style="width:1000px">
                             {{ trans('Id') }}
                         </th>
                     
-                        <th>
-                            {{ trans('Blanc') }}
+                        <th style="width:1000px">
+                            {{ trans('Couleur__Blanc') }}
                         </th>
-                        <th>
-                            {{ trans('Bleu') }}
+                        <th style="width:1000px">
+                            {{ trans('Couleur__Bleu') }}
                         </th>
-                        <th>
+                        <th style="width:1000px">
                         {{ trans('Total') }}
                         </th>
+                        
                        
                         
                         
@@ -492,14 +321,14 @@
                                 {{ $stock->id ?? '' }}
                             </td>
                             <td>
-                                {{ $stock->petbouteillesacblanc ?? '' }} 
+                                {{ $stock->petbouteillebleusac ?? '' }} 
                             </td>
                             <td>
-                                {{ $stock->petbouteillesacbleu ?? '' }} 
+                                {{ $stock->petbouteilleblancsac ?? '' }} 
                             </td>
                             
                             <td>
-                                {{ $petbouteillesactri=$stock->petbouteillesacblanc+$stock->petbouteillesacbleu ?? '' }} 
+                                {{ $petbouteillesactri=$stock->petbouteillebleusac+$stock->petbouteilleblancsac ?? '' }} 
                             </td>
 
                                     </td>
@@ -513,7 +342,18 @@
 
     </div>
 </div>
-<div class="card col-lg-12">
+            </div>
+        </div>
+        <br>
+
+    </div>
+    <div class="col-lg-12 " style="padding-top:2%">
+        <div class="pull-left">
+        </div>
+        <div class="pull-right">
+        <button class="accordion" style="background-color:skyblue;color:white">DETAILS PEHD</button>
+            <div class="panel">
+            <div class="card col-lg-12">
     <div class="card-header " style="background-color:skyblue;color:white">
         {{ trans('PEHD CASIER') }}
     </div>
@@ -716,6 +556,102 @@
 
     </div>
 </div>
+            </div>
+        </div>
+        <br>
+
+    </div>
+   
+
+</div>
+@if(Session::has('fail'))
+    <div class="alert alert-success">
+       {{Session::get('fail')}}
+    </div>
+@endif
+
+  
+<div class="card col-lg-12">
+    <div class="card-header" style="background-color:#008B8B; color:white">
+    {{ trans('Quantite totale de produit fini') }}
+    </div>
+
+    <div class="card-body card col-lg-12">
+        <div class=" margin-left: 50px col-lg-12" >
+            <table   style="width:100%"  class=" table table-bordered table-striped table-hover datatable datatable-User">
+                <thead style='margin-left: 100px'>
+                    <tr>
+                        
+                        <th>
+                            {{ trans('Id') }}
+                        </th>
+                        <th>
+                            {{ trans('QUANTITÉ ') }}
+                        </th>
+                        <th>
+                            {{ trans('PP (25kg) ') }}
+                        </th> <th>
+                            {{ trans('PET (25kg) ') }}
+                        </th> <th>
+                            {{ trans('PEHD (25kg) ') }}
+                        </th> 
+                        <th>
+                        {{ trans('TOTALE DES SACS ') }}
+                        </th>
+                       
+                    
+                 
+                       
+                        <th>
+                        {{ trans('Date') }}
+
+                        </th>
+                       
+                     
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($data as $key => $stock)
+                        <tr >
+                            
+                            <td>
+                                {{ $stock->id ?? '' }}
+                            </td>
+                            <td>
+                                {{ $stock->totale ?? '' }} 
+                            </td>
+                           
+                         
+                            <td>
+                                {{ $stock->pphomosac+$stock->ppcoposac ?? '' }} 
+                            </td>
+                            <td>
+                                {{ $stock->petpreformsac+$stock->petbouteillesac ?? '' }} 
+                            </td>
+                             <td>
+                                {{ $stock->pehdcasiersac+$stock->pehdsouflagesac ?? '' }} 
+                            </td>
+                            <td>
+                            {{ $stock->nombredesac ?? '' }} 
+
+                            </td>
+                        
+                           
+                            <td>
+                                {{ $stock->date ?? '' }}
+                            </td>
+                         
+                         
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+</div>
+
 @endsection
 @section('scripts')
 @parent
@@ -736,4 +672,90 @@
 })
 
 </script>
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    /* Toggle between adding and removing the "active" class,
+    to highlight the button that controls the panel */
+    this.classList.toggle("active");
+
+    /* Toggle between hiding and showing the active panel */
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}</script>
+
+<style>
+.panel {
+  padding: 0 18px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+</style>
+
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight) {
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    }
+  });
+}
+</script>
+
+<style>
+/* Style the buttons that are used to open and close the accordion panel */
+.accordion {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  transition: 0.4s;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .accordion:hover {
+  background-color: #ccc;
+}
+
+/* Style the accordion panel. Note: hidden by default */
+.panel {
+  padding: 0 18px;
+  background-color: white;
+  display: none;
+  overflow: hidden;
+}
+
+.accordion:after {
+  content: '\02795'; /* Unicode character for "plus" sign (+) */
+  font-size: 13px;
+  color: #777;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2796"; /* Unicode character for "minus" sign (-) */
+}
+</style>
 @endsection

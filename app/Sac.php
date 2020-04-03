@@ -4,6 +4,9 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
+
+
+
 class Sac extends Model
 {
 
@@ -130,11 +133,7 @@ class Sac extends Model
         'pehdsouflagenoirerestant',
         'pehdsouflagemultirestant',
 
-
-
         'totale',
-   
-
         'effectifsac',
 
         'dechesac',

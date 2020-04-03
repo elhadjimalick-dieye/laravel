@@ -3,14 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Fournisseur;
+use App\Clients;
 use App\CollecteRecuplasts;
-use App\TypeCollecteur;
 use Yajra\Datatables\Datatables;
 
 use DB;
 
-class Fournisseurss extends Controller
+class ClientsController extends Controller
 {
 
 
@@ -22,10 +21,9 @@ class Fournisseurss extends Controller
      */
     public function index(Request $request)
     {
-        $data = Fournisseur::orderBy('id','DESC')->paginate(5);
-        $types = TypeCollecteur::pluck( 'libelle','libelle')->all();
+        $data = Clients::orderBy('id','DESC')->paginate(5);
         //dd($types);
-        return view('fournisseurs.index',compact('data','types'))
+        return view('clients.index',compact('data'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
     }
 
@@ -38,9 +36,8 @@ class Fournisseurss extends Controller
      */
     public function create()
     {
-        $types = TypeCollecteur::all();
-        $fournisseur = Fournisseur::pluck('avance','solde','id','nomComplet','contact','region','departement','commune','quartier','restant_du','numero','type')->all();
-        return view('fournisseurs.create',compact('fournisseur','types'));
+        $client = Clients::all();
+        return view('clients.create',compact('client'));
     }
 
     /**
@@ -53,36 +50,33 @@ class Fournisseurss extends Controller
     {
         $this->validate($request, [
             'nomComplet' => 'required',
-            'type' => 'required',
-            'numero' => 'unique:fournisseurs,numero',
+            'matricule' => 'unique:fournisseurs,numero',
+            'contact' => 'required',
+            'adresse' => 'required',
+        
 
         ]);
         $input = $request->all();
-        $fournisseur= Fournisseur::all();
         $date = (154263);
         $min_epoch = strtotime($date);
         $var = rand($min_epoch,1000);
-        $strval ='FR_401';
+        $strval ='CL_201';
         $items = ($strval.$var); 
         //dd($items);
-        DB::table('fournisseurs')->insert([
-            'numero' => $items,
-            'type' => $request->input('type'),
+        DB::table('clients')->insert([
+            'matricule' => $items,
             'nomComplet' => $request->input('nomComplet'),
-            'avance' => $request->input('avance'),
-            'solde' => $request->input('solde'),
             'contact' => $request->input('contact'),
-            'region' => $request->input('region'),
-            'departement' => $request->input('departement'),
-            'commune' => $request->input('commune'),
-            'quartier' => $request->input('quartier'),
-            'restant_du' => $request->input('restant_du'),
-            'quartier' => $request->input('quartier'),
-
+            'adresse' => $request->input('adresse'),
+            'totaleachete' =>0,
+            'quantitetotale' =>0,
+            'creance' =>0,
+            'restant_du' =>0,
+  
 
         ]);
-        return redirect()->route('fournisseurs.index',compact('fournisseur'))
-                        ->with('success','fournisseur created successfully');
+        return redirect()->route('clients.index')
+                        ->withFail('Client ajouter avec succés . ');
     }
 
 
@@ -94,10 +88,9 @@ class Fournisseurss extends Controller
      */
     public function show($id)
     {
-        $fournisseur = fournisseur::find($id);
-        $types = TypeCollecteur::all();
+        $client = Clients::find($id);
 
-        return view('fournisseurs.show',compact('fournisseur','types'));
+        return view('clients.show',compact('client'));
     }
 
  /**
@@ -108,11 +101,8 @@ class Fournisseurss extends Controller
      */
     public function edit($id)
     {
-        $fournisseur = fournisseur::find($id);
-        $recuplast = CollecteRecuplasts::pluck('fournisseur','date_reception','quantite', 'avance','reglement_definitif','commentaire','prix','montant')->all();
-        $types = TypeCollecteur::all();
-
-        return view('fournisseurs.edit',compact('fournisseur','recuplast','types'));
+        $client = Clients::find($id);
+        return view('clients.edit',compact('client'));
     }
 
    /**
@@ -126,19 +116,23 @@ class Fournisseurss extends Controller
     {
         $this->validate($request, [
             'nomComplet' => 'required',
-            'type' => 'required',
-
-
+            'contact' => 'required',
+            'adresse' => 'required',
+            'totaleachete'=> 'required',
+            'quantitetotale'=> 'required',
+            'creance'=> 'required',
+            'restant_du'=> 'required',
+        
         ]);
 
 
         $input = $request->all();
 
-        $fournisseur = fournisseur::find($id);
+        $client = Clients::find($id);
 
-        $fournisseur->update($input);
-        return redirect()->route('fournisseurs.index',compact('fournisseur'))
-                        ->with('success','fournisseur updated successfully');
+        $client->update($input);
+        return redirect()->route('clients.index',compact('client'))
+                        ->withFail('Information du client modifier avec succés. ');
     }
  
 

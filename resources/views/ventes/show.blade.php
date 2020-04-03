@@ -3,40 +3,23 @@
 <div class="row " style="margin-left:8%">
     <div class="col-lg-8 ">
         <div class="pull-left">
-            <h2>Stock produit fini (production) </h2>
+            <h2>Stock produit fini (commercial) </h2>
         </div>
       
 
     </div>
 </div>
 <div class="row " style="margin-left:8%">
-    <div class="col-lg-3 " style="padding-top:2%">
+    <div class="col-lg-6 " style="padding-top:2%">
         <div class="pull-left">
         </div>
         <div class="pull-right">
-            <a class="btn btn-success" href="{{ route('sacs.index') }}"> Mise en sac</a>
+            <a class="btn btn-success" href="{{ route('ventes.index') }}"> Retour</a>
         </div>
         <br>
 
     </div>
-    <div class="col-lg-4 " style="padding-top:2%">
-        <div class="pull-left " >
-        </div>
-        <div class="pull-right" style="margin-left:5%">
-            <a class="btn btn-xs btn" style="background-color:grey;color:white" href="{{ route('sortiepourventes.create') }}">Sortie de matiere (Commercial)</a>
-        </div>
-        <br>
 
-    </div>
-    <div class="col-lg-4 " style="padding-top:2%">
-        <div class="pull-left " >
-        </div>
-        <div class="pull-right" style="margin-left:35%">
-            <a class="btn btn-xs btn" style="background-color:green;color:white" href="{{ route('extrusions.index') }}"> Extrusion PEHD</a>
-        </div>
-        <br>
-
-    </div>
 
 </div>
 @if(Session::has('fail'))
@@ -44,168 +27,8 @@
        {{Session::get('fail')}}
     </div>
 @endif
-<div class="card col-lg-12">
-    <div class="card-header" style="background-color:green;color:white">
-    {{ trans( '(QUANTITE TOTALE) Etat du stock de produit fini') }}
-    </div>
-
-    <div class="card-body card col-lg-12">
-        <div class=" margin-left: 50px col-lg-12" >
-            <table   style="width:100%"  class=" table table-bordered table-striped table-hover datatable datatable-User">
-                <thead style='margin-left: 100px'>
-                    <tr>
-                        
-                        <th>
-                            {{ trans('Id') }}
-                        </th>
-                        <th>
-                            {{ trans('QUANTITÉ ') }}
-                        </th>
-                        <th>
-                            {{ trans('PP (25kg) ') }}
-                        </th> <th>
-                            {{ trans('PET (25kg) ') }}
-                        </th> <th>
-                            {{ trans('PEHD (25kg) ') }}
-                        </th> 
-                        <th>
-                        {{ trans('TOTALE DES SACS ') }}
-                        </th>
-                       
-                    
-                 
-                       
-                        <th>
-                        {{ trans('Date') }}
-
-                        </th>
-                       
-                     
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($data as $key => $stock)
-                        <tr >
-                            
-                            <td>
-                                {{ $stock->id ?? '' }}
-                            </td>
-                            <td>
-                                {{ $stock->nombre ?? '' }} 
-                            </td>
-                           
-                         
-                            <td>
-                                {{ $stock->totalepphomosac+$stock->totaleppcoposac ?? '' }} 
-                            </td>
-                            <td>
-                                {{ $stock->totalepetpreformsac+$stock->totalepetbouteillesac ?? '' }} 
-                            </td>
-                             <td>
-                                {{ $stock->totalepehdcasiersac+$stock->totalepehdsouflagesac ?? '' }} 
-                            </td>
-                            <td>
-                            {{ $stock->nombredesac ?? '' }} 
-
-                            </td>
-                        
-                           
-                            <td>
-                                {{ $stock->date ?? '' }}
-                            </td>
-                         
-                         
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
 
 
-    </div>
-</div>
-<div class="card col-lg-12">
-    <div class="card-header" style="background-color:#2F4F4F;color:white">
-    {{ trans('Table de matiere par quart') }}
-    </div>
-
-    <div class="card-body card col-lg-12">
-        <div class=" margin-left: 50px col-lg-12" >
-            <table   style="width:100%"  class=" table table-bordered table-striped table-hover datatable datatable-User">
-                <thead style='margin-left: 100px'>
-                    <tr>
-                        
-                        <th>
-                            {{ trans('Id') }}
-                        </th>
-                      
-                        <th>
-                            {{ trans('Qtt quart') }}
-                        </th>
-                        <th>
-                            {{ trans('Granule') }}
-                        </th>
-                        <th>
-                        {{ trans(' Extruder') }}
-
-                        </th>
-                 
-                        <th>
-                        {{ trans('Sac de (25 kg)') }}
-
-                        </th>
-                        <th>
-                        {{ trans('Date') }}
-
-                        </th>
-                        <th>
-                        </th>
-                      
-                     
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($data as $key => $stock)
-                        <tr >
-                            
-                            <td>
-                                {{ $stock->id ?? '' }}
-                            </td>
-                            <td>
-                                {{ $stock->totale ?? '' }} 
-                            </td>
-                            <td>
-                            {{ $stock->granule ?? '' }} 
-                            </td>
-                            <td>
-                            {{ $stock->extrude ?? '' }} 
-                            </td>
-                         
-                            <td>
-                            {{ $stock->stockproduitfini ?? '' }} 
-
-                            </td>
-                            <td>
-                                {{ $stock->date ?? '' }}
-                            </td>
-                          
-                            <td>
-                              
-                            <a class="btn btn-xs btn" style="background-color:#2F4F4F;" href="{{ route('stockproduitfinis.edit', $stock->id) }}">
-                                    <h6 style="color:white;">Ne pas extruder</h6>
-
-                                    </a>
-                                    </td>
-                         
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
-
-
-    </div>
-</div>
 <div class="card col-lg-12">
     <div class="card-header" style="background-color:#008B8B;color:white">
         {{ trans('PPCOPO') }}
@@ -254,39 +77,38 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($data as $key => $stock)
+                    @foreach($vente as $key => $com)
                         <tr >
 
                         <td>
-                                {{ $stock->id ?? '' }}
+                                {{ $com->id ?? '' }}
                             </td>
                             <td>
-                                {{ $stock->ppcoposacblanc ?? '' }} 
+                                {{ $com->ppcoposacblanc ?? '' }} 
                             </td>
                             <td>
-                                {{ $stock->ppcoposacbleu ?? '' }} 
+                                {{ $com->ppcoposacbleu ?? '' }} 
                             </td>
                             <td>
-                                {{ $stock->ppcoposacjaune ?? '' }} 
+                                {{ $com->ppcoposacjaune ?? '' }} 
                             </td>
                             <td>
-                                {{ $stock->ppcoposacvert ?? '' }} 
+                                {{ $com->ppcoposacvert ?? '' }} 
                             </td>
                             <td>
-                                {{ $stock->ppcoposacmauve ?? '' }} 
+                                {{ $com->ppcoposacmauve ?? '' }} 
                             </td><td>
-                                {{ $stock->ppcoposacrouge ?? '' }} 
+                                {{ $com->ppcoposacrouge ?? '' }} 
                             </td><td>
-                                {{ $stock->ppcoposacjadida ?? '' }} 
+                                {{ $com->ppcoposacjadida ?? '' }} 
                             </td><td>
-                                {{ $stock->ppcoposacmaron ?? '' }} 
+                                {{ $com->ppcoposacmaron ?? '' }} 
                             </td><td>
-                                {{ $stock->ppcoposacnoire ?? '' }} 
+                                {{ $com->ppcoposacnoire ?? '' }} 
                             </td><td>
-                                {{ $stock->ppcoposacmulti ?? '' }} 
+                                {{ $com->ppcoposacmulti ?? '' }} 
                             </td>
                             <td>
-                                {{ $ppcoposac=$stock->ppcoposacblanc+$stock->ppcoposacbleu+$stock->ppcoposacjaune+$stock->ppcoposacvert+$stock->ppcoposacmauve+$stock->ppcoposacrouge+$stock->ppcoposacjadida+$stock->ppcoposacmaron+$stock->ppcoposacnoire+$stock->ppcoposacmulti ?? '' }} 
                             </td>
 
                                     </td>
@@ -349,39 +171,38 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($data as $key => $stock)
+                    @foreach($vente as $key => $com)
                         <tr >
 
                         <td>
-                                {{ $stock->id ?? '' }} 
+                                {{ $com->id ?? '' }} 
                             </td>
                             <td>
-                                {{ $stock->pphomosacblanc ?? '' }} 
+                                {{ $com->pphomosacblanc ?? '' }} 
                             </td>
                             <td>
-                                {{ $stock->pphomosacbleu ?? '' }} 
+                                {{ $com->pphomosacbleu ?? '' }} 
                             </td>
                             <td>
-                                {{ $stock->pphomosacjaune ?? '' }} 
+                                {{ $com->pphomosacjaune ?? '' }} 
                             </td>
                             <td>
-                                {{ $stock->pphomosacvert ?? '' }} 
+                                {{ $com->pphomosacvert ?? '' }} 
                             </td>
                             <td>
-                                {{ $stock->pphomosacmauve ?? '' }} 
+                                {{ $com->pphomosacmauve ?? '' }} 
                             </td><td>
-                                {{ $stock->pphomosacrouge ?? '' }} 
+                                {{ $com->pphomosacrouge ?? '' }} 
                             </td><td>
-                                {{ $stock->pphomosacjadida ?? '' }} 
+                                {{ $com->pphomosacjadida ?? '' }} 
                             </td><td>
-                                {{ $stock->pphomosacmaron ?? '' }} 
+                                {{ $com->pphomosacmaron ?? '' }} 
                             </td><td>
-                                {{ $stock->pphomosacnoire ?? '' }} 
+                                {{ $com->pphomosacnoire ?? '' }} 
                             </td><td>
-                                {{ $stock->pphomosacmulti ?? '' }} 
+                                {{ $com->pphomosacmulti ?? '' }} 
                             </td>
                             <td>
-                                {{ $pphomosac=$stock->pphomosacblanc+$stock->pphomosacbleu+$stock->pphomosacjaune+$stock->pphomosacvert+$stock->pphomosacmauve+$stock->pphomosacrouge+$stock->pphomosacjadida+$stock->pphomosacmaron+$stock->pphomosacnoire+$stock->pphomosacmulti ?? '' }} 
                             </td>
 
                                     </td>
@@ -426,21 +247,20 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($data as $key => $stock)
+                    @foreach($vente as $key => $com)
                         <tr >
 
                         <td>
-                                {{ $stock->id ?? '' }}
+                                {{ $com->id ?? '' }}
                             </td>
                             <td>
-                                {{ $stock->petpreformsacblanc ?? '' }} 
+                                {{ $com->petpreformsacblanc ?? '' }} 
                             </td>
                             <td>
-                                {{ $stock->petpreformsacbleu ?? '' }} 
+                                {{ $com->petpreformsacbleu ?? '' }} 
                             </td>
                             
                             <td>
-                                {{ $petpreformsactri=$stock->petpreformsacblanc+$stock->petpreformsacbleu ?? '' }} 
                             </td>
 
                                     </td>
@@ -485,21 +305,20 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($data as $key => $stock)
+                    @foreach($vente as $key => $com)
                         <tr >
 
                         <td>
-                                {{ $stock->id ?? '' }}
+                                {{ $com->id ?? '' }}
                             </td>
                             <td>
-                                {{ $stock->petbouteillesacblanc ?? '' }} 
+                                {{ $com->petbouteillesacblanc ?? '' }} 
                             </td>
                             <td>
-                                {{ $stock->petbouteillesacbleu ?? '' }} 
+                                {{ $com->petbouteillesacbleu ?? '' }} 
                             </td>
                             
                             <td>
-                                {{ $petbouteillesactri=$stock->petbouteillesacblanc+$stock->petbouteillesacbleu ?? '' }} 
                             </td>
 
                                     </td>
@@ -569,39 +388,38 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($data as $key => $stock)
+                    @foreach($vente as $key => $com)
                         <tr >
                                    
                         <td>
-                                {{ $stock->id ?? '' }}
+                                {{ $com->id ?? '' }}
                             </td>
                             
                             <td>
-                                {{ $stock->pehdcasiersacblanc ?? '' }} 
+                                {{ $com->pehdcasiersacblanc ?? '' }} 
                             </td>
                             <td>
-                                {{ $stock->pehdcasiersacbleu ?? '' }} 
+                                {{ $com->pehdcasiersacbleu ?? '' }} 
                             </td>
                             <td>
-                                {{ $stock->pehdcasiersacjaune ?? '' }} 
+                                {{ $com->pehdcasiersacjaune ?? '' }} 
                             </td><td>
-                                {{ $stock->pehdcasiersacvert ?? '' }} 
+                                {{ $com->pehdcasiersacvert ?? '' }} 
                             </td><td>
-                                {{ $stock->pehdcasiersacneutre ?? '' }} 
+                                {{ $com->pehdcasiersacneutre ?? '' }} 
                             </td><td>
-                                {{ $stock->pehdcasiersacrouge ?? '' }} 
+                                {{ $com->pehdcasiersacrouge ?? '' }} 
                             </td><td>
-                                {{ $stock->pehdcasiersacjadida ?? '' }} 
+                                {{ $com->pehdcasiersacjadida ?? '' }} 
                             </td><td>
-                                {{ $stock->pehdcasiersacmaron ?? '' }} 
+                                {{ $com->pehdcasiersacmaron ?? '' }} 
                             </td><td>
-                                {{ $stock->pehdcasiersacnoire ?? '' }} 
+                                {{ $com->pehdcasiersacnoire ?? '' }} 
                             </td>
                             <td>
-                                {{ $stock->pehdcasiersacmulti ?? '' }} 
+                                {{ $com->pehdcasiersacmulti ?? '' }} 
                             </td>
                             <td>
-                                {{$stock->pehdcasiersacblanc+$stock->pehdcasiersacbleu+$stock->pehdcasiersacjaune+$stock->pehdcasiersacvert+$stock->pehdcasiersacneutre+$stock->pehdcasiersacrouge+$stock->pehdcasiersacjadida+$stock->pehdcasiersacmaron+$stock->pehdcasiersacnoire+$stock->pehdcasiersacmulti ?? '' }} 
                             </td>
 
                            
@@ -671,39 +489,38 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($data as $key => $stock)
+                    @foreach($vente as $key => $com)
                         <tr >
                                    
                         <td>
-                                {{ $stock->id ?? '' }}
+                                {{ $com->id ?? '' }}
                             </td>
                             
                             <td>
-                                {{ $stock->pehdsouflagesacblanc ?? '' }} 
+                                {{ $com->pehdsouflagesacblanc ?? '' }} 
                             </td>
                             <td>
-                                {{ $stock->pehdsouflagesacbleu ?? '' }} 
+                                {{ $com->pehdsouflagesacbleu ?? '' }} 
                             </td>
                             <td>
-                                {{ $stock->pehdsouflagesacjaune ?? '' }} 
+                                {{ $com->pehdsouflagesacjaune ?? '' }} 
                             </td><td>
-                                {{ $stock->pehdsouflagesacvert ?? '' }} 
+                                {{ $com->pehdsouflagesacvert ?? '' }} 
                             </td><td>
-                                {{ $stock->pehdsouflagesacneutre ?? '' }} 
+                                {{ $com->pehdsouflagesacneutre ?? '' }} 
                             </td><td>
-                                {{ $stock->pehdsouflagesacrouge ?? '' }} 
+                                {{ $com->pehdsouflagesacrouge ?? '' }} 
                             </td><td>
-                                {{ $stock->pehdsouflagesacjadida ?? '' }} 
+                                {{ $com->pehdsouflagesacjadida ?? '' }} 
                             </td><td>
-                                {{ $stock->pehdsouflagesacmaron ?? '' }} 
+                                {{ $com->pehdsouflagesacmaron ?? '' }} 
                             </td><td>
-                                {{ $stock->pehdsouflagesacnoire ?? '' }} 
+                                {{ $com->pehdsouflagesacnoire ?? '' }} 
                             </td>
                             <td>
-                                {{ $stock->pehdsouflagesacmulti ?? '' }} 
+                                {{ $com->pehdsouflagesacmulti ?? '' }} 
                             </td>
                             <td>
-                                {{$stock->pehdsouflagesacblanc+$stock->pehdsouflagesacbleu+$stock->pehdsouflagesacjaune+$stock->pehdsouflagesacvert+$stock->pehdsouflagesacneutre+$stock->pehdsouflagesacrouge+$stock->pehdsouflagesacjadida+$stock->pehdsouflagesacmaron+$stock->pehdsouflagesacnoire+$stock->pehdsouflagesacmulti ?? '' }} 
                             </td>
 
                            

@@ -33,7 +33,7 @@
 @endif
 
 
-{!! Form::model($stock, ['method' => 'PATCH','route' => ['stockproduitfinis.update', $stock->id]]) !!}
+{!! Form::model($ventes, ['method' => 'PATCH','route' => ['ventes.create', $ventes->id]]) !!}
 <div class="row" style="margin-left:10%">
 <div class="col-xs-12 col-sm-12 col-md-3 " >
         <div class="form-group">
@@ -44,26 +44,12 @@
     </div> 
     <div class="col-xs-12 col-sm-12 col-md-3 " >
         <div class="form-group">
-            <strong style='color:black'>La Quantite totale</strong>
-            {!! Form::number('stockproduitfini', null, array('placeholder' => 'quantite en kg','disabled','class' => 'form-control')) !!}
+            <strong style='color:black'>La Quantite de ce quart</strong>
+            {!! Form::number('sac', null, array('placeholder' => 'quantite en kg','disabled','class' => 'form-control')) !!}
         </div>
       
     </div> 
-    <div class="col-xs-12 col-sm-12 col-md-2 " >
-        <div class="form-group">
-            <strong style='color:black'>Pehd Soufflage</strong>
-            {!! Form::number('extrude', null, array('placeholder' => 'nombre de personne','class' => 'form-control')) !!}
-        </div>
-      
-    </div> 
-    
-    <div class="col-xs-12 col-sm-12 col-md-2 " >
-        <div class="form-group">
-            <strong style='color:black'>Granulé</strong>
-            {!! Form::number('granule', null, array('placeholder' => 'quantite en kg','class' => 'form-control')) !!}
-        </div>
-      
-    </div> 
+
 
     
     <br>

@@ -3,9 +3,9 @@
 
 @section('content')
 <div class="row " style="margin-left:8%">
-    <div class="col-lg-8 ">
+    <div class="col-lg-12 ">
         <div class="pull-left">
-            <h2>Formulaire de mise en sac </h2>
+            <h2>Ajouter la quantite de PEHD sur le Granule</h2>
         </div>
         <div class="pull-right">
             <a class="btn btn-success" href="{{ route('sacs.index') }}"> Retour</a>
@@ -45,14 +45,14 @@
     <div class="col-xs-12 col-sm-12 col-md-3 " >
         <div class="form-group">
             <strong style='color:black'>La Quantite totale</strong>
-            {!! Form::number('stockproduitfini', null, array('placeholder' => 'quantite en kg','disabled','class' => 'form-control')) !!}
+            {!! Form::number('totale', null, array('placeholder' => 'quantite en kg','disabled','class' => 'form-control')) !!}
         </div>
       
     </div> 
     <div class="col-xs-12 col-sm-12 col-md-2 " >
         <div class="form-group">
             <strong style='color:black'>Pehd Soufflage</strong>
-            {!! Form::number('extrude', null, array('placeholder' => 'nombre de personne','class' => 'form-control')) !!}
+            {!! Form::number('extrude', null, array('placeholder' => 'nombre de personne','disabled','class' => 'form-control')) !!}
         </div>
       
     </div> 

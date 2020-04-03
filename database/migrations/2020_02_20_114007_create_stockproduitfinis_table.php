@@ -80,6 +80,16 @@ class CreateStockproduitfinisTable extends Migration
             $table->bigInteger('totale')->nullable();
             $table->bigInteger('effectifstock')->nullable();
             $table->bigInteger('nombre')->nullable();
+            $table->bigInteger('nombredesac')->nullable();
+            $table->bigInteger('totalegranule')->nullable();
+            $table->bigInteger('totaleextrude')->nullable();
+            $table->bigInteger('totaleppcoposac',)->nullable();
+
+            $table->bigInteger('totalepphomosac',)->nullable();
+            $table->bigInteger('totalepetpreformsac',)->nullable();
+            $table->bigInteger('totalepetbouteillesac',)->nullable();
+            $table->bigInteger('totalepehdcasiersac',)->nullable();
+            $table->bigInteger('totalepehdsouflagesac',)->nullable();
 
             $table->date('date');
             $table->timestamps();

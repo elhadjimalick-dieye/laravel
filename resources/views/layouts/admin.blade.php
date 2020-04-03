@@ -317,42 +317,42 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-shopping-bag text-primary "></i>
               <p>
-              Vente           
+              Commercial         
             <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('ventes.index') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Level 2</p>
+                  <p>Stock Commercial</p>
                 </a>
               </li>
               <li class="nav-item has-treeview">
                 <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>
-                    Level 2
+                    Clients
                     <i class="right fas fa-angle-left"></i>
                   </p>
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('clients.create') }}" class="nav-link">
                       <i class="far fa-dot-circle nav-icon"></i>
-                      <p>Level 3</p>
+                      <p>Ajouter client</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="{{ route('clients.index') }}" class="nav-link">
+                      <i class="far fa-dot-circle nav-icon"></i>
+                      <p>liste des clients</p>
                     </a>
                   </li>
                   <li class="nav-item">
                     <a href="#" class="nav-link">
                       <i class="far fa-dot-circle nav-icon"></i>
-                      <p>Level 3</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="far fa-dot-circle nav-icon"></i>
-                      <p>Level 3</p>
+                      <p>Comptes des clients</p>
                     </a>
                   </li>
                 </ul>
