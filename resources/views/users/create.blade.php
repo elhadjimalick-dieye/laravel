@@ -28,6 +28,12 @@
 @endif
 
 
+<div class="card col-xs-12 col-sm-12 col-md-10 " style="margin-left:10%">
+    <div class="card-header" style="background-color:green;color:white">
+        {{ trans('Formulaire d\'ajout des utilisateurs') }}
+    </div>
+<br>
+
 
 {!! Form::open(array('route' => 'users.store','method'=>'POST')) !!}
 <div class="row" style="margin-left:10%">
@@ -70,7 +76,7 @@
     <div class="form-group col-xs-12 col-sm-12 col-md-5">
     <label for="exampleFormControlSelect1">Roles</label>
     <div class="form-group" >
-            <select name="roles" id="roles" class="col-xs-12 col-sm-12 col-md-12" >
+            <select name="roles" id="roles" class="form-control col-xs-12 col-sm-12 col-md-12" >
             <option value=""></option>
 
             @foreach($roles as $role)
@@ -85,7 +91,7 @@
     <label for="exampleFormControlSelect1">Déparetment</label>
 
         <div class="form-group">
-            <select name="service_id" id="service_id" class="col-xs-12 col-sm-12 col-md-12">
+            <select name="service_id" id="service_id" class=" form-control col-xs-12 col-sm-12 col-md-12">
             <option value=""></option>
 
             @foreach($services as $serve)
@@ -104,5 +110,7 @@
     </div>
 </div>
 {!! Form::close() !!}
+<br>
 
+</div>
 @endsection

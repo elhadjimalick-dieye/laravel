@@ -27,6 +27,11 @@
   </div>
 @endif
 
+<div class="card col-xs-12 col-sm-12 col-md-11 " style="margin-left:5%">
+    <div class="card-header" style="background-color:green;color:white">
+        {{ trans('Formulaire d\'ajout des departements') }}
+    </div>
+<br>
 
 
 {!! Form::open(array('route' => 'services.index','method'=>'POST')) !!}
@@ -51,5 +56,6 @@
     </div>
 </div>
 {!! Form::close() !!}
-
+<br>
+</div>
 @endsection

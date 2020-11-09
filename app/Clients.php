@@ -25,22 +25,9 @@ protected $fillable = [
   ];
 
 
-  public function collecteRecuplasts()
+  public function achats()
   {
-      return $this->hasMany('App\CollecteRecuplasts');
+      return $this->hasMany('App\Achats');
   }
 
-  public function collectEntreprises()
-  {
-      return $this->hasMany('App\CollectEntreprise');
-  }
-
-  public function collectEntreprise()
-  {
-      return $this->belongsTo('App\CollectEntreprise');
-  }
-  public function type_collecteurs()
-  {
-      return $this->belongsTo('App\TypeCollecteur','type');
-  }
 }

@@ -93,7 +93,7 @@ class ClientsController extends Controller
         return view('clients.show',compact('client'));
     }
 
- /**
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -132,7 +132,7 @@ class ClientsController extends Controller
 
         $client->update($input);
         return redirect()->route('clients.index',compact('client'))
-                        ->withFail('Information du client modifier avec succés. ');
+                        ->withFail('Informations du client modifier avec succés. ');
     }
  
 

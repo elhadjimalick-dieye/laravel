@@ -143,10 +143,10 @@
                             {{ trans('Qtt quart') }}
                         </th>
                         <th>
-                            {{ trans('Granule') }}
+                            {{ trans('Broyat') }}
                         </th>
                         <th>
-                        {{ trans(' Extruder') }}
+                        {{ trans(' Granulé') }}
 
                         </th>
                  

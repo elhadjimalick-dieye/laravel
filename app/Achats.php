@@ -6,26 +6,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 
 
-class Ventes extends Model
+class Achats extends Model
 {
 
     use SoftDeletes, Notifiable;
 
     protected $fillable = [
-        'nombredesac',
 
-        'ppcopo',
-        'ppcopobleu',
-        'ppcopoblanc',
-        'ppcopojaune',
-        'ppcopovert',
-        'ppcopomauve',
-        'ppcoporouge',
-        'ppcopojadida',
-        'ppcopomaron',
-        'ppcoponoire',
-        'ppcopomulti',
-
+        'client',
         'ppcoposac',
         'ppcoposacbleu',
         'ppcoposacblanc',
@@ -38,17 +26,8 @@ class Ventes extends Model
         'ppcoposacnoire',
         'ppcoposacmulti',
 
-        'pphomo',
-        'pphomobleu',
-        'pphomoblanc',
-        'pphomojaune',
-        'pphomovert',
-        'pphomomauve',
-        'pphomorouge',
-        'pphomojadida',
-        'pphomomaron',
-        'pphomonoire',
-        'pphomomulti',
+        'ppcopoprix',
+     
 
         'pphomosac',
         'pphomosacbleu',
@@ -62,35 +41,21 @@ class Ventes extends Model
         'pphomosacnoire',
         'pphomosacmulti',
 
-        'petpreform',
-        'petpreformbleu',
-        'petpreformblanc',
+        'pphomoprix',
+       
 
         'petpreformsac',
         'petpreformsacbleu',
         'petpreformsacblanc',
 
-        'petbouteille',
-        'petbouteillebleu',
-        'petbouteilleblanc',
+        'petpreformprix',
 
         'petbouteillesac',
         'petbouteillebleusac',
         'petbouteilleblancsac',
 
-
-        'pehdcasier',
-        'pehdcasierbleu',
-        'pehdcasierblanc',
-        'pehdcasierjaune',
-        'pehdcasiervert',
-        'pehdcasierneutre',
-        'pehdcasierrouge',
-        'pehdcasierjadida',
-        'pehdcasiermaron',
-        'pehdcasiernoire',
-        'pehdcasiermulti',
-
+        'petbouteilleprix',
+       
 
         'pehdcasiersac',
         'pehdcasiersacbleu',
@@ -104,17 +69,8 @@ class Ventes extends Model
         'pehdcasiersacnoire',
         'pehdcasiersacmulti',
 
-        'pehdsouflage',
-        'pehdsouflagebleu',
-        'pehdsouflageblanc',
-        'pehdsouflagejaune',
-        'pehdsouflagevert',
-        'pehdsouflageneutre',
-        'pehdsouflagerouge',
-        'pehdsouflagejadida',
-        'pehdsouflagemaron',
-        'pehdsouflagenoire',
-        'pehdsouflagemulti',
+        'pehdcasierprix',
+     
 
 
         'pehdsouflagesac',
@@ -129,11 +85,21 @@ class Ventes extends Model
         'pehdsouflagesacnoire',
         'pehdsouflagesacmulti',
 
+        'pehdsouflageprix',
+    
         'totale',
+        'somme',
+        'montant',
+
+
         'date'
 ];
 
 
 
+public function clients()
+{
+    return $this->belongsTo('App\Clients','client');
+}
 
 }

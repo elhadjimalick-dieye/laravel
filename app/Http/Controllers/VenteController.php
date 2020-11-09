@@ -8,6 +8,8 @@ use App\Extrusion;
 use App\Stockproduitfini;
 use DB;
 use App\Ventes;
+use App\Achats;
+
 
 class VenteController extends Controller
 {
@@ -19,7 +21,13 @@ class VenteController extends Controller
     public function index(Request $request)
     {
         $data = Ventes::orderBy('id', 'DESC')->paginate(10);
-        return view('ventes.index', compact('data'))
+        $vente = Achats::all();
+        $somme=$vente->sum('somme');
+        $totale=$vente->sum('totale');
+        $id=$vente->sum('id');
+
+        return view('ventes.index', ['somme' => $somme,'totale' => $totale,'id' => $id], compact('data', 'vente'))
+
             ->with('i', ($request->input('page', 1) - 1) * 7);
     }
 
@@ -52,6 +60,10 @@ class VenteController extends Controller
 
        
 }
+
+
+ 
+
 
 
     /**

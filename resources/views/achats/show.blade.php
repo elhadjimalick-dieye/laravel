@@ -45,7 +45,7 @@
     </div>
     <br>
     <div style="background-color:#F0F8FF ;margin-left:5%" class="col-xs-12 col-sm-12 col-md-11">
-    <strong>Quantite totale acheter: </strong> {{ $client->quantitetotale }} SAC(s)
+    <strong>Quantite totale acheter: </strong> {{ $client->quantitetotale }} KG
     </div>
     <br>
     <div style="background-color:#F0F8FF ;margin-left:5%" class="col-xs-12 col-sm-12 col-md-11">

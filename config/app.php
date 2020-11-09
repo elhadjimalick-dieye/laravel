@@ -165,7 +165,7 @@ return [
         Way\Generators\GeneratorsServiceProvider::class,
         Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
-
+        Spatie\Permission\PermissionServiceProvider::class,
 
         /*
          * Package Service Providers...

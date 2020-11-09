@@ -32,24 +32,30 @@
   </div>
 @endif
 
+<div class="card col-xs-12 col-sm-12 col-md-11 " style="margin-left:5%">
+    <div class="card-header" style="background-color:green;color:white">
+        {{ trans('Formulaire de lavage hors circuits des matieres') }}
+    </div>
+<br>
+
 
 {!! Form::model($lavagehor, ['method' => 'PATCH','route' => ['lavageshors.update', $lavagehor->id]]) !!}
 <div class="row" style="margin-left:10%">
-<div class="col-xs-12 col-sm-12 col-md-3 " >
+<div class="col-xs-12 col-sm-12 col-md-5 " >
         <div class="form-group">
             <strong style='color:black'>Date</strong>
             {!! Form::date('date', null, array('placeholder' => 'quantite en kg','class' => 'form-control')) !!}
         </div>
       
     </div> 
-    <div class="col-xs-12 col-sm-12 col-md-3 " >
+    <div class="col-xs-12 col-sm-12 col-md-5 " >
         <div class="form-group">
             <strong style='color:black'>La Quantite de ce quart</strong>
             {!! Form::number('lavagehor', null, array('placeholder' => 'quantite en kg','disabled','class' => 'form-control')) !!}
         </div>
       
     </div> 
-    <div class="col-xs-12 col-sm-12 col-md-2 " >
+    <div class="col-xs-12 col-sm-12 col-md-5 " >
         <div class="form-group">
             <strong style='color:black'>Effectifs</strong>
             {!! Form::number('effectiflav', null, array('placeholder' => 'nombre de personne','class' => 'form-control')) !!}
@@ -57,7 +63,7 @@
       
     </div> 
     
-    <div class="col-xs-12 col-sm-12 col-md-2 " >
+    <div class="col-xs-12 col-sm-12 col-md-5 " >
         <div class="form-group">
             <strong style='color:black'>Dechets</strong>
             {!! Form::number('dechelavage', null, array('placeholder' => 'quantite en kg','class' => 'form-control')) !!}
@@ -399,7 +405,8 @@
     </div>
 </div>
 {!! Form::close() !!}
-
+<br>
+</div>
 @endsection
 
 

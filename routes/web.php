@@ -52,6 +52,8 @@ Route::group(['middleware' => ['auth']], function() {
 
     Route::resource('ventes','VenteController');
     Route::resource('clients','ClientsController');
+    Route::resource('achats','AchatsController');
+
     
 
     

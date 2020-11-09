@@ -25,6 +25,11 @@
   </div>
 @endif
 
+<div class="card col-xs-12 col-sm-12 col-md-10 " style="margin-left:10%">
+    <div class="card-header" style="background-color:green;color:white">
+        {{ trans('Formulaire de modification des collectes recuplast') }}
+    </div>
+<br>
 
 {!! Form::model($collecteRecuplasts, ['method' => 'PATCH','route' => ['collecterecuplasts.update', $collecteRecuplasts->id]]) !!}
 <div class="row" style="margin-left:5%">
@@ -84,5 +89,6 @@
     </div>
 </div>
 {!! Form::close() !!}
-
+<br>
+</div>
 @endsection

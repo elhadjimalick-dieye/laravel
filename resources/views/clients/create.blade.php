@@ -13,6 +13,7 @@
         <br>
 
     </div>
+    
 </div>
 
 
@@ -50,7 +51,7 @@
     <div class="col-xs-12 col-sm-12 col-md-10">
         <div class="form-group">
             <strong>Contact:</strong>
-            {!! Form::text('contact', null, array('placeholder' => 'Contact','class' => 'form-control')) !!}
+            {!! Form::number('contact', null, array('placeholder' => 'Contact','class' => 'form-control')) !!}
         </div>
     </div>
  

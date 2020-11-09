@@ -5,7 +5,7 @@
 <div class="row " style="margin-left:8%">
     <div class="col-lg-8 ">
         <div class="pull-left">
-            <h2>Formulaire d'extrusion' </h2>
+            <h2>Formulaire d'extrusion </h2>
         </div>
         <div class="pull-right">
             <a class="btn btn-success" href="{{ route('extrusions.index') }}"> Retour</a>
@@ -31,25 +31,31 @@
     </ul>
   </div>
 @endif
+<div class="card col-xs-12 col-sm-12 col-md-11 " style="margin-left:5%">
+    <div class="card-header" style="background-color:green;color:white">
+        {{ trans('Formulaire d\extrusion des matieres') }}
+    </div>
+<br>
+
 
 
 {!! Form::model($extrusion, ['method' => 'PATCH','route' => ['extrusions.update', $extrusion->id]]) !!}
 <div class="row" style="margin-left:10%">
-<div class="col-xs-12 col-sm-12 col-md-3 " >
+<div class="col-xs-12 col-sm-12 col-md-5 " >
         <div class="form-group">
             <strong style='color:black'>Date</strong>
             {!! Form::date('date', null, array('placeholder' => 'quantite en kg','class' => 'form-control')) !!}
         </div>
       
     </div> 
-    <div class="col-xs-12 col-sm-12 col-md-3 " >
+    <div class="col-xs-12 col-sm-12 col-md-5 " >
         <div class="form-group">
             <strong style='color:black'>La Quantite à extruder</strong>
             {!! Form::number('extrusion', null, array('placeholder' => 'quantite en kg','disabled','class' => 'form-control')) !!}
         </div>
       
     </div> 
-    <div class="col-xs-12 col-sm-12 col-md-2 " >
+    <div class="col-xs-12 col-sm-12 col-md-5 " >
         <div class="form-group">
             <strong style='color:black'>Effectifs</strong>
             {!! Form::number('effectifextru', null, array('placeholder' => 'nombre de personne','class' => 'form-control')) !!}
@@ -57,7 +63,7 @@
       
     </div> 
     
-    <div class="col-xs-12 col-sm-12 col-md-2 " >
+    <div class="col-xs-12 col-sm-12 col-md-5 " >
         <div class="form-group">
             <strong style='color:black'>Dechets</strong>
             {!! Form::number('decheextrusion', null, array('placeholder' => 'quantite en kg','class' => 'form-control')) !!}
@@ -148,7 +154,8 @@
     </div>
 </div>
 {!! Form::close() !!}
-
+<br>
+</div>
 @endsection
 
 

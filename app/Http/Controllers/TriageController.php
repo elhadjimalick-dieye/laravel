@@ -45,7 +45,7 @@ class TriageController extends Controller
     public function create()
     {
         $triage = Triage::all();
-        return view('triage.create', compact('triage'));
+        return view('triages.create', compact('triage'));
     }
    
     /**

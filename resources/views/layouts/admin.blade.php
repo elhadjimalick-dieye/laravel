@@ -130,7 +130,6 @@
           </li>
    
           <li class="nav-header">Liste des departements</li>
-      
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-registered"></i>
@@ -187,7 +186,6 @@
               </li>
             </ul>
           </li>
-        
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-sign-language"></i>
@@ -349,20 +347,15 @@
                       <p>liste des clients</p>
                     </a>
                   </li>
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="far fa-dot-circle nav-icon"></i>
-                      <p>Comptes des clients</p>
-                    </a>
-                  </li>
+                 
                 </ul>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Level 2</p>
-                </a>
-              </li>
+                    <a href="{{ route('achats.index') }}" class="nav-link">
+                      <i class="far fa-dot-circle nav-icon"></i>
+                      <p>Vente des matieres</p>
+                    </a>
+                  </li>
             </ul>
           </li>
 
@@ -449,25 +442,18 @@
   </aside>
 
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+  <div class="content-wrapper" style="background-color:#F0F9CC" >
     <!-- Content Header (Page header) -->
    @yield('content')
   </div>
   <!-- /.content-wrapper -->
-  <footer class="main-footer" style="float:left">
-    <strong style="float:left">Copyright &copy; 2019-2020 <a href="https://recuplast.org/" target="blank">www.recuplast.org</a>.</strong>
-      une vraie economie circulaire.
-    <div class="float-right d-none d-sm-inline-block" >
-    
-    </div>
+  <footer class="main-footer" style=";background-color:green">
+    <strong style="float:left ;color:white">Copyright &copy; 2019-2020 <a style=" color:white" href="https://recuplast.org/" target="blank">/ Recuplast</a> une vraie economie circulaire.</strong ><br>
+   
   </footer>
 
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
+ 
   <!-- /.control-sidebar -->
-</div>
 <!-- ./wrapper -->
 
 <!-- jQuery -->

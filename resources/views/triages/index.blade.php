@@ -213,7 +213,7 @@
 </div>
 
 <div class="card col-lg-12">
-    <div class="card-header" style="background-color:#1E90FF;color:white">
+    <div class="card-header" style="background-color:#008B8B;color:white">
         {{ trans('Table de triage PPHOMO') }}
 
     </div>

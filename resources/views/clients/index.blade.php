@@ -1,9 +1,15 @@
 @extends('layouts.admin')
 @section('content')
     <div style="margin-bottom: 20px;margin-left: 50px;margin-top: 20px;" class="row">
-        <div class="col-lg-10">
+        <div class="col-lg-9">
             <a class="btn btn-success" href="{{ route("clients.create") }}">
                {{ trans('Ajouter un client ') }}
+            </a>
+        </div>
+
+        <div class="col-lg-2">
+            <a class="btn btn-success" href="{{ route("ventes.index") }}">
+               {{ trans('Accueil commercial ') }}
             </a>
         </div>
     </div>
@@ -13,16 +19,16 @@
     </div>
 @endif
 <div class="card">
-    <div class="card-header">
+    <div class="card-header" style="background-color:#268496;color:white">
         {{ trans('liste des clients') }}
     </div>
  
-    <div class="card-body">
+    <div class="card-body" >
         <div class="">
             <table style="width:100%" class=" table table-bordered table-striped table-hover datatable datatable-User">
                 <thead>
                     <tr>
-                        <th width="10%">
+                        <th >
 
                         
                             {{ trans('Id') }}
@@ -70,7 +76,7 @@
 
                             <td>
                               
-                                    <a class="btn btn-xs btn-primary" href="{{ route('clients.show', $client->id) }}">
+                                    <a class="btn btn-xs btn-success" href="{{ route('clients.show', $client->id) }}">
                                     <i class="far fa-eye"></i>
                                     </a>
                                     </td>

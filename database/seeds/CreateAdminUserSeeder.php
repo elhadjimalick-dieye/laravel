@@ -17,6 +17,7 @@ use App\Sac;
 use App\Extrusion;
 use App\Stockproduitfini;
 use App\ventes;
+
 //use Spatie\Permission\Models\Roles;
 
 class CreateAdminUserSeeder extends Seeder
@@ -29,40 +30,41 @@ class CreateAdminUserSeeder extends Seeder
     public function run()
     {
         $services = Service::create([
-            'libelle' => 'RH', 
+            'libelle' => 'RH',
             'direction' => 'Thies',
-        	
+            
         ]);
         $services = Service::create([
-            'libelle' => 'MARKETING', 
+            'libelle' => 'MARKETING',
             'direction' => 'dakar',
-        	
+            
         ]);
 
         $services = Service::create([
-            'libelle' => 'COLLECTE', 
+            'libelle' => 'COLLECTE',
             'direction' => 'dakar',
-        	
+            
         ]);
         $services = Service::create([
-            'libelle' => 'FINANCE', 
+            'libelle' => 'FINANCE',
             'direction' => 'dakar',
-        	
+            
         ]);
         $services = Service::create([
-            'libelle' => 'PRODUCTION', 
+            'libelle' => 'PRODUCTION',
             'direction' => 'thies',
-        	
+            
         ]);
         $services = Service::create([
-            'libelle' => 'VENTE', 
+            'libelle' => 'VENTE',
             'direction' => 'dakar',
-        	
+            
         ]);
+        
         $role = Roles::create(['libelle' => 'ADMIN_SYSTEME']);
-            $role = Roles::create(['libelle' => 'ADMIN_SIMPLE']);
-            $role = Roles::create(['libelle' => 'USER_SIMPLE']);
-    
+        $role = Roles::create(['libelle' => 'ADMIN_SIMPLE']);
+        $role = Roles::create(['libelle' => 'USER_SIMPLE']);
+
         $Permissions = Permission::create([
          
                 'id'         => '1',
@@ -71,8 +73,8 @@ class CreateAdminUserSeeder extends Seeder
                 'updated_at' => '2019-09-19 12:14:15',
             ]);
             
-    
-            $Permissions = Permission::create([
+          
+        $Permissions = Permission::create([
          
                 'id'         => '2',
                 'title'      => 'employes_create',
@@ -80,22 +82,25 @@ class CreateAdminUserSeeder extends Seeder
                 'updated_at' => '2019-09-19 12:14:15',
             ]);
        
-       
         
         $user = User::create([
-            'name' => 'Dieye', 
+            'name' => 'Dieye',
             'prenom' => 'Elhadji malick',
-        	'statut' => 'actif',
+            'statut' => 'actif',
             'email' => 'ndieyene@gmail.com',
             'service_id' =>'1',
             'roles' =>'1',
-        	'password' => bcrypt('12345678')
+            'password' => bcrypt('12345678')
         ]);
+
+       
+   
+
         $depotCollecte = DepotCollecte::create([
         'quantiteinitiale'=>0,
         'quantiteEntrante'=>0,
         'quantiteSortante'=>0,
-        'depot'=>0,   
+        'depot'=>0,
         'pphomo'=>0,
         'pphomoSortante'=>0,
         'ppcopo'=>0,
@@ -114,23 +119,25 @@ class CreateAdminUserSeeder extends Seeder
 
             ]);
 
-            $typeCollecteur = TypeCollecteur::create([
+        $typeCollecteur = TypeCollecteur::create([
                 'libelle' => 'AGREE',
                 ]);
 
-             $typeCollecteur = TypeCollecteur::create([
+        $typeCollecteur = TypeCollecteur::create([
                     'libelle' => 'RECUPLAST',
                     ]);
 
-            $typeCollecteur = TypeCollecteur::create([
+        $typeCollecteur = TypeCollecteur::create([
                     'libelle' => 'DIVERS',
                  ]);
-            $typeCollecteur = TypeCollecteur::create([
+        $typeCollecteur = TypeCollecteur::create([
                     'libelle' => 'ENTREPRISE',
                  ]);
+
+                 
         $fournisseur = Fournisseur::create([
             'nomComplet' => 'Elhadji malick',
-        	'avance' => 0,
+            'avance' => 0,
             'contact' => '771327599',
             'region' =>'mbour',
             'departement' =>'mbour',
@@ -140,7 +147,9 @@ class CreateAdminUserSeeder extends Seeder
             'numero' =>'FR_401001',
             'type' =>'1',
             ]);
-            $fournisseur = Fournisseur::create([
+
+
+        $fournisseur = Fournisseur::create([
                 'nomComplet' => 'Collecteur DIVERS',
                 'avance' => 0,
                 'contact' => '',
@@ -152,7 +161,9 @@ class CreateAdminUserSeeder extends Seeder
                 'numero' =>'FR_401002',
                 'type' =>'3',
                 ]);
-                $collectEntreprise = CollectEntreprise::create([
+
+
+        $collectEntreprise = CollectEntreprise::create([
                     'fournisseur_id' =>'1',
                     'ppcopo'=>0,
                     'prixppcopo'=>0,
@@ -175,7 +186,7 @@ class CreateAdminUserSeeder extends Seeder
                     'totaltri'=>0,
                     ]);
 
-                    $depotProduction = DepotProduction::create([
+        $depotProduction = DepotProduction::create([
                     'vracinitiale'=>0,
                     'vracEntrant'=>0,
                     'vracSortant'=>0,
@@ -212,14 +223,14 @@ class CreateAdminUserSeeder extends Seeder
    
                     ]);
 
-                    $triage = Triage::create([
+        $triage = Triage::create([
                         'premierequantite'=>0,
                         
                         'date'=>'2015-02-03',
        
                         ]);
 
-                        $lavagehor = Lavagehor::create([
+        $lavagehor = Lavagehor::create([
                             
                         'lavagehor'=>0,
                         'ppcopolav'=>0,
@@ -285,7 +296,8 @@ class CreateAdminUserSeeder extends Seeder
                         'dechelavage'=>0,
                         'date'=>'2015-02-03',
                         ]);
-                        $broyage = Broyage::create([
+
+        $broyage = Broyage::create([
 
                     'broyage'=>0,
                     'ppcopobro'=>0,
@@ -352,7 +364,7 @@ class CreateAdminUserSeeder extends Seeder
                     'date'=>'2015-02-03',
                     ]);
 
-                    $sac= Sac::create ([
+        $sac= Sac::create([
                     'sac'=>0,
                     'ppcopo'=>0,
                     'ppcopobleu'=>0,
@@ -479,7 +491,7 @@ class CreateAdminUserSeeder extends Seeder
 
 
 
-                   $extrusion= Extrusion:: create([
+        $extrusion= Extrusion:: create([
                     'extrusion'=>0,
                    'pehdsouflagebleu'=>0,
                    'pehdsouflageblanc'=>0,
@@ -525,7 +537,7 @@ class CreateAdminUserSeeder extends Seeder
 
 
 
-              $stockproduitfini= Stockproduitfini::create([
+        $stockproduitfini= Stockproduitfini::create([
                    'stockproduitfini'=>0,
                    'ppcoposac'=>0,
                    'ppcoposacbleu'=>0,
@@ -599,7 +611,7 @@ class CreateAdminUserSeeder extends Seeder
                   ]);
 
 
-                  $vente=ventes::create([
+        $vente=ventes::create([
                     'nombredesac'=>0,
                     'ppcopo'=>0,
                     'ppcopobleu'=>0,
@@ -722,6 +734,4 @@ class CreateAdminUserSeeder extends Seeder
                                
                   ]);
     }
-    
-   
 }

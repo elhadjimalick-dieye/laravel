@@ -27,21 +27,28 @@
   </div>
 @endif
 
+<div class="card col-xs-12 col-sm-12 col-md-10 " style="margin-left:10%">
+    <div class="card-header" style="background-color:green;color:white">
+        {{ trans('Formulaire d\'ajout des fournisseurs') }}
+    </div>
+<br>
 
 
 {!! Form::open(array('route' => 'fournisseurs.index','method'=>'POST')) !!}
-<div class="row" style="margin-left:5%">
+<div class="row" style="margin-left:10%">
 <div class="col-xs-12 col-sm-12 col-md-5" >
 <div class="col-xs-12 col-sm-12 col-md-12">
     <label for="exampleFormControlSelect1">Type de fournisseur</label>
 
         <div class="form-group">
-            <select name="type" id="type" class="col-xs-12 col-sm-12 col-md-12">
+        
+            <select class="form-control" id="type" name="type" class="col-xs-12 col-sm-12 col-md-12">
             <option value=""></option>
+
             @foreach($types as $serve)
             <option value="{{ $serve->id}}">{{$serve->libelle}}</option>
             @endforeach
-            </select>
+          </select>
         </div>
     </div>
 </div>
@@ -97,5 +104,7 @@
     </div>
 </div>
 {!! Form::close() !!}
+<br>
 
+</div>
 @endsection

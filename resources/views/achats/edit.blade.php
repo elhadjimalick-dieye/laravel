@@ -8,7 +8,7 @@
             <h2>Modifier client</h2>
         </div>
         <div class="pull-right">
-            <a class="btn btn-success" href="{{ route('clients.index') }}"> Retour</a>
+            <a class="btn btn-success" href="{{ route('fournisseurs.index') }}"> Retour</a>
         </div>
     </div>
 </div>

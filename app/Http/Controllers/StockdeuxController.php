@@ -256,7 +256,7 @@ class StockdeuxController extends Controller
     $lastpehdsouflagesacnoire=$vente->last()->pehdsouflagesacnoire;
     $lastpehdsouflagesacmulti=$vente->last()->pehdsouflagesacmulti;
     $lasttotale=$vente->last()->totale;
-dd($nombresac);
+
        Ventes::where('id', $id)->update([
         
                 'nombredesac'=>$nombresac+$totalesac,

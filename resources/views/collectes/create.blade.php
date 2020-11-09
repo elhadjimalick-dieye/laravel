@@ -27,6 +27,12 @@
   </div>
 @endif
 
+<div class="card col-xs-12 col-sm-12 col-md-10 " style="margin-left:10%">
+    <div class="card-header" style="background-color:green;color:white">
+        {{ trans('Formulaire d\'enregistrement des collectes entreprise') }}
+    </div>
+<br>
+
 
 
 {!! Form::open(array('route' => 'collectes.index','method'=>'POST')) !!}
@@ -35,7 +41,7 @@
 
         <div class="form-group col-xs-12 col-sm-12 col-md-12">
             <strong>Nom collecteur</strong>
-              <select name="fournisseur_id" id="fournisseur_id" class="col-xs-12 col-sm-12 col-md-12">
+              <select name="fournisseur_id" id="fournisseur_id" class="form-control col-xs-12 col-sm-12 col-md-12">
             <option value="">selectionner un collecteur</option>
             @foreach ($fournisseurs as $four)
             <option value="{{$four->id }}">{{$four->nomComplet}}  </option>
@@ -149,5 +155,7 @@
     </div>
 </div>
 {!! Form::close() !!}
+<br>
 
+</div>
 @endsection

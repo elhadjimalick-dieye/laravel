@@ -10,7 +10,7 @@
                 <div class="card-body">
                 <div class="form-group row ">
 
-                            <img src="{{ asset('dist/img/téléchargement.jpeg') }}" class="rounded mx-auto d-block" alt="Responsive image"  width="20%" >
+                            <img src="{{ asset('dist/img/image.jpg') }}" class="rounded mx-auto d-block" alt="Responsive image"  width="40%" heigth="500px" >
                         </div>
                     <form method="POST" action="{{ route('login') }}">
                         @csrf

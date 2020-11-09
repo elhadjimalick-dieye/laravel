@@ -35,6 +35,12 @@
 
 
 
+<div class="card col-xs-12 col-sm-12 col-md-10 " style="margin-left:10%">
+    <div class="card-header" style="background-color:green;color:white">
+        {{ trans('Formulaire de sortie des matieres pour es ateliers') }}
+    </div>
+<br>
+
 {!! Form::open(array('route' => 'depotProductions.index','method'=>'POST')) !!}
 <div class="row" style="margin-left:10%">
 <div class="col-xs-12 col-sm-12 col-md-5 " >
@@ -119,5 +125,6 @@
     </div>
 </div>
 {!! Form::close() !!}
-
+<br>
+</div>
 @endsection

@@ -27,11 +27,18 @@
   </div>
 @endif
 
+<div class="card col-xs-12 col-sm-12 col-md-10 " style="margin-left:10%">
+    <div class="card-header" style="background-color:green;color:white">
+        {{ trans('Formulaire d\'enregistrement des collectes recuplast') }}
+    </div>
+<br>
+
+
 
 
 {!! Form::open(array('route' => 'collecterecuplasts.index','method'=>'POST')) !!}
-<div class="row" style="margin-left:5%">
-<div class="col-xs-12 col-sm-12 col-md-12" >
+<div class="row" style="margin-left:10%">
+<div class="col-xs-12 col-sm-12 col-md-10" >
 </div>
 
 
@@ -41,7 +48,7 @@
     <label for="exampleFormControlSelect1">Nom du Fournisseur</label>
 
         <div class="form-group">
-            <select name="fournisseur" id="fournisseur" class="col-xs-12 col-sm-12 col-md-12">
+            <select name="fournisseur" id="fournisseur" class="form-control col-xs-12 col-sm-12 col-md-12">
             <option value="" >selectionner un fournisseur</option>
             <option value=""></option>
             @foreach($fournisseurs as $f)
@@ -91,5 +98,6 @@
     </div>
 </div>
 {!! Form::close() !!}
-
+<br>
+</div>
 @endsection
