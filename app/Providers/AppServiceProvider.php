@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider;
+use Way\Generators\GeneratorsServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -15,8 +17,8 @@ class AppServiceProvider extends ServiceProvider
     {
 
     if ($this->app->environment() !== 'production') {
-        //$this->app->register(\Way\Generators\GeneratorsServiceProvider::class);
-        $this->app->register(\Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider::class);
+       $this->app->register(\Way\Generators\GeneratorsServiceProvider::class);
+       $this->app->register(\Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider::class);
     }
     // ...
              }
